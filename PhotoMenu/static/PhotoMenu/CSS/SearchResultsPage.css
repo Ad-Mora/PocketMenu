@@ -83,5 +83,6 @@ input.search-results-submit-button{
     height:100%;
     display: inline-block;
     background-color: #448AFF;
-    color: #FFFFFF;;
+    color: #FFFFFF;
+    border: 0px;
 }
