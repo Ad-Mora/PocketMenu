@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/Reset.css">
   <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/SearchResultsPage.css">
   <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/MobileSearchBar.css">
+  <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/SmallMobileFoodEntry.css">
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
 
   <script src="../../../static/PhotoMenu/JS/SearchResultsPage.js"></script>
@@ -23,6 +24,7 @@
     <a class="my-favorites-button" href="#">My Favorites</a>
   </nav>
 
+  <!-- Top Section of SearchResultsPage -->
   <div class="top-section">
     <h1 class="search-page-title">Search Results</h1>
     <div class="search-options-wrapper">
@@ -30,54 +32,30 @@
       <span class="search-option search-option-right">Food Name</span>
     </div>
 
-    <!-- Mobile Search bar-->
+    <!-- Mobile Search Bar-->
     {%  include "PhotoMenu/Snippets/MobileSearchBar.html" %}
 
     <p class="number-of-search-results">Showing results 1-50 of 99</p>
     <div class="full-width-seperator"></div>
-
-    <ul class="search-results-list">
-      <li class="small-mobile food-entry-li">
-        <div class="small-mobile food-entry-wrapper">
-          <h4 class="small-mobile food-entry-name">Food Name</h4>
-          <div class="small-mobile food-entry-image">
-            <img src="../../../static/PhotoMenu/Images/Beef Potstickers.jpg">
-          </div>
-          <p class="small-mobile food-entry-price">11.00</p>
-        </div>
-      </li>
-      <li class="small-mobile food-entry-li">
-        <div class="small-mobile food-entry-wrapper">
-          <h4 class="small-mobile food-entry-name">Food Name</h4>
-          <div class="small-mobile food-entry-image">
-            <img src="../../../static/PhotoMenu/Images/Beef Potstickers.jpg">
-          </div>
-          <p class="small-mobile food-entry-price">11.00</p>
-        </div>
-      </li>
-      <li class="small-mobile food-entry-li">
-        <div class="small-mobile food-entry-wrapper">
-          <h4 class="small-mobile food-entry-name">Food Name</h4>
-          <div class="small-mobile food-entry-image">
-            <img src="../../../static/PhotoMenu/Images/Beef Potstickers.jpg">
-          </div>
-          <p class="small-mobile food-entry-price">11.00</p>
-        </div>
-      </li>
-      <li class="small-mobile food-entry-li">
-        <div class="small-mobile food-entry-wrapper">
-          <h4 class="small-mobile food-entry-name">Food Name</h4>
-          <div class="small-mobile food-entry-image">
-            <img src="../../../static/PhotoMenu/Images/Beef Potstickers.jpg">
-          </div>
-          <p class="small-mobile food-entry-price">11.00</p>
-        </div>
-      </li>
-    </ul>
-
-
   </div>
 
+
+  <!-- List of Search Results -->
+  <ul class="search-results-list">
+    {%  include "PhotoMenu/Snippets/SmallMobileFoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/SmallMobileFoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/SmallMobileFoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/SmallMobileFoodEntry.html" %}
+    <!-- dummy li to give the ul its actual height -->
+    <li style="clear: both"></li>
+  </ul>
+
+  <!-- Website Footer -->
+  <div class="small-mobile website-footer">
+    <h3 class="small-mobile footer-question">Want more photo menus?</h3>
+    <p class="small-mobile footer-answer">Tell us the names of other restaurants you'd like to see PocketMenu go to next.</p>
+    <a href="#" class="small-mobile footer-contact-us">Contact Us!</a>
+  </div>
 
 </body>
 </html>
