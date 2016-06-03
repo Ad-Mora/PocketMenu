@@ -57,12 +57,14 @@ ul.search-results-list{
 }
 
 li.small-mobile.food-entry-li{
-
+    margin: 5px 0% 0px 2%;
+    float: left;
+    width: 47%;
 }
 
 div.small-mobile.food-entry-wrapper{
-    width: 48%;
-    margin: 10px 1% 0px 1%;
+    width: 100%;
+
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
