@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/SearchResultsPage.css">
   <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/MobileSearchBar.css">
   <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/SmallMobileFoodEntry.css">
+  <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/SmallMobileFooter.css">
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
 
   <script src="../../../static/PhotoMenu/JS/SearchResultsPage.js"></script>
@@ -51,11 +52,7 @@
   </ul>
 
   <!-- Website Footer -->
-  <div class="small-mobile website-footer">
-    <h3 class="small-mobile footer-question">Want more photo menus?</h3>
-    <p class="small-mobile footer-answer">Tell us the names of other restaurants you'd like to see PocketMenu go to next.</p>
-    <a href="#" class="small-mobile footer-contact-us">Contact Us!</a>
-  </div>
+  {% include "PhotoMenu/Snippets/SmallMobileFooter.html" %}
 
 </body>
 </html>
