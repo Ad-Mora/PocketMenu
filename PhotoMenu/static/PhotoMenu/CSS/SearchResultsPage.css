@@ -37,3 +37,16 @@ h1.search-page-title{
     text-align: center;
 }
 
+p.number-of-search-results{
+    font-size: 12px;
+    text-align: right;
+    color: #777777;
+    margin: 8px 5% 0px 5%;
+}
+
+div.full-width-seperator{
+    height: 1px;
+    width: 90%;
+    margin: 8px 5% 8px 5%;
+    background-color: #979797;
+}
