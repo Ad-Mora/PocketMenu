@@ -31,6 +31,17 @@ a.my-favorites-button{
     border-radius:3px;
 }
 .contact-page-header{
-    height: 60px
-    background-image: url("../Images/ContactHeaderImg.jpg");
+    height: 60px;
+    background-image: url("../Images/IndianFood.png");
+    background-position: 0px 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+h1.picture-text{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
 }
