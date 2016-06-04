@@ -36,3 +36,28 @@ a.small-mobile.footer-contact-us{
     text-align: center;
     margin: 20px 0px 25px 10%;
 }
+
+/*-----------CSS for large-mobile------------*/
+@media (min-width: 365px) {
+
+    div.small-mobile.website-footer {
+
+    }
+
+    h3.small-mobile.footer-question{
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    p.small-mobile.footer-answer{
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    a.small-mobile.footer-contact-us{
+        height: 52px;
+        line-height: 52px;
+        font-size: 18px;
+    }
+
+}
