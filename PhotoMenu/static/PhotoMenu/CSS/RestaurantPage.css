@@ -1,0 +1,100 @@
+/*-----------Navbar-----------*/
+nav{
+    width: 100%;
+    height: 45px;
+    background-color: #FF9800;
+}
+h1.brand-name-logo{
+    font-family: 'Nothing You Could Do', cursive;
+    display: inline-block;
+    height: 45px;
+    line-height: 50px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    font-size: 22px;
+}
+a.my-favorites-button{
+    color: #FFF;
+    font-size: 12px;
+    padding: 9px 10px 9px 10px;
+    border: 1px solid #FFF;
+    float: right;
+    margin: 6px;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
+
+span.header-search-icon{
+    background-image: url("../Images/WhiteSearchIcon.png");
+    -webkit-background-size: 20px 20px;
+    background-size: 100% 100%;
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin: 13px 15px 0px 10px;
+
+}
+
+/*-------Title and Background------*/
+
+div.header-background{
+    width: 100%;
+    background-image: url("../Images/Crispy Shrimp.jpg");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+}
+
+div.background-image-dark-overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.4);
+    overflow: auto;
+}
+
+h1.restaurant-name{
+    margin:20% 0px 5px 5%;
+    width: 70%;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+p.restaurant-address{
+    width: 60%;
+    margin: 0px 0px 0px 5%;
+    color: #FFFFFF;
+    font-size: 13px;
+}
+
+p.restaurant-hours{
+    margin: 0px 0px 3% 5%;
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+p.restaurant-hours::before{
+    content: '';
+    background-image: url("../Images/WhiteClockIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    margin: 0px 5px 0px 0px;
+}
+
+/*-------Menu Categories-------*/
+p.category-description{
+    font-size: 14px;
+    color: #555555;
+    font-weight: 300;
+    width: 92%;
+    margin: 7px 0px 10px 4%;
+    line-height: 17px;
+}

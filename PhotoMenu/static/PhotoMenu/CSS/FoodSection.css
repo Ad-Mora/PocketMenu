@@ -1,0 +1,16 @@
+li.food-type-section-wrapper{
+    margin: 0px 0px 20px 0px;
+}
+
+h3.food-type-section-header{
+    width: 92%;
+    color: #777777;
+    margin: 15px 4% 5px 4%;
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid #CCCCCC;
+    font-style: italic;
+}
+
+ul.food-type-section-food-list{
+    overflow: auto;
+}

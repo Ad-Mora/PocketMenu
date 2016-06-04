@@ -1,0 +1,26 @@
+nav{
+    width: 100%;
+    height: 45px;
+    background-color: #FF9800;
+}
+h1.brand-name-logo{
+    font-family: 'Nothing You Could Do', cursive;
+    display: inline-block;
+    height: 45px;
+    line-height: 50px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    font-size: 22px;
+}
+a.my-favorites-button{
+    color: #FFF;
+    font-size: 12px;
+    padding: 9px 10px 9px 10px;
+    border: 1px solid #FFF;
+    float: right;
+    margin: 6px;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+}
