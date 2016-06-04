@@ -31,7 +31,7 @@ a.my-favorites-button{
     border-radius:3px;
 }
 .contact-page-header{
-    height: 60px;
+    height: 78px;
     background-image: url("../Images/IndianFood.png");
     background-position: 0px 0px;
     background-size: 100%;
@@ -43,8 +43,8 @@ a.my-favorites-button{
 h1.picture-text{
     text-align: center;
     vertical-align: middle;
-    line-height: 60px;
+    line-height: 78px;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
 }
