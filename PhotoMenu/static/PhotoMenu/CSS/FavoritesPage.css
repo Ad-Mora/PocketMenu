@@ -20,10 +20,10 @@ span.header-search-icon{
     background-image: url("../Images/WhiteSearchIcon.png");
     -webkit-background-size: 20px 20px;
     background-size: 100% 100%;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     float: right;
-    margin: 10px 10px 10px 0px;
+    margin: 13px 15px 0px 0px;
 
 }
 
@@ -85,4 +85,19 @@ li.filter-option.chosen-filter{
 /*-------Food Sections------*/
 ul.list-of-food-lists{
 
+}
+
+@media (min-width: 355px) {
+    div.filter-and-search-section{
+        height: 45px;
+    }
+
+    li.filter-option{
+        height: 43px;
+        line-height: 45px;
+    }
+
+    span.filter-name{
+        font-size: 16px;
+    }
 }
