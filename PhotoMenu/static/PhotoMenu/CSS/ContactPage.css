@@ -72,3 +72,28 @@ h1.text-header{
     font-size: 13px;
     color: #555555
 }
+.text-input-field{
+    margin-top: 8px;
+    margin-left: 4%;
+    padding-left: 1%;
+    font-size: 16px;
+    color: #333333;
+    width: 91%;
+    height: 28px;
+    border: 1px solid #979797;
+    border-radius: 5px;
+}
+textarea{
+    margin-top: 8px;
+    margin-left: 4%;
+    padding-left: 1%;
+    padding-top: 1%;
+    width: 91%;
+    height: 150px;
+    font-size: 16px;
+    resize: none;
+    color: #333333;
+    border: 1px solid #979797;
+    border-radius: 5px;
+}
+
