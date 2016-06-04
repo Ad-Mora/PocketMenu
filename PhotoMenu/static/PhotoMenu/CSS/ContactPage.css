@@ -31,5 +31,6 @@ a.my-favorites-button{
     border-radius:3px;
 }
 .contact-page-header{
-    background-image: url(
+    height: 60px
+    background-image: url("../Images/ContactHeaderImg.jpg");
 }
