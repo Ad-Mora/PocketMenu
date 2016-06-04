@@ -48,3 +48,16 @@ h1.picture-text{
     font-size: 20px;
     font-weight: bold;
 }
+h1.text-header{
+    font-size: 20px;
+    font-weight: 500;
+    color: #555555;
+}
+.text-wrapper{
+    padding-left: 13px;
+    padding-top: 10px;
+}
+.divider-line{
+    margin-left: 4%;
+    margin-top: 12px;
+}
