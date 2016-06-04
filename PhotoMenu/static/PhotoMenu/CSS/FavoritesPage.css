@@ -56,7 +56,7 @@ div.filter-and-search-section{
     background-color: #FFFFFF;
     height: 35px;
     text-align: center;
-    border-bottom: 1px solid #777777;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
 }
 
 ul.filter-options-list{
@@ -84,3 +84,23 @@ li.filter-option.chosen-filter{
 
 
 /*-------Food Entry List------*/
+ul.list-of-food-lists{
+
+}
+
+li.food-type-section-wrapper{
+    margin: 0px 0px 20px 0px;
+}
+
+h3.food-type-section-header{
+    width: 92%;
+    color: #777777;
+    margin: 15px 4% 5px 4%;
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid #CCCCCC;
+    font-style: italic;
+}
+
+ul.food-type-section-food-list{
+    overflow: auto;
+}

@@ -32,10 +32,10 @@
   <!-- Filter and Search -->
   <div class="filter-and-search-section">
     <ul class="filter-options-list">
-      <li class="filter-option chosen-filter">
+      <li class="filter-option">
         <span class="filter-name">A-Z</span>
       </li>
-      <li class="filter-option">
+      <li class="filter-option chosen-filter">
         <span class="filter-name">Restaurant Name</span>
       </li>
       <li class="filter-option">
@@ -43,6 +43,31 @@
       </li>
     </ul>
   </div>
+
+  <!-- List of Food Item Lists -->
+  <ul class="list-of-food-lists">
+    <li class="food-type-section-wrapper">
+      <h3 class="food-type-section-header">Kathy's Asian Kitchen</h3>
+      <ul class="food-type-section-food-list">
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+      </ul>
+    </li>
+    <li class="food-type-section-wrapper">
+      <h3 class="food-type-section-header">Kathy's Asian Kitchen</h3>
+      <ul class="food-type-section-food-list">
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+      </ul>
+    </li>
+
+  </ul>
+
+  <!-- Website Footer -->
+  {% include "PhotoMenu/Snippets/MobileFooter.html" %}
+
 
 
 
