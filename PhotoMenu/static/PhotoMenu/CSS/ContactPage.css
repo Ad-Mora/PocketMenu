@@ -37,6 +37,9 @@ a.my-favorites-button{
     background-size: 100%;
     background-repeat: no-repeat;
 }
+.dark-overlay{
+    background-color: rgba(0,0,0,0.4);
+}
 h1.picture-text{
     text-align: center;
     vertical-align: middle;
