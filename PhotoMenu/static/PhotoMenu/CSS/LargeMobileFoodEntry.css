@@ -1,0 +1,62 @@
+li.large-mobile.food-entry-li{
+    margin: 5px 0% 0px 2%;
+    float: left;
+    width: 47%;
+}
+
+div.large-mobile.food-entry-wrapper{
+    width: 100%;
+    -webkit-border-radius: 0%;
+    -moz-border-radius: 0%;
+    border-radius: 0%;
+    background-color: #FFFFFF;
+    border: 1px solid #D2D2D2;
+
+    -webkit-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+    box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+
+    height: auto;
+}
+
+div.large-mobile.food-entry-image{
+    width: 92%;
+    margin: 4% 4% 0% 4%;
+}
+
+div.large-mobile.food-entry-image img{
+    width: 100%;
+    height: auto;
+}
+
+h4.large-mobile.food-entry-name{
+    color: black;
+    font-size: 16px;
+    overflow: hidden;
+    text-align: left;
+    margin: 5px 0px 0px 4%;
+    font-weight: bold;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 92%;
+}
+
+p.large-mobile.food-description-name{
+    font-size: 14px;
+    overflow: hidden;
+    margin: 7px 0px 0px 4%;
+    color: #555555;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 92%;
+}
+
+p.large-mobile.food-entry-price{
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    color: #FF9800;
+    margin: 7px 0px 4% 4%;
+}
