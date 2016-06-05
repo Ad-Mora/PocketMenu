@@ -22,6 +22,9 @@ div.inspector{
     width: 100%;
     background-color: #FFFFFF;
     margin: 0px 0px 5px 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 div.inspector.restaurant-header{
@@ -30,8 +33,8 @@ div.inspector.restaurant-header{
 
 div.inspector.restaurant-header::after{
     content: '';
-    width: 20px;
-    height: 25px;
+    width: 15px;
+    height: 20px;
     display: inline-block;
     background-image: url("../Images/ClickableLinkIcon.png");
     -webkit-background-size: 100% auto;
@@ -40,7 +43,7 @@ div.inspector.restaurant-header::after{
     position: absolute;
     right: 3%;
     top: -webkit-calc(50% - 12px);
-    top: calc(50% - 12px);
+    top: calc(50% - 8px);
 }
 
 h2.inspector.restaurant-name{
@@ -52,10 +55,6 @@ h2.inspector.restaurant-name{
 
 div.inspector.main-view{
     padding: 5px;
-    width: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 img.inspector.food-image{
@@ -99,4 +98,26 @@ span.inspector.right-arrow{
     background-size: 100% auto;
     background-repeat: no-repeat;
     float: right;
+}
+
+div.inspector.food-details{
+    padding: 5px;
+}
+
+h3.inspector.food-name{
+    font-size: 16px;
+    margin: 0px 0px 7px 0px;
+    font-weight: bold;
+}
+
+p.inspector.food-description{
+    font-size: 14px;
+    margin: 0px 0px 10px 0px;
+    line-height: 16px;
+}
+
+p.inspector.food-price{
+    color: #FF9800;
+    font-size: 14px;
+    font-weight: bold;
 }
