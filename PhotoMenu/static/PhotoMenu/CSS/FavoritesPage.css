@@ -101,3 +101,21 @@ ul.list-of-food-lists{
         font-size: 16px;
     }
 }
+
+
+@media (min-width: 355px) {
+    nav{
+        height: 55px;
+    }
+
+    h1.brand-name-logo{
+        line-height: 60px;
+        font-size: 24px;
+    }
+
+    span.header-search-icon{
+        width: 23px;
+        height: 23px;
+        margin: 16px 15px 0px 10px;
+    }
+}
