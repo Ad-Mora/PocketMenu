@@ -1,0 +1,102 @@
+div.dark-background-overlay{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(238,238,238,0.9);
+}
+
+div.inspector-view-wrapper{
+    width: 96%;
+    height: 96%;
+    position: fixed;
+    top: 1%;
+    left: 2%;
+}
+
+div.inspector{
+    -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,.1), 0px -1px 3px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 1px 3px rgba(0,0,0,.1), 0px -1px 3px rgba(0,0,0,.1);
+    box-shadow: 0px 1px 3px rgba(0,0,0,.1), 0px -1px 3px rgba(0,0,0,.1);
+    width: 100%;
+    background-color: #FFFFFF;
+    margin: 0px 0px 5px 0px;
+}
+
+div.inspector.restaurant-header{
+    position: relative;
+}
+
+div.inspector.restaurant-header::after{
+    content: '';
+    width: 20px;
+    height: 25px;
+    display: inline-block;
+    background-image: url("../Images/ClickableLinkIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 3%;
+    top: -webkit-calc(50% - 12px);
+    top: calc(50% - 12px);
+}
+
+h2.inspector.restaurant-name{
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+div.inspector.main-view{
+    padding: 5px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img.inspector.food-image{
+    width: 100%;
+    height: auto;
+}
+
+div.directions-and-food-interest{
+    height: 30px;
+    margin: 5px 0px 0px 0px;
+    text-align: center;
+}
+
+span.inspector.left-arrow{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url("../Images/LeftArrowIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+span.inspector.like-food-icon{
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-image: url("../Images/FullHeartIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+span.inspector.right-arrow{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url("../Images/RightArrowIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    float: right;
+}
