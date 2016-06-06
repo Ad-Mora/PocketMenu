@@ -16,3 +16,24 @@ h1.brand-name-logo{
     color: #FFFFFF;
     font-size: 22px;
 }
+.homepage-picture{
+    background-image: url("../Images/MobileHomepagePic.jpg");
+    background-size: cover;
+    height: 400px;
+}
+.dark-overlay{
+    background-color: rgba(0,0,0,0.3);
+    height: 400px;
+}
+.large-text{
+    color: white;
+    width: 70%;
+    margin-left: 15%;
+    padding-top: 100px;
+    font-size: 24px;
+    font-weight: 300;
+}
+.food-name{
+}
+.restaurant-name{
+}
