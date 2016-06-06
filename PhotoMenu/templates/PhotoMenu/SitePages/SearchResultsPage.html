@@ -40,7 +40,7 @@
   </div>
 
   <!-- Inspector View Modal -->
-  {%  include "PhotoMenu/Snippets/InspectorView.html" %}
+{#  {%  include "PhotoMenu/Snippets/InspectorView.html" %}#}
 
   <!-- List of Search Results -->
   <ul class="search-results-list">
@@ -52,6 +52,19 @@
     <!-- dummy li to give the ul its actual height -->
     <li style="clear: both"></li>
   </ul>
+
+  <!-- More Results Navigator -->
+  <div class="more-results-navigator">
+    <a href="#" class="previous results-page">
+      <span class="previous page-icon"></span>
+      Previous
+    </a>
+    <a href="#" class="next results-page">
+      Next
+      <span class="next page-icon"></span>
+    </a>
+    <div style="clear:both;"></div>
+  </div>
 
   <!-- Website Footer -->
   {% include "PhotoMenu/Snippets/MobileFooter.html" %}

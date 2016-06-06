@@ -1,3 +1,5 @@
+
+/*-------Search Bar and Details------*/
 h1.search-page-title{
     font-size: 24px;
     font-weight: 200;
@@ -21,4 +23,43 @@ div.full-width-seperator{
 
 ul.search-results-list{
 
+}
+
+/*--------Next and Previous--------*/
+div.more-results-navigator{
+    width: 96%;
+    border-top: 1px solid #777777;
+    margin: 25px 0px 0px 2%;
+    padding: 5px 0px 0px 0px;
+}
+
+a.results-page{
+    color: #555555;
+    font-size: 14px;
+
+}
+
+a.previous.results-page{
+    float: left;
+}
+
+a.next.results-page{
+    float: right;
+}
+
+span.page-icon{
+    background-size: 100% auto;
+    width: 20px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+}
+
+span.previous.page-icon{
+    background-image: url("../Images/BackArrowIcon.png");
+}
+
+span.next.page-icon{
+    background-image: url("../Images/ForwardArrowIcon.png");
 }
