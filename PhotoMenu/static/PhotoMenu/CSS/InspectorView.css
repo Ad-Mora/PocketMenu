@@ -22,7 +22,7 @@ div.inspector-view-wrapper{
     width: 96%;
     height: 100%;
     position: fixed;
-    top: 1%;
+    top: 0%;
     left: 2%;
     overflow: scroll;
 }
@@ -43,6 +43,7 @@ div.inspector{
 
 div.inspector.restaurant-header{
     position: relative;
+    margin: 2% 0px 5px 0px;
 }
 
 div.inspector.restaurant-header::after{
@@ -131,7 +132,7 @@ p.inspector.food-description{
 }
 
 div.inspector.food-category-details{
-    margin: 0px 0px 3% 0px;
+    margin: 0px 0px 2% 0px;
 }
 
 p.inspector.food-price{
