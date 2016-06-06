@@ -22,7 +22,7 @@ h1.brand-name-logo{
     height: 400px;
 }
 .dark-overlay{
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
     height: 400px;
 }
 .large-text{
@@ -34,11 +34,11 @@ h1.brand-name-logo{
     font-weight: 300;
 }
 .food-name{
-    margin-left: 18%;
+    margin-left: 15%;
     display: inline-block;
     margin-top: 50px;
     color: white;
-    width: 30%;
+    width: 35%;
     text-align: center;
     padding-bottom: 10px;
     border-bottom: #448AFF solid 4px;
@@ -47,7 +47,7 @@ h1.brand-name-logo{
     display: inline-block;
     margin-top: 50px;
     color: white;
-    width: 30%;
+    width: 35%;
     text-align: center;
     padding-bottom: 10px;
 }
