@@ -11,7 +11,9 @@
 	font: inherit;
 	vertical-align: baseline;
 	border: 0;
+	
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, menu, nav, section {
@@ -36,4 +38,8 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+a{
+	text-decoration: none;
 }
