@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load staticfiles %}
+
 <head>
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Title</title>
 
-  <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/Homepage.css">
-  <link rel="stylesheet" href="../../../static/PhotoMenu/CSS/Reset.css">
+  <link rel="stylesheet" href="{% static "PhotoMenu/CSS/Homepage.css" %}">
+  <link rel="stylesheet" href="{% static "PhotoMenu/CSS/Reset.css" %}">
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
 </head>
 
@@ -35,7 +37,7 @@
 <!--Why us area-->
 <h1 class="why-us-header">Why Pocket Menu?</h1>
 
-<img class="why-us-icon" src="../Images/LightBulbIcon.png">
+<img class="why-us-icon" src="{% static "PhotoMenu/Images/LightBulbIcon.png" %}">
 <h3 class="icon-text">Faster Browsing</h3>
 <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
 
