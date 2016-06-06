@@ -56,6 +56,24 @@ h1.brand-name-logo{
     margin-left: 4%;
     padding-left: 1%;
     width: 91%;
-    height: 28px;
+    height: 35px;
     border-radius: 5px;
+}
+.search-button{
+    margin-left: 4%;
+    margin-top: 8px;
+    width: 92%;
+    height: 35px;
+    background: #448AFF;
+    color: white;
+    border-radius: 5px;
+}
+.picture-bottom-text{
+    margin-left: 4%;
+    margin-top: 10px;
+    width: 92%;
+    color:white;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 300;
 }
