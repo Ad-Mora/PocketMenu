@@ -7,6 +7,17 @@ div.dark-background-overlay{
     background-color: rgba(238,238,238,0.9);
 }
 
+span.close-inspector-icon {
+    background-image: url("../Images/QuitInspectorIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: Calc(50% - 10px);
+    left: 3%;
+}
+
 div.inspector-view-wrapper{
     width: 96%;
     height: 100%;
@@ -27,6 +38,7 @@ div.inspector{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 5px;
+    border: 1px solid #D2D2D2;
 }
 
 div.inspector.restaurant-header{
@@ -44,7 +56,7 @@ div.inspector.restaurant-header::after{
     background-repeat: no-repeat;
     position: absolute;
     right: 3%;
-    top: -webkit-calc(50% - 12px);
+    top: -webkit-calc(50% - 8px);
     top: calc(50% - 8px);
 }
 
@@ -118,6 +130,10 @@ p.inspector.food-description{
     line-height: 16px;
 }
 
+div.inspector.food-category-details{
+    margin: 0px 0px 3% 0px;
+}
+
 p.inspector.food-price{
     color: #FF9800;
     font-size: 14px;
@@ -126,12 +142,55 @@ p.inspector.food-price{
 
 h4.inspector.food-category-name{
     font-size: 16px;
-    color: #333333;
+    color: #777777;
+    font-weight: 500;
     margin: 0px 0px 5px 0px;
 }
 
 p.inspector.food-category-description{
     font-size: 14px;
     line-height: 16px;
-    font-weight: 300;
+    color: #777777;
+}
+
+
+@media (min-width: 355px) {
+    h2.inspector.restaurant-name{
+        font-size: 18px;
+    }
+
+    span.close-inspector-icon {
+        width: 25px;
+        height: 25px;
+        top: Calc(50% - 12px);
+    }
+
+    div.inspector.restaurant-header::after{
+        width: 18px;
+        height: 25px;
+        top: -webkit-calc(50% - 10px);
+        top: calc(50% - 10px);
+    }
+
+    h3.inspector.food-name{
+        font-size: 18px;
+    }
+
+    p.inspector.food-description{
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    p.inspector.food-price{
+        font-size: 16px;
+    }
+
+    h4.inspector.food-category-name{
+        font-size: 18px;
+    }
+
+    p.inspector.food-category-description{
+        font-size: 15px;
+        line-height: 18px;
+    }
 }
