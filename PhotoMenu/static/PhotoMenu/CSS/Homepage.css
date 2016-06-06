@@ -34,11 +34,11 @@ h1.brand-name-logo{
     font-weight: 300;
 }
 .food-name{
-    margin-left: 15%;
+    margin-left: 4%;
     display: inline-block;
     margin-top: 50px;
     color: white;
-    width: 35%;
+    width: 46%;
     text-align: center;
     padding-bottom: 10px;
     border-bottom: #448AFF solid 4px;
@@ -47,7 +47,15 @@ h1.brand-name-logo{
     display: inline-block;
     margin-top: 50px;
     color: white;
-    width: 35%;
+    width: 46%;
     text-align: center;
     padding-bottom: 10px;
+}
+.search-bar{
+    margin-top: 12px;
+    margin-left: 4%;
+    padding-left: 1%;
+    width: 91%;
+    height: 28px;
+    border-radius: 5px;
 }
