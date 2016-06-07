@@ -1,0 +1,148 @@
+body{
+    font-family: "Helvetica Neue";
+    background-color: #EEEEEE
+}
+.header{
+    width: 100%;
+    height: 45px;
+    background-color: #FF9800;
+}
+h1.brand-name-logo{
+    font-family: 'Nothing You Could Do', cursive;
+    display: inline-block;
+    height: 45px;
+    line-height: 50px;
+    margin-left: 10px;
+    color: #FFFFFF;
+    font-size: 22px;
+}
+.homepage-picture{
+    background-image: url("../Images/MobileHomepagePic.jpg");
+    background-size: cover;
+    height: 400px;
+}
+.dark-overlay{
+    background-color: rgba(0,0,0,0.5);
+    height: 400px;
+}
+.large-text{
+    color: white;
+    width: 70%;
+    margin-left: 15%;
+    padding-top: 100px;
+    font-size: 24px;
+    font-weight: 300;
+}
+.food-name{
+    margin-left: 4%;
+    display: inline-block;
+    margin-top: 50px;
+    color: white;
+    width: 46%;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: #448AFF solid 4px;
+}
+.restaurant-name{
+    display: inline-block;
+    margin-top: 50px;
+    color: white;
+    width: 46%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.search-bar{
+    margin-top: 12px;
+    margin-left: 4%;
+    padding-left: 1%;
+    width: 91%;
+    height: 35px;
+    border-radius: 5px;
+}
+.search-button{
+    margin-left: 4%;
+    margin-top: 8px;
+    width: 92%;
+    height: 35px;
+    background: #448AFF;
+    color: white;
+    border-radius: 5px;
+}
+.picture-bottom-text{
+    margin-left: 4%;
+    margin-top: 10px;
+    width: 92%;
+    color:white;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 300;
+}
+.why-us-header{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+    margin-top: 15px;
+}
+.why-us-icon{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 90px;
+}
+.icon-text{
+    margin-top: 10px;
+    text-align: center;
+    color: #333333;
+    font-size: 18px;
+
+}
+.icon-description{
+    margin-top: 10px;
+    margin-left: 4%;
+    width: 92%;
+    text-align: center;
+    color: #555555;
+    font-size: 14px;
+}
+.white-area{
+    margin-top: 20px;
+    padding-top: 20px;
+    background-color: white;
+    height: 210px;
+}
+.our-locations-header{
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+    text-align: center;
+}
+.our-locations-detail{
+    margin-top: 10px;
+    margin-left: 15%;
+    text-align: center;
+    width: 70%;
+    font-size: 16px;
+    color: #555555;
+}
+.our-location-span{
+    margin-top: 15px;
+    display: inline-block;
+    width: 49.3%;
+    text-align: center;
+}
+.el-pelon{
+    width: 120px;
+    -webkit-clip-path: circle(38px at center);
+}
+.crush-pizza{
+    width: 120px;
+    -webkit-clip-path: circle(38px at center);
+}
+.our-location-name{
+    margin-top: 5px;
+    text-align: center;
+    color: #333333;
+}
