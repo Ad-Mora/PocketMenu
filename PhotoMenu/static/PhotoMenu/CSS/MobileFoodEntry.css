@@ -76,6 +76,7 @@ p.food-entry-price{
         margin: 0px 0px 7px 4%;
         color: #555555;
         width: 92%;
+        font-weight: 300;
     }
 
     div.food-entry-wrapper{
