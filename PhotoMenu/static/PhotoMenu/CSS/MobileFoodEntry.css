@@ -65,15 +65,16 @@ p.food-entry-price{
 
 /*-----------------Tablet----------------*/
 @media (min-width: 480px) {
+    h4.food-entry-name{
+        margin: 5px 0px 5px 4%;
+    }
+
     p.food-description-name{
         display: block;
         font-size: 14px;
         overflow: hidden;
-        margin: 7px 0px 7px 4%;
+        margin: 0px 0px 7px 4%;
         color: #555555;
-        /*-ms-text-overflow: ellipsis;*/
-        /*text-overflow: ellipsis;*/
-        /*white-space: nowrap;*/
         width: 92%;
     }
 
