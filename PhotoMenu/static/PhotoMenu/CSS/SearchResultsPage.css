@@ -1,7 +1,7 @@
 
 /*-------Search Bar and Details------*/
 h1.search-page-title{
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 200;
     color: #555555;
     margin: 15px 0px 10px 0px;
@@ -21,8 +21,10 @@ div.full-width-seperator{
     background-color: #979797;
 }
 
-ul.search-results-list{
-
+/*-----------Food Results List-----------*/
+ ul.search-results-list{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /*--------Next and Previous--------*/
@@ -54,6 +56,7 @@ span.page-icon{
     display: inline-block;
     position: relative;
     top: 3px;
+    background-repeat: no-repeat;
 }
 
 span.previous.page-icon{
@@ -62,4 +65,30 @@ span.previous.page-icon{
 
 span.next.page-icon{
     background-image: url("../Images/ForwardArrowIcon.png");
+}
+
+/*----------Large Mobile------------*/
+@media (min-width: 355px) {
+    p.number-of-search-results{
+        font-size: 14px;
+    }
+
+    a.results-page{
+        font-size: 16px;
+    }
+
+    span.page-icon{
+        width: 25px;
+        height: 20px;
+        top: 6px;
+    }
+}
+
+/*---------------Desktop-----------------*/
+@media (min-width: 480px) {
+
+    ul.search-results-list{
+        width: 91%;
+        margin: 0px 0px 0px 4%;
+    }
 }
