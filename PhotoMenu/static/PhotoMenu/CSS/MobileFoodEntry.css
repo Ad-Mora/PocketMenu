@@ -90,7 +90,7 @@ p.food-entry-price{
 @media (min-width: 670px) {
     li.ghost-food-item{
         flex-grow: 1;
-        flex-basis: 230px;
+        flex-basis: 210px;
         max-width: 290px;
         height: 0px;
         margin: 1% 0px 0px 1%;
@@ -98,7 +98,7 @@ p.food-entry-price{
 
     li.food-entry-li{
         flex-grow: 1;
-        flex-basis: 230px;
+        flex-basis: 210px;
         width: 290px;
         margin: 1% 0px 0px 1%;
     }
