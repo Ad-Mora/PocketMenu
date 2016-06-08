@@ -1,28 +1,27 @@
 .header{
     height: 45px;
     background-color: #FF9800;
-}
-.logo{
-    font-family: 'Nothing You Could Do', cursive;
-    display: inline-block;
-    height: 45px;
-    line-height: 45px;
-    margin-left: 10px;
-    color: white;
-    font-size: 22px;
-}
-.favorites{
-    background-color: transparent;
-    font-size: 12px;
-    color: white;
-    border: 3px solid white;
-    display: inline-block;
-    -webkit-border-radius: 3px;
-    -moz-border-radius:3px;
-    border-radius:3px;
+    width: 100%;
+    display: table;
 }
 .search{
     height: 25px;
     line-height: 45px;
     vertical-align: middle;
+}
+.logo-wrapper{
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 10px;
+    width: 46%;
+}
+.favorites-button-wrapper{
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 15%;
+}
+.search-wrapper{
+    padding-right: 10px;
+    vertical-align: middle;
+    display: table-cell;
 }

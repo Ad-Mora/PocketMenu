@@ -1,6 +1,15 @@
 {% load staticfiles %}
 <div class="header">
-  <h1 class="logo">Pocket Menu</h1>
-  <button class="favorites">Favorites</button>
-  <img class="search" src="{% static "PhotoMenu/Images/WhiteSearchIcon.png" %}">
+  <div class="logo-wrapper">
+    {% include "PhotoMenu/Snippets/Logo.html" %}
+  </div>
+
+  <div class="favorites-button-wrapper">
+    {% include "PhotoMenu/Snippets/FavoritesButton.html" %}
+  </div>
+
+  <div class="search-wrapper">
+    <img class="search" src="{% static "PhotoMenu/Images/WhiteSearchIcon.png" %}">
+  </div>
+
 </div>
