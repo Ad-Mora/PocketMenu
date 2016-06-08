@@ -44,6 +44,7 @@ div.header-background{
     background-image: url("../Images/Crispy Shrimp.jpg");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
+    background-position: 0px 25%;
 }
 
 div.background-image-dark-overlay{
@@ -51,6 +52,7 @@ div.background-image-dark-overlay{
     height: 100%;
     background-color: rgba(0,0,0,.4);
     overflow: auto;
+    max-height: 250px;
 }
 
 h1.restaurant-name{
@@ -135,6 +137,34 @@ ul.food-type-section-food-list{
         padding: 0px 4px 0px 0px;
     }
 
+}
+
+@media (min-width: 600px) {
+
+    h1.restaurant-name{
+        font-weight: bold;
+        font-size: 28px;
+    }
+    
+    p.restaurant-address{
+        font-size: 15px;
+    }
+    
+    p.restaurant-hours{
+        font-size: 15px;
+    }
+    
+    p.restaurant-hours::before{
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (min-width: 800px) {
+
+    h1.restaurant-name{
+        margin: 155px 0px 5px 5%;
+    }
 }
 
 @media (min-width: 1200px) {
