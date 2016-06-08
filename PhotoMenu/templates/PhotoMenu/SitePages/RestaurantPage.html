@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Favorites Page</title>
+  <title>Restaurant Page</title>
 
   <link href="../../../static/PhotoMenu/CSS/Reset.css" rel="stylesheet" type='text/css'>
   <link href="../../../static/PhotoMenu/CSS/RestaurantPage.css" rel="stylesheet" type='text/css'>
@@ -21,8 +21,18 @@
 
   <nav class="theme-orange">
     <h1 class="brand-name-logo">Pocket Menu</h1>
-    <span class="header-search-icon"></span>
-    <a class="my-favorites-button" href="#">My Favorites</a>
+    <!-- Only visible in Mobile -->
+    <span class="header-search-icon navbar-mobile"></span>
+    <a class="my-favorites-button navbar-mobile" href="#">My Favorites</a>
+
+    <!-- Only visible in Desktop -->
+    <div class="header-search-bar navbar-desktop">
+      <span class="header-search-icon navbar-desktop"></span>
+      <input class="header-search-input navbar-desktop" type="text" placeholder="e.g. restaurant or food name">
+    </div>
+    <a class="header-contact-us-link navbar-desktop" href="#">Contact Us</a>
+    <span class="header-links-separator navbar-desktop"></span>
+    <a class="header-my-favorites-link navbar-desktop" href="#">My Favorites</a>
   </nav>
 
   <!-- Background Image w/ title -->
