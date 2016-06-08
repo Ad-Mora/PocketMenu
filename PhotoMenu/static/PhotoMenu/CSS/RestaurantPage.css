@@ -8,14 +8,14 @@ nav{
     display: none;
 }
 
-h1.brand-name-logo{
-    font-family: 'Nothing You Could Do', cursive;
+span.navbar-mobile.header-hamburger-icon{
+    background-image: url("../Images/WhiteHamburgerIcon.png");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
     display: inline-block;
-    height: 45px;
-    line-height: 50px;
-    margin-left: 10px;
-    color: #FFFFFF;
-    font-size: 22px;
+    margin: 11px 0px 0px 10px;
 }
 
 a.my-favorites-button{
@@ -33,13 +33,12 @@ a.my-favorites-button{
 
 span.navbar-mobile.header-search-icon{
     background-image: url("../Images/WhiteSearchIcon.png");
-    -webkit-background-size: 20px 20px;
-    background-size: 100% 100%;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
     width: 20px;
     height: 20px;
     float: right;
     margin: 13px 15px 0px 10px;
-
 }
 
 /*-------Title and Background------*/
@@ -116,9 +115,10 @@ ul.food-type-section-food-list{
         height: 55px;
     }
 
-    h1.brand-name-logo{
-        line-height: 60px;
-        font-size: 24px;
+    span.navbar-mobile.header-hamburger-icon{
+        width: 30px;
+        height: 30px;
+        margin: 14px 0px 0px 20px;
     }
 
     a.my-favorites-button{
@@ -147,6 +147,7 @@ ul.food-type-section-food-list{
 @media (min-width: 600px) {
 
     h1.restaurant-name{
+        font-size: 24px;
         font-weight: bold;
         font-size: 28px;
     }
@@ -171,6 +172,16 @@ ul.food-type-section-food-list{
 
 @media (min-width: 800px) {
 
+    h1.brand-name-logo{
+        font-family: 'Nothing You Could Do', cursive;
+        display: inline-block;
+        height: 45px;
+        line-height: 50px;
+        margin-left: 10px;
+        color: #FFFFFF;
+        font-size: 22px;
+    }
+
     h1.restaurant-name{
         margin: 155px 0px 5px 5%;
     }
@@ -180,7 +191,7 @@ ul.food-type-section-food-list{
     }
 
     .navbar-mobile{
-        display: none;
+        display: none !important;
     }
 
     div.navbar-desktop.header-search-bar{
