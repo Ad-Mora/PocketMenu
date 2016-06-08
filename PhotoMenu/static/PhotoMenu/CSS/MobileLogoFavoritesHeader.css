@@ -25,7 +25,7 @@ a.header-my-favorites-link{
     border-radius:3px;
 }
 
-span.header-links-seperator{
+span.header-links-separator{
     display: none;
 }
 
@@ -63,7 +63,7 @@ a.header-contact-us-link{
         font-weight: 300;
     }
 
-    span.header-links-seperator{
+    span.header-links-separator{
         float: right;
         display: inline-block;
         margin: 10px 4px 0px 0px;
