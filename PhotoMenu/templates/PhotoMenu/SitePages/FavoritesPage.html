@@ -1,4 +1,5 @@
 <!doctype html>
+{% load staticfiles %}
 
 <html lang="en">
 <head>
@@ -7,16 +8,14 @@
 
   <title>Favorites Page</title>
 
-  <link href="../../../static/PhotoMenu/CSS/Reset.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/FavoritesPage.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/FilterSearchBar.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/MobileFoodEntry.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/FoodSection.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/MobileFooter.css" rel="stylesheet" type='text/css'>
+  <link href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}" rel="stylesheet" type='text/css'>
+  <link href="{% static "PhotoMenu/CSS/Snippets/MobileFoodEntry.css" %}" rel="stylesheet" type='text/css'>
+  <link href="{% static "PhotoMenu/CSS/Snippets/FoodSection.css" %}" rel="stylesheet" type='text/css'>
+  <link href="{% static "PhotoMenu/CSS/Snippets/MobileFooter.css" %}" rel="stylesheet" type='text/css'>
+  <link href="{% static "PhotoMenu/CSS/Snippets/FilterSearchBar.css" %}" rel="stylesheet" type='text/css'>
+  <link href="{% static "PhotoMenu/CSS/SitePages/FavoritesPage.css" %}" rel="stylesheet" type='text/css'>
+
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
-
-  <script src="../../../static/PhotoMenu/JS/FavoritesPage.js"></script>
-
 </head>
 <body>
   <nav class="theme-orange">
@@ -67,9 +66,6 @@
 
   <!-- Website Footer -->
   {% include "PhotoMenu/Snippets/MobileFooter.html" %}
-
-
-
 
 </body>
 </html>

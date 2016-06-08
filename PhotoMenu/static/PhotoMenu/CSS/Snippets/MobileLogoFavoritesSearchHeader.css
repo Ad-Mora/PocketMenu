@@ -1,0 +1,27 @@
+.header{
+    height: 45px;
+    background-color: #FF9800;
+    width: 100%;
+    display: table;
+}
+.search{
+    height: 25px;
+    line-height: 45px;
+    vertical-align: middle;
+}
+.logo-wrapper{
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 10px;
+    width: 46%;
+}
+.favorites-button-wrapper{
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 15%;
+}
+.search-wrapper{
+    padding-right: 10px;
+    vertical-align: middle;
+    display: table-cell;
+}
