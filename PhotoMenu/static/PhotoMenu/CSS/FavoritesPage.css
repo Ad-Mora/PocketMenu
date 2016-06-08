@@ -127,6 +127,15 @@ ul.food-type-section-food-list{
     }
 }
 
+@media (min-width: 480px) {
+
+    ul.food-type-section-food-list{
+        width: 91%;
+        margin: 0px 0px 0px 4%;
+        padding: 0px 4px 0px 0px;
+    }
+}
+
 
 @media (min-width: 650px) {
 
@@ -142,6 +151,7 @@ ul.food-type-section-food-list{
     ul.filter-options-list{
         display: inline-block;
         float: left;
+        margin: 0px 0px 0px 20px
     }
 
     div.current-page-search-wrapper{
@@ -186,4 +196,12 @@ ul.food-type-section-food-list{
         top: 3px;
     }
 
+}
+
+@media (min-width: 1200px) {
+
+    ul.list-of-food-lists{
+        max-width: 1210px;
+        margin: 0px auto 0px auto;
+    }
 }
