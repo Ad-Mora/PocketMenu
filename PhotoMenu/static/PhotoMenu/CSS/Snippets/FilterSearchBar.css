@@ -86,7 +86,7 @@ div.current-page-search-wrapper{
 
     span.current-page-search-icon{
         display: inline-block;
-        background-image: url("../../Images/GreySearchIcon.png");
+        background-image: url("../../Images/Icons/GreySearchIcon.png");
         -webkit-background-size: 100% auto;
         background-size: 100% auto;
         width: 15px;

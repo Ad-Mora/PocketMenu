@@ -89,11 +89,11 @@ span.page-icon{
 }
 
 span.previous.page-icon{
-    background-image: url("../../Images/BackArrowIcon.png");
+    background-image: url("../../Images/Icons/BackArrowIcon.png");
 }
 
 span.next.page-icon{
-    background-image: url("../../Images/ForwardArrowIcon.png");
+    background-image: url("../../Images/Icons/ForwardArrowIcon.png");
 }
 
 @media (min-width: 355px) {

@@ -9,7 +9,7 @@ nav{
 }
 
 span.navbar-mobile.header-hamburger-icon{
-    background-image: url("../../Images/WhiteHamburgerIcon.png");
+    background-image: url("../../Images/Icons/WhiteHamburgerIcon.png");
     background-size: 100% auto;
     background-repeat: no-repeat;
     width: 25px;
@@ -34,7 +34,7 @@ a.my-favorites-button{
 span.navbar-mobile.header-search-icon{
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
-    background-image: url("../../Images/WhiteSearchIcon.png");
+    background-image: url("../../Images/Icons/WhiteSearchIcon.png");
     width: 20px;
     height: 20px;
     float: right;
@@ -45,7 +45,7 @@ span.navbar-mobile.header-search-icon{
 
 div.header-background{
     width: 100%;
-    background-image: url("../../Images/Crispy Shrimp.jpg");
+    background-image: url("../../Images/MockPhotos/CrispyShrimp.jpg");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-position: 0px 25%;
@@ -84,7 +84,7 @@ p.restaurant-hours{
 
 p.restaurant-hours::before{
     content: '';
-    background-image: url("../../Images/WhiteClockIcon.png");
+    background-image: url("../../Images/Icons/WhiteClockIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     width: 15px;
@@ -207,7 +207,7 @@ ul.food-type-section-food-list{
     span.navbar-desktop.header-search-icon{
         width: 23px;
         height: 23px;
-        background-image: url("../../Images/WhiteSearchIcon.png");
+        background-image: url("../../Images/Icons/WhiteSearchIcon.png");
         background-size: 100% auto;
     }
 
