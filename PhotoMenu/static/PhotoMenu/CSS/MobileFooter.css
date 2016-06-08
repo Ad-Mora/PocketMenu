@@ -17,17 +17,17 @@ h3.mobile.footer-question{
     font-size: 16px;
     font-weight: 500;
     color: #FFFFFF;;
-    margin: 20px 0px 8px 10%;
+    margin: 20px 0px 5px 10%;
     letter-spacing: 0.5px;
 }
 p.mobile.footer-answer{
     font-size: 12px;
     color: #FFFFFF;
-    font-weight: normal;
     max-width: 80%;
     line-height: 16px;
-    font-weight: 300;
+    font-weight: 100;
     margin: 0px 0px 0px 10%;
+    letter-spacing: 1px;
 }
 
 a.mobile.footer-contact-us{
@@ -56,19 +56,18 @@ a.mobile.footer-contact-us{
     }
 
     h3.mobile.footer-question{
-        font-size: 20px;
+        font-size: 18px;
         letter-spacing: 1px;
     }
 
     p.mobile.footer-answer{
-        font-size: 14px;
-        letter-spacing: 1px;
+        font-size: 12px;
     }
 
     a.mobile.footer-contact-us{
-        height: 52px;
-        line-height: 52px;
-        font-size: 18px;
+        height: 45px;
+        line-height: 45px;
+        font-size: 16px;
     }
 
 }
