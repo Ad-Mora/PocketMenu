@@ -27,7 +27,7 @@ span.header-search-icon{
 
 }
 
-/*-------Title and Background------*/
+/*-------Title and Background Image------*/
 div.header-background{
     width: 100%;
     height: 80px;
@@ -82,12 +82,37 @@ li.filter-option.chosen-filter{
     border-bottom: 2px solid #FF9800;
 }
 
+div.current-page-search-wrapper{
+    display: none;
+}
+
 /*-------Food Sections------*/
 ul.list-of-food-lists{
 
 }
 
+ul.food-type-section-food-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 @media (min-width: 355px) {
+
+    nav{
+        height: 55px;
+    }
+
+    h1.brand-name-logo{
+        line-height: 60px;
+        font-size: 24px;
+    }
+
+    span.header-search-icon{
+        width: 23px;
+        height: 23px;
+        margin: 16px 15px 0px 10px;
+    }
+
     div.filter-and-search-section{
         height: 45px;
     }
@@ -103,19 +128,53 @@ ul.list-of-food-lists{
 }
 
 
-@media (min-width: 355px) {
-    nav{
-        height: 55px;
+@media (min-width: 650px) {
+
+    ul.filter-options-list{
+        display: inline-block;
+        float: left;
     }
 
-    h1.brand-name-logo{
-        line-height: 60px;
-        font-size: 24px;
+    div.current-page-search-wrapper{
+        display: inline-block;
+        margin: 10px 10px 0px 0px;
+        float: right;
+        height: 25px;
+        width: 30%;
+        max-width: 300px;
+        -webkit-box-shadow: inset 0px 1px 0px 0px #ECECEC;
+        -moz-box-shadow: inset 0px 1px 0px 0px #ECECEC;
+        box-shadow: inset 0px 1px 0px 0px #ECECEC;
+        border: 1px solid #CCCCCC;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;;
+        border-radius: 3px;;
     }
 
-    span.header-search-icon{
-        width: 23px;
-        height: 23px;
-        margin: 16px 15px 0px 10px;
+    input.current-page-search-bar{
+        width: calc(100% - 30px);
+        height: 24px;
+        position: relative;
+        bottom: -1px;
+        right: 5px;
+        font-size: 14px;
+        padding: 0px 0px 0px 10px;
+        box-sizing: border-box;
     }
+
+    input.current-page-search-bar:focus{
+
+    }
+
+    span.current-page-search-icon{
+        display: inline-block;
+        background-image: url("../Images/GreySearchIcon.png");
+        -webkit-background-size: 100% auto;
+        background-size: 100% auto;
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 3px;
+    }
+
 }
