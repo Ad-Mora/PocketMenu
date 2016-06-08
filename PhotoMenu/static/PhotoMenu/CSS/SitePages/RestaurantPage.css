@@ -27,7 +27,7 @@ a.my-favorites-button{
 }
 
 span.header-search-icon{
-    background-image: url("../Images/WhiteSearchIcon.png");
+    background-image: url("../../Images/WhiteSearchIcon.png");
     -webkit-background-size: 20px 20px;
     background-size: 100% 100%;
     width: 20px;
@@ -41,7 +41,7 @@ span.header-search-icon{
 
 div.header-background{
     width: 100%;
-    background-image: url("../Images/Crispy Shrimp.jpg");
+    background-image: url("../../Images/Crispy Shrimp.jpg");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
 }
@@ -78,7 +78,7 @@ p.restaurant-hours{
 
 p.restaurant-hours::before{
     content: '';
-    background-image: url("../Images/WhiteClockIcon.png");
+    background-image: url("../../Images/WhiteClockIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     width: 15px;

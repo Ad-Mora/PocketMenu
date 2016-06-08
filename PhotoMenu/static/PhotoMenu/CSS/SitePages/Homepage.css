@@ -12,7 +12,7 @@ h1.brand-name-logo{
     font-size: 22px;
 }
 .homepage-picture{
-    background-image: url("../Images/MobileHomepagePic.jpg");
+    background-image: url("../../Images/MobileHomepagePic.jpg");
     background-size: cover;
     height: 400px;
 }

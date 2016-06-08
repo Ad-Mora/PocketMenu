@@ -21,8 +21,6 @@ footer, header, menu, nav, section {
 }
 body {
 	line-height: 1;
-    font-family: "Helvetica Neue", "SansSerif";
-    background-color: #EEEEEE;
 }
 ol, ul {
 	list-style: none;
@@ -39,7 +37,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 a{
 	text-decoration: none;
 }
