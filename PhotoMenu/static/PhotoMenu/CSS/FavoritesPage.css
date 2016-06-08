@@ -6,6 +6,10 @@ nav{
     background-color: #FF9800;
 }
 
+.navbar-desktop{
+    display: none;
+}
+
 h1.brand-name-logo{
     font-family: 'Nothing You Could Do', cursive;
     display: inline-block;
@@ -16,7 +20,7 @@ h1.brand-name-logo{
     font-size: 22px;
 }
 
-span.header-search-icon{
+span.navbar-mobile.header-search-icon{
     background-image: url("../Images/WhiteSearchIcon.png");
     -webkit-background-size: 20px 20px;
     background-size: 100% 100%;
@@ -107,7 +111,7 @@ ul.food-type-section-food-list{
         font-size: 24px;
     }
 
-    span.header-search-icon{
+    span.navbar-mobile.header-search-icon{
         width: 23px;
         height: 23px;
         margin: 16px 15px 0px 10px;
@@ -194,6 +198,70 @@ ul.food-type-section-food-list{
         height: 15px;
         position: relative;
         top: 3px;
+    }
+
+}
+
+@media (min-width: 800px) {
+    .navbar-desktop{
+        display: inline-block;
+    }
+
+    span.navbar-mobile.header-search-icon{
+        display: none;
+    }
+
+    div.navbar-desktop.header-search-bar{
+        margin: 15px 0px 0px calc(50% - 147px - (265px / 2));
+        opacity: .6;
+    }
+
+    span.navbar-desktop.header-search-icon{
+        width: 23px;
+        height: 23px;
+        background-image: url("../Images/WhiteSearchIcon.png");
+        background-size: 100% auto;
+    }
+
+    input.navbar-desktop.header-search-input{
+        height: 25px;
+        background-color: transparent;
+        position: relative;
+        bottom: 6px;
+        margin: 0px 0px 0px 5px;
+        color: #FFFFFF;
+        width: 230px;
+    }
+
+    input.navbar-desktop.header-search-input::-webkit-input-placeholder{
+        color: #FFFFFF;
+    }
+
+    a.navbar-desktop.header-contact-us-link{
+        float: right;
+        padding: 10px 10px 10px 10px;
+        margin: 8px 6px 0px 0px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    span.navbar-desktop.header-links-separator{
+        float: right;
+        margin: 10px 4px 0px 0px;
+        height: 35px;
+        width: 1px;
+        background-color: #FFFFFF;
+    }
+
+    a.navbar-desktop.header-my-favorites-link{
+        color: #FFF;
+        padding: 9px 10px 9px 10px;
+        float: right;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 8px 6px 0px 0px;
+        font-weight: 300;
     }
 
 }
