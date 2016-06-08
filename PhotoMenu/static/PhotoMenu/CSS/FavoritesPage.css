@@ -6,6 +6,10 @@ nav{
     background-color: #FF9800;
 }
 
+.navbar-desktop{
+    display: none;
+}
+
 h1.brand-name-logo{
     font-family: 'Nothing You Could Do', cursive;
     display: inline-block;
@@ -16,7 +20,7 @@ h1.brand-name-logo{
     font-size: 22px;
 }
 
-span.header-search-icon{
+span.navbar-mobile.header-search-icon{
     background-image: url("../Images/WhiteSearchIcon.png");
     -webkit-background-size: 20px 20px;
     background-size: 100% 100%;
@@ -27,7 +31,7 @@ span.header-search-icon{
 
 }
 
-/*-------Title and Background------*/
+/*-------Title and Background Image------*/
 div.header-background{
     width: 100%;
     height: 80px;
@@ -82,12 +86,37 @@ li.filter-option.chosen-filter{
     border-bottom: 2px solid #FF9800;
 }
 
+div.current-page-search-wrapper{
+    display: none;
+}
+
 /*-------Food Sections------*/
 ul.list-of-food-lists{
 
 }
 
+ul.food-type-section-food-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 @media (min-width: 355px) {
+
+    nav{
+        height: 55px;
+    }
+
+    h1.brand-name-logo{
+        line-height: 60px;
+        font-size: 24px;
+    }
+
+    span.navbar-mobile.header-search-icon{
+        width: 23px;
+        height: 23px;
+        margin: 16px 15px 0px 10px;
+    }
+
     div.filter-and-search-section{
         height: 45px;
     }
@@ -102,20 +131,145 @@ ul.list-of-food-lists{
     }
 }
 
+@media (min-width: 480px) {
 
-@media (min-width: 355px) {
-    nav{
-        height: 55px;
+    ul.food-type-section-food-list{
+        width: 91%;
+        margin: 0px 0px 0px 4%;
+        padding: 0px 4px 0px 0px;
+    }
+}
+
+
+@media (min-width: 650px) {
+
+    div.header-background {
+        height: 120px;
     }
 
-    h1.brand-name-logo{
-        line-height: 60px;
+    h1.favorites-header {
+        line-height: 120px;
         font-size: 24px;
     }
 
-    span.header-search-icon{
+    ul.filter-options-list{
+        display: inline-block;
+        float: left;
+        margin: 0px 0px 0px 20px
+    }
+
+    div.current-page-search-wrapper{
+        display: inline-block;
+        margin: 10px 10px 0px 0px;
+        float: right;
+        height: 25px;
+        width: 30%;
+        max-width: 300px;
+        -webkit-box-shadow: inset 0px 1px 0px 0px #ECECEC;
+        -moz-box-shadow: inset 0px 1px 0px 0px #ECECEC;
+        box-shadow: inset 0px 1px 0px 0px #ECECEC;
+        border: 1px solid #CCCCCC;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;;
+        border-radius: 3px;;
+    }
+
+    input.current-page-search-bar{
+        width: calc(100% - 30px);
+        height: 24px;
+        position: relative;
+        bottom: -1px;
+        right: 5px;
+        font-size: 14px;
+        padding: 0px 0px 0px 10px;
+        box-sizing: border-box;
+    }
+
+    input.current-page-search-bar:focus{
+
+    }
+
+    span.current-page-search-icon{
+        display: inline-block;
+        background-image: url("../Images/GreySearchIcon.png");
+        -webkit-background-size: 100% auto;
+        background-size: 100% auto;
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 3px;
+    }
+
+}
+
+@media (min-width: 800px) {
+    .navbar-desktop{
+        display: inline-block;
+    }
+
+    span.navbar-mobile.header-search-icon{
+        display: none;
+    }
+
+    div.navbar-desktop.header-search-bar{
+        margin: 15px 0px 0px calc(50% - 147px - (265px / 2));
+        opacity: .6;
+    }
+
+    span.navbar-desktop.header-search-icon{
         width: 23px;
         height: 23px;
-        margin: 16px 15px 0px 10px;
+        background-image: url("../Images/WhiteSearchIcon.png");
+        background-size: 100% auto;
+    }
+
+    input.navbar-desktop.header-search-input{
+        height: 25px;
+        background-color: transparent;
+        position: relative;
+        bottom: 6px;
+        margin: 0px 0px 0px 5px;
+        color: #FFFFFF;
+        width: 230px;
+    }
+
+    input.navbar-desktop.header-search-input::-webkit-input-placeholder{
+        color: #FFFFFF;
+    }
+
+    a.navbar-desktop.header-contact-us-link{
+        float: right;
+        padding: 10px 10px 10px 10px;
+        margin: 8px 6px 0px 0px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    span.navbar-desktop.header-links-separator{
+        float: right;
+        margin: 10px 4px 0px 0px;
+        height: 35px;
+        width: 1px;
+        background-color: #FFFFFF;
+    }
+
+    a.navbar-desktop.header-my-favorites-link{
+        color: #FFF;
+        padding: 9px 10px 9px 10px;
+        float: right;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 8px 6px 0px 0px;
+        font-weight: 300;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    ul.list-of-food-lists{
+        max-width: 1210px;
+        margin: 0px auto 0px auto;
     }
 }

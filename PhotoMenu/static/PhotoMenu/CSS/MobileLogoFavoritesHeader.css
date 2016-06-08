@@ -12,7 +12,7 @@ h1.brand-name-logo{
     color: #FFFFFF;
     font-size: 22px;
 }
-a.my-favorites-button{
+a.header-my-favorites-link{
     color: #FFF;
     font-size: 12px;
     padding: 9px 10px 9px 10px;
@@ -25,6 +25,14 @@ a.my-favorites-button{
     border-radius:3px;
 }
 
+span.header-links-separator{
+    display: none;
+}
+
+a.header-contact-us-link{
+    display: none;
+}
+
 @media (min-width: 355px) {
     nav{
         height: 55px;
@@ -35,9 +43,40 @@ a.my-favorites-button{
         font-size: 24px;
     }
 
-    a.my-favorites-button{
+    a.header-my-favorites-link{
         font-size: 14px;
         padding: 10px 10px 10px 10px;
         margin: 10px 6px 0px 0px;
     }
+
+}
+
+@media (min-width: 480px) {
+
+    a.header-contact-us-link{
+            display: block;
+        float: right;
+        padding: 10px 10px 10px 10px;
+        margin: 8px 6px 0px 0px;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    span.header-links-separator{
+        float: right;
+        display: inline-block;
+        margin: 10px 4px 0px 0px;
+        height: 35px;
+        width: 1px;
+        background-color: #FFFFFF;
+    }
+
+    a.header-my-favorites-link{
+        border: 1px solid transparent;
+        font-size: 16px;
+        margin: 8px 6px 0px 0px;
+        font-weight: 300;
+    }
+
 }

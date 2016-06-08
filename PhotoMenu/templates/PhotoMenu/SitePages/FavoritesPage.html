@@ -20,7 +20,17 @@
 <body>
   <nav class="theme-orange">
     <h1 class="brand-name-logo">Pocket Menu</h1>
-    <span class="header-search-icon"></span>
+    <!-- Only visible in Mobile -->
+    <span class="header-search-icon navbar-mobile"></span>
+
+    <!-- Only visible in Desktop -->
+    <div class="header-search-bar navbar-desktop">
+      <span class="header-search-icon navbar-desktop"></span>
+      <input class="header-search-input navbar-desktop" type="text" placeholder="e.g. restaurant or food name">
+    </div>
+    <a class="header-contact-us-link navbar-desktop" href="#">Contact Us</a>
+    <span class="header-links-separator navbar-desktop"></span>
+    <a class="header-my-favorites-link navbar-desktop" href="#">My Favorites</a>
   </nav>
 
   <!-- Background Image w/ title -->
@@ -43,18 +53,31 @@
         <span class="filter-name">Cuisine</span>
       </li>
     </ul>
+    <div class="current-page-search-wrapper">
+      <input placeholder="Search 'My Favorites'..." class="current-page-search-bar" type="text">
+      <span class="current-page-search-icon"></span>
+    </div>
   </div>
 
   <!-- List of Food Item Lists -->
   <ul class="list-of-food-lists">
     <li class="food-type-section-wrapper">
-    <h3 class="food-type-section-header">Kathy's Asian Kitchen</h3>
-    <ul class="food-type-section-food-list">
-      {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-      {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-      {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    </ul>
-  </li>
+      <h3 class="food-type-section-header">Kathy's Asian Kitchen</h3>
+      <ul class="food-type-section-food-list">
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+
+        <!-- ghost items ensure even spacing and left-alignment -->
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
+      </ul>
+    </li>
   </ul>
 
   <!-- Website Footer -->
