@@ -130,6 +130,15 @@ ul.food-type-section-food-list{
 
 @media (min-width: 650px) {
 
+    div.header-background {
+        height: 120px;
+    }
+
+    h1.favorites-header {
+        line-height: 120px;
+        font-size: 24px;
+    }
+
     ul.filter-options-list{
         display: inline-block;
         float: left;
