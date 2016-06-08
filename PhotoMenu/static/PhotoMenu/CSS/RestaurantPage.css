@@ -4,7 +4,7 @@ nav{
     height: 45px;
     background-color: #FF9800;
 }
-.navbar-desktop{
+.navbar-desktop, .restaurant-page-desktop{
     display: none;
 }
 
@@ -93,6 +93,11 @@ p.restaurant-hours::before{
     position: relative;
     top: 3px;
     margin: 0px 5px 0px 0px;
+}
+
+/*--------Categories (filter) and Search Bar------*/
+div.categories-and-search-bar.restaurant-page-desktop{
+    width: 100%;
 }
 
 /*-------Menu Categories-------*/
@@ -186,7 +191,7 @@ ul.food-type-section-food-list{
         margin: 155px 0px 5px 5%;
     }
 
-    .navbar-desktop{
+    .navbar-desktop, .restaurant-page-desktop{
         display: inline-block;
     }
 

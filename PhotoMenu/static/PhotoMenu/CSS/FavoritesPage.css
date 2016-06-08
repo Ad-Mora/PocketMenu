@@ -117,18 +117,6 @@ ul.food-type-section-food-list{
         margin: 16px 15px 0px 10px;
     }
 
-    div.filter-and-search-section{
-        height: 45px;
-    }
-
-    li.filter-option{
-        height: 43px;
-        line-height: 45px;
-    }
-
-    span.filter-name{
-        font-size: 16px;
-    }
 }
 
 @media (min-width: 480px) {
@@ -150,54 +138,6 @@ ul.food-type-section-food-list{
     h1.favorites-header {
         line-height: 120px;
         font-size: 24px;
-    }
-
-    ul.filter-options-list{
-        display: inline-block;
-        float: left;
-        margin: 0px 0px 0px 20px
-    }
-
-    div.current-page-search-wrapper{
-        display: inline-block;
-        margin: 10px 10px 0px 0px;
-        float: right;
-        height: 25px;
-        width: 30%;
-        max-width: 300px;
-        -webkit-box-shadow: inset 0px 1px 0px 0px #ECECEC;
-        -moz-box-shadow: inset 0px 1px 0px 0px #ECECEC;
-        box-shadow: inset 0px 1px 0px 0px #ECECEC;
-        border: 1px solid #CCCCCC;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;;
-        border-radius: 3px;;
-    }
-
-    input.current-page-search-bar{
-        width: calc(100% - 30px);
-        height: 24px;
-        position: relative;
-        bottom: -1px;
-        right: 5px;
-        font-size: 14px;
-        padding: 0px 0px 0px 10px;
-        box-sizing: border-box;
-    }
-
-    input.current-page-search-bar:focus{
-
-    }
-
-    span.current-page-search-icon{
-        display: inline-block;
-        background-image: url("../Images/GreySearchIcon.png");
-        -webkit-background-size: 100% auto;
-        background-size: 100% auto;
-        width: 15px;
-        height: 15px;
-        position: relative;
-        top: 3px;
     }
 
 }
