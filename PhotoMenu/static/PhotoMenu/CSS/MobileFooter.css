@@ -1,28 +1,36 @@
-div.small-mobile.website-footer {
+div.mobile.website-footer {
     width: 100%;
     background-color: #555555;
     margin: 0px 0px 0px 0px;
     overflow: auto;
 }
 
-h3.small-mobile.footer-question{
+div.all-questions-container{
+
+}
+
+div.desktop{
+    display: none;
+}
+
+h3.mobile.footer-question{
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     color: #FFFFFF;;
     margin: 20px 0px 8px 10%;
     letter-spacing: 0.5px;
 }
-p.small-mobile.footer-answer{
+p.mobile.footer-answer{
     font-size: 12px;
     color: #FFFFFF;
     font-weight: normal;
     max-width: 80%;
-    line-height: 14px;
+    line-height: 16px;
     font-weight: 300;
     margin: 0px 0px 0px 10%;
 }
 
-a.small-mobile.footer-contact-us{
+a.mobile.footer-contact-us{
     display: block;
     text-decoration: none;
     color: #FFFFFF;
@@ -35,29 +43,64 @@ a.small-mobile.footer-contact-us{
     line-height: 42px;
     text-align: center;
     margin: 20px 0px 25px 10%;
+    max-width: 100%;
 }
 
 /*-----------CSS for large-mobile------------*/
 @media (min-width: 365px) {
 
-    div.small-mobile.website-footer {
-
+    div.footer-container-desktop{
+        max-width: 400px;
+        margin: 30px auto 40px auto;
+        position: relative;
     }
 
-    h3.small-mobile.footer-question{
+    h3.mobile.footer-question{
         font-size: 20px;
         letter-spacing: 1px;
     }
 
-    p.small-mobile.footer-answer{
+    p.mobile.footer-answer{
         font-size: 14px;
         letter-spacing: 1px;
     }
 
-    a.small-mobile.footer-contact-us{
+    a.mobile.footer-contact-us{
         height: 52px;
         line-height: 52px;
         font-size: 18px;
     }
 
+}
+
+@media (min-width: 700px) {
+    div.all-questions-container{
+        /*margin: 0px auto 0px auto;*/
+    }
+}
+
+@media (min-width: 900px) {
+    div.footer-container-desktop{
+        max-width: 800px;
+        margin: 30px auto 40px auto;
+        position: relative;
+    }
+    div.question-answer-wrapper{
+        width: 60%
+    }
+
+    div.desktop{
+        display: inline-block;
+    }
+
+    div.footer-contact-us-link-container{
+        position: absolute;
+        top: calc((50% + 28px)/2);
+        right: 0px;
+    }
+
+    a.mobile.footer-contact-us{
+        margin: 0px 0px 0px 0px;
+        width: 170px;
+    }
 }
