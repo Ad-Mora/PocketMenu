@@ -159,7 +159,7 @@ ul.food-type-section-food-list{
     span.navbar-desktop.header-search-icon{
         width: 23px;
         height: 23px;
-        background-image: url("../Images/WhiteSearchIcon.png");
+        background-image: url("../../Images/WhiteSearchIcon.png");
         background-size: 100% auto;
     }
 

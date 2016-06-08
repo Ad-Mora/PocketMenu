@@ -9,7 +9,7 @@ nav{
 }
 
 span.navbar-mobile.header-hamburger-icon{
-    background-image: url("../Images/WhiteHamburgerIcon.png");
+    background-image: url("../../Images/WhiteHamburgerIcon.png");
     background-size: 100% auto;
     background-repeat: no-repeat;
     width: 25px;
@@ -207,7 +207,7 @@ ul.food-type-section-food-list{
     span.navbar-desktop.header-search-icon{
         width: 23px;
         height: 23px;
-        background-image: url("../Images/WhiteSearchIcon.png");
+        background-image: url("../../Images/WhiteSearchIcon.png");
         background-size: 100% auto;
     }
 
