@@ -42,7 +42,7 @@ span.header-links-separator{
 
     .contact-us-link{
         position: absolute;
-        right: 95px;
+        right: 96.5px;
         display: inline-block;
         line-height: 55px;
         color: #FFFFFF;
@@ -50,7 +50,7 @@ span.header-links-separator{
     }
     .link-separator{
         position: absolute;
-        right: 85px;
+        right: 85.5px;
         margin-top: 10px;
         margin-bottom: 10px;
         display: inline-block;
