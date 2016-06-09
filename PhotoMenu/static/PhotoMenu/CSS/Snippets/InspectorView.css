@@ -87,7 +87,7 @@ span.inspector.left-arrow{
     width: 30px;
     height: 30px;
     display: inline-block;
-    background-image: url("../../Images/Icons/LeftArrowIcon.png");
+    background-image: url("../../Images/Icons/GreyLeftArrowIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -108,7 +108,7 @@ span.inspector.right-arrow{
     width: 30px;
     height: 30px;
     display: inline-block;
-    background-image: url("../../Images/Icons/RightArrowIcon.png");
+    background-image: url("../../Images/Icons/GreyRightArrowIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
