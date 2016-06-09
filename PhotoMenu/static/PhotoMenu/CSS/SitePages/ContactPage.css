@@ -2,13 +2,6 @@ body{
     font-family: "Helvetica Neue";
     background-color: #EEEEEE
 }
-
-.header{
-    width: 100%;
-    height: 45px;
-    background-color: #FF9800;
-}
-
 h1.brand-name-logo{
     font-family: 'Nothing You Could Do', cursive;
     display: inline-block;
@@ -32,7 +25,7 @@ a.my-favorites-button{
 }
 .contact-page-header{
     height: 78px;
-    background-image: url("../Images/IndianFood.png");
+    background-image: url("../../Images/MockPhotos/IndianFood.jpg");
     background-position: 0px 0px;
     background-size: 100%;
     background-repeat: no-repeat;

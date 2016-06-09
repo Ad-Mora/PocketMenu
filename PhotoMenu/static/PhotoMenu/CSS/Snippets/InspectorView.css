@@ -8,7 +8,7 @@ div.dark-background-overlay{
 }
 
 span.close-inspector-icon {
-    background-image: url("../Images/QuitInspectorIcon.png");
+    background-image: url("../../Images/Icons/QuitInspectorIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     width: 20px;
@@ -51,7 +51,7 @@ div.inspector.restaurant-header::after{
     width: 15px;
     height: 20px;
     display: inline-block;
-    background-image: url("../Images/ClickableLinkIcon.png");
+    background-image: url("../../Images/Icons/ClickableLinkIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -87,7 +87,7 @@ span.inspector.left-arrow{
     width: 30px;
     height: 30px;
     display: inline-block;
-    background-image: url("../Images/LeftArrowIcon.png");
+    background-image: url("../../Images/Icons/LeftArrowIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -98,7 +98,7 @@ span.inspector.like-food-icon{
     width: 32px;
     height: 32px;
     display: inline-block;
-    background-image: url("../Images/FullHeartIcon.png");
+    background-image: url("../../Images/Icons/FullHeartIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -108,7 +108,7 @@ span.inspector.right-arrow{
     width: 30px;
     height: 30px;
     display: inline-block;
-    background-image: url("../Images/RightArrowIcon.png");
+    background-image: url("../../Images/Icons/RightArrowIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;

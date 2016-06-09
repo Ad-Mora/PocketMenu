@@ -1,28 +1,39 @@
 <!doctype html>
-
+{% load staticfiles %}
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Favorites Page</title>
+  <title>Restaurant Page</title>
 
-  <link href="../../../static/PhotoMenu/CSS/Reset.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/RestaurantPage.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/MobileFoodEntry.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/FoodSection.css" rel="stylesheet" type='text/css'>
-  <link href="../../../static/PhotoMenu/CSS/MobileFooter.css" rel="stylesheet" type='text/css'>
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/MobileFoodEntry.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FoodSection.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/MobileFooter.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FilterSearchBar.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/SitePages/RestaurantPage.css" %}">
+
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
-
-  <script src="../../../static/PhotoMenu/JS/FavoritesPage.js"></script>
-
 </head>
 <body>
 
   <nav class="theme-orange">
-    <h1 class="brand-name-logo">Pocket Menu</h1>
-    <span class="header-search-icon"></span>
-    <a class="my-favorites-button" href="#">My Favorites</a>
+    <!-- Only visible in Mobile -->
+    <span class="header-hamburger-icon navbar-mobile"></span>
+    <span class="header-search-icon navbar-mobile"></span>
+    <a class="my-favorites-button navbar-mobile" href="#">My Favorites</a>
+
+    <!-- Only visible in Desktop -->
+    <h1 class="brand-name-logo navbar-desktop">Pocket Menu</h1>
+    <div class="header-search-bar navbar-desktop">
+      <span class="header-search-icon navbar-desktop"></span>
+      <input class="header-search-input navbar-desktop" type="text" placeholder="e.g. restaurant or food name">
+    </div>
+    <a class="header-contact-us-link navbar-desktop" href="#">Contact Us</a>
+    <span class="header-links-separator navbar-desktop"></span>
+    <a class="header-my-favorites-link navbar-desktop" href="#">My Favorites</a>
   </nav>
 
   <!-- Background Image w/ title -->
@@ -32,6 +43,11 @@
       <p class="restaurant-address">77 Mass. Ave., Cambridge, MA 02139</p>
       <p class="restaurant-hours">9am-9pm Mon-Fri</p>
     </div>
+  </div>
+
+  <!-- Categories (Filter) and Search Bar -->
+  <div class="categories-and-search-bar restaurant-page-desktop">
+    {%  include "PhotoMenu/Snippets/FilterSearchBar.html" %}
   </div>
 
   <!-- List of Food Item Lists -->
@@ -46,6 +62,15 @@
         {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
         {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
         {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+
+        <!-- ghost items ensure even spacing and left-alignment -->
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
       </ul>
     </li>
     <li class="food-type-section-wrapper">
@@ -58,6 +83,15 @@
         {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
         {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
         {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+        {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+
+        <!-- ghost items ensure even spacing and left-alignment -->
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
       </ul>
     </li>
   </ul>
