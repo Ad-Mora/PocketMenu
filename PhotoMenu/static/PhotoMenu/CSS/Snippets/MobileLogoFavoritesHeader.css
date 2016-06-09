@@ -6,8 +6,11 @@
 }
 .logo{
     display: inline-block;
-    margin-top: 11.5px;
+    line-height: 45px;
     margin-left: 10px;
+}
+span.header-links-separator{
+    display: none;
 }
 .favorites-button{
     margin-top: 4px;
@@ -15,54 +18,51 @@
     position: absolute;
     right: 10px;
 }
-
-span.header-links-separator{
-    display: none;
-}
-a.header-contact-us-link{
+.contact-us-link{
     display: none;
 }
 
-/* Small mobile view */
+/* Large mobile view */
 @media (min-width: 355px) {
-    nav{
+    .header{
         height: 55px;
     }
-
-    h1.brand-name-logo{
-        line-height: 60px;
+    .logo{
+        line-height: 55px;
         font-size: 24px;
     }
-
-    a.header-my-favorites-link{
-        font-size: 14px;
-        padding: 10px 10px 10px 10px;
-        margin: 10px 6px 0px 0px;
+    .favorites-button{
+        margin-top: 6px;
+        padding: 11px;
+        font-size: 16px;
     }
 }
-/* Large mobile view */
+/* Desktop view */
 @media (min-width: 480px) {
-    a.header-contact-us-link{
-        display: block;
-        float: right;
-        padding: 10px 10px 10px 10px;
-        margin: 8px 6px 0px 0px;
+
+    .contact-us-link{
+        position: absolute;
+        right: 95px;
+        display: inline-block;
+        line-height: 55px;
         color: #FFFFFF;
         font-size: 16px;
-        font-weight: 300;
     }
-    span.header-links-separator{
-        float: right;
+    .link-separator{
+        position: absolute;
+        right: 85px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         display: inline-block;
-        margin: 10px 4px 0px 0px;
         height: 35px;
         width: 1px;
-        background-color: #FFFFFF;
+        background-color: white;
     }
-    a.header-my-favorites-link{
-        border: 1px solid transparent;
-        font-size: 16px;
-        margin: 8px 6px 0px 0px;
-        font-weight: 300;
+    .favorites-button{
+        margin-top: 0px;
+        border: none;
+        padding: 0px;
+        line-height: 55px;
     }
+
 }
