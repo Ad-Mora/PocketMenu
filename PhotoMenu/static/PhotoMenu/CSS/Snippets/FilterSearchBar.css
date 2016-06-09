@@ -49,7 +49,7 @@ div.current-page-search-wrapper{
 
 }
 
-@media (min-width: 650px){
+@media (min-width: 800px){
 
     ul.filter-options-list {
         display: inline-block;
