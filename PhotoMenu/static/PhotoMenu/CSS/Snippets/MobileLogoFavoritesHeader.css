@@ -1,38 +1,29 @@
-nav{
+.header{
     width: 100%;
     height: 45px;
     background-color: #FF9800;
-}
-h1.brand-name-logo{
-    font-family: 'Nothing You Could Do', cursive;
     display: inline-block;
-    height: 45px;
-    line-height: 45px;
-    margin-left: 10px;
-    color: #FFFFFF;
-    font-size: 22px;
 }
-a.header-my-favorites-link{
-    color: #FFF;
-    font-size: 12px;
-    padding: 9px 10px 9px 10px;
-    border: 1px solid #FFF;
-    float: right;
-    margin: 6px;
-    text-decoration: none;
-    -webkit-border-radius: 3px;
-    -moz-border-radius:3px;
-    border-radius:3px;
+.logo{
+    display: inline-block;
+    margin-top: 11.5px;
+    margin-left: 10px;
+}
+.favorites-button{
+    margin-top: 4px;
+    display: inline-block;
+    position: absolute;
+    right: 10px;
 }
 
 span.header-links-separator{
     display: none;
 }
-
 a.header-contact-us-link{
     display: none;
 }
 
+/* Small mobile view */
 @media (min-width: 355px) {
     nav{
         height: 55px;
@@ -48,13 +39,11 @@ a.header-contact-us-link{
         padding: 10px 10px 10px 10px;
         margin: 10px 6px 0px 0px;
     }
-
 }
-
+/* Large mobile view */
 @media (min-width: 480px) {
-
     a.header-contact-us-link{
-            display: block;
+        display: block;
         float: right;
         padding: 10px 10px 10px 10px;
         margin: 8px 6px 0px 0px;
@@ -62,7 +51,6 @@ a.header-contact-us-link{
         font-size: 16px;
         font-weight: 300;
     }
-
     span.header-links-separator{
         float: right;
         display: inline-block;
@@ -71,12 +59,10 @@ a.header-contact-us-link{
         width: 1px;
         background-color: #FFFFFF;
     }
-
     a.header-my-favorites-link{
         border: 1px solid transparent;
         font-size: 16px;
         margin: 8px 6px 0px 0px;
         font-weight: 300;
     }
-
 }
