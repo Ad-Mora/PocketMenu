@@ -26,7 +26,6 @@ var inspectorView = (function () {
     function _showInspectorView(dataDict) {
         allInspectorsWrapper.style.display = "block";
         /* populate inspector view with info from dataDict */
-        console.log(dataDict);
     }
 
     function _hideInspectorView() {
