@@ -14,7 +14,7 @@ li.filter-option{
     display: inline-block;
     height: 33px;
     line-height: 35px;
-    padding: 0px 10px 0px 10px;
+    /*padding: 0px 10px 0px 10px;*/
     border-bottom: 2px solid transparent;
 }
 
@@ -22,10 +22,41 @@ span.filter-name{
     font-size: 14px;
     font-weight: 300;
     color: #555555;
+    padding: 0px 10px 7px 10px;
+}
+
+span.filter-name:hover{
+    color: #FF9800;
+    cursor: pointer;
 }
 
 li.filter-option.chosen-filter{
     border-bottom: 2px solid #FF9800;
+}
+
+li.filter-option.more-options-options{
+     border-bottom: 2px solid transparent;
+}
+
+/*---------More Options DropDown Menu----------*/
+li.filter-option.more-options-options{
+    position: relative;
+}
+
+ul.more-filter-options-list{
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 0 6px 5px 0 rgba(0, 0, 0, 0.25);
+    border-left: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+}
+
+li.hidden-filter-option{
+    width: 115px;
+    background: #FFFFFF;
 }
 
 div.current-page-search-wrapper{
