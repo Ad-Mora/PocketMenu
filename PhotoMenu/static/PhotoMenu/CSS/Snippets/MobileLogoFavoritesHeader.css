@@ -9,7 +9,10 @@
     line-height: 45px;
     margin-left: 10px;
 }
-span.header-links-separator{
+.header-search-bar{
+    display: inline-block;
+}
+.header-links-separator{
     display: none;
 }
 .favorites-button{
@@ -48,7 +51,7 @@ span.header-links-separator{
         color: #FFFFFF;
         font-size: 16px;
     }
-    .link-separator{
+    .header-links-separator{
         position: absolute;
         right: 85.5px;
         margin-top: 10px;
