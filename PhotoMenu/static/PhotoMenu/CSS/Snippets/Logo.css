@@ -12,5 +12,7 @@
 }
 /* Desktop view */
 @media (min-width: 800px) {
-
+    .logo{
+        font-size: 30px;
+    }
 }

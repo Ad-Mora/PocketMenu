@@ -32,17 +32,13 @@
     }
     .logo{
         line-height: 55px;
-        font-size: 24px;
     }
     .favorites-button{
         margin-top: 6px;
-        padding: 11px;
-        font-size: 16px;
     }
 }
 /* Desktop view */
-@media (min-width: 480px) {
-
+@media (min-width: 800px) {
     .contact-us-link{
         position: absolute;
         right: 96.5px;

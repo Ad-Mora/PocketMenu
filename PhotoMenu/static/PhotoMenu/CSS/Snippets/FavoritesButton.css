@@ -14,8 +14,10 @@
         padding: 11px;
     }
 }
-
 /* Desktop view */
 @media (min-width: 800px) {
-
+    .favorites-button{
+        padding: 0px;
+        border: none;
+    }
 }
