@@ -1,4 +1,4 @@
-div.food-modal-background-overlay{
+div.desktop-inspector-background-overlay {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -141,7 +141,7 @@ span.food-interest-icon.like-food{
 }
 
 @media (min-width: 600px) {
-    div.food-modal-background-overlay, span.exit-food-modal-icon{
+    div.desktop-inspector-background-overlay, span.exit-food-modal-icon{
         display: block;
     }
     div.food-modal-container{

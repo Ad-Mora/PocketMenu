@@ -14,9 +14,9 @@ var moreOptions = (function(){
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
     // bind events
-    moreOptionsLI.addEventListener('click', toggleDropDownMenu);
+    moreOptionsLI.addEventListener('click', _toggleDropDownMenu);
     for (var i = 0; i < allVisibleOptionLI.length; i++) {
-        allVisibleOptionLI[i].addEventListener('click', adjustSlidingUnderBar);
+        allVisibleOptionLI[i].addEventListener('click', _adjustSlidingUnderBar);
     }
 
     // private variables
@@ -24,15 +24,16 @@ var moreOptions = (function(){
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
 
+    // public variables
 
     // private methods
-    function toggleDropDownMenu(event) {
+    function _toggleDropDownMenu(event) {
         dropDownIsVisible = !dropDownIsVisible;
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
     }
 
-    function adjustSlidingUnderBar(event) {
+    function _adjustSlidingUnderBar(event) {
         var referenceX = visibleOptionsUL.getBoundingClientRect().left;
         var optionRect = this.getBoundingClientRect();
         var deltaX = optionRect.left - referenceX;
@@ -41,8 +42,6 @@ var moreOptions = (function(){
         slidingUnderBar.style.width = width + "px";
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
-
-    // public variables
 
     // public methods
 

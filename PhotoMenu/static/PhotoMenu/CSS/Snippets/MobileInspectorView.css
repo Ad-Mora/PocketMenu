@@ -1,4 +1,4 @@
-div.dark-background-overlay{
+div.mobile-inspector-background-overlay {
     width: 100%;
     height: 100%;
     position: fixed;
@@ -202,7 +202,7 @@ p.inspector.food-category-description{
 
 @media (min-width: 600px) {
 
-    div.dark-background-overlay, span.close-inspector-icon, div.inspector-view-wrapper{
+    div.mobile-inspector-background-overlay, span.close-inspector-icon, div.inspector-view-wrapper{
         display: none;
     }
 
