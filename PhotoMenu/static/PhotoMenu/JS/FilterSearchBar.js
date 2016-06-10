@@ -23,7 +23,7 @@ var moreOptions = (function(){
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
-    var referenceX = visibleOptionsUL.getBoundingClientRect().left;
+
 
     // private methods
     function toggleDropDownMenu(event) {
@@ -33,6 +33,7 @@ var moreOptions = (function(){
     }
 
     function adjustSlidingUnderBar(event) {
+        var referenceX = visibleOptionsUL.getBoundingClientRect().left;
         var optionRect = this.getBoundingClientRect();
         var deltaX = optionRect.left - referenceX;
         var width = optionRect.width;
