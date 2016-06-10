@@ -15,7 +15,7 @@ var moreOptions = (function(){
 
     // private variables
     var dropDownIsVisible = false;
-    var displayOptions = {true: "block", false: "none"};
+    var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
 
     // private methods
@@ -25,7 +25,7 @@ var moreOptions = (function(){
     // public methods
     function toggleDropDownMenu(event) {
         dropDownIsVisible = !dropDownIsVisible;
-        moreOptionsList.style.display = displayOptions[ dropDownIsVisible ];
+        moreOptionsList.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
     }
 
