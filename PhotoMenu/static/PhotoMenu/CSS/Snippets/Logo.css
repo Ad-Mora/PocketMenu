@@ -3,3 +3,14 @@
     color: white;
     font-size: 22px;
 }
+
+/* Large mobile view */
+@media (min-width: 355px) {
+    .logo{
+        font-size: 24px;
+    }
+}
+/* Desktop view */
+@media (min-width: 800px) {
+
+}
