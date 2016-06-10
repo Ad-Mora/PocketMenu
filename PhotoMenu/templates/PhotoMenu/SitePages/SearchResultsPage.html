@@ -9,12 +9,13 @@
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileSearchBar.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileFoodEntry.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileFooter.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MasterSearchBar.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileLogoFavoritesHeader.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/InspectorView.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodModalView.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/AllInspectorViews.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/SitePages/SearchResultsPage.css" %}">
 
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
@@ -33,26 +34,25 @@
     </div>
 
     <!-- Mobile Search Bar-->
-    {%  include "PhotoMenu/Snippets/MobileSearchBar.html" %}
+    {%  include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
     <p class="number-of-search-results">Showing results 1-50 of 99</p>
     <div class="full-width-seperator"></div>
   </div>
 
-  <!-- Inspector View Modal -->
- {%  include "PhotoMenu/Snippets/InspectorView.html" %}
- {%  include "PhotoMenu/Snippets/FoodModalView.html" %}
+  <!-- Inspector View (mobile & desktop -->
+ {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
 
   <!-- List of Search Results -->
   <ul class="search-results-list">
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/MobileFoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
 
     <!-- ghost items ensure even spacing and left-alignment -->
     <li class="ghost-food-item"></li>
@@ -78,7 +78,7 @@
   </div>
 
   <!-- Website Footer -->
-  {% include "PhotoMenu/Snippets/MobileFooter.html" %}
+  {% include "PhotoMenu/Snippets/Footer.html" %}
 
 </body>
 </html>
