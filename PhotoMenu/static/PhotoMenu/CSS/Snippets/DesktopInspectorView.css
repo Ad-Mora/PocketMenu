@@ -50,8 +50,8 @@ div.food-modal-image-wrapper{
 span.food-modal-left-arrow-icon{
     display: none;
     background-image: url("../../Images/Icons/WhiteLeftArrowIcon.png");
-    -webkit-background-size: 40px 40px;
-    background-size: 40px 40px;
+    -webkit-background-size: 20px 35px;
+    background-size: 20px 35px;
     background-repeat: no-repeat;
     position: absolute;
     top: 50%;
@@ -63,7 +63,7 @@ span.food-modal-left-arrow-icon{
     background-position-x: 10%;
     -ms-background-position-y: 50%;
     background-position-y: 50%;
-    opacity: .6;
+    opacity: .3;
 }
 
 span.food-modal-left-arrow-icon:hover{
@@ -86,7 +86,7 @@ span.food-modal-right-arrow-icon{
     background-position-x: 97%;
     -ms-background-position-y: 50%;
     background-position-y: 50%;
-    opacity: .6;
+    opacity: .3;
 }
 
 span.food-modal-right-arrow-icon:hover{
@@ -155,8 +155,7 @@ span.food-modal-food-price{
     display:inline-block;
 }
 
-span.food-interest-icon.like-food{
-    background-image: url("../../Images/Icons/FullHeartIcon.png");
+span.food-interest-icon{
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
@@ -165,6 +164,10 @@ span.food-interest-icon.like-food{
     width: 25px;
     height: 25px;
     margin: 8px 0px 0px 0px;
+}
+
+span.food-interest-icon:hover{
+    cursor: pointer;
 }
 
 @media (min-width: 600px) {

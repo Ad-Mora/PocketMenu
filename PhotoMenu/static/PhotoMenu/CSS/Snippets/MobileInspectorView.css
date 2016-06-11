@@ -102,14 +102,17 @@ span.inspector.left-arrow{
     float: left;
 }
 
-span.inspector.like-food-icon{
+span.inspector.interested-in-food-icon {
     width: 32px;
     height: 32px;
     display: inline-block;
-    background-image: url("../../Images/Icons/FullHeartIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-repeat: no-repeat;
+}
+
+span.inspector.interested-in-food-icon:hover{
+    cursor: pointer;
 }
 
 span.inspector.right-arrow{
