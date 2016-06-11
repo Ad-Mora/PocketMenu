@@ -165,7 +165,7 @@ var inspectorView = (function () {
         var foodIsLiked = currentFood.getAttribute("data-food-is-liked");
         var listItemNumber = currentFood.getAttribute("data-list-item-number");
 
-        console.log(listItemNumber);
+        // console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
         _setInterestIconBasedOnCurrentInterest();
     }
     
@@ -185,7 +185,6 @@ var inspectorView = (function () {
                                             " " + foodInterestStates[ !currentInterestInFood ],
                                             " " + foodInterestStates[ currentInterestInFood ]
                                         );
-        console.log(mobileInterestIcon.className + "    " + desktopInterestIcon.className);
     }
     
     // public functions
