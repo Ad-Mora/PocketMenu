@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
+
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FoodSection.css" %}">
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
@@ -16,28 +17,33 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/AllInspectorViews.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesButton.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HamburgerFavoritesSearchHeader.css" %}">
+
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/SitePages/RestaurantPage.css" %}">
 
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
-  <nav class="theme-orange">
-    <!-- Only visible in Mobile -->
-    <span class="header-hamburger-icon navbar-mobile"></span>
-    <span class="header-search-icon navbar-mobile"></span>
-    <a class="my-favorites-button navbar-mobile" href="#">My Favorites</a>
+  {% include "PhotoMenu/Snippets/HamburgerFavoritesSearchHeader.html" %}
+  <!--<nav class="theme-orange">-->
+    <!--&lt;!&ndash; Only visible in Mobile &ndash;&gt;-->
+    <!--<span class="header-hamburger-icon navbar-mobile"></span>-->
+    <!--<span class="header-search-icon navbar-mobile"></span>-->
+    <!--<a class="my-favorites-button navbar-mobile" href="#">My Favorites</a>-->
 
-    <!-- Only visible in Desktop -->
-    <h1 class="brand-name-logo navbar-desktop">Pocket Menu</h1>
-    <div class="header-search-bar navbar-desktop">
-      <span class="header-search-icon navbar-desktop"></span>
-      <input class="header-search-input navbar-desktop" type="text" placeholder="e.g. restaurant or food name">
-    </div>
-    <a class="header-contact-us-link navbar-desktop" href="#">Contact Us</a>
-    <span class="header-links-separator navbar-desktop"></span>
-    <a class="header-my-favorites-link navbar-desktop" href="#">My Favorites</a>
-  </nav>
+    <!--&lt;!&ndash; Only visible in Desktop &ndash;&gt;-->
+    <!--<h1 class="brand-name-logo navbar-desktop">Pocket Menu</h1>-->
+    <!--<div class="header-search-bar navbar-desktop">-->
+      <!--<span class="header-search-icon navbar-desktop"></span>-->
+      <!--<input class="header-search-input navbar-desktop" type="text" placeholder="e.g. restaurant or food name">-->
+    <!--</div>-->
+    <!--<a class="header-contact-us-link navbar-desktop" href="#">Contact Us</a>-->
+    <!--<span class="header-links-separator navbar-desktop"></span>-->
+    <!--<a class="header-my-favorites-link navbar-desktop" href="#">My Favorites</a>-->
+  <!--</nav>-->
 
   <!-- Background Image w/ title -->
   <div class="header-background">

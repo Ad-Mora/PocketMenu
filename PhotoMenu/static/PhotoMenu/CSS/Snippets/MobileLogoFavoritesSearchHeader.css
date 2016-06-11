@@ -41,7 +41,8 @@
         line-height: 55px;
     }
     .favorites-button{
-        right: 50px;
+        right: 48px;
+        margin-top: 5.5px;
     }
     .search-icon{
         height: 28px;
