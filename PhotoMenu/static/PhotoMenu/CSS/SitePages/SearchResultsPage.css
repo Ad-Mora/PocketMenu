@@ -120,8 +120,14 @@ span.next.page-icon{
     }
 }
 
-
 @media (min-width: 700px) {
+
+    h1.search-page-title{
+        margin: 15px 0px 10px 5%;
+        width: 700px;
+        text-align: left;
+    }
+
     div.search-options-wrapper{
         display: none;
     }

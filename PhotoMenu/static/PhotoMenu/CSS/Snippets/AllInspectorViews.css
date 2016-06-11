@@ -1,0 +1,11 @@
+div.all-inspector-views-wrapper{
+    display: none;
+}
+
+span.like-food{
+    background-image: url("../../Images/Icons/FullHeartIcon.png");
+}
+
+span.not-like-food{
+    background-image: url("../../Images/Icons/EmptyHeartIcon.png");
+}

@@ -54,41 +54,6 @@ h1.favorites-header{
     font-weight: bold;
     letter-spacing: 1px;
 }
-/*-------Filter and Search-------*/
-div.filter-and-search-section{
-    width: 100%;
-    background-color: #FFFFFF;
-    height: 35px;
-    text-align: center;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-
-ul.filter-options-list{
-    margin: 0px auto 0px auto;
-    
-}
-
-li.filter-option{
-    display: inline-block;
-    height: 33px;
-    line-height: 35px;
-    padding: 0px 10px 0px 10px;
-    border-bottom: 2px solid transparent;
-}
-
-span.filter-name{
-    font-size: 14px;
-    font-weight: 300;
-    color: #555555;
-}
-
-li.filter-option.chosen-filter{
-    border-bottom: 2px solid #FF9800;
-}
-
-div.current-page-search-wrapper{
-    display: none;
-}
 
 /*-------Food Sections------*/
 ul.list-of-food-lists{

@@ -49,11 +49,6 @@ input.search-submit-button{
 }
 
 @media (min-width: 700px) {
-    h1.search-page-title{
-        margin: 15px 0px 10px 5%;
-        width: 700px;
-        text-align: left;
-    }
 
     form.search-bar-form{
         margin: 10px 0px 0px 5%;
