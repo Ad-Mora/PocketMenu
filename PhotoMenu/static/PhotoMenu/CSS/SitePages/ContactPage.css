@@ -14,7 +14,7 @@
 .dark-overlay{
     background-color: rgba(0,0,0,0.4);
 }
-h1.picture-text{
+.picture-text{
     text-align: center;
     vertical-align: middle;
     line-height: 78px;
@@ -22,7 +22,7 @@ h1.picture-text{
     font-size: 20px;
     font-weight: bold;
 }
-h1.text-header{
+.text-header{
     font-size: 20px;
     font-weight: 500;
     color: #555555;
@@ -37,12 +37,12 @@ h1.text-header{
     margin-top: 10px;
     margin-left: 4%;
     margin-right: 4%;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-size: 14px;
     color: #555555;
 }
 .input-field-name{
-    margin-top: 10px;
+    margin-top: 12px;
     margin-left: 4%;
     font-size: 14px;
     color: #555555
@@ -58,7 +58,7 @@ h1.text-header{
     border: 1px solid #979797;
     border-radius: 5px;
 }
-textarea{
+.message-area{
     margin-top: 8px;
     margin-left: 4%;
     padding-left: 1%;
@@ -88,4 +88,43 @@ textarea{
     height: 45px;
     width: 100%;
     background-color: #555555;
+}
+
+@media (min-width: 355px) {
+    .contact-page-header{
+        height: 110px;
+        margin-bottom: 5px;
+    }
+    .picture-text{
+        line-height: 110px;
+        font-size: 30px;
+        letter-spacing: .5px;
+    }
+    .text-header{
+        font-size: 24px;
+    }
+    .contact-us-text{
+        margin-top: 12px;
+        font-size: 18px;
+    }
+    .input-field-name{
+        font-size: 18px;
+    }
+    .text-input-field{
+        height: 32px;
+        font-size: 18px;
+        padding-left: 2%;
+        width: 90%;
+    }
+    .message-area{
+        font-size: 18px;
+        padding-top: 2%;
+        padding-left: 2%;
+        width: 90%;
+    }
+    .send-message{
+        margin-top: 15px;
+        height: 40px;
+        font-size: 18px;
+    }
 }
