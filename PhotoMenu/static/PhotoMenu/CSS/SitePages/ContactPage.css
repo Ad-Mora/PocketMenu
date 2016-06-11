@@ -1,3 +1,7 @@
+body{
+    position: relative;
+}
+
 .contact-us-link{
     display: none;
 }
@@ -26,7 +30,7 @@
     font-size: 20px;
     font-weight: 500;
     color: #555555;
-    padding-top: 10px;
+    margin-top: 10px;
     margin-left: 4%;
 }
 .divider-line{
@@ -50,26 +54,32 @@
 .text-input-field{
     margin-top: 8px;
     margin-left: 4%;
-    padding-left: 1%;
+    padding-left: 10px;
     font-size: 16px;
     color: #333333;
-    width: 91%;
+    width: 92%;
     height: 28px;
     border: 1px solid #979797;
     border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .message-area{
     margin-top: 8px;
     margin-left: 4%;
-    padding-left: 1%;
-    padding-top: 1%;
-    width: 91%;
+    padding-left: 10px;
+    padding-top: 8px;
+    width: 92%;
     height: 150px;
     font-size: 16px;
     resize: none;
     color: #333333;
     border: 1px solid #979797;
     border-radius: 5px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .send-message{
     margin-left: 4%;
@@ -84,6 +94,8 @@
     border-radius: 3px;
 }
 .contact-footer{
+    position: absolute;
+    bottom: 0px;
     margin-top: 20px;
     height: 45px;
     width: 100%;
@@ -102,6 +114,7 @@
     }
     .text-header{
         font-size: 24px;
+        margin-top: 15px;
     }
     .contact-us-text{
         margin-top: 12px;
@@ -113,18 +126,61 @@
     .text-input-field{
         height: 32px;
         font-size: 18px;
-        padding-left: 2%;
-        width: 90%;
     }
     .message-area{
         font-size: 18px;
-        padding-top: 2%;
-        padding-left: 2%;
-        width: 90%;
+        padding-top: 10px;
     }
     .send-message{
         margin-top: 15px;
         height: 40px;
         font-size: 18px;
+    }
+}
+
+@media (min-width: 800px) {
+    .contact-page-header{
+        height: 150px;
+        background-position: 0px -85px;
+    }
+    .picture-text{
+        line-height: 150px;
+        font-size: 48px;
+    }
+    .text-header{
+        margin-top: 20px;
+        font-size: 30px;
+        margin-left: 15%;
+    }
+    .divider-line{
+        margin-left: 15%;
+        width: 65%;
+    }
+    .contact-us-text{
+        margin-left: 15%;
+        margin-right: 20%;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    .input-field-name{
+        margin-left: 15%;
+        font-size: 20px;
+    }
+    .text-input-field{
+        margin-left: 15%;
+        height: 34px;
+        font-size: 20px;
+        width: 400px;
+    }
+    .message-area{
+        margin-left: 15%;
+        font-size: 20px;
+        width: 600px;
+    }
+    .send-message{
+        margin-top: 20px;
+        margin-left: 15%;
+        width: 30%;
+        font-size: 22px;
     }
 }
