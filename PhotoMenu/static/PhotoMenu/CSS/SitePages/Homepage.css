@@ -1,12 +1,3 @@
-h1.brand-name-logo{
-    font-family: 'Nothing You Could Do', cursive;
-    display: inline-block;
-    height: 45px;
-    line-height: 50px;
-    margin-left: 10px;
-    color: #FFFFFF;
-    font-size: 22px;
-}
 .homepage-picture{
     background-image: url("../../Images/MockPhotos/MobileHomepagePic.jpg");
     background-size: cover;
