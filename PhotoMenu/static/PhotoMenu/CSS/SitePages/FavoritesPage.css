@@ -1,34 +1,11 @@
-/*------Website Navbar-------*/
-
-nav{
-    width: 100%;
-    height: 45px;
-    background-color: #FF9800;
-}
-
-.navbar-desktop{
+.filter-and-search-section{
     display: none;
 }
-
-h1.brand-name-logo{
-    font-family: 'Nothing You Could Do', cursive;
-    display: inline-block;
-    height: 45px;
-    line-height: 50px;
-    margin-left: 10px;
-    color: #FFFFFF;
-    font-size: 22px;
+.favorites-button{
+    display: none;
 }
-
-span.navbar-mobile.header-search-icon{
-    background-image: url("../../Images/Icons/WhiteSearchIcon.png");
-    -webkit-background-size: 20px 20px;
-    background-size: 100% 100%;
-    width: 20px;
-    height: 20px;
-    float: right;
-    margin: 13px 15px 0px 0px;
-
+.header-links-separator{
+    display: none;
 }
 
 /*-------Title and Background Image------*/
@@ -66,26 +43,21 @@ ul.food-type-section-food-list{
 }
 
 @media (min-width: 355px) {
-
     nav{
         height: 55px;
     }
-
     h1.brand-name-logo{
         line-height: 60px;
         font-size: 24px;
     }
-
     span.navbar-mobile.header-search-icon{
         width: 23px;
         height: 23px;
         margin: 16px 15px 0px 10px;
     }
-
 }
 
 @media (min-width: 480px) {
-
     ul.food-type-section-food-list{
         width: 91%;
         margin: 0px 0px 0px 4%;
@@ -93,41 +65,37 @@ ul.food-type-section-food-list{
     }
 }
 
-
 @media (min-width: 650px) {
-
     div.header-background {
         height: 120px;
     }
-
     h1.favorites-header {
         line-height: 120px;
         font-size: 24px;
     }
-
 }
 
+/* Desktop view */
 @media (min-width: 800px) {
-    .navbar-desktop{
-        display: inline-block;
+    .contact-us-link{
+        right: 10px;
     }
-
+    .filter-and-search-section{
+        display: block;
+    }
     span.navbar-mobile.header-search-icon{
         display: none;
     }
-
     div.navbar-desktop.header-search-bar{
         margin: 15px 0px 0px calc(50% - 147px - (265px / 2));
         opacity: .6;
     }
-
     span.navbar-desktop.header-search-icon{
         width: 23px;
         height: 23px;
         background-image: url("../../Images/Icons/WhiteSearchIcon.png");
         background-size: 100% auto;
     }
-
     input.navbar-desktop.header-search-input{
         height: 25px;
         background-color: transparent;
@@ -137,11 +105,9 @@ ul.food-type-section-food-list{
         color: #FFFFFF;
         width: 230px;
     }
-
     input.navbar-desktop.header-search-input::-webkit-input-placeholder{
         color: #FFFFFF;
     }
-
     a.navbar-desktop.header-contact-us-link{
         float: right;
         padding: 10px 10px 10px 10px;
@@ -150,7 +116,6 @@ ul.food-type-section-food-list{
         font-size: 16px;
         font-weight: 300;
     }
-
     span.navbar-desktop.header-links-separator{
         float: right;
         margin: 10px 4px 0px 0px;
@@ -158,7 +123,6 @@ ul.food-type-section-food-list{
         width: 1px;
         background-color: #FFFFFF;
     }
-
     a.navbar-desktop.header-my-favorites-link{
         color: #FFF;
         padding: 9px 10px 9px 10px;
@@ -168,11 +132,9 @@ ul.food-type-section-food-list{
         margin: 8px 6px 0px 0px;
         font-weight: 300;
     }
-
 }
 
 @media (min-width: 1200px) {
-
     ul.list-of-food-lists{
         max-width: 1210px;
         margin: 0px auto 0px auto;

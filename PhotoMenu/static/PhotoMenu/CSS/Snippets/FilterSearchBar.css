@@ -85,20 +85,16 @@ div.current-page-search-wrapper{
 }
 
 @media (min-width: 355px){
-
     div.filter-and-search-section {
         height: 45px;
     }
-
     li.filter-option {
         height: 43px;
         line-height: 45px;
     }
-
     span.filter-name {
         font-size: 16px;
     }
-
 }
 
 @media (min-width: 800px){
