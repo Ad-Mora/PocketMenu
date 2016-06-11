@@ -11,12 +11,14 @@ var inspectorView = (function () {
     var desktopBackgroundOveraly = allInspectorsWrapper.querySelector("div.desktop-inspector-background-overlay");
     var desktopInspector = allInspectorsWrapper.querySelector("div.food-modal-container");
     var exitDesktopInspectorIcon = desktopInspector.querySelector("span.exit-food-modal-icon");
+    var desktopImageWrapper = desktopInspector.querySelector("div.food-modal-image-wrapper");
 
     // bind events
     exitMobileInspectorIcon.addEventListener('click', _hideInspectorView);
     mobileBackgroundOverlay.addEventListener('click', _hideInspectorView);
     exitDesktopInspectorIcon.addEventListener('click', _hideInspectorView);
     desktopBackgroundOveraly.addEventListener('click', _hideInspectorView);
+    desktopImageWrapper.addEventListener('mouseover', _highlightNavArrows);
 
     // private variables
 
@@ -28,10 +30,13 @@ var inspectorView = (function () {
         /* populate inspector view with info from dataDict */
     }
 
-    function _hideInspectorView() {
+    function _hideInspectorView(event) {
         allInspectorsWrapper.style.display = "none";
     }
 
+    function _highlightNavArrows(event) {
+        console.log(event);
+    }
     // public functions
 
     // return public pointers to private variables & functions

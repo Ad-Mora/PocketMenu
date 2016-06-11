@@ -36,6 +36,10 @@ span.exit-food-modal-icon{
     z-index: 2;
 }
 
+span.exit-food-modal-icon:hover{
+    cursor: pointer;
+}
+
 div.food-modal-image-wrapper{
     position: relative;
     display: inline-block;
@@ -44,29 +48,53 @@ div.food-modal-image-wrapper{
 }
 
 span.food-modal-left-arrow-icon{
+    display: none;
     background-image: url("../../Images/Icons/WhiteLeftArrowIcon.png");
-    -webkit-background-size: 100% auto;
-    background-size: 100% auto;
+    -webkit-background-size: 40px 40px;
+    background-size: 40px 40px;
     background-repeat: no-repeat;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    left: 10px;
-    width: 40px;
-    height: 40px;
+    left: 0px;
+    width: 20%;
+    height: 100%;
+    -ms-background-position-x: 10%;
+    background-position-x: 10%;
+    -ms-background-position-y: 50%;
+    background-position-y: 50%;
+    opacity: .6;
+}
+
+span.food-modal-left-arrow-icon:hover{
+    opacity: 1;
 }
 
 span.food-modal-right-arrow-icon{
+    display: none;
     background-image: url("../../Images/Icons/WhiteRightArrowIcon.png");
     -webkit-background-size: 100% auto;
-    background-size: 100% auto;
+    background-size: 20px 35px;
     background-repeat: no-repeat;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 20px;
-    width: 20px;
-    height: 35px;
+    right: 0px;
+    width: 80%;
+    height: 100%;
+    -ms-background-position-x: 97%;
+    background-position-x: 97%;
+    -ms-background-position-y: 50%;
+    background-position-y: 50%;
+    opacity: .6;
+}
+
+span.food-modal-right-arrow-icon:hover{
+    opacity: 1;
+}
+
+div.food-modal-image-wrapper:hover > span.food-modal-left-arrow-icon, div.food-modal-image-wrapper:hover > span.food-modal-right-arrow-icon{
+    display: block;
 }
 
 img.food-modal-image{
@@ -84,13 +112,12 @@ div.food-modal-details{
 
 h3.food-modal-restaurant-name{
     font-size: 18px;
-    color: #333333;
     text-decoration: underline;
     text-align: center;
 }
 
-h3.food-modal-restaurant-name:hover{
-    cursor: pointer;
+h3.food-modal-restaurant-name a{
+    color: #333333;
 }
 
 div.food-modal-food-details{
