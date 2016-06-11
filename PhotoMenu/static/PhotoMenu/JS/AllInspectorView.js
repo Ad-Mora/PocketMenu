@@ -4,23 +4,29 @@
 var inspectorView = (function () {
 
     // cache DOM
+        // mobile
     var allInspectorsWrapper = document.querySelector("div.all-inspector-views-wrapper");
     var mobileBackgroundOverlay = allInspectorsWrapper.querySelector("div.mobile-inspector-background-overlay");
     var mobileInspector = allInspectorsWrapper.querySelector("div.inspector-view-wrapper");
     var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
+    var rightMobilePictureIcon = mobileInspector.querySelector("span.inspector.right-arrow");
+    var leftMobilePictureIcon = mobileInspector.querySelector("span.inspector.left-arrow");
+        // desktop
     var desktopBackgroundOveraly = allInspectorsWrapper.querySelector("div.desktop-inspector-background-overlay");
     var desktopInspector = allInspectorsWrapper.querySelector("div.food-modal-container");
     var exitDesktopInspectorIcon = desktopInspector.querySelector("span.exit-food-modal-icon");
-    var rightPictureIcon = desktopInspector.querySelector("span.food-modal-right-arrow-icon");
-    var leftPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
+    var rightDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-right-arrow-icon");
+    var leftDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
 
     // bind events
     exitMobileInspectorIcon.addEventListener('click', _hideInspectorView);
     mobileBackgroundOverlay.addEventListener('click', _hideInspectorView);
+    rightMobilePictureIcon.addEventListener('click', _showNextFood);
+    leftMobilePictureIcon.addEventListener('click', _showPreviousFood);
     exitDesktopInspectorIcon.addEventListener('click', _hideInspectorView);
     desktopBackgroundOveraly.addEventListener('click', _hideInspectorView);
-    rightPictureIcon.addEventListener('click', _showNextFood);
-    leftPictureIcon.addEventListener('click', _showPreviousFood);
+    rightDesktopPictureIcon.addEventListener('click', _showNextFood);
+    leftDesktopPictureIcon.addEventListener('click', _showPreviousFood);
 
     // private variables
     var currentFood;
