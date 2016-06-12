@@ -25,3 +25,13 @@
     width: 230px;
     opacity: 0.6;
 }
+
+.header-search-bar::-webkit-input-placeholder {
+  color: white;
+}
+.header-search-bar::-moz-placeholder {
+  color: white;
+}
+.header-search-bar:-ms-input-placeholder {
+  color: white;
+}
