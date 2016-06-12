@@ -1,7 +1,11 @@
+html{
+    height: 100%;
+}
 body{
     position: relative;
+    min-height: 100%;
+    padding-bottom: 60px;
 }
-
 .contact-us-link{
     display: none;
 }
@@ -96,7 +100,6 @@ body{
 .contact-footer{
     position: absolute;
     bottom: 0px;
-    margin-top: 20px;
     height: 45px;
     width: 100%;
     background-color: #555555;
