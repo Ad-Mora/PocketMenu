@@ -20,7 +20,7 @@ p.footer-answer{
     color: white;
     line-height: 16px;
     font-weight: 100;
-    letter-spacing: 1px;
+    letter-spacing: .5px;
 }
 div.footer-desktop{
     display: none;
@@ -42,35 +42,35 @@ a.footer-contact-us{
 
 /*-----------CSS for large-mobile------------*/
 @media (min-width: 355px) {
-    div.website-footer {
+    div.site-footer{
         height: 200px;
     }
-    div.footer-container-desktop{
-        max-width: 400px;
-        margin: 30px auto 40px auto;
-        position: relative;
-    }
-    h3.footer-question{
-        font-size: 18px;
-        letter-spacing: 1px;
+    h3.footer-text-header{
+        font-size: 24px;
     }
     p.footer-answer{
-        font-size: 12px;
+        margin-top: 10px;
+        margin-left: 12.5%;
+        font-weight: 100;
+        font-size: 16px;
+        width: 75%;
     }
     a.footer-contact-us{
+        margin-top: 32.5px;
         height: 45px;
         line-height: 45px;
-        font-size: 16px;
+        font-size: 18px;
     }
 }
 
+/* Desktop view */
 @media (min-width: 800px) {
-    div.website-footer {
-        height: 200px;
+    div.site-footer {
+        height: 300px;
     }
     div.footer-container-desktop{
         max-width: 800px;
-        margin: 30px auto 40px auto;
+        margin: 0px auto 40px auto;
         position: relative;
     }
     div.question-answer-wrapper{
