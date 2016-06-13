@@ -10,9 +10,9 @@
 .large-text{
     color: white;
     width: 70%;
+    padding-top: 100px;
     margin-left: 15%;
     margin-bottom: 50px;
-    padding-top: 100px;
     font-size: 24px;
     font-weight: 300;
 }
@@ -131,6 +131,7 @@
     color: #333333;
 }
 
+/* Large mobile view */
 @media (min-width: 355px) {
     .homepage-picture{
         height: 500px;
@@ -206,7 +207,62 @@
         margin-top: 8px;
         font-size: 18px;
     }
+}
 
+/* Desktop view */
+@media (min-width: 800px) {
+    .homepage-picture{
+        height: 600px;
+    }
+    .dark-overlay{
+        height: 600px;
+    }
+    .large-text{
+        font-size: 44px;
+        width: 80%;
+        margin-left: 10%;
+        padding-top: 200px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .food-name{
+        display: none;
+    }
+    .restaurant-name{
+        display: none;
+    }
+    .search-bar{
+        margin-left: 30%;
+        width: 40%;
+    }
+    .search-button{
+        display: none;
+    }
+    .picture-bottom-text{
+        font-size: 20px;
+    }
+    .why-us-header{
+        margin-top: 30px;
+        font-size: 44px;
+    }
+    .light-bulb-section{
+        display: inline-block;
+    }
+    .heart-icon-section{
+        display: inline-block;
+    }
+    .search-icon-section{
+        display: inline-block;
+    }
+    .why-us-icon{
 
+    }
+    .icon-text{
+
+    }
+    .icon-description{
+        margin-left: 15%;
+        width: 70%;
+    }
 
 }
