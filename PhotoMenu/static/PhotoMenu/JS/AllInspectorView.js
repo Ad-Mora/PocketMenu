@@ -7,19 +7,11 @@ var allInspectorView = (function () {
     // cache DOM
     var allInspectorsWrapper = document.querySelector("div.all-inspector-views-wrapper");
     var interestActionSign = allInspectorsWrapper.querySelector("div.interest-action-positioner");
-        // mobile
     var mobileBackgroundOverlay = allInspectorsWrapper.querySelector("div.mobile-inspector-background-overlay");
-    var exitMobileInspectorIcon = allInspectorsWrapper.querySelector("span.close-inspector-icon");
-        // desktop
     var desktopBackgroundOverlay = allInspectorsWrapper.querySelector("div.desktop-inspector-background-overlay");
-    var exitDesktopInspectorIcon = allInspectorsWrapper.querySelector("span.exit-food-modal-icon");
 
     // bind events
-        // mobile
-    exitMobileInspectorIcon.addEventListener('click', hideInspectorView);
     mobileBackgroundOverlay.addEventListener('click', hideInspectorView);
-        // desktop
-    exitDesktopInspectorIcon.addEventListener('click', hideInspectorView);
     desktopBackgroundOverlay.addEventListener('click', hideInspectorView);
 
     // private variables
@@ -30,7 +22,7 @@ var allInspectorView = (function () {
 
     // public variables
 
-    // private functions
+    // private functions-------------------------------------------------------------------------
     function _populateMobileAndDesktopInspectorWithFood(food) {
         // prevent balloon from showing up for no reason
         interestActionSign.style.display = "none";
@@ -49,14 +41,14 @@ var allInspectorView = (function () {
 
     function _setInterestIconBasedOnCurrentInterest() {
         var currentInterestInFood = currentFood.getAttribute("data-food-is-liked") == "true";
-        // mobileInterestIcon.className = mobileInterestIcon.className.replace(
-        //                                     " " + foodInterestStates[ !currentInterestInFood ],
-        //                                     " " + foodInterestStates[ currentInterestInFood ]
-        //                                 );
-        // desktopInterestIcon.className = desktopInterestIcon.className.replace(
-        //                                     " " + foodInterestStates[ !currentInterestInFood ],
-        //                                     " " + foodInterestStates[ currentInterestInFood ]
-        //                                 );
+        mobileInspectorView.interestIcon.className = mobileInspectorView.interestIcon.className.replace(
+                                            " " + foodInterestStates[ !currentInterestInFood ],
+                                            " " + foodInterestStates[ currentInterestInFood ]
+                                        );
+        desktopInspectorView.interestIcon.className = desktopInspectorView.interestIcon.className.replace(
+                                            " " + foodInterestStates[ !currentInterestInFood ],
+                                            " " + foodInterestStates[ currentInterestInFood ]
+                                        );
     }
 
     function _displayInterestActionSign(foodIsLiked) {
@@ -93,7 +85,7 @@ var allInspectorView = (function () {
         });
     }
 
-    // public functions
+    // public functions-------------------------------------------------------------------------
     function showInspectorView(clickedFood) {
         _populateMobileAndDesktopInspectorWithFood(clickedFood);
         allInspectorsWrapper.style.display = "block";
@@ -110,7 +102,6 @@ var allInspectorView = (function () {
         _populateMobileAndDesktopInspectorWithFood(nextFood);
     }
 
-
     function showPreviousFood(event) {
         var previousFood = foodEntry.getPreviousFoodItem(currentFood);
         _populateMobileAndDesktopInspectorWithFood(previousFood);
@@ -123,7 +114,7 @@ var allInspectorView = (function () {
          _displayInterestActionSign(newInterestInFood);
     }
 
-    // return public pointers to private variables & functions
+    // return public pointers to private variables & functions------------------------------------
     return {
         showInspectorView: showInspectorView,
         hideInspectorView: hideInspectorView,
@@ -138,11 +129,14 @@ var allInspectorView = (function () {
 var mobileInspectorView = (function () {
 
     // cache DOM
-    var mobileInspector = document.querySelector("div.mobile-inspector-view-wrapper");
+    var listOfMobileInspectors = document.querySelector("ul.list-of-mobile-inspectors");
+    var mobileInspector = listOfMobileInspectors.querySelector("li.mobile-inspector-view-wrapper");
     var rightMobilePictureIcon = mobileInspector.querySelector("span.inspector.right-arrow");
     var leftMobilePictureIcon = mobileInspector.querySelector("span.inspector.left-arrow");
     var mobileInterestIcon = mobileInspector.querySelector("span.inspector.interested-in-food-icon");
     var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
+    var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
+
 
     // bind events
     swipeGesture.addSwipeListener('left', mobileFoodImage, allInspectorView.showNextFood); // swiping left = clicking right
@@ -150,14 +144,38 @@ var mobileInspectorView = (function () {
     rightMobilePictureIcon.addEventListener('click', allInspectorView.showNextFood);
     leftMobilePictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
     mobileInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
+    exitMobileInspectorIcon.addEventListener('click', allInspectorView.hideInspectorView);
 
-    // variables
+    // private variables
+    var leftInspectorView = mobileInspector.cloneNode(true);
+    var rightInspectorView = mobileInspector.cloneNode(true);
+    var initializeInspectorViewList = _addLeftAndRightInspectorView();
+    var resizeInspectorView = documentModule.addOnResizeFunction(_changeInspectorViewDimensionsOnResize);
 
-    // functions
+    // public variables
+
+    // private functions
+    function _changeInspectorViewDimensionsOnResize(event) {
+        listOfMobileInspectors.style.width = 3 * window.innerWidth + "px";
+        listOfMobileInspectors.style.transform = "translate3d(-" + window.innerWidth + "px,0px,0px)";
+
+        leftInspectorView.style.width = window.innerWidth + "px";
+        mobileInspector.style.width = window.innerWidth + "px";
+        rightInspectorView.style.width = window.innerWidth + "px";
+    }
+
+    function _addLeftAndRightInspectorView() {
+        // add leftInspectorView
+        listOfMobileInspectors.insertBefore(leftInspectorView, mobileInspector);
+
+        // add rightInspectorView
+        listOfMobileInspectors.appendChild(rightInspectorView);
+    }
+    // public functions
 
     // return public pointers to private variables & functions
     return {
-
+        interestIcon: mobileInterestIcon
     };
 
 })();
@@ -171,19 +189,21 @@ var desktopInspectorView = (function () {
     var rightDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-right-arrow-icon");
     var leftDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
     var desktopInterestIcon = desktopInspector.querySelector("span.food-interest-icon");
+    var exitDesktopInspectorIcon = desktopInspector.querySelector("span.exit-food-modal-icon");
 
     // bind events
     rightDesktopPictureIcon.addEventListener('click', allInspectorView.showNextFood);
     leftDesktopPictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
     desktopInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
-
+    exitDesktopInspectorIcon.addEventListener('click', allInspectorView.hideInspectorView);
+    
     // variables
 
     // functions
 
     // return public pointers to private variables & functions
     return {
-
+        interestIcon: desktopInterestIcon
     };
 
 })();

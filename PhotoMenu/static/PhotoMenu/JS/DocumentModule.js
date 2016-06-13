@@ -5,10 +5,12 @@ var documentModule = (function(){
     // cache DOM
 
     // bind events
-    document.addEventListener("keydown", _callKeypressFunctions);
+    document.addEventListener('keydown', _callKeypressFunctions);
+    window.addEventListener('resize', _callResizeFunctions);
 
     // private variables
     var onKeyPressEvents = [];
+    var onResizeEvents = [];
 
     // public variables
 
@@ -18,15 +20,26 @@ var documentModule = (function(){
             (onKeyPressEvents[i])(event);
         }
     }
+    
+    function _callResizeFunctions() {
+        for (var i = 0; i < onResizeEvents.length; i++) {
+            (onResizeEvents[i])(event);
+        }
+    }
 
     // public functions
     function addOnKeyPressFunction(func) {
         onKeyPressEvents.push(func)
     }
+    
+    function addOnResizeFunction(func) {
+        onResizeEvents.push(func)
+    }
 
     // return public pointers to private variables & functions
     return {
-        addOnKeyPressFunction: addOnKeyPressFunction
+        addOnKeyPressFunction: addOnKeyPressFunction,
+        addOnResizeFunction: addOnResizeFunction
     };
 
 })();
