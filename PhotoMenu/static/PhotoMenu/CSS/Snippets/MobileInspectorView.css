@@ -20,7 +20,7 @@ span.close-inspector-icon {
     z-index: 2;
 }
 
-div.inspector-view-wrapper{
+div.mobile-inspector-view-wrapper {
     width: 96%;
     max-height: 100%;
     position: fixed;
@@ -209,7 +209,7 @@ p.inspector.food-category-description{
 
 @media (min-width: 600px) {
 
-    div.mobile-inspector-background-overlay, span.close-inspector-icon, div.inspector-view-wrapper{
+    div.mobile-inspector-background-overlay, span.close-inspector-icon, div.mobile-inspector-view-wrapper {
         display: none;
     }
 
