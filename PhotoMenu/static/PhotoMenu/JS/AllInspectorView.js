@@ -20,6 +20,8 @@ var inspectorView = (function () {
     var rightDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-right-arrow-icon");
     var leftDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
     var desktopInterestIcon = desktopInspector.querySelector("span.food-interest-icon");
+        // other
+    var interestActionSign = allInspectorsWrapper.querySelector("div.interest-action-positioner");
 
     // bind events
         // mobile
@@ -36,6 +38,8 @@ var inspectorView = (function () {
     rightDesktopPictureIcon.addEventListener('click', _showNextFood);
     leftDesktopPictureIcon.addEventListener('click', _showPreviousFood);
     desktopInterestIcon.addEventListener('click', _toggleInterestInFood);
+        // other
+
 
 
     // private variables
@@ -63,6 +67,9 @@ var inspectorView = (function () {
     }
 
     function _populateMobileAndDesktopInspectorWithFood(food) {
+        // prevent balloon from showing up for no reason
+        interestActionSign.style.display = "none";
+
         currentFood = food;
         var foodName = currentFood.getAttribute("data-food-name");
         var foodDetails = currentFood.getAttribute("data-food-details");
@@ -79,6 +86,7 @@ var inspectorView = (function () {
         var newInterestInFood = ! (currentFood.getAttribute("data-food-is-liked") == "true");
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
         _setInterestIconBasedOnCurrentInterest();
+         _displayInterestActionSign(newInterestInFood);
     }
 
     function _setInterestIconBasedOnCurrentInterest() {
@@ -91,6 +99,20 @@ var inspectorView = (function () {
                                             " " + foodInterestStates[ !currentInterestInFood ],
                                             " " + foodInterestStates[ currentInterestInFood ]
                                         );
+    }
+
+    function _displayInterestActionSign(foodIsLiked) {
+        var interestMessageDict = {
+            true: "Item saved to \"Favorites\".",
+            false: "Item removed from \"Favorites\"."
+        }
+
+        var oldOne = interestActionSign;
+        interestActionSign = oldOne.cloneNode(true);
+        var interestActionMessage = interestActionSign.querySelector("p.interest-action-taken");
+        interestActionMessage.innerHTML = interestMessageDict[foodIsLiked];
+        oldOne.parentNode.replaceChild(interestActionSign, oldOne);
+        interestActionSign.style.display = "block";
     }
     
     function keyPressFunction() {
@@ -110,7 +132,6 @@ var inspectorView = (function () {
                     _showPreviousFood();
                 }
             }
-
         });
     }
     
