@@ -89,7 +89,6 @@ var swipeGesture = (function (){
     function addSwipeListener(targetSwipeDirection, element, swipeCallback) {
         var ignoreDrag= function (event, actualSwipeDirection, displacement) {
             // do nothing...
-            console.log("this works");
         }
         addSwipeAndDragListener(targetSwipeDirection, element, ignoreDrag, swipeCallback);
     }

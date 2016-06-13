@@ -139,8 +139,10 @@ var mobileInspectorView = (function () {
 
 
     // bind events
-    swipeGesture.addSwipeListener('left', mobileFoodImage, allInspectorView.showNextFood); // swiping left = clicking right
-    swipeGesture.addSwipeListener('right', mobileFoodImage, allInspectorView.showPreviousFood); // swiping right = clicking left
+    // swipeGesture.addSwipeListener('left', mobileFoodImage, allInspectorView.showNextFood); // swiping left = clicking right
+    swipeGesture.addSwipeAndDragListener('left', mobileFoodImage, _dragImage, allInspectorView.showNextFood);
+    // swipeGesture.addSwipeListener('right', mobileFoodImage, allInspectorView.showPreviousFood); // swiping right = clicking left
+    swipeGesture.addSwipeAndDragListener('right', mobileFoodImage, _dragImage, allInspectorView.showPreviousFood);
     rightMobilePictureIcon.addEventListener('click', allInspectorView.showNextFood);
     leftMobilePictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
     mobileInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
@@ -171,6 +173,11 @@ var mobileInspectorView = (function () {
         // add rightInspectorView
         listOfMobileInspectors.appendChild(rightInspectorView);
     }
+    
+    function _dragImage(swipeGestureData) {
+        console.log("this works");
+    }
+    
     // public functions
 
     // return public pointers to private variables & functions
@@ -196,7 +203,7 @@ var desktopInspectorView = (function () {
     leftDesktopPictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
     desktopInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
     exitDesktopInspectorIcon.addEventListener('click', allInspectorView.hideInspectorView);
-    
+
     // variables
 
     // functions
