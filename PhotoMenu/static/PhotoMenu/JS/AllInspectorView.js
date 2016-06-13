@@ -2,61 +2,6 @@
  * Created by devinm on 6/10/16.
  */
 
-var mobileInspectorView = (function () {
-
-    // cache DOM
-    var mobileInspector = document.querySelector("div.mobile-inspector-view-wrapper");
-    var rightMobilePictureIcon = mobileInspector.querySelector("span.inspector.right-arrow");
-    var leftMobilePictureIcon = mobileInspector.querySelector("span.inspector.left-arrow");
-    var mobileInterestIcon = mobileInspector.querySelector("span.inspector.interested-in-food-icon");
-    var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
-
-    // bind events
-    swipeGesture.addSwipeListener('left', mobileFoodImage, allInspectorView.showNextFood(event)); // swiping left = clicking right
-    swipeGesture.addSwipeListener('right', mobileFoodImage, allInspectorView.showPreviousFood(event)); // swiping right = clicking left
-    rightMobilePictureIcon.addEventListener('click', allInspectorView.showNextFood(event));
-    leftMobilePictureIcon.addEventListener('click', allInspectorView.showPreviousFood(event));
-    mobileInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood(event));
-
-    // variables
-
-    // functions
-
-    // return public pointers to private variables & functions
-    return {
-
-    };
-
-})();
-
-
-
-var desktopInspectorView = (function () {
-
-    // cache DOM
-    var desktopInspector = document.querySelector("div.food-modal-container");
-    var rightDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-right-arrow-icon");
-    var leftDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
-    var desktopInterestIcon = desktopInspector.querySelector("span.food-interest-icon");
-
-    // bind events
-    rightDesktopPictureIcon.addEventListener('click', allInspectorView.showNextFood(event));
-    leftDesktopPictureIcon.addEventListener('click', allInspectorView.showPreviousFood(event));
-    desktopInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood(event));
-
-    // variables
-
-    // functions
-
-    // return public pointers to private variables & functions
-    return {
-
-    };
-
-})();
-
-
-
 var allInspectorView = (function () {
 
     // cache DOM
@@ -71,11 +16,11 @@ var allInspectorView = (function () {
 
     // bind events
         // mobile
-    exitMobileInspectorIcon.addEventListener('click', hideInspectorView(event));
-    mobileBackgroundOverlay.addEventListener('click', hideInspectorView(event));
+    exitMobileInspectorIcon.addEventListener('click', hideInspectorView);
+    mobileBackgroundOverlay.addEventListener('click', hideInspectorView);
         // desktop
-    exitDesktopInspectorIcon.addEventListener('click', hideInspectorView(event));
-    desktopBackgroundOverlay.addEventListener('click', hideInspectorView(event));
+    exitDesktopInspectorIcon.addEventListener('click', hideInspectorView);
+    desktopBackgroundOverlay.addEventListener('click', hideInspectorView);
 
     // private variables
     var currentFood;
@@ -101,19 +46,17 @@ var allInspectorView = (function () {
         console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
         _setInterestIconBasedOnCurrentInterest();
     }
-    
-
 
     function _setInterestIconBasedOnCurrentInterest() {
         var currentInterestInFood = currentFood.getAttribute("data-food-is-liked") == "true";
-        mobileInterestIcon.className = mobileInterestIcon.className.replace(
-                                            " " + foodInterestStates[ !currentInterestInFood ],
-                                            " " + foodInterestStates[ currentInterestInFood ]
-                                        );
-        desktopInterestIcon.className = desktopInterestIcon.className.replace(
-                                            " " + foodInterestStates[ !currentInterestInFood ],
-                                            " " + foodInterestStates[ currentInterestInFood ]
-                                        );
+        // mobileInterestIcon.className = mobileInterestIcon.className.replace(
+        //                                     " " + foodInterestStates[ !currentInterestInFood ],
+        //                                     " " + foodInterestStates[ currentInterestInFood ]
+        //                                 );
+        // desktopInterestIcon.className = desktopInterestIcon.className.replace(
+        //                                     " " + foodInterestStates[ !currentInterestInFood ],
+        //                                     " " + foodInterestStates[ currentInterestInFood ]
+        //                                 );
     }
 
     function _displayInterestActionSign(foodIsLiked) {
@@ -191,3 +134,56 @@ var allInspectorView = (function () {
 
 })();
 
+
+var mobileInspectorView = (function () {
+
+    // cache DOM
+    var mobileInspector = document.querySelector("div.mobile-inspector-view-wrapper");
+    var rightMobilePictureIcon = mobileInspector.querySelector("span.inspector.right-arrow");
+    var leftMobilePictureIcon = mobileInspector.querySelector("span.inspector.left-arrow");
+    var mobileInterestIcon = mobileInspector.querySelector("span.inspector.interested-in-food-icon");
+    var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
+
+    // bind events
+    swipeGesture.addSwipeListener('left', mobileFoodImage, allInspectorView.showNextFood); // swiping left = clicking right
+    swipeGesture.addSwipeListener('right', mobileFoodImage, allInspectorView.showPreviousFood); // swiping right = clicking left
+    rightMobilePictureIcon.addEventListener('click', allInspectorView.showNextFood);
+    leftMobilePictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
+    mobileInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
+
+    // variables
+
+    // functions
+
+    // return public pointers to private variables & functions
+    return {
+
+    };
+
+})();
+
+
+
+var desktopInspectorView = (function () {
+
+    // cache DOM
+    var desktopInspector = document.querySelector("div.food-modal-container");
+    var rightDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-right-arrow-icon");
+    var leftDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
+    var desktopInterestIcon = desktopInspector.querySelector("span.food-interest-icon");
+
+    // bind events
+    rightDesktopPictureIcon.addEventListener('click', allInspectorView.showNextFood);
+    leftDesktopPictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
+    desktopInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
+
+    // variables
+
+    // functions
+
+    // return public pointers to private variables & functions
+    return {
+
+    };
+
+})();
