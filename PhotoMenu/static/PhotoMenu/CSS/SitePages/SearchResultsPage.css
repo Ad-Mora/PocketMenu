@@ -130,6 +130,12 @@ span.next.page-icon{
     div.search-options-wrapper{
         display: none;
     }
+
+    /*----------------this is for the main searchbar-------------*/
+    form.search-bar-form{
+        margin: 10px 0px 0px 5%;
+        width: 600px;
+    }
 }
 
 @media (min-width: 1200px) {
