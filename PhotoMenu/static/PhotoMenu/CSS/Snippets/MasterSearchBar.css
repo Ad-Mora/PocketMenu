@@ -38,7 +38,7 @@ input.search-submit-button{
     background-color: #448AFF;
     color: #FFFFFF;
     border: 0px;
-    background-image: url("../Images/WhiteSearchIcon.png");
+    background-image: url("../../Images/Icons/WhiteSearchIcon.png");
     background-repeat: no-repeat;
     -webkit-background-size: 20px 20px;
     background-size: 20px 20px;
@@ -49,11 +49,6 @@ input.search-submit-button{
 }
 
 @media (min-width: 700px) {
-    h1.search-page-title{
-        margin: 15px 0px 10px 5%;
-        width: 700px;
-        text-align: left;
-    }
 
     form.search-bar-form{
         margin: 10px 0px 0px 5%;
@@ -96,9 +91,4 @@ input.search-submit-button{
     input.search-submit-button{
         width: 90px;
     }
-
-
-
-
-
 }

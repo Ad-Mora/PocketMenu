@@ -1,7 +1,13 @@
-<li class="food-entry-li">
+{% load staticfiles %}
+<li class="food-entry-li"
+    data-food-name="data-food-name"
+    data-food-details="data-food-details"
+    data-food-image-location="data-food-image-location"
+    data-food-price="data-food-price"
+    data-food-is-liked="false">
   <div class="food-entry-wrapper">
     <div class="food-entry-image">
-      <img src="../../../static/PhotoMenu/Images/Beef Potstickers.jpg">
+      <img src="{% static "PhotoMenu/Images/MockPhotos/BeefPotstickers.jpg" %}">
     </div>
     <h4 class="food-entry-name">Fried Chicken Dumplings</h4>
     <p class="food-description-name">

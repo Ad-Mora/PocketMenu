@@ -1,0 +1,23 @@
+.favorites-button{
+    padding: 9px;
+    border: 2px solid white;
+    border-radius: 3px;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+}
+
+/* Large mobile view */
+@media (min-width: 355px) {
+    .favorites-button{
+        font-size: 18px;
+        padding: 11px;
+    }
+}
+/* Desktop view */
+@media (min-width: 800px) {
+    .favorites-button{
+        padding: 0px;
+        border: none;
+    }
+}
