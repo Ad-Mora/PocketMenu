@@ -1,5 +1,6 @@
 div.site-footer {
-    position: relative;
+    position: absolute;
+    bottom: 0px;
     width: 100%;
     height: 165px;
     background-color: #555555;
