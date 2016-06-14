@@ -23,21 +23,6 @@ var allInspectorView = (function () {
     // public variables
 
     // private functions-------------------------------------------------------------------------
-    function _populateMobileAndDesktopInspectorWithFood(food) {
-        // prevent balloon from showing up for no reason
-        interestActionSign.style.display = "none";
-
-        currentFood = food;
-        var foodName = currentFood.getAttribute("data-food-name");
-        var foodDetails = currentFood.getAttribute("data-food-details");
-        var foodImageLocaction = currentFood.getAttribute("data-food-image-location");
-        var foodPrice = currentFood.getAttribute("data-food-price");
-        var foodIsLiked = currentFood.getAttribute("data-food-is-liked");
-        var listItemNumber = currentFood.getAttribute("data-list-item-number");
-
-        console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
-        _setInterestIconBasedOnCurrentInterest();
-    }
 
     function _setInterestIconBasedOnCurrentInterest() {
         var currentInterestInFood = currentFood.getAttribute("data-food-is-liked") == "true";
@@ -87,9 +72,17 @@ var allInspectorView = (function () {
 
     // public functions-------------------------------------------------------------------------
     function showInspectorView(clickedFood) {
-        _populateMobileAndDesktopInspectorWithFood(clickedFood);
-        allInspectorsWrapper.style.display = "block";
+        mobileInspectorView.initializeMobileViewWithFood(clickedFood);
+        desktopInspectorView.initializeDesktopViewWithFood(clickedFood);
+
+        currentFood = clickedFood;
+        _setInterestIconBasedOnCurrentInterest();
         inspectorIsOpen = true;
+
+        // prevent balloon from showing up for no reason
+        interestActionSign.style.display = "none";
+
+        allInspectorsWrapper.style.display = "block";
     }
 
     function hideInspectorView(event) {
@@ -99,19 +92,19 @@ var allInspectorView = (function () {
 
     function showNextFood(event) {
         var nextFood = foodEntry.getNextFoodItem(currentFood);
-        _populateMobileAndDesktopInspectorWithFood(nextFood);
+        showInspectorView(nextFood);
     }
 
     function showPreviousFood(event) {
         var previousFood = foodEntry.getPreviousFoodItem(currentFood);
-        _populateMobileAndDesktopInspectorWithFood(previousFood);
+        showInspectorView(previousFood);
     }
 
     function toggleInterestInFood(event) {
         var newInterestInFood = ! (currentFood.getAttribute("data-food-is-liked") == "true");
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
         _setInterestIconBasedOnCurrentInterest();
-         _displayInterestActionSign(newInterestInFood);
+        _displayInterestActionSign(newInterestInFood);
     }
 
     // return public pointers to private variables & functions------------------------------------
@@ -137,24 +130,30 @@ var mobileInspectorView = (function () {
     var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
     var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
 
-
     // bind events
-    // swipeGesture.addSwipeListener('left', mobileFoodImage, allInspectorView.showNextFood); // swiping left = clicking right
-    swipeGesture.addSwipeAndDragListener('left', mobileFoodImage, _dragImage, allInspectorView.showNextFood);
-    // swipeGesture.addSwipeListener('right', mobileFoodImage, allInspectorView.showPreviousFood); // swiping right = clicking left
-    swipeGesture.addSwipeAndDragListener('right', mobileFoodImage, _dragImage, allInspectorView.showPreviousFood);
+    swipeGesture.addSwipeAndDragListener( mobileFoodImage, _whileDraggingImage, _onDragEnd);
     rightMobilePictureIcon.addEventListener('click', allInspectorView.showNextFood);
     leftMobilePictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
     mobileInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
     exitMobileInspectorIcon.addEventListener('click', allInspectorView.hideInspectorView);
 
     // private variables
+    var RIGHT_POSITION = 0;
+    var CENTER_POSITION = -1 * window.innerWidth;
+    var LEFT_POSITION = -2 * window.innerWidth;
+    var previousFood;
+    var centerFood;
+    var nextFood;
     var leftInspectorView = mobileInspector.cloneNode(true);
+    leftInspectorView.style.background = "blue";
     var rightInspectorView = mobileInspector.cloneNode(true);
+    rightInspectorView.style.background = "red";
     var initializeInspectorViewList = _addLeftAndRightInspectorView();
-    var resizeInspectorView = documentModule.addOnResizeFunction(_changeInspectorViewDimensionsOnResize);
+    var intializeInspectorViewDimensions = _changeInspectorViewDimensionsOnResize();
+    var enableInspectorViewResize= documentModule.addOnResizeFunction(_changeInspectorViewDimensionsOnResize);
 
     // public variables
+
 
     // private functions
     function _changeInspectorViewDimensionsOnResize(event) {
@@ -174,15 +173,55 @@ var mobileInspectorView = (function () {
         listOfMobileInspectors.appendChild(rightInspectorView);
     }
     
-    function _dragImage(swipeGestureData) {
-        console.log("this works");
+    function _whileDraggingImage(direction, deltaX, deltaY) {
+        listOfMobileInspectors.style.transform = "translate3d("+ (-1 * (window.innerWidth - deltaX)) +"px,0px,0px)";
+    }
+
+    function _onDragEnd(direction, deltaX, deltaY) {
+        var MIN_SWIPE_DISTANCE = window.innerWidth * 0.4;
+
+        if (direction == 'left' && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
+            listOfMobileInspectors.style.transform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
+            allInspectorView.showNextFood(null);
+        }
+        else if (direction == 'right' && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
+            listOfMobileInspectors.style.transform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
+            allInspectorView.showPreviousFood(null);
+        }
+        else {
+            listOfMobileInspectors.style.transform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
+        }
+    }
+
+    function _populateMobileViewWithFoodData(mobileView, foodElement) { /*--------------------------------STILL NEED TO FINISH---------------------*/
+        var foodName = foodElement.getAttribute("data-food-name");
+        var foodDetails = foodElement.getAttribute("data-food-details");
+        var foodImageLocaction = foodElement.getAttribute("data-food-image-location");
+        var foodPrice = foodElement.getAttribute("data-food-price");
+        var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
+        var listItemNumber = foodElement.getAttribute("data-list-item-number");
     }
     
     // public functions
+    function initializeMobileViewWithFood(foodElement) {
+        // update module's variables
+        previousFood = foodEntry.getPreviousFoodItem(foodElement);
+        centerFood = foodElement;
+        nextFood = foodEntry.getNextFoodItem(foodElement);
+
+        // center the 3 InspectorViews
+        listOfMobileInspectors.style.transform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
+
+        // update the 3 InspectorViews with their relevant info
+        _populateMobileViewWithFoodData(leftInspectorView, previousFood);
+        _populateMobileViewWithFoodData(mobileInspector, centerFood);
+        _populateMobileViewWithFoodData(rightInspectorView, nextFood);
+    }
 
     // return public pointers to private variables & functions
     return {
-        interestIcon: mobileInterestIcon
+        interestIcon: mobileInterestIcon,
+        initializeMobileViewWithFood: initializeMobileViewWithFood
     };
 
 })();
@@ -206,11 +245,21 @@ var desktopInspectorView = (function () {
 
     // variables
 
-    // functions
+    // public functions
+    function initializeDesktopViewWithFood(foodElement) {
+        var foodName = foodElement.getAttribute("data-food-name");
+        var foodDetails = foodElement.getAttribute("data-food-details");
+        var foodImageLocaction = foodElement.getAttribute("data-food-image-location");
+        var foodPrice = foodElement.getAttribute("data-food-price");
+        var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
+        var listItemNumber = foodElement.getAttribute("data-list-item-number");
+        console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
+    }
 
     // return public pointers to private variables & functions
     return {
-        interestIcon: desktopInterestIcon
+        interestIcon: desktopInterestIcon,
+        initializeDesktopViewWithFood: initializeDesktopViewWithFood
     };
 
 })();

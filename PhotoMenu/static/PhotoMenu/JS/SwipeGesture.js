@@ -7,8 +7,6 @@ var swipeGesture = (function (){
     // event listeners
 
     // private variables
-    var minSwipeDist = 150;
-    var maxPerpindicularDisplacement = 100;
 
     // public variables
 
@@ -31,7 +29,7 @@ var swipeGesture = (function (){
         data.startY = touchPoint.pageY;
 
         // call dragHandler
-        dragHandler(data.deltaX, data.deltaY);
+        dragHandler(data.direction, data.deltaX, data.deltaY);
         event.preventDefault(); // prevent click event
     }
 
@@ -48,49 +46,34 @@ var swipeGesture = (function (){
         }
 
         // call dragHandler
-        dragHandler(data.deltaX, data.deltaY);
+        dragHandler(data.swipeDirection, data.deltaX, data.deltaY);
         event.preventDefault(); // prevent scrolling
     }
 
-    function _endSwipeGesture(event, data) {
+    function _endSwipeGesture(event, data, swipeCallback) {
+        swipeCallback(data.swipeDirection, data.deltaX, data.deltaY);
         event.preventDefault(); // prevent mouseup event
     }
 
-    function _callbackIfValidSwipe(data, targetSwipeDirection, swipeCallback) {
-        if (data.swipeDirection == targetSwipeDirection) {
-            if (Math.abs(data.deltaX) >= minSwipeDist
-                && Math.abs(data.deltaY) <= maxPerpindicularDisplacement) {
-
-                swipeCallback();
-            }
-            else if (Math.abs(data.deltaY) >= minSwipeDist
-                && Math.abs(data.deltaX) <= maxPerpindicularDisplacement) {
-
-                swipeCallback();
-            }
-        }
-    }
-
     // public functions
-    function addSwipeListener(targetSwipeDirection, element, swipeCallback) {
-        var ignoreDrag= function (event, actualSwipeDirection, displacement) {
+    function addSwipeListener(element, swipeCallback) {
+        var noDragHandler = function (deltaX, deltaY) {
             // do nothing...
         }
-        addSwipeAndDragListener(targetSwipeDirection, element, ignoreDrag, swipeCallback);
+        addSwipeAndDragListener(element, noDragHandler, swipeCallback);
     }
 
-    function addSwipeAndDragListener(targetSwipeDirection, element, dragCallback, swipeCallback) {
+    function addSwipeAndDragListener(element, dragHandler, swipeCallback) {
         var data = new _swipeGestureData();
 
         element.addEventListener('touchstart', function(event) {
-           _beginSwipeGesture(event, data, dragCallback);
+           _beginSwipeGesture(event, data, dragHandler);
         });
         element.addEventListener('touchmove', function(event) {
-            _duringSwipeGesture(event, data, dragCallback);
+            _duringSwipeGesture(event, data, dragHandler);
         });
         element.addEventListener('touchend',function(event) {
-            _endSwipeGesture(event, data);
-            _callbackIfValidSwipe(data, targetSwipeDirection, swipeCallback);
+            _endSwipeGesture(event, data, swipeCallback);
         });
     }
 
