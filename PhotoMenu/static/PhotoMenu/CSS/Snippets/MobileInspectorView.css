@@ -8,27 +8,34 @@ div.mobile-inspector-background-overlay {
     z-index: 2;
 }
 
+
 span.close-inspector-icon {
-    background-image: url("../../Images/Icons/QuitInspectorIcon.png");
-    -webkit-background-size: 100% auto;
-    background-size: 100% auto;
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: Calc(50% - 10px);
-    left: 3%;
-    z-index: 2;
+background-image: url("../../Images/Icons/QuitInspectorIcon.png");
+-webkit-background-size: 100% auto;
+background-size: 100% auto;
+width: 20px;
+height: 20px;
+position: absolute;
+top: Calc(50% - 10px);
+left: 3%;
+z-index: 2;
 }
 
-div.inspector-view-wrapper{
-    width: 96%;
-    max-height: 100%;
+ul.list-of-mobile-inspectors{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    overflow: scroll;
+    top: 0%;
+    left: 0%;
     z-index: 2;
-    transform: translate(-50%,-50%);
+    width: calc(320px * 3);
+    height: 100%;
+    transform: translate3d(-320px, 0px, 0px);
+}
+
+li.mobile-inspector-view-wrapper {
+    width: 320px;
+    max-height: 100%;
+    overflow: scroll;
+    float: left;
 }
 
 div.inspector{
@@ -209,7 +216,7 @@ p.inspector.food-category-description{
 
 @media (min-width: 600px) {
 
-    div.mobile-inspector-background-overlay, span.close-inspector-icon, div.inspector-view-wrapper{
+    div.mobile-inspector-background-overlay, span.close-inspector-icon, li.mobile-inspector-view-wrapper {
         display: none;
     }
 

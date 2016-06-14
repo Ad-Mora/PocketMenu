@@ -7,92 +7,80 @@ var swipeGesture = (function (){
     // event listeners
 
     // private variables
-    var minSwipeDist = 150;
-    var maxPerpindicularDisplacement = 100;
-    var maxSwipeTime = 300;
 
     // public variables
 
     // private functions
-    function _swipeGestureData() {
+    function _swipeGestureData(dragCallback) {
         this.swipeDirection;
         this.startX;
         this.startY;
         this.deltaX;
         this.deltaY;
-        this.timeElapsed;
-        this.startTime;
     }
 
-    function _beginSwipeGesture(event, swipeGestureData) {
+    function _beginSwipeGesture(event, data, dragHandler) {
+        // set data for later in gesture
         var touchPoint = event.changedTouches[0];
-        swipeGestureData.swipeDirection = 'none';
-        swipeGestureData.deltaX = 0;
-        swipeGestureData.deltaY = 0;
-        swipeGestureData.startX = touchPoint.pageX;
-        swipeGestureData.startY = touchPoint.pageY;
-        swipeGestureData.startTime = new Date().getTime();
+        data.swipeDirection = 'none';
+        data.deltaX = 0;
+        data.deltaY = 0;
+        data.startX = touchPoint.pageX;
+        data.startY = touchPoint.pageY;
+
+        // call dragHandler
+        dragHandler(data.direction, data.deltaX, data.deltaY);
         event.preventDefault(); // prevent click event
     }
 
-    function _duringSwipeGesture(event, swipeGestureData) {
+    function _duringSwipeGesture(event, data, dragHandler) {
+        // update data for later in gesture
+        var touchPoint = event.changedTouches[0];
+        data.deltaX = touchPoint.pageX - data.startX;
+        data.deltaY = touchPoint.pageY - data.startY;
+        if (Math.abs(data.deltaX) >= Math.abs(data.deltaY)) {
+            data.swipeDirection = (data.deltaX <= 0) ? 'left' : 'right';
+        }
+        else {
+            data.swipeDirection = (data.deltaY <= 0) ? 'up' : 'down';
+        }
+
+        // call dragHandler
+        dragHandler(data.swipeDirection, data.deltaX, data.deltaY);
         event.preventDefault(); // prevent scrolling
     }
 
-    function _endSwipeGesture(event, swipeGestureData) {
-        var touchPoint = event.changedTouches[0];
-        swipeGestureData.deltaX = touchPoint.pageX - swipeGestureData.startX;
-        swipeGestureData.deltaY = touchPoint.pageY - swipeGestureData.startY;
-        swipeGestureData.timeElapsed = new Date().getTime() - swipeGestureData.startTime;
+    function _endSwipeGesture(event, data, swipeCallback) {
+        swipeCallback(data.swipeDirection, data.deltaX, data.deltaY);
         event.preventDefault(); // prevent mouseup event
     }
 
-    function _callbackIfValidSwipe(swipeGestureData, swipeDirection, callback) {
-        if (swipeGestureData.timeElapsed <= maxSwipeTime) {
-            if (Math.abs(swipeGestureData.deltaX) >= minSwipeDist
-                && Math.abs(swipeGestureData.deltaY <= maxPerpindicularDisplacement)) {
-                if (swipeGestureData.deltaX <= 0) {
-                    swipeGestureData.swipeDirection = 'left';
-                }
-                else {
-                    swipeGestureData.swipeDirection = 'right';
-                }
-            }
-            else if (Math.abs(swipeGestureData.deltaY) >= minSwipeDist
-                && Math.abs(swipeGestureData.deltaX <= maxPerpindicularDisplacement)) {
-                if (swipeGestureData.deltaY <= 0) {
-                    swipeGestureData.swipeDirection = 'up';
-                }
-                else {
-                    swipeGestureData.swipeDirection = 'down';
-                }
-            }
+    // public functions
+    function addSwipeListener(element, swipeCallback) {
+        var noDragHandler = function (deltaX, deltaY) {
+            // do nothing...
         }
-
-        if (swipeGestureData.swipeDirection == swipeDirection) {
-            callback();
-        }
+        addSwipeAndDragListener(element, noDragHandler, swipeCallback);
     }
 
-    // public functions
-    function addSwipeListener(swipeDirection, element, callback) {
-        var swipeGestureData = new _swipeGestureData();
+    function addSwipeAndDragListener(element, dragHandler, swipeCallback) {
+        var data = new _swipeGestureData();
 
         element.addEventListener('touchstart', function(event) {
-           _beginSwipeGesture(event, swipeGestureData);
+           _beginSwipeGesture(event, data, dragHandler);
         });
         element.addEventListener('touchmove', function(event) {
-            _duringSwipeGesture(event, swipeGestureData);
+            _duringSwipeGesture(event, data, dragHandler);
         });
         element.addEventListener('touchend',function(event) {
-            _endSwipeGesture(event, swipeGestureData);
-            _callbackIfValidSwipe(swipeGestureData, swipeDirection, callback);
+            _endSwipeGesture(event, data, swipeCallback);
         });
     }
 
     // return public points to private variables & functions
     return {
-        addSwipeListener: addSwipeListener
+        addSwipeListener: addSwipeListener,
+        addSwipeAndDragListener: addSwipeAndDragListener
     };
 
 })();

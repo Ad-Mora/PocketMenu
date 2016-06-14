@@ -18,7 +18,7 @@ var foodEntry = (function () {
 
     // private functions
     function _displayInspectorViewForFood(event) {
-        inspectorView.showInspectorView(this);
+        allInspectorView.showInspectorView(this);
     }
 
     // public functions
