@@ -107,9 +107,9 @@ div.current-page-search-wrapper{
 
     div.current-page-search-wrapper{
         display: inline-block;
-        margin: 10px 10px 0px 0px;
+        margin: 7px 10px 0px 0px;
         float: right;
-        height: 25px;
+        height: 30px;
         width: 30%;
         max-width: 300px;
         -webkit-box-shadow: inset 0px 1px 0px 0px #ECECEC;
@@ -117,18 +117,18 @@ div.current-page-search-wrapper{
         box-shadow: inset 0px 1px 0px 0px #ECECEC;
         border: 1px solid #CCCCCC;
         -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;;
-        border-radius: 3px;;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
     }
 
     input.current-page-search-bar{
         width: calc(100% - 30px);
-        height: 24px;
+        height: 27px;
         position: relative;
         bottom: -1px;
-        right: 5px;
+        right: 0px;
         font-size: 14px;
-        padding: 0px 0px 0px 10px;
+        padding: 0px 0px 0px 7px;
         box-sizing: border-box;
     }
 
@@ -137,10 +137,11 @@ div.current-page-search-wrapper{
         background-image: url("../../Images/Icons/GreySearchIcon.png");
         -webkit-background-size: 100% auto;
         background-size: 100% auto;
-        width: 15px;
-        height: 15px;
+        width: 18px;
+        height: 18px;
         position: relative;
-        top: 4px;
+        top: 6px;
+        left: 3px;
     }
 
 }

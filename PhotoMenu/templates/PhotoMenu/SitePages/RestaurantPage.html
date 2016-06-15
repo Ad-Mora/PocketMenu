@@ -13,7 +13,7 @@
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FoodSection.css" %}">
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
-  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FilterSearchBar.css" %}">
+  <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/Snippets/FilterSearch.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/AllInspectorViews.css" %}">
@@ -42,7 +42,7 @@
 
   <!-- Categories (Filter) and Search Bar -->
   <div class="categories-and-search-bar restaurant-page-desktop">
-    {%  include "PhotoMenu/Snippets/FilterSearchBar.html" %}
+    {%  include "PhotoMenu/Snippets/FilterSearch.html" %}
   </div>
 
   <!-- Inspector View (mobile & desktop) -->
@@ -99,7 +99,9 @@
   <!-- Website Footer -->
   {%  include "PhotoMenu/Snippets/Footer.html" %}
 
-  <script src="{%  static "PhotoMenu/JS/FilterSearchBar.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/DocumentModule.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/FilterSearch.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/SwipeGesture.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/FoodEntry.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/AllInspectorView.js" %}" type="text/javascript"></script>
 

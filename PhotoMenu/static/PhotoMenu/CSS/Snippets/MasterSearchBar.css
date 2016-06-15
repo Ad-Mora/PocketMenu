@@ -50,11 +50,6 @@ input.search-submit-button{
 
 @media (min-width: 700px) {
 
-    form.search-bar-form{
-        margin: 10px 0px 0px 5%;
-        width: 600px;
-    }
-
     div.search-bar-input-wrapper{
         width: 505px;
         -webkit-box-shadow: inset 0px 1px 0px #ECECEC;

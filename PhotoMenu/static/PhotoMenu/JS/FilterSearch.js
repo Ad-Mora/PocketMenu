@@ -23,12 +23,25 @@ var moreOptions = (function(){
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
+    var hideDropDownCorrectly = documentModule.addOnClickFunction(_toggleDropDownMenu);
 
     // public variables
 
     // private methods
     function _toggleDropDownMenu(event) {
-        dropDownIsVisible = !dropDownIsVisible;
+        event.stopPropagation();
+        var srcElement = event.srcElement;
+        while (srcElement) {
+            if (srcElement == moreOptionsLI) {
+                dropDownIsVisible = !dropDownIsVisible;
+                moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
+                dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+                return;
+            }
+            srcElement = srcElement.parentNode;
+        }
+
+        dropDownIsVisible = false;
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
     }
@@ -42,6 +55,19 @@ var moreOptions = (function(){
         slidingUnderBar.style.width = width + "px";
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
+
+    // function _hideDropDownAfterOpened(event) {
+    //     var srcElement = event.srcElement;
+    //     while (srcElement) {
+    //         if (srcElement == moreOptionsLI) {
+    //             console.log("clicked inside");
+    //             return;
+    //         }
+    //         srcElement = srcElement.parentNode;
+    //     }
+    //     console.log("clicked outside");
+    //
+    // }
 
     // public methods
 
