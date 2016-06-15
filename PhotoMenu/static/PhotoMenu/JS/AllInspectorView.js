@@ -24,17 +24,7 @@ var allInspectorView = (function () {
 
     // private functions-------------------------------------------------------------------------
 
-    function _setInterestIconBasedOnCurrentInterest() {
-        var currentInterestInFood = currentFood.getAttribute("data-food-is-liked") == "true";
-        mobileInspectorView.interestIcon.className = mobileInspectorView.interestIcon.className.replace(
-                                            " " + foodInterestStates[ !currentInterestInFood ],
-                                            " " + foodInterestStates[ currentInterestInFood ]
-                                        );
-        desktopInspectorView.interestIcon.className = desktopInspectorView.interestIcon.className.replace(
-                                            " " + foodInterestStates[ !currentInterestInFood ],
-                                            " " + foodInterestStates[ currentInterestInFood ]
-                                        );
-    }
+
 
     function _displayInterestActionSign(foodIsLiked) {
         var interestMessageDict = {
@@ -76,7 +66,6 @@ var allInspectorView = (function () {
         desktopInspectorView.initializeDesktopViewWithFood(clickedFood);
 
         currentFood = clickedFood;
-        _setInterestIconBasedOnCurrentInterest();
         inspectorIsOpen = true;
 
         // prevent balloon from showing up for no reason
@@ -103,8 +92,17 @@ var allInspectorView = (function () {
     function toggleInterestInFood(event) {
         var newInterestInFood = ! (currentFood.getAttribute("data-food-is-liked") == "true");
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
-        _setInterestIconBasedOnCurrentInterest();
+        setInterestIconBasedOnCurrentInterest(desktopInspectorView.interestIcon, currentFood);
+        setInterestIconBasedOnCurrentInterest(mobileInspectorView.interestIcon, currentFood);
         _displayInterestActionSign(newInterestInFood);
+    }
+
+    function setInterestIconBasedOnCurrentInterest(interestIcon, foodElement) {
+        var interestInFood = foodElement.getAttribute("data-food-is-liked") == "true";
+        interestIcon.className = interestIcon.className.replace(
+                                            " " + foodInterestStates[ !interestInFood ],
+                                            " " + foodInterestStates[ interestInFood ]
+                                        );
     }
 
     // return public pointers to private variables & functions------------------------------------
@@ -113,7 +111,8 @@ var allInspectorView = (function () {
         hideInspectorView: hideInspectorView,
         showNextFood: showNextFood,
         showPreviousFood: showPreviousFood,
-        toggleInterestInFood: toggleInterestInFood
+        toggleInterestInFood: toggleInterestInFood,
+        setInterestIconBasedOnCurrentInterest: setInterestIconBasedOnCurrentInterest
     };
 
 })();
@@ -129,6 +128,10 @@ var mobileInspectorView = (function () {
     var mobileInterestIcon = mobileInspector.querySelector("span.inspector.interested-in-food-icon");
     var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
     var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
+    var leftInspectorView = mobileInspector.cloneNode(true);
+        leftInspectorView.style.background = "blue";
+    var rightInspectorView = mobileInspector.cloneNode(true);
+        rightInspectorView.style.background = "red";
 
     // bind events
     swipeGesture.addSwipeAndDragListener( mobileFoodImage, _whileDraggingImage, _onDragEnd);
@@ -144,10 +147,7 @@ var mobileInspectorView = (function () {
     var previousFood;
     var centerFood;
     var nextFood;
-    var leftInspectorView = mobileInspector.cloneNode(true);
-    leftInspectorView.style.background = "blue";
-    var rightInspectorView = mobileInspector.cloneNode(true);
-    rightInspectorView.style.background = "red";
+
     var initializeInspectorViewList = _addLeftAndRightInspectorView();
     var intializeInspectorViewDimensions = _changeInspectorViewDimensionsOnResize();
     var enableInspectorViewResize= documentModule.addOnResizeFunction(_changeInspectorViewDimensionsOnResize);
@@ -163,6 +163,10 @@ var mobileInspectorView = (function () {
         leftInspectorView.style.width = window.innerWidth + "px";
         mobileInspector.style.width = window.innerWidth + "px";
         rightInspectorView.style.width = window.innerWidth + "px";
+
+        RIGHT_POSITION = 0;
+        CENTER_POSITION = -1 * window.innerWidth;
+        LEFT_POSITION = -2 * window.innerWidth;
     }
 
     function _addLeftAndRightInspectorView() {
@@ -200,6 +204,9 @@ var mobileInspectorView = (function () {
         var foodPrice = foodElement.getAttribute("data-food-price");
         var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
         var listItemNumber = foodElement.getAttribute("data-list-item-number");
+
+        var interestIconForView = mobileView.querySelector("span.inspector.interested-in-food-icon");
+        allInspectorView.setInterestIconBasedOnCurrentInterest(interestIconForView, foodElement);
     }
     
     // public functions
@@ -253,6 +260,9 @@ var desktopInspectorView = (function () {
         var foodPrice = foodElement.getAttribute("data-food-price");
         var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
         var listItemNumber = foodElement.getAttribute("data-list-item-number");
+
+        allInspectorView.setInterestIconBasedOnCurrentInterest(desktopInterestIcon, foodElement);
+
         console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
     }
 
