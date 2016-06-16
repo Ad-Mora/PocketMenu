@@ -17,6 +17,32 @@
     margin-left: 10px;
     margin-top: 10px;
 }
+span.hamburger-icon-middle{
+    display: inline-block;
+    margin: 21px 0px 0px 15px;
+    width: 23px;
+    height: 3px;
+    position: relative;
+    background-color: #FFFFFF;
+}
+span.hamburger-icon-middle::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 23px;
+    height: 3px;
+    background-color: #FFFFFF;
+}
+span.hamburger-icon-middle::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -8px;
+    width: 23px;
+    height: 3px;
+    background-color: #FFFFFF;
+}
 .header-links-separator{
     display: none;
 }
@@ -33,8 +59,8 @@
     display: inline-block;
     position: absolute;
     right: 10px;
-    margin-top: 10px;
-    height: 25px;
+    margin: 11px 0px 0px 0px;
+    height: 23px;
 }
 
 /* Mobile Category Menu */
@@ -82,17 +108,15 @@ p.category-items-count{
     .header{
         height: 55px;
     }
-    .hamburger-icon{
-        height: 28px;
-        margin-top: 13.5px;
+    span.hamburger-icon-middle{
+        margin: 26px 0px 0px 15px;
     }
     .favorites-link{
         margin-top: 5.5px;
         right: 48px;
     }
     .search-icon{
-        height: 28px;
-        margin-top: 13.5px;
+        margin: 16px 0px 0px 0px;
     }
 }
 

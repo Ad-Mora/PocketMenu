@@ -2,7 +2,8 @@
 <div class="header">
   {% include "PhotoMenu/Snippets/Logo.html" %}
   {% include "PhotoMenu/Snippets/HeaderSearchBar.html" %}
-  <img class="hamburger-icon" src="{% static "PhotoMenu/Images/Icons/WhiteHamburgerIcon.png" %}">
+{#  <img class="hamburger-icon" src="{% static "PhotoMenu/Images/Icons/WhiteHamburgerIcon.png" %}">#}
+  <span class="hamburger-icon-middle"></span>
   <span class="header-links-separator"></span>
   <a class="contact-us-link" href="{% url "PhotoMenu:contact_page" %}">Contact Us</a>
   {% include "PhotoMenu/Snippets/FavoritesLink.html" %}
