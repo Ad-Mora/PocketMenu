@@ -1,3 +1,6 @@
+div.mobile-modal-search-container{
+    display: none;
+}
 
 div.mobile-search-background-overlay{
     position: fixed;
@@ -37,7 +40,7 @@ div.mobile-search-select-wrapper{
 
 select.mobile-select-search-type{
     background-color: transparent;
-    width: 100%;
+    width: 120%;
     color: #555555;
 }
 
@@ -103,10 +106,20 @@ input.submit-mobile-search-modal{
     letter-spacing: 0.5px
 }
 
-button.close-mobile-search-modal{
+span.close-mobile-search-modal{
     background-color: transparent;
     color: #555555;
     font-size: 14px;
     margin: 20px auto 0px auto;
-    display: block;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (min-width: 800px) {
+    div.mobile-modal-search-container{
+        display: none;
+    }
 }
