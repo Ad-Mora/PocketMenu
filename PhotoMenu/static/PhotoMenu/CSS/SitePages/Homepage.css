@@ -32,6 +32,7 @@
     text-align: center;
     padding-bottom: 10px;
 }
+/*
 .search-bar{
     position: relative;
     z-index: 1;
@@ -46,6 +47,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+*/
 .search-suggestions-wrapper{
     position: relative;
 }
@@ -184,12 +186,14 @@
         font-size: 22px;
         width: 44%;
     }
+    /*
     .search-bar{
         height: 40px;
         font-size: 20px;
         margin-left: 6%;
         width: 88%;
     }
+    */
     .search-suggestions-box{
         margin-left: 6%;
         width: 88%;
@@ -271,12 +275,14 @@
     .restaurant-name{
         display: none;
     }
+    /*
     .search-bar{
         height: 44px;
         font-size: 22px;
         margin-left: 30%;
         width: 40%;
     }
+    */
 
 
 
@@ -286,7 +292,7 @@
 
 @media (min-width: 800px) {
 
-    div.search-bar-input-wrapper{
+    div.search-bar-wrapper{
         margin: 0px auto 0px auto;
         height: 35px;
         width: 510px;
@@ -301,7 +307,7 @@
         height: 35px;
         width: 120px;
     }
-    input.search-search-bar{
+    input.search-bar{
         display: inline-block;
         float: left;
         padding-left: 10px;
