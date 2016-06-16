@@ -15,7 +15,7 @@
 .header-links-separator{
     display: none;
 }
-.favorites-button{
+.favorites-link{
     display: inline-block;
     position: absolute;
     right: 10px;
@@ -33,7 +33,7 @@
     .logo{
         line-height: 55px;
     }
-    .favorites-button{
+    .favorites-link{
         margin-top: 5.5px;
     }
 }
@@ -57,7 +57,7 @@
         width: 1px;
         background-color: white;
     }
-    .favorites-button{
+    .favorites-link{
         margin-top: 0px;
         border: none;
         padding: 0px;

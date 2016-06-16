@@ -23,7 +23,7 @@
 .contact-us-link{
     display: none;
 }
-.favorites-button{
+.favorites-link{
     display: inline-block;
     position: absolute;
     right: 45px;
@@ -46,7 +46,7 @@
         height: 28px;
         margin-top: 13.5px;
     }
-    .favorites-button{
+    .favorites-link{
         margin-top: 5.5px;
         right: 48px;
     }
@@ -87,7 +87,7 @@
         color: white;
         font-size: 18px;
     }
-    .favorites-button{
+    .favorites-link{
         margin-top: 0px;
         line-height: 55px;
         right: 10px;

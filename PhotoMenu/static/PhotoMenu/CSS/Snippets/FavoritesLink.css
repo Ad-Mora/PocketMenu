@@ -1,4 +1,4 @@
-.favorites-button{
+.favorites-link{
     padding: 9px;
     border: 2px solid white;
     border-radius: 3px;
@@ -9,14 +9,15 @@
 
 /* Large mobile view */
 @media (min-width: 355px) {
-    .favorites-button{
+    .favorites-link{
         font-size: 18px;
         padding: 11px;
     }
 }
+
 /* Desktop view */
 @media (min-width: 800px) {
-    .favorites-button{
+    .favorites-link{
         padding: 0px;
         border: none;
     }

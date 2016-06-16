@@ -12,7 +12,7 @@
 .header-search-bar-with-icon{
     display: none;
 }
-.favorites-button{
+.favorites-link{
     display: inline-block;
     position: absolute;
     right: 45px;
@@ -40,7 +40,7 @@
     .logo{
         line-height: 55px;
     }
-    .favorites-button{
+    .favorites-link{
         right: 48px;
         margin-top: 5.5px;
     }
@@ -73,7 +73,7 @@
         width: 1px;
         background-color: white;
     }
-    .favorites-button{
+    .favorites-link{
         margin-top: 0px;
         line-height: 55px;
         right: 10px;
