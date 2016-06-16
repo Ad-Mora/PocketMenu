@@ -4,7 +4,7 @@
   {% include "PhotoMenu/Snippets/HeaderSearchBar.html" %}
   <img class="hamburger-icon" src="{% static "PhotoMenu/Images/Icons/WhiteHamburgerIcon.png" %}">
   <span class="header-links-separator"></span>
-  <a class="contact-us-link" href="#">Contact Us</a>
+  <a class="contact-us-link" href="{% url "PhotoMenu:contact_page" %}">Contact Us</a>
   {% include "PhotoMenu/Snippets/FavoritesLink.html" %}
   <img class="search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
 </div>
