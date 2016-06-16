@@ -2,6 +2,8 @@ from django.conf.urls import url
 
 from . import views
 
+app_name = 'PhotoMenu'
+
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
     url(r'^contact/$', views.contact_page, name='contact_page'),
