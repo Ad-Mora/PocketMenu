@@ -10,7 +10,6 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
 
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MasterSearchBar.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
@@ -38,7 +37,16 @@
     </div>
 
     <!-- Mobile Search Bar-->
-    {%  include "PhotoMenu/Snippets/MasterSearchBar.html" %}
+    <form class="search-bar-form">
+      <input type="submit" class="search-submit-button" value="">
+      <div class="search-bar-input-wrapper">
+        <select class="select-search-type">
+          <option value="restaurant">Restaurant</option>
+          <option value="restaurant">Food</option>
+        </select>
+        <input type="text" class="search-search-bar" placeholder="Search for Restaurants">
+      </div>
+    </form>
 
     <p class="number-of-search-results">Showing results 1-50 of 99</p>
     <div class="full-width-seperator"></div>
