@@ -4,6 +4,8 @@
     width: 100%;
     height: 45px;
     background-color: #FF9800;
+    left: 280px;
+    transform: translateX(-280px);
 }
 .logo{
     display: none;
@@ -73,7 +75,7 @@ div.categories-menu-background-overlay{
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.5);
-    top: 0px;
+    top: 45px;
     left: 0px;
     z-index: 1;
     display: none;
@@ -87,7 +89,7 @@ ul.mobile-categories-menu-list{
     left: 0px;
     z-index: 1;
     overflow: scroll;
-    display: none;
+    transform: translateX(-280px);
 }
 li.categories-menu-category-option{
     width: 100%;
@@ -104,6 +106,40 @@ p.category-items-count{
     color: #BBBBBB;
 }
 
+/* Category Menu Animation States */
+.hidden-state{
+    -webkit-animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
+    animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
+    -webkit-transform:translateX(-280px);
+    transform:translateX(-280px);
+}
+.visible-state{
+    -webkit-animation:show-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
+    animation:show-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
+    -webkit-transform:translateX(0px);
+    transform:translateX(0px);
+}
+
+@-webkit-keyframes show-menu{
+    from{
+        -webkit-transform:translateX(-280px);
+        transform:translateX(-280px);
+    }
+    to{
+        -webkit-transform:translateX(0);
+        transform:translateX(0)
+    }
+}
+
+@-webkit-keyframes hide-menu{
+    from{-webkit-transform:translateX(0);
+        transform:translateX(0)
+    }
+    to{
+        -webkit-transform:translateX(-280px);
+        transform:translateX(-280px)
+    }
+}
 
 /* Large mobile view */
 @media (min-width: 355px) {
@@ -122,6 +158,9 @@ p.category-items-count{
     }
     div.hamburger-icon-wrapper{
         margin: 18px 0px 0px 15px;
+    }
+    div.categories-menu-background-overlay{
+        top: 55px;
     }
 }
 
@@ -173,3 +212,6 @@ p.category-items-count{
 
 
 }
+
+
+

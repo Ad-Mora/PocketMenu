@@ -19,16 +19,26 @@ var mobileCategoriesMenu = (function () {
     // private functions
     function hideMobileCategoriesMenu() {
         backgroundOverlay.style.display = "none";
-        categoriesList.style.display = "none";
+
+        // translate the headbar right
+        mobileSearchModal.orangeHeadBar.classList.remove("visible-state");
+        mobileSearchModal.orangeHeadBar.classList.add("hidden-state");
+        // translate the categories menu right
+        categoriesList.classList.remove("visible-state");
+        categoriesList.classList.add("hidden-state");
+
     }
 
     // public functions
     function showMobileCategoriesMenu() {
         backgroundOverlay.style.display = "block";
-        categoriesList.style.display = "block";
         // translate the headbar left
-            mobileSearchModal.orangeHeadBar.style.transform = "translateX("
+        mobileSearchModal.orangeHeadBar.classList.remove("hidden-state");
+        mobileSearchModal.orangeHeadBar.classList.add("visible-state");
+
         // translate the categories menu left
+        categoriesList.classList.remove("hidden-state");
+        categoriesList.classList.add("visible-state");
     }
 
     // return public pointers to private variables
