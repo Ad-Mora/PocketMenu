@@ -18,12 +18,17 @@ var mobileCategoriesMenu = (function () {
 
     // private functions
     function hideMobileCategoriesMenu() {
-        menuWrapper.style.display = "none";
+        backgroundOverlay.style.display = "none";
+        categoriesList.style.display = "none";
     }
 
     // public functions
     function showMobileCategoriesMenu() {
-        menuWrapper.style.display = "block";
+        backgroundOverlay.style.display = "block";
+        categoriesList.style.display = "block";
+        // translate the headbar left
+            mobileSearchModal.orangeHeadBar.style.transform = "translateX("
+        // translate the categories menu left
     }
 
     // return public pointers to private variables
@@ -37,7 +42,7 @@ var mobileCategoriesMenu = (function () {
 var mobileSearchModal = (function(){
     // cached DOM
     var headerElement = document.querySelector("div.header");
-    var hamburgerIcon = headerElement.querySelector("img.hamburger-icon");
+    var hamburgerIcon = headerElement.querySelector("div.hamburger-icon-wrapper");
     var desktopSearchBar = headerElement.querySelector("img.header-search-bar");
     var searchIcon = headerElement.querySelector("img.search-icon");
 
@@ -60,7 +65,7 @@ var mobileSearchModal = (function(){
 
     // return public pointers to private variables & functions
     return {
-
+        orangeHeadBar: headerElement
     };
 
 })();

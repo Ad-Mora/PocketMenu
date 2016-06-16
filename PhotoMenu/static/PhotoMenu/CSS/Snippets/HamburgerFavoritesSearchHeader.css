@@ -11,34 +11,35 @@
 .header-search-bar-with-icon{
     display: none;
 }
-.hamburger-icon{
+div.hamburger-icon-wrapper{
     display: inline-block;
-    height: 25px;
-    margin-left: 10px;
-    margin-top: 10px;
-}
-span.hamburger-icon-middle{
-    display: inline-block;
-    margin: 21px 0px 0px 15px;
     width: 23px;
-    height: 3px;
+    height: 19px;
+    margin: 13px 0px 0px 15px;
     position: relative;
-    background-color: #FFFFFF;
 }
-span.hamburger-icon-middle::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 8px;
+span.hamburger-bar-middle{
     width: 23px;
     height: 3px;
     background-color: #FFFFFF;
+    position: absolute;
+    top: 8px;
+    left: 0px;
 }
-span.hamburger-icon-middle::after{
+span.hamburger-bar-middle::before{
     content: "";
     position: absolute;
     left: 0;
     top: -8px;
+    width: 23px;
+    height: 3px;
+    background-color: #FFFFFF;
+}
+span.hamburger-bar-middle::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
     width: 23px;
     height: 3px;
     background-color: #FFFFFF;
@@ -64,6 +65,9 @@ span.hamburger-icon-middle::after{
 }
 
 /* Mobile Category Menu */
+div.mobile-categories-menu-wrapper{
+
+}
 div.categories-menu-background-overlay{
     position: fixed;
     width: 100%;
@@ -72,20 +76,18 @@ div.categories-menu-background-overlay{
     top: 0px;
     left: 0px;
     z-index: 1;
-}
-div.mobile-categories-menu-wrapper{
     display: none;
 }
 ul.mobile-categories-menu-list{
     position: fixed;
-    width: 80%;
-    max-width: 300px;
+    width: 280px;
     height: 100%;
     background-color: #FFFFFF;
     top: 0px;
     left: 0px;
     z-index: 1;
     overflow: scroll;
+    display: none;
 }
 li.categories-menu-category-option{
     width: 100%;
@@ -117,6 +119,9 @@ p.category-items-count{
     }
     .search-icon{
         margin: 16px 0px 0px 0px;
+    }
+    div.hamburger-icon-wrapper{
+        margin: 18px 0px 0px 15px;
     }
 }
 
@@ -159,8 +164,12 @@ p.category-items-count{
     .search-icon{
         display: none;
     }
+    div.hamburger-icon-wrapper{
+        display: none;
+    }
     div.mobile-categories-menu-wrapper{
         display: none;
     }
+
 
 }
