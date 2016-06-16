@@ -22,6 +22,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesButton.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HeaderSearchBar.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HamburgerFavoritesSearchHeader.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileSearchModal.css" %}">
 
   <link rel="stylesheet" type='text/css' href="{% static "PhotoMenu/CSS/SitePages/RestaurantPage.css" %}">
 
@@ -29,7 +30,11 @@
 </head>
 <body>
 
+  <!-- Website Header -->
   {% include "PhotoMenu/Snippets/HamburgerFavoritesSearchHeader.html" %}
+
+  <!-- Mobile Search Modal -->
+  {%  include "PhotoMenu/Snippets/MobileSearchModal.html" %}
 
   <!-- Background Image w/ title -->
   <div class="header-background">
