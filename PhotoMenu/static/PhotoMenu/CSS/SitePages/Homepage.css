@@ -32,11 +32,16 @@
     text-align: center;
     padding-bottom: 10px;
 }
-/*
+.select-search-type{
+    display: none;
+}
+.search-bar-and-suggestions{
+    position: relative;
+    margin-top: 12px;
+}
 .search-bar{
     position: relative;
     z-index: 1;
-    margin-top: 12px;
     margin-left: 4%;
     padding-left: 10px;
     width: 92%;
@@ -47,14 +52,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-*/
-.search-suggestions-wrapper{
-    position: relative;
-}
 .search-suggestions-box{
     display: none;
     position: absolute;
-    top: -10px;
+    top: 25px;
     padding-top: 10px;
     padding-bottom: 5px;
     z-index: 0;
@@ -75,6 +76,9 @@
 }
 .search-suggestion:hover{
     background-color: #eeeeee;
+}
+.search-submit-button{
+    display: none;
 }
 .search-button{
     margin-left: 4%;
@@ -186,15 +190,15 @@
         font-size: 22px;
         width: 44%;
     }
-    /*
     .search-bar{
         height: 40px;
         font-size: 20px;
         margin-left: 6%;
         width: 88%;
     }
-    */
     .search-suggestions-box{
+        top: 30px;
+        padding-top: 10px;
         margin-left: 6%;
         width: 88%;
     }
@@ -275,49 +279,45 @@
     .restaurant-name{
         display: none;
     }
-    /*
-    .search-bar{
-        height: 44px;
-        font-size: 22px;
-        margin-left: 30%;
-        width: 40%;
-    }
-    */
-
-
-
-
-
-/*-------START----------*/
-
-@media (min-width: 800px) {
-
-    div.search-bar-wrapper{
+    .search-bar-wrapper{
         margin: 0px auto 0px auto;
-        height: 35px;
-        width: 510px;
+        height: 45px;
+        width: 620px;
         background-color: white;
         border-radius: 3px;
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
     }
-    select.select-search-type{
+    .select-search-type{
         display: inline-block;
+        font-size: 18px;
         float: left;
-        height: 35px;
-        width: 120px;
+        height: 45px;
+        width: 130px;
+        background-color: white;
     }
-    input.search-bar{
+    .search-bar-and-suggestions{
         display: inline-block;
-        float: left;
-        padding-left: 10px;
-        width: 300px;
-        height: 35px;
-        box-sizing: border-box;
+        margin-top: 0px;
     }
-    input.search-submit-button{
+    .search-bar{
+        width: 400px;
+        height: 45px;
+        margin-left: 0px;
+        border-radius: 0px;
+    }
+    .search-suggestions-box{
+        width: 400px;
+        top: 35px;
+        margin-left: 0px;
+    }
+    .search-suggestion{
+        font-size: 22px;
+        line-height: 44px;
+    }
+    .search-submit-button{
         display: inline-block;
-        height: 35px;
+        height: 45px;
         width: 90px;
         float: right;
         background-color: #448AFF;
@@ -329,22 +329,6 @@
         border-radius: 0px 3px 3px 0px;
         -webkit-border-radius: 0px 3px 3px 0px;
         -moz-border-radius: 0px 3px 3px 0px;
-    }
-}
-
-
-
-/*--------END---------*/
-
-
-
-    .search-suggestions-box{
-        margin-left: 30%;
-        width: 40%;
-    }
-    .search-suggestion{
-        font-size: 22px;
-        line-height: 44px;
     }
     .search-button{
         display: none;

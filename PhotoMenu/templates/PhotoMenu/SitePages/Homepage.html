@@ -33,25 +33,30 @@
 
     <form class="search-bar-form">
       <div class="search-bar-wrapper">
+
+        <!--Select drop down menu-->
         <select class="select-search-type">
           <option value="restaurant">Restaurant</option>
           <option value="restaurant">Food</option>
         </select>
-        <input type="text" class="search-bar" placeholder="Search for Restaurants">
+
+        <!--Search bar and search suggestions-->
+        <div class="search-bar-and-suggestions">
+          <input type="text" class="search-bar" placeholder="Search for Restaurants">
+          <div class="search-suggestions-box">
+            <p class="search-suggestion">This is the first suggestion</p>
+            <p class="search-suggestion">This is the second suggestion</p>
+            <p class="search-suggestion">This is the third suggestion</p>
+            <p class="search-suggestion">This is the fourth suggestion</p>
+            <p class="search-suggestion">This is the fifth suggestion</p>
+          </div>
+        </div>
+
+        <!--Search button with white search icon-->
         <input type="submit" class="search-submit-button" value="">
       </div>
     </form>
 
-
-    <div class="search-suggestions-wrapper">
-      <div class="search-suggestions-box">
-        <p class="search-suggestion">This is the first suggestion</p>
-        <p class="search-suggestion">This is the second suggestion</p>
-        <p class="search-suggestion">This is the third suggestion</p>
-        <p class="search-suggestion">This is the fourth suggestion</p>
-        <p class="search-suggestion">This is the fifth suggestion</p>
-      </div>
-    </div>
 
 		<button class="search-button">Search</button>
 
