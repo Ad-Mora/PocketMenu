@@ -7,6 +7,53 @@ h1.search-page-title{
     text-align: center;
 }
 
+form.search-bar-form{
+    width: 90%;
+    margin: 10px auto 0px auto;
+    position: relative;
+}
+
+select.select-search-type{
+    display: none;
+}
+
+div.search-bar-input-wrapper{
+    width: 87%;
+    height: 35px;
+    float: left;
+}
+
+input.search-search-bar{
+    height: 100%;
+    width: 100%;
+    -webkit-box-shadow: inset 0px 1px 0px #ECECEC;
+    -moz-box-shadow: inset 0px 1px 0px #ECECEC;
+    box-shadow: inset 0px 1px 0px #ECECEC;
+    border: 1px solid #CCCCCC;
+    background-color: #FFFFFF;
+    -webkit-border-radius:3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0px 0px 0px 10px;
+}
+
+input.search-submit-button{
+    width: 13%;
+    height: 37px;
+    display: inline-block;
+    background-color: #448AFF;
+    color: #FFFFFF;
+    border: 0px;
+    background-image: url("../../Images/Icons/WhiteSearchIcon.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: 20px 20px;
+    background-size: 20px 20px;
+    background-position: center center;
+    -webkit-border-radius: 0px 3px 3px 0px;
+    -moz-border-radius:  0px 3px 3px 0px;
+    border-radius:  0px 3px 3px 0px;
+}
+
 p.number-of-search-results{
     font-size: 12px;
     color: #777777;
@@ -135,6 +182,43 @@ span.next.page-icon{
     form.search-bar-form{
         margin: 10px 0px 0px 5%;
         width: 600px;
+    }
+
+    div.search-bar-input-wrapper{
+        width: 505px;
+        -webkit-box-shadow: inset 0px 1px 0px #ECECEC;
+        -moz-box-shadow: inset 0px 1px 0px #ECECEC;
+        box-shadow: inset 0px 1px 0px #ECECEC;
+        border: 1px solid #CCCCCC;
+        background-color: #FFFFFF;
+        -webkit-border-radius:3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+
+    select.select-search-type{
+        display: block;
+        width: 120px;
+        float: left;
+        height: 33px;
+        margin: 1px 0px 0px 0px;
+        background-color: #FFFFFF;
+    }
+
+    input.search-search-bar{
+        width: calc(100% - 135px);
+        float: right;
+        position: relative;
+        bottom: 1px;
+        left: 1px;
+        height: 35px;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+    }
+
+    input.search-submit-button{
+        width: 90px;
     }
 }
 
