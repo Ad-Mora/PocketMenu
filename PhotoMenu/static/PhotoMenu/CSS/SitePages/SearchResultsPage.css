@@ -7,19 +7,26 @@ h1.search-page-title{
 }
 
 /*-----Search bar-----*/
-div.search-bar-and-suggestions{
+div.search-bar-wrapper{
+    width: 92%;
+    height: 35px;
+    margin-left: 4%;
     margin-top: 12px;
+    background-color: white;
+}
+div.search-bar-and-suggestions{
 }
 input.search-bar{
     float: left;
     margin-left: 0px;
-    width: 70%;
+    width: 85%;
+    border-radius: 3px 0px 0px 3px;
 }
 input.search-submit-button{
     display: inline-block;
     float: right;
+    width: 15%;
     height: 35px;
-    width: 60px;
     background-color: #448AFF;
     background-image: url("../../Images/Icons/WhiteSearchIcon.png");
     background-repeat: no-repeat;
@@ -36,14 +43,16 @@ button.search-button{
 /*-----End search bar-----*/
 
 p.number-of-search-results{
+    display: block;
+    margin-top: 10px;
     font-size: 12px;
     color: #777777;
-    margin: 8px 5% 0px 5%;
+    margin-left: 4%;
 }
 div.full-width-seperator{
     height: 1px;
-    width: 90%;
-    margin: 8px 5% 8px 5%;
+    width: 92%;
+    margin: 8px 4% 4px 4%;
     background-color: #979797;
 }
 
