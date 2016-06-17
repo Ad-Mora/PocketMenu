@@ -164,13 +164,10 @@ span.next.page-icon{
     div.search-bar-wrapper{
         height: 45px;
         width: 620px;
-        border: 1px solid #CACACA;
     }
     input.search-bar{
         width: 400px;
         border-radius: 0px;
-        border: 0px;
-        border-left: 1px solid #CACACA;
     }
     input.search-submit-button{
         width: 90px;
