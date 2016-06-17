@@ -128,11 +128,12 @@ li.categories-menu-category-option{
 }
 h3.categories-menu-category-name{
     font-size: 16px;
-    color: #777777;
+    color: #555555;
 }
 p.category-items-count{
     font-size: 12px;
-    color: #BBBBBB;
+    color: #777777;
+    margin: 2px 0px 0px 0px;
 }
 
 /*----------------------Category Menu Animation States------------------------*/
