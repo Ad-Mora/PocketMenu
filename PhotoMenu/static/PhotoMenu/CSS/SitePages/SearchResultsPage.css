@@ -169,7 +169,9 @@ span.next.page-icon{
         height: 45px;
         width: 620px;
         position: relative;
-        z-index: 2;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
     }
     input.search-bar{
         width: 400px;

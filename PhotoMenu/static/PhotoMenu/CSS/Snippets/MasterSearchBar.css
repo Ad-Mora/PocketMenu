@@ -87,9 +87,9 @@ button.search-button{
         width: 620px;
         border: 1px solid #CACACA;
         background-color: white;
-        border-radius: 3px;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
     }
     select.select-search-type{
         display: inline-block;
