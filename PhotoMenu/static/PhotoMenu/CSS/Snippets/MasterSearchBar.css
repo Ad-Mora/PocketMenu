@@ -120,9 +120,9 @@ button.search-button{
     }
     input.search-submit-button{
         display: inline-block;
-        height: 45px;
-        width: 90px;
         float: right;
+        width: 90px;
+        height: 45px;
         background-color: #448AFF;
         background-image: url("../../Images/Icons/WhiteSearchIcon.png");
         background-repeat: no-repeat;

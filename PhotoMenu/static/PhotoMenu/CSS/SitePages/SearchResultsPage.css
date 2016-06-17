@@ -13,6 +13,9 @@ div.search-bar-wrapper{
     margin-left: 4%;
     margin-top: 12px;
     background-color: white;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
 }
 input.search-bar{
     float: left;
@@ -157,6 +160,21 @@ span.next.page-icon{
     }
     div.search-options-wrapper{
         display: none;
+    }
+    div.search-bar-wrapper{
+        height: 45px;
+        width: 620px;
+        border: 1px solid #CACACA;
+    }
+    input.search-bar{
+        width: 400px;
+        border-radius: 0px;
+        border: 0px;
+        border-left: 1px solid #CACACA;
+    }
+    input.search-submit-button{
+        width: 90px;
+        height: 45px;
     }
 
 @media (min-width: 1200px) {
