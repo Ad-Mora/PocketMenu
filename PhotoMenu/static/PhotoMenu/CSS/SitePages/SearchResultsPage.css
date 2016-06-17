@@ -175,6 +175,9 @@ span.next.page-icon{
         width: 400px;
         border-radius: 0px;
     }
+    div.search-suggestions-box{
+        width: 400px;
+    }
     input.search-submit-button{
         width: 90px;
         height: 45px;
