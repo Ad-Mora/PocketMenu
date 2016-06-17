@@ -101,7 +101,7 @@ a.footer-contact-us{
     a.footer-contact-us{
         position: absolute;
         top: 50%;
-        right: 5%;
+        right: 10%;
         transform: translateY(-50%);
         margin: 0px 0px 0px 0px;
         width: 20%;
