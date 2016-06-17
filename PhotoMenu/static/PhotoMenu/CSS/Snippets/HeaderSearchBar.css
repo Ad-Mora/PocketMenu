@@ -45,6 +45,7 @@ ul.header-search-suggestions-list{
     left: 0px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.03);
     border: 1px solid #cacaca;
+    display: none;
 }
 
 li.header-search-suggestion-options{
