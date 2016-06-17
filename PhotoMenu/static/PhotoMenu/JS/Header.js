@@ -5,7 +5,7 @@ var mobileCategoriesMenu = (function () {
     // cache DOM
     var menuWrapper = document.querySelector("div.mobile-categories-menu-wrapper");
     var backgroundOverlay = menuWrapper.querySelector("div.categories-menu-background-overlay");
-    var categoriesList = menuWrapper.querySelector("ul.mobile-categories-menu-list");
+    var categoriesList = menuWrapper.querySelector("div.mobile-category-list–wrapper");
     var hamburgerIcon = document.querySelector("span.hamburger-bar-middle");
 
     // bind events
