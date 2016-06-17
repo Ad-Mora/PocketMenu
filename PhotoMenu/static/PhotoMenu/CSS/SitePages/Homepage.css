@@ -113,6 +113,8 @@
     margin-right: auto;
     margin-top: 15px;
     height: 90px;
+    border-radius: 50%;
+    border: 2px solid #FF9800;
 }
 .icon-text{
     margin-top: 10px;
