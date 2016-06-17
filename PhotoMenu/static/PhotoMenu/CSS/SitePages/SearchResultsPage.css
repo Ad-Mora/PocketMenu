@@ -35,7 +35,6 @@ button.search-button{
 }
 /*-----End search bar-----*/
 
-
 p.number-of-search-results{
     font-size: 12px;
     color: #777777;
@@ -55,7 +54,6 @@ div.search-options-wrapper{
     color: #555555;
     overflow: auto;
 }
-
 span.search-option{
     width: 49%;
     height: 100%;
@@ -63,15 +61,12 @@ span.search-option{
     border-bottom: 4px solid transparent;
     padding: 0px 0px 5px 0px;
 }
-
 span.search-option-left{
     float: left;
 }
-
 span.search-option-right{
     float: right;
 }
-
 span.selected-search-option{
     border-bottom: 4px solid #FF9800;
     color: #FF9800;
@@ -79,7 +74,7 @@ span.selected-search-option{
 }
 
 /*-----------Food Results List-----------*/
- ul.search-results-list{
+ul.search-results-list{
     display: flex;
     flex-wrap: wrap;
 }
@@ -91,21 +86,16 @@ div.more-results-navigator{
     margin: 25px 0px 25px 2%;
     padding: 5px 0px 0px 0px;
 }
-
 a.results-page{
     color: #555555;
     font-size: 14px;
-
 }
-
 a.previous.results-page{
     float: left;
 }
-
 a.next.results-page{
     float: right;
 }
-
 span.page-icon{
     background-size: 100% auto;
     width: 20px;
@@ -115,24 +105,21 @@ span.page-icon{
     top: 3px;
     background-repeat: no-repeat;
 }
-
 span.previous.page-icon{
     background-image: url("../../Images/Icons/BackArrowIcon.png");
 }
-
 span.next.page-icon{
     background-image: url("../../Images/Icons/ForwardArrowIcon.png");
 }
 
+/*-----Large mobile view-----*/
 @media (min-width: 355px) {
     p.number-of-search-results{
         font-size: 14px;
     }
-
     a.results-page{
         font-size: 16px;
     }
-
     span.page-icon{
         width: 25px;
         height: 20px;
@@ -141,81 +128,32 @@ span.next.page-icon{
 }
 
 @media (min-width: 480px) {
-
     ul.search-results-list{
         width: 91%;
         margin: 0px 0px 0px 4%;
     }
 }
 
-@media (min-width: 700px) {
-
+/*-----Desktop view-----*/
+@media (min-width: 800px) {
     h1.search-page-title{
         margin: 15px 0px 10px 5%;
         width: 700px;
         text-align: left;
     }
-
     div.search-options-wrapper{
         display: none;
     }
 
-    /*----------------this is for the main searchbar-------------*/
-    form.search-bar-form{
-        margin: 10px 0px 0px 5%;
-        width: 600px;
-    }
-
-    div.search-bar-input-wrapper{
-        width: 505px;
-        -webkit-box-shadow: inset 0px 1px 0px #ECECEC;
-        -moz-box-shadow: inset 0px 1px 0px #ECECEC;
-        box-shadow: inset 0px 1px 0px #ECECEC;
-        border: 1px solid #CCCCCC;
-        background-color: #FFFFFF;
-        -webkit-border-radius:3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-    }
-
-    select.select-search-type{
-        display: block;
-        width: 120px;
-        float: left;
-        height: 33px;
-        margin: 1px 0px 0px 0px;
-        background-color: #FFFFFF;
-    }
-
-    input.search-search-bar{
-        width: calc(100% - 135px);
-        float: right;
-        position: relative;
-        bottom: 1px;
-        left: 1px;
-        height: 35px;
-        -webkit-border-radius: 0px;
-        -moz-border-radius: 0px;
-        border-radius: 0px;
-    }
-
-    input.search-submit-button{
-        width: 90px;
-    }
-}
-
 @media (min-width: 1200px) {
-
     div.top-section{
         width: 1200px;
         margin: 0px auto 0px auto;
     }
-
     ul.search-results-list{
         max-width: 1095px;
         margin: 0px auto 0px auto;
     }
-
     div.more-results-navigator{
         width: 1100px;
         margin: 0px auto 25px auto;
