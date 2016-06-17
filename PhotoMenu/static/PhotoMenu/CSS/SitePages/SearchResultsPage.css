@@ -14,8 +14,6 @@ div.search-bar-wrapper{
     margin-top: 12px;
     background-color: white;
 }
-div.search-bar-and-suggestions{
-}
 input.search-bar{
     float: left;
     margin-left: 0px;
@@ -123,6 +121,13 @@ span.next.page-icon{
 
 /*-----Large mobile view-----*/
 @media (min-width: 355px) {
+
+    div.search-bar-wrapper{
+        height: 40px;
+    }
+    input.search-submit-button{
+        height: 40px;
+    }
     p.number-of-search-results{
         font-size: 14px;
     }
