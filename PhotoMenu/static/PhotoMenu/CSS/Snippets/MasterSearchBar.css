@@ -1,11 +1,10 @@
-.select-search-type{
+select.select-search-type{
     display: none;
 }
-.search-bar-and-suggestions{
+div.search-bar-and-suggestions{
     position: relative;
-    margin-top: 12px;
 }
-.search-bar{
+input.search-bar{
     position: relative;
     z-index: 1;
     margin-left: 4%;
@@ -18,7 +17,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.search-suggestions-box{
+div.search-suggestions-box{
     display: none;
     position: absolute;
     top: 25px;
@@ -33,20 +32,20 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.search-suggestion{
+p.search-suggestion{
     padding-left: 10px;
     color: #333333;
     line-height: 35px;
     border: 1px solid #eeeeee;
     border-top: 0px;
 }
-.search-suggestion:hover{
+p.search-suggestion:hover{
     background-color: #eeeeee;
 }
-.search-submit-button{
+input.search-submit-button{
     display: none;
 }
-.search-button{
+button.search-button{
     margin-left: 4%;
     margin-top: 8px;
     width: 92%;
@@ -58,23 +57,22 @@
 
 /* Large mobile view */
 @media (min-width: 355px) {
-    .search-bar{
+    input.search-bar{
         height: 40px;
         font-size: 20px;
         margin-left: 6%;
         width: 88%;
     }
-    .search-suggestions-box{
+    div.search-suggestions-box{
         top: 30px;
-        padding-top: 10px;
         margin-left: 6%;
         width: 88%;
     }
-    .search-suggestion{
+    p.search-suggestion{
         font-size: 20px;
         line-height: 40px;
     }
-    .search-button{
+    button.search-button{
         height: 40px;
         font-size: 20px;
         margin-left: 6%;
@@ -84,7 +82,7 @@
 
 /* Desktop view */
 @media (min-width: 800px) {
-    .search-bar-wrapper{
+    div.search-bar-wrapper{
         margin: 0px auto 0px auto;
         height: 45px;
         width: 620px;
@@ -93,7 +91,7 @@
         -webkit-border-radius: 3px;
         -moz-border-radius: 3px;
     }
-    .select-search-type{
+    select.select-search-type{
         display: inline-block;
         font-size: 18px;
         float: left;
@@ -101,26 +99,26 @@
         width: 130px;
         background-color: white;
     }
-    .search-bar-and-suggestions{
+    div.search-bar-and-suggestions{
         display: inline-block;
         margin-top: 0px;
     }
-    .search-bar{
+    input.search-bar{
         width: 400px;
         height: 45px;
         margin-left: 0px;
         border-radius: 0px;
     }
-    .search-suggestions-box{
+    div.search-suggestions-box{
         width: 400px;
         top: 35px;
         margin-left: 0px;
     }
-    .search-suggestion{
+    p.search-suggestion{
         font-size: 22px;
         line-height: 44px;
     }
-    .search-submit-button{
+    input.search-submit-button{
         display: inline-block;
         height: 45px;
         width: 90px;
@@ -135,7 +133,7 @@
         -webkit-border-radius: 0px 3px 3px 0px;
         -moz-border-radius: 0px 3px 3px 0px;
     }
-    .search-button{
+    button.search-button{
         display: none;
     }
 }

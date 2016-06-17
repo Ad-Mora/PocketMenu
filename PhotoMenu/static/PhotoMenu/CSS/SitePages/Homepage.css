@@ -32,6 +32,9 @@
     text-align: center;
     padding-bottom: 10px;
 }
+div.search-bar-and-suggestions{
+    margin-top: 12px;
+}
 .picture-bottom-text{
     margin-left: 4%;
     margin-top: 10px;
@@ -199,6 +202,9 @@
     }
     .restaurant-name{
         display: none;
+    }
+    div.search-bar-and-suggestions{
+       margin-top: 0px;
     }
     .picture-bottom-text{
         font-size: 20px;
