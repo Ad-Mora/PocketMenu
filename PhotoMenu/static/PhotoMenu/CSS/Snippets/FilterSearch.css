@@ -3,7 +3,7 @@ div.filter-and-search-section{
     background-color: #FFFFFF;
     height: 35px;
     text-align: center;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0px 1px 1px 0px #9B9B9B;
 }
 
 ul.filter-options-list{
@@ -20,7 +20,6 @@ li.filter-option{
 
 span.filter-name{
     font-size: 14px;
-    font-weight: 300;
     color: #555555;
     padding: 0px 10px 7px 10px;
 }
@@ -112,13 +111,6 @@ div.current-page-search-wrapper{
         height: 30px;
         width: 30%;
         max-width: 300px;
-        -webkit-box-shadow: inset 0px 1px 0px 0px #ECECEC;
-        -moz-box-shadow: inset 0px 1px 0px 0px #ECECEC;
-        box-shadow: inset 0px 1px 0px 0px #ECECEC;
-        border: 1px solid #CCCCCC;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
     }
 
     input.current-page-search-bar{

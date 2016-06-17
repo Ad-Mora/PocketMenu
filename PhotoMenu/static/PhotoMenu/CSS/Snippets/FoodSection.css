@@ -3,12 +3,11 @@ li.food-type-section-wrapper{
 }
 
 h3.food-type-section-header{
-    width: 92%;
+    width: calc(90% - 10px);
     color: #777777;
-    margin: 15px 4% 5px 4%;
+    margin: 15px 5% 5px 5%;
     padding: 0px 0px 10px 0px;
     border-bottom: 1px solid #CCCCCC;
-    font-style: italic;
     font-size: 18px;
 }
 
