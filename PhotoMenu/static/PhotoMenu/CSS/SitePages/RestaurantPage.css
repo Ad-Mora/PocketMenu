@@ -60,11 +60,10 @@ div.categories-and-search-bar.restaurant-page-desktop{
 
 /*-------Menu Categories-------*/
 p.category-description{
-    font-size: 14px;
+    font-size: 13px;
     color: #777777;
-    /* font-weight: 300; */
-    width: 92%;
-    margin: 7px 0px 10px 5%;
+    width: 90%;
+    margin: 7px 0px 5px 5%;
     line-height: 17px;
 }
 
@@ -85,6 +84,9 @@ ul.food-type-section-food-list{
         margin: 0px 0px 0px 4%;
         padding: 0px 4px 0px 0px;
     }
+    p.category-description{
+        font-size: 14px;
+    }
 }
 
 @media (min-width: 600px) {
@@ -103,9 +105,7 @@ ul.food-type-section-food-list{
         width: 18px;
         height: 18px;
     }
-    p.category-description{
-        font-size: 15px;
-    }
+
 }
 
 @media (min-width: 800px) {
