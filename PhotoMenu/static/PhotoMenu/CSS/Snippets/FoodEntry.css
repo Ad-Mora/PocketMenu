@@ -18,12 +18,12 @@ h4.food-entry-name{
     overflow: hidden;
     text-align: left;
     margin: 3% 0px 3% 4%;
-    font-weight: 500;
+    font-weight: bold;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 92%;
-    color: #333333;
+    color: rgb(53,53,53);
 }
 
 p.food-description-name{
@@ -45,6 +45,7 @@ p.food-entry-price{
     font-size: 13px;
     color: #FF9800;
     margin: 3px 0px 4% 4%;
+    font-weight: bold;
 }
 
 /*-----------------Large Mobile----------------*/
@@ -74,9 +75,9 @@ p.food-entry-price{
         font-size: 14px;
         overflow: hidden;
         margin: 0px 0px 7px 4%;
-        color: #555555;
+        color: rgb(120,120,120);
         width: 92%;
-        font-weight: 300;
+        line-height: 16px;
     }
 
     div.food-entry-wrapper{
@@ -100,8 +101,8 @@ p.food-entry-price{
 
     li.food-entry-li{
         flex-grow: 1;
-        flex-basis: 210px;
+        flex-basis: 215px;
         width: 290px;
-        margin: 1% 0px 0px 1%;
+        margin: 1% 1% 0px 1%;
     }
 }

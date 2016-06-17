@@ -60,10 +60,10 @@ div.categories-and-search-bar.restaurant-page-desktop{
 /*-------Menu Categories-------*/
 p.category-description{
     font-size: 14px;
-    color: #555555;
-    font-weight: 300;
+    color: #777777;
+    /* font-weight: 300; */
     width: 92%;
-    margin: 7px 0px 10px 4%;
+    margin: 7px 0px 10px 5%;
     line-height: 17px;
 }
 
@@ -115,7 +115,7 @@ ul.food-type-section-food-list{
 
 @media (min-width: 1200px) {
     ul.list-of-food-lists{
-        max-width: 1210px;
+        max-width: 1280px;
         margin: 0px auto 0px auto;
     }
 }
