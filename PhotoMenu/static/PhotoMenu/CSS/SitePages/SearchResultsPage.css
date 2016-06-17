@@ -164,6 +164,8 @@ span.next.page-icon{
     div.search-bar-wrapper{
         height: 45px;
         width: 620px;
+        position: relative;
+        z-index: 2;
     }
     input.search-bar{
         width: 400px;

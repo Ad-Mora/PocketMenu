@@ -114,8 +114,10 @@ button.search-button{
     }
     div.search-suggestions-box{
         width: 400px;
-        top: 35px;
+        padding-top: 0px;
+        top: 45px;
         margin-left: 0px;
+        border-top: 1px solid #CACACA;
     }
     p.search-suggestion{
         font-size: 22px;
