@@ -12,35 +12,40 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    width: 80%;
+    margin: 0px auto 0px auto;
+    max-width: 400px;
 }
 .large-text{
     color: white;
-    /* width: 70%; */
+     width: 100%;
     /* padding-top: 100px; */
     /* margin-left: 15%; */
     /* margin-bottom: 50px; */
     font-size: 24px;
     /* font-weight: 300; */
-    width: 70%;
     margin: 0px auto 20px auto;
     text-align: center;
 }
-.food-name{
-    margin-left: 4%;
+.search-type{
     display: inline-block;
     color: white;
-    width: 46%;
     text-align: center;
     padding-bottom: 10px;
+    border-bottom: 4px solid transparent;
+    font-size: 16px;
+    width: 49%;
+}
+.selected-type{
     border-bottom: #448AFF solid 4px;
 }
-.restaurant-name{
-    display: inline-block;
-    color: white;
-    width: 46%;
-    text-align: center;
-    padding-bottom: 10px;
-}
+/*.restaurant-name{*/
+    /*display: inline-block;*/
+    /*color: white;*/
+    /*width: 46%;*/
+    /*text-align: center;*/
+    /*padding-bottom: 10px;*/
+/*}*/
 .select-search-type{
     display: none;
 }
@@ -51,15 +56,16 @@
 .search-bar{
     position: relative;
     z-index: 1;
-    margin-left: 4%;
+    /* margin-left: 4%; */
     padding-left: 10px;
-    width: 92%;
+    width: 100%;
     height: 35px;
     border: 1px solid #CACACA;
     border-radius: 3px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-size: 14px;
 }
 .search-suggestions-box{
     display: none;
@@ -90,25 +96,25 @@
     display: none;
 }
 .search-button{
-    margin-left: 4%;
-    margin-top: 8px;
-    width: 92%;
+    /* margin-left: 4%; */
+    /* margin-top: 8px; */
+    width: 100%;
     height: 35px;
     background: #448AFF;
     color: white;
     border-radius: 5px;
     font-weight: bold;
+    margin: 8px 0% 0px 0%;
 }
 .picture-bottom-text{
     /* margin-left: 4%; */
     /* margin-top: 10px; */
-    /* width: 92%; */
+     width: 100%;
     color: white;
     font-size: 14px;
     text-align: center;
     /* font-weight: 300; */
     margin: 15px auto 0px auto;
-    width: 60%;
 }
 /*---------------Why Us Header----------------*/
 .why-us-section-wrapper{
@@ -159,11 +165,13 @@
     font-size: 14px;
     margin: 10px auto 0px auto;
 }
+/*---------------Location Section--------------*/
 .white-area{
-    margin-top: 20px;
-    padding-top: 20px;
+    /* margin-top: 20px; */
+    /* padding-top: 20px; */
     background-color: white;
-    height: 210px;
+    /* height: 210px; */
+    padding: 40px 0px 40px 0px;
 }
 .our-locations-header{
     font-size: 24px;
@@ -185,9 +193,15 @@
     width: 49.3%;
     text-align: center;
 }
-.el-pelon{
-    width: 120px;
-    -webkit-clip-path: circle(38px at center);
+.location-section{
+    margin: 50px 0px 0px 0px;
+}
+.location-image{
+    width: 150px;
+    /*-webkit-clip-path: circle(38px at center);*/
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .crush-pizza{
     width: 120px;
@@ -197,6 +211,8 @@
     margin-top: 5px;
     text-align: center;
     color: #333333;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 /* Large mobile view */
@@ -207,24 +223,27 @@
     .dark-overlay{
         /*height: 500px;*/
     }
+    .background-picture-content {
+
+    }
     .large-text{
-        font-size: 30px;
-        /*margin-bottom: 80px;*/
+        font-size: 26px;
+        /* margin-bottom: 80px; */
     }
-    .food-name{
-        font-size: 22px;
-        margin-left: 6%;
-        width: 44%;
+    .search-type{
+        font-size: 18px;
+        /* margin-left: 6%; */
+        /* width: 44%; */
     }
-    .restaurant-name{
-        font-size: 22px;
-        width: 44%;
-    }
+    /*.restaurant-name{*/
+        /*font-size: 22px;*/
+        /*width: 44%;*/
+    /*}*/
     .search-bar{
         height: 40px;
-        font-size: 20px;
-        margin-left: 6%;
-        width: 88%;
+        font-size: 16px;
+        /* margin-left: 6%; */
+        /* width: 88%; */
     }
     .search-suggestions-box{
         top: 30px;
@@ -238,9 +257,9 @@
     }
     .search-button{
         height: 40px;
-        font-size: 20px;
-        margin-left: 6%;
-        width: 88%;
+        font-size: 18px;
+        /* margin-left: 6%; */
+        /* width: 88%; */
     }
     .picture-bottom-text{
         margin-top: 15px;
@@ -303,12 +322,12 @@
         text-align: center;
         /*margin-bottom: 20px;*/
     }
-    .food-name{
+    .search-type{
         display: none;
     }
-    .restaurant-name{
-        display: none;
-    }
+    /*.restaurant-name{*/
+        /*display: none;*/
+    /*}*/
     .search-bar-wrapper{
         margin: 0px auto 0px auto;
         height: 45px;
