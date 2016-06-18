@@ -1,3 +1,4 @@
+/*-------------Background Image & Search Bar----------------*/
 .homepage-picture{
     background-image: url("../../Images/MockPhotos/MobileHomepagePic.jpg");
     background-size: cover;
@@ -5,16 +6,24 @@
 }
 .dark-overlay{
     background-color: rgba(0,0,0,0.5);
-    height: 400px;
+    height: 100%;
+}
+.background-picture-content{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .large-text{
     color: white;
-    width: 70%;
-    padding-top: 100px;
-    margin-left: 15%;
-    margin-bottom: 50px;
+    /* width: 70%; */
+    /* padding-top: 100px; */
+    /* margin-left: 15%; */
+    /* margin-bottom: 50px; */
     font-size: 24px;
-    font-weight: 300;
+    /* font-weight: 300; */
+    width: 70%;
+    margin: 0px auto 20px auto;
+    text-align: center;
 }
 .food-name{
     margin-left: 4%;
@@ -88,33 +97,48 @@
     background: #448AFF;
     color: white;
     border-radius: 5px;
+    font-weight: bold;
 }
 .picture-bottom-text{
-    margin-left: 4%;
-    margin-top: 10px;
-    width: 92%;
-    color:white;
+    /* margin-left: 4%; */
+    /* margin-top: 10px; */
+    /* width: 92%; */
+    color: white;
     font-size: 14px;
     text-align: center;
-    font-weight: 300;
+    /* font-weight: 300; */
+    margin: 15px auto 0px auto;
+    width: 60%;
+}
+/*---------------Why Us Header----------------*/
+.why-us-section-wrapper{
+    margin: 70px 0px 70px 0px;
 }
 .why-us-header{
     text-align: center;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     color: #333333;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+    margin: 0px auto 0px auto;
+}
+.why-us-detail{
+    text-align: center;
+    margin: 5px auto 15px auto;
+    font-size: 14px;
+    color: #333333;
 }
 .why-us-icon{
     display: block;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
+    /* margin-bottom: 5px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* margin-top: 15px; */
     height: 90px;
     border-radius: 50%;
     border: 2px solid #FF9800;
+    margin: 25px auto 5px auto;
 }
 .icon-text{
     margin-top: 10px;
@@ -126,10 +150,11 @@
 .icon-description{
     margin-top: 10px;
     margin-left: 4%;
-    width: 92%;
+    width: 85%;
     text-align: center;
     color: #555555;
     font-size: 14px;
+    margin: 10px auto 40px auto;
 }
 .white-area{
     margin-top: 20px;
@@ -174,14 +199,14 @@
 /* Large mobile view */
 @media (min-width: 355px) {
     .homepage-picture{
-        height: 500px;
+        /*height: 500px;*/
     }
     .dark-overlay{
-        height: 500px;
+        /*height: 500px;*/
     }
     .large-text{
         font-size: 30px;
-        margin-bottom: 80px;
+        /*margin-bottom: 80px;*/
     }
     .food-name{
         font-size: 22px;
@@ -262,18 +287,18 @@
 /* Desktop view */
 @media (min-width: 800px) {
     .homepage-picture{
-        height: 600px;
+        /*height: 600px;*/
     }
     .dark-overlay{
-        height: 600px;
+        /*height: 600px;*/
     }
     .large-text{
         font-size: 44px;
-        width: 80%;
-        margin-left: 10%;
-        padding-top: 200px;
+        /*width: 80%;*/
+        /*margin-left: 10%;*/
+        /*padding-top: 200px;*/
         text-align: center;
-        margin-bottom: 20px;
+        /*margin-bottom: 20px;*/
     }
     .food-name{
         display: none;

@@ -26,62 +26,68 @@
 <!--Picture area-->
 <div class="homepage-picture">
 	<div class="dark-overlay">
-		<h1 class="large-text">Food looks better when you can see it.</h1>
-		<span class="food-name">Foods</span>
-		<span class="restaurant-name">Restaurants</span>
+    <div class="background-picture-content">
+      <h1 class="large-text">Food looks better when you can see it.</h1>
+      <span class="food-name">Foods</span>
+      <span class="restaurant-name">Restaurants</span>
 
-    <form class="search-bar-form">
-      <div class="search-bar-wrapper">
+      <form class="search-bar-form">
+        <div class="search-bar-wrapper">
 
-        <!--Select drop down menu-->
-        <select class="select-search-type">
-          <option value="restaurant">Restaurant</option>
-          <option value="restaurant">Food</option>
-        </select>
+          <!--Select drop down menu-->
+          <select class="select-search-type">
+            <option value="restaurant">Restaurant</option>
+            <option value="restaurant">Food</option>
+          </select>
 
-        <!--Search bar and search suggestions-->
-        <div class="search-bar-and-suggestions">
-          <input type="text" class="search-bar" placeholder="Search for Restaurants">
-          <div class="search-suggestions-box">
-            <p class="search-suggestion">This is the first suggestion</p>
-            <p class="search-suggestion">This is the second suggestion</p>
-            <p class="search-suggestion">This is the third suggestion</p>
-            <p class="search-suggestion">This is the fourth suggestion</p>
-            <p class="search-suggestion">This is the fifth suggestion</p>
+          <!--Search bar and search suggestions-->
+          <div class="search-bar-and-suggestions">
+            <input type="text" class="search-bar" placeholder="Search for Restaurant or Food">
+            <div class="search-suggestions-box">
+              <p class="search-suggestion">This is the first suggestion</p>
+              <p class="search-suggestion">This is the second suggestion</p>
+              <p class="search-suggestion">This is the third suggestion</p>
+              <p class="search-suggestion">This is the fourth suggestion</p>
+              <p class="search-suggestion">This is the fifth suggestion</p>
+            </div>
           </div>
+
+          <!--Search button with white search icon-->
+          <input type="submit" class="search-submit-button" value="">
         </div>
+      </form>
 
-        <!--Search button with white search icon-->
-        <input type="submit" class="search-submit-button" value="">
-      </div>
-    </form>
+      <button class="search-button">Search</button>
 
-		<button class="search-button">Search</button>
-
-		<p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
-	</div>
+      <p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
+    </div>
+  </div>
 </div>
 
 <!--Why us area-->
-<h1 class="why-us-header">Why Pocket Menu?</h1>
+<div class="why-us-section-wrapper">
+  <h1 class="why-us-header">Why Pocket Menu?</h1>
+  <p class="why-us-detail">We're not kidding. We really are better!</p>
 
-<div class="light-bulb-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/LightBulbIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
+  <div class="search-icon-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/SearchIcon.png" %}">
+    <h3 class="icon-text">Reduce Risk</h3>
+    <p class="icon-description">See pictures of menu items so you know what you’re getting before you order.</p>
+  </div>
+
+  <div class="light-bulb-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/LightBulbIcon.png" %}">
+    <h3 class="icon-text">Faster Browsing</h3>
+    <p class="icon-description">Pictures give you a description worth 1000 words with a single glance.</p>
+  </div>
+
+  <div class="heart-icon-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/HeartIcon.png" %}">
+    <h3 class="icon-text">Track Favorites</h3>
+    <p class="icon-description">“Favorite” the foods you’re interested for help determining what to get.</p>
+  </div>
 </div>
 
-<div class="heart-icon-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/HeartIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
-</div>
-
-<div class="search-icon-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/SearchIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
-</div>
 
 <!--Our locations area-->
 <div class="white-area">
