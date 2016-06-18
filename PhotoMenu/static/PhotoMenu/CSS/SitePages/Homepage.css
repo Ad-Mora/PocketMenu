@@ -135,6 +135,7 @@
     font-size: 14px;
     color: #333333;
     max-width: 400px;
+    width: 90%;
 }
 .reason-section{
     margin: 30px 0px 50px 0px;
@@ -181,12 +182,14 @@
     text-align: center;
 }
 .our-locations-detail{
-    margin-top: 10px;
-    margin-left: 15%;
+    /* margin-top: 10px; */
+    /* margin-left: 15%; */
     text-align: center;
-    width: 70%;
+    width: 90%;
     font-size: 16px;
-    color: #555555;
+    color: #333333;
+    margin: 10px auto 0px auto;
+    max-width: 400px;
 }
 .our-location-span{
     margin-top: 15px;
@@ -289,11 +292,11 @@
         font-size: 16px;
     }
     .white-area{
-        margin-top: 25px;
-        height: 260px;
+        /* margin-top: 25px; */
+        /* height: 260px; */
     }
     .our-locations-header{
-        font-size: 30px;
+        font-size: 28px;
     }
     .our-locations-detail{
         font-size: 18px;
@@ -301,14 +304,14 @@
     .our-location-span{
         margin-top: 25px;
     }
-    .el-pelon{
-        width: 150px;
-        -webkit-clip-path: circle(50px at center);
-    }
-    .crush-pizza{
-        width: 150px;
-        -webkit-clip-path: circle(50px at center);
-    }
+    /*.el-pelon{*/
+        /*width: 150px;*/
+        /*-webkit-clip-path: circle(50px at center);*/
+    /*}*/
+    /*.crush-pizza{*/
+        /*width: 150px;*/
+        /*-webkit-clip-path: circle(50px at center);*/
+    /*}*/
     .our-location-name{
         margin-top: 8px;
         font-size: 18px;
