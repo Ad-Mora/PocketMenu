@@ -118,7 +118,9 @@
 }
 /*---------------Why Us Header----------------*/
 .why-us-section-wrapper{
-    margin: 70px 0px 70px 0px;
+    margin: 50px auto 70px auto;
+    max-width: 1200px;
+    overflow: auto;
 }
 .why-us-header{
     text-align: center;
@@ -131,7 +133,7 @@
 }
 .why-us-detail{
     text-align: center;
-    margin: 5px auto 15px auto;
+    margin: 10px auto 35px auto;
     font-size: 14px;
     color: #333333;
     max-width: 400px;
@@ -273,7 +275,7 @@
         /* margin-top: 20px; */
         /* margin-bottom: 20px; */
         font-size: 28px;
-        margin: 20px 0px 10px 0px;
+        /*margin: 20px 0px 10px 0px;*/
     }
     .why-us-detail{
         font-size: 18px;
@@ -400,10 +402,19 @@
     .picture-bottom-text{
         font-size: 20px;
     }
+    .why-us-section-wrapper{
+        overflow: auto;
+    }
     .why-us-header{
-        margin-top: 30px;
-        margin-bottom: 35px;
-        font-size: 44px;
+        /* margin-top: 30px; */
+        /* margin-bottom: 35px; */
+        font-size: 32px;
+    }
+    .reason-section{
+        width: 33%;
+        float: left;
+        max-width: none;
+        margin: 0px auto 0px auto;
     }
     .light-bulb-section{
         display: inline-block;
@@ -421,13 +432,13 @@
         height: 150px;
     }
     .icon-text{
-        font-size: 24px;
+        font-size: 22px;
         margin-top: 20px;
     }
     .icon-description{
-        margin-left: 15%;
-        width: 70%;
-        font-size: 18px;
+        /*margin-left: 15%;*/
+        /*width: 70%;*/
+        /*font-size: 18px;*/
     }
     .white-area{
         margin-top: 50px;
