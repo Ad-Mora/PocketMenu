@@ -157,15 +157,17 @@ span.next.page-icon{
 
 /*-----Desktop view-----*/
 @media (min-width: 800px) {
-    h1.search-page-title{
+    h1.search-page-title {
         margin: 15px 0px 10px 5%;
         width: 700px;
         text-align: left;
     }
-    div.search-options-wrapper{
+
+    div.search-options-wrapper {
         display: none;
     }
-    div.search-bar-wrapper{
+
+    div.search-bar-wrapper {
         height: 45px;
         width: 620px;
         position: relative;
@@ -173,17 +175,21 @@ span.next.page-icon{
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
     }
-    input.search-bar{
+
+    input.search-bar {
         width: 400px;
         border-radius: 0px;
     }
-    div.search-suggestions-box{
+
+    div.search-suggestions-box {
         width: 400px;
     }
-    input.search-submit-button{
+
+    input.search-submit-button {
         width: 90px;
         height: 45px;
     }
+}
 
 @media (min-width: 1200px) {
     div.top-section{
