@@ -33,34 +33,8 @@
       <span class="search-type selected-type">Foods</span>
       <span class="search-type">Restaurants</span>
 
-      <form class="search-bar-form">
-        <div class="search-bar-wrapper">
-
-          <!--Select drop down menu-->
-          <select class="select-search-type">
-            <option value="restaurant">Restaurant</option>
-            <option value="food">Food</option>
-          </select>
-
-          <!--Search bar and search suggestions-->
-{#          {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}#}
-          <div class="search-bar-and-suggestions">
-            <input type="text" class="search-bar" placeholder="Search for Restaurant or Food">
-            <div class="search-suggestions-box">
-              <p class="search-suggestion">This is the first suggestion</p>
-              <p class="search-suggestion">This is the second suggestion</p>
-              <p class="search-suggestion">This is the third suggestion</p>
-              <p class="search-suggestion">This is the fourth suggestion</p>
-              <p class="search-suggestion">This is the fifth suggestion</p>
-            </div>
-          </div>
-
-          <!--Search button with white search icon-->
-          <input type="submit" class="search-submit-button" value="">
-        </div>
-      </form>
-
-      <button class="search-button">Search</button>
+      <!-- Main Search Bar -->
+      {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
       <p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
     </div>

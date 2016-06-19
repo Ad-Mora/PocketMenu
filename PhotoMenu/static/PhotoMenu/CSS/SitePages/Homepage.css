@@ -46,26 +46,9 @@
     /*text-align: center;*/
     /*padding-bottom: 10px;*/
 /*}*/
-.select-search-type{
-    display: none;
-}
 .search-bar-and-suggestions{
     position: relative;
     margin-top: 12px;
-}
-.search-bar{
-    position: relative;
-    z-index: 1;
-    /* margin-left: 4%; */
-    padding-left: 10px;
-    width: 100%;
-    height: 35px;
-    border: 1px solid #CACACA;
-    border-radius: 3px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: 14px;
 }
 .search-suggestions-box{
     display: none;
@@ -92,20 +75,6 @@
 }
 .search-suggestion:hover{
     background-color: #eeeeee;
-}
-.search-submit-button{
-    display: none;
-}
-.search-button{
-    /* margin-left: 4%; */
-    /* margin-top: 8px; */
-    width: 100%;
-    height: 35px;
-    background: #448AFF;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    margin: 8px 0% 0px 0%;
 }
 .picture-bottom-text{
     /* margin-left: 4%; */
@@ -253,12 +222,6 @@
         /*font-size: 22px;*/
         /*width: 44%;*/
     /*}*/
-    .search-bar{
-        height: 40px;
-        font-size: 16px;
-        /* margin-left: 6%; */
-        /* width: 88%; */
-    }
     .search-suggestions-box{
         top: 30px;
         /* padding-top: 10px; */
@@ -268,12 +231,6 @@
     .search-suggestion{
         /* font-size: 16px;
         /* line-height: 40px; */
-    }
-    .search-button{
-        height: 40px;
-        font-size: 18px;
-        /* margin-left: 6%; */
-        /* width: 88%; */
     }
     .picture-bottom-text{
         margin-top: 15px;
@@ -356,32 +313,9 @@
     /*.restaurant-name{*/
         /*display: none;*/
     /*}*/
-    .search-bar-wrapper{
-        margin: 0px auto 0px auto;
-        height: 45px;
-        width: 620px;
-        background-color: white;
-        border-radius: 3px;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-    }
-    .select-search-type{
-        display: inline-block;
-        font-size: 18px;
-        float: left;
-        height: 45px;
-        width: 130px;
-        background-color: white;
-    }
     .search-bar-and-suggestions{
         display: inline-block;
         margin-top: 0px;
-    }
-    .search-bar{
-        width: 400px;
-        height: 45px;
-        margin-left: 0px;
-        border-radius: 0px;
     }
     .search-suggestions-box{
         /* width: 400px; */
@@ -391,24 +325,6 @@
     .search-suggestion{
         /* font-size: 16px; */
         /* line-height: 44px; */
-    }
-    .search-submit-button{
-        display: inline-block;
-        height: 45px;
-        width: 90px;
-        float: right;
-        background-color: #448AFF;
-        background-image: url("../../Images/Icons/WhiteSearchIcon.png");
-        background-repeat: no-repeat;
-        background-size: 20px 20px;
-        -webkit-background-size: 20px 20px;
-        background-position: center center;
-        border-radius: 0px 3px 3px 0px;
-        -webkit-border-radius: 0px 3px 3px 0px;
-        -moz-border-radius: 0px 3px 3px 0px;
-    }
-    .search-button{
-        display: none;
     }
     .picture-bottom-text{
         font-size: 20px;
