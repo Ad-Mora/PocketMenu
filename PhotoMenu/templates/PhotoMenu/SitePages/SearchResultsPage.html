@@ -19,6 +19,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}">
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileLogoFavoritesHeader.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MasterSearchBar.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/SitePages/SearchResultsPage.css" %}">
 
   <link href='https://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
@@ -36,17 +37,7 @@
       <span class="search-option search-option-right">Food Name</span>
     </div>
 
-    <!-- Mobile Search Bar-->
-    <form class="search-bar-form">
-      <input type="submit" class="search-submit-button" value="">
-      <div class="search-bar-input-wrapper">
-        <select class="select-search-type">
-          <option value="restaurant">Restaurant</option>
-          <option value="restaurant">Food</option>
-        </select>
-        <input type="text" class="search-search-bar" placeholder="Search for Restaurants">
-      </div>
-    </form>
+    {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
     <p class="number-of-search-results">Showing results 1-50 of 99</p>
     <div class="full-width-seperator"></div>
@@ -94,6 +85,8 @@
   <script src="{%  static "PhotoMenu/JS/SwipeGesture.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/FoodEntry.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/AllInspectorView.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/MasterSearchBarDropDown.js" %}" type="text/javascript"></script>
+
 
 </body>
 </html>

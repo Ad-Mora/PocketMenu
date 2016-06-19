@@ -1,9 +1,9 @@
 var searchDropDown = (function(){
 
     // cache DOM objects
-    var darkOverlay = document.querySelector(".dark-overlay");
-    var searchBar = darkOverlay.querySelector(".search-bar");
-    var searchSuggestions = darkOverlay.querySelector(".search-suggestions-box");
+    var searchBarForm = document.querySelector(".search-bar-form");
+    var searchBar = searchBarForm.querySelector(".search-bar");
+    var searchSuggestions = searchBarForm.querySelector(".search-suggestions-box");
 
     // bind events
     searchBar.addEventListener("input", toggleSearchDropDown);
