@@ -193,6 +193,11 @@
     margin: 10px auto 0px auto;
     max-width: 400px;
 }
+.all-locations-wrapper{
+    margin: 0px auto 0px auto;
+    max-width: 900px;
+    overflow: auto;
+}
 .our-location-span{
     margin-top: 15px;
     display: inline-block;
@@ -208,6 +213,8 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: -1px 1px 5px 0px #555555;
 }
 .crush-pizza{
     width: 120px;
@@ -314,6 +321,9 @@
         /*width: 150px;*/
         /*-webkit-clip-path: circle(50px at center);*/
     /*}*/
+    .location-image{
+        width: 170px;
+    }
     .our-location-name{
         margin-top: 8px;
         font-size: 18px;
@@ -441,18 +451,25 @@
         /*font-size: 18px;*/
     }
     .white-area{
-        margin-top: 50px;
-        padding-top: 30px;
-        height: 400px;
+        /* margin-top: 50px; */
+        /* padding-top: 30px; */
+        /* height: 400px; */
     }
     .our-locations-header{
-        font-size: 44px;
+        font-size: 32px;
     }
     .our-locations-detail{
-        font-size: 22px;
+        font-size: 18px;
+    }
+    .location-section {
+        width: 50%;
+        float: left;
     }
     .our-location-span{
         margin-top: 50px;
+    }
+    .location-image{
+        width: 190px;
     }
     .el-pelon{
         width: 270px;
