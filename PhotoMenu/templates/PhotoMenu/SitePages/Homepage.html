@@ -27,49 +27,85 @@
 <!--Picture area-->
 <div class="homepage-picture">
 	<div class="dark-overlay">
-		<h1 class="large-text">Food looks better when you can see it.</h1>
-		<span class="food-name">Foods</span>
-		<span class="restaurant-name">Restaurants</span>
 
-    {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
+    <div class="background-picture-content">
+      <h1 class="large-text">Food looks better when you can see it.</h1>
+      <span class="search-type selected-type">Foods</span>
+      <span class="search-type">Restaurants</span>
 
-		<p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
-	</div>
+      <form class="search-bar-form">
+        <div class="search-bar-wrapper">
+
+          <!--Select drop down menu-->
+          <select class="select-search-type">
+            <option value="restaurant">Restaurant</option>
+            <option value="food">Food</option>
+          </select>
+
+          <!--Search bar and search suggestions-->
+{#          {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}#}
+          <div class="search-bar-and-suggestions">
+            <input type="text" class="search-bar" placeholder="Search for Restaurant or Food">
+            <div class="search-suggestions-box">
+              <p class="search-suggestion">This is the first suggestion</p>
+              <p class="search-suggestion">This is the second suggestion</p>
+              <p class="search-suggestion">This is the third suggestion</p>
+              <p class="search-suggestion">This is the fourth suggestion</p>
+              <p class="search-suggestion">This is the fifth suggestion</p>
+            </div>
+          </div>
+
+          <!--Search button with white search icon-->
+          <input type="submit" class="search-submit-button" value="">
+        </div>
+      </form>
+
+      <button class="search-button">Search</button>
+
+      <p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
+    </div>
+  </div>
 </div>
 
 <!--Why us area-->
-<h1 class="why-us-header">Why Pocket Menu?</h1>
+<div class="why-us-section-wrapper">
+  <h1 class="why-us-header">Why Pocket Menu?</h1>
+  <p class="why-us-detail">Because we do useful things traditional menus can't.</p>
 
-<div class="light-bulb-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/LightBulbIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
+  <div class="reason-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/SearchIcon.png" %}">
+    <h3 class="icon-text">Reduce Risk</h3>
+    <p class="icon-description">See pictures of menu items so you know what you’re getting before you order.</p>
+  </div>
+
+  <div class="reason-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/LightBulbIcon.png" %}">
+    <h3 class="icon-text">Faster Browsing</h3>
+    <p class="icon-description">Pictures give you a description worth 1000 words with a single glance.</p>
+  </div>
+
+  <div class="reason-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/HeartIcon.png" %}">
+    <h3 class="icon-text">Track Favorites</h3>
+    <p class="icon-description">“Favorite” the foods you’re interested for help determining what to get.</p>
+  </div>
 </div>
 
-<div class="heart-icon-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/HeartIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
-</div>
-
-<div class="search-icon-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/SearchIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
-</div>
 
 <!--Our locations area-->
 <div class="white-area">
 	<h1 class="our-locations-header">Our Locations</h1>
 	<p class="our-locations-detail">Check out some of these great restaurants!</p>
-	<span class="our-location-span">
-		<img class="el-pelon" src="{% static "PhotoMenu/Images/MockPhotos/ElPelon.jpg" %}">
-		<p class="our-location-name">El Pelon</p>
-	</span>
-	<span class="our-location-span">
-		<img class="crush-pizza" src="{% static "PhotoMenu/Images/MockPhotos/CrushPizza.jpg" %}">
-		<p class="our-location-name">Crush Pizza</p>
-	</span>
+  <div class="all-locations-wrapper">
+    <div class="location-section">
+      <img class="location-image" src="{% static "PhotoMenu/Images/MockPhotos/ElPelon.png" %}">
+      <p class="our-location-name">El Pelon</p>
+    </div>
+    <div class="location-section">
+      <img class="location-image" src="{% static "PhotoMenu/Images/MockPhotos/CrushPizza.png" %}">
+      <p class="our-location-name">Crush Pizza</p>
+    </div>
+  </div>
 </div>
 
 <!--Footer-->

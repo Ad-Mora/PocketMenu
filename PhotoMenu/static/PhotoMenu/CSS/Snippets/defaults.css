@@ -16,7 +16,13 @@ body {
 /* Large mobile view */
 @media (min-width: 355px) {
     body {
-        padding-bottom: 200px;
+        padding-bottom: 170px;
+    }
+}
+
+@media (min-width: 355px) {
+    body {
+        padding-bottom: 155px;
     }
 }
 

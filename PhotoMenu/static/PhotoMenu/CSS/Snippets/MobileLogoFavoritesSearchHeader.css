@@ -28,8 +28,8 @@
     display: inline-block;
     position: absolute;
     right: 10px;
-    margin-top: 10px;
-    height: 25px;
+    margin-top: 11px;
+    height: 23px;
 }
 
 /* Large mobile view */
@@ -42,11 +42,11 @@
     }
     .favorites-link{
         right: 48px;
-        margin-top: 5.5px;
+        margin-top: 8.5px;
     }
     .search-icon{
-        height: 28px;
-        margin-top: 13.5px;
+        /* height: 25px; */
+        margin-top: 16px;
     }
 }
 
