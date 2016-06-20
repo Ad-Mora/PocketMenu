@@ -1,21 +1,30 @@
 from __future__ import unicode_literals
 from django.db import models
 import datetime
+import os
 
 
-def get_upload_path(instance, filename):
+def get_restaurant_upload_path(instance, filename):
     upload_dir = './PhotoMenu/static/PhotoMenu/Images/Restaurants/'
     cleaned_name = instance.name.replace(' ', '')
     upload_path = upload_dir + cleaned_name + '/' + filename
     return upload_path
 
 
-class Restaurant(models.Model):
+def get_food_upload_path(instance, filename):
+    upload_dir = './PhotoMenu/static/PhotoMenu/Images/Restaurants/'
+    restaurant = instance.restaurant.name.replace(' ', '')
+    food_name = instance.name.replace(' ', '')
+    extension = os.path.splitext(filename)[1]
+    upload_path = upload_dir + restaurant + '/' + food_name + extension
+    return upload_path
 
+
+class Restaurant(models.Model):
     name = models.CharField(max_length=100, default='')
     address = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=100, default='')
-    header_image = models.ImageField(upload_to=get_upload_path)
+    header_image = models.ImageField(upload_to=get_restaurant_upload_path)
     mon_open_time = models.TimeField(default=datetime.time(0, 1))
     mon_close_time = models.TimeField(default=datetime.time(0, 1))
     tue_open_time = models.TimeField(default=datetime.time(0, 1))
@@ -35,12 +44,24 @@ class Restaurant(models.Model):
         return self.name
 
 
+class MenuCategory(models.Model):
+    name = models.CharField(max_length=100, default='')
+    description = models.TextField()
+
+    def __unicode__(self):
+        return self.name
+
+
 class FoodItem(models.Model):
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
-    food_name = models.CharField(max_length=100, default='')
+    menu_category = models.ForeignKey('MenuCategory', on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=200, default='')
     price = models.FloatField(default=0.0)
-    image = models.ImageField(upload_to=get_upload_path)
+    image = models.ImageField(upload_to=get_food_upload_path)
+
+    def __unicode__(self):
+        return self.name
 
 
 
