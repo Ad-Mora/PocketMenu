@@ -3,11 +3,18 @@ from django.db import models
 import datetime
 
 
+def get_upload_path(instance, filename):
+    upload_dir = './PhotoMenu/static/PhotoMenu/Images/Restaurants/'
+    cleaned_name = instance.name.replace(' ', '')
+    upload_path = upload_dir + cleaned_name + '/' + filename
+    return upload_path
+
+
 class Restaurant(models.Model):
     name = models.CharField(max_length=100, default='')
     address = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=100, default='')
-    header_image = models.ImageField(upload_to='./')
+    header_image = models.ImageField(upload_to=get_upload_path)  # this is a placeholder
     mon_open_time = models.TimeField(default=datetime.time(0, 1))
     mon_close_time = models.TimeField(default=datetime.time(0, 1))
     tue_open_time = models.TimeField(default=datetime.time(0, 1))
