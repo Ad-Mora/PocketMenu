@@ -1,18 +1,17 @@
 .logo{
-    font-family: 'Nothing You Could Do', cursive;
-    color: white;
-    font-size: 22px;
+    background-image: url("../../Images/Icons/ChompsHamburgerLogo.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 175px;
+    height: 30px;
+    background-position: 0px 0px;
+    margin: 7px 0px 0px 10px;
 }
 
 /* Large mobile view */
 @media (min-width: 355px) {
     .logo{
-        font-size: 24px;
-    }
-}
-/* Desktop view */
-@media (min-width: 800px) {
-    .logo{
-        font-size: 30px;
+        height: 40px;
     }
 }
