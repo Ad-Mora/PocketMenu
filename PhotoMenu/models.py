@@ -21,9 +21,9 @@ def get_food_upload_path(instance, filename):
 
 
 class Restaurant(models.Model):
-    name = models.CharField(max_length=100, default='')
-    address = models.CharField(max_length=100, default='')
-    description = models.CharField(max_length=100, default='')
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
     header_image = models.ImageField(upload_to=get_restaurant_upload_path)
     mon_open_time = models.TimeField(default=datetime.time(0, 1))
     mon_close_time = models.TimeField(default=datetime.time(0, 1))
@@ -49,7 +49,8 @@ class MenuCategory(models.Model):
     class Meta:
         verbose_name_plural = 'Menu categories'
 
-    name = models.CharField(max_length=100, default='')
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
     description = models.TextField()
 
     def __unicode__(self):
@@ -59,9 +60,9 @@ class MenuCategory(models.Model):
 class FoodItem(models.Model):
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     menu_category = models.ForeignKey('MenuCategory', on_delete=models.CASCADE)
-    name = models.CharField(max_length=100, default='')
-    description = models.CharField(max_length=200, default='')
-    price = models.FloatField(default=0.0)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=200)
+    price = models.FloatField()
     image = models.ImageField(upload_to=get_food_upload_path)
 
     def __unicode__(self):
