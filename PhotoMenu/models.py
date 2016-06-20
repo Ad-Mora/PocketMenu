@@ -11,10 +11,11 @@ def get_upload_path(instance, filename):
 
 
 class Restaurant(models.Model):
+
     name = models.CharField(max_length=100, default='')
     address = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=100, default='')
-    header_image = models.ImageField(upload_to=get_upload_path)  # this is a placeholder
+    header_image = models.ImageField(upload_to=get_upload_path)
     mon_open_time = models.TimeField(default=datetime.time(0, 1))
     mon_close_time = models.TimeField(default=datetime.time(0, 1))
     tue_open_time = models.TimeField(default=datetime.time(0, 1))
@@ -30,13 +31,16 @@ class Restaurant(models.Model):
     sun_open_time = models.TimeField(default=datetime.time(0, 1))
     sun_close_time = models.TimeField(default=datetime.time(0, 1))
 
+    def __unicode__(self):
+        return self.name
+
 
 class FoodItem(models.Model):
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     food_name = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=200, default='')
     price = models.FloatField(default=0.0)
-    image = models.ImageField()
+    image = models.ImageField(upload_to=get_upload_path)
 
 
 
