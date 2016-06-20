@@ -45,6 +45,10 @@ class Restaurant(models.Model):
 
 
 class MenuCategory(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Menu categories'
+
     name = models.CharField(max_length=100, default='')
     description = models.TextField()
 
@@ -54,7 +58,7 @@ class MenuCategory(models.Model):
 
 class FoodItem(models.Model):
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
-    menu_category = models.ForeignKey('MenuCategory', on_delete=models.CASCADE, null=True)
+    menu_category = models.ForeignKey('MenuCategory', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, default='')
     description = models.CharField(max_length=200, default='')
     price = models.FloatField(default=0.0)
