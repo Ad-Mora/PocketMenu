@@ -77,6 +77,7 @@ a.footer-contact-us{
         display: inline-block;
         position: absolute;
         top: 50%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
     }
     h3.footer-question{
@@ -102,6 +103,7 @@ a.footer-contact-us{
         position: absolute;
         top: 50%;
         right: 10%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         margin: 0px 0px 0px 0px;
         width: 20%;

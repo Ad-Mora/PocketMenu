@@ -11,6 +11,7 @@
 .background-picture-content{
     position: relative;
     top: 50%;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 80%;
     margin: 0px auto 0px auto;
@@ -177,10 +178,10 @@
 }
 .location-image{
     width: 150px;
-    /*-webkit-clip-path: circle(38px at center);*/
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
     border-radius: 50%;
     box-shadow: -1px 1px 5px 0px #555555;
 }
