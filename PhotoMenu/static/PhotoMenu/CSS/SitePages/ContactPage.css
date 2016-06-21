@@ -204,4 +204,9 @@ body{
         font-size: 16px;
         max-width: 200px;
     }
+    .send-message:hover{
+        cursor: pointer;
+        background-color: #FF9800;
+        color: #FFFFFF;
+    }
 }
