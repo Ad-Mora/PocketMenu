@@ -48,6 +48,7 @@ body{
     /*margin-left: 4%;*/
     margin-top: 12px;
     width: 100%;
+    border-bottom: 2px solid #FF9800;
 }
 .contact-us-text{
     margin-top: 10px;
