@@ -1,5 +1,11 @@
 select.select-search-type{
     display: none;
+    padding: 0px 0px 0px 10px;
+    background-image: url("../../Images/Icons/BlackDownTriangle.png");
+    -webkit-background-size: 12px auto;
+    background-size: 12px auto;
+    background-repeat: no-repeat;
+    background-position: 110px 19px;
 }
 div.search-bar-and-suggestions{
     position: relative;
