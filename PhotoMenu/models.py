@@ -13,7 +13,7 @@ def get_restaurant_upload_path(instance, filename):
 
 def get_food_upload_path(instance, filename):
     upload_dir = './PhotoMenu/static/PhotoMenu/Images/Restaurants/'
-    restaurant = instance.restaurant.name.replace(' ', '')
+    restaurant = instance.menu_category.restaurant.name.replace(' ', '')
     food_name = instance.name.replace(' ', '')
     extension = os.path.splitext(filename)[1]
     upload_path = upload_dir + restaurant + '/' + food_name + extension
@@ -54,7 +54,7 @@ class MenuCategory(models.Model):
     description = models.TextField()
 
     def __unicode__(self):
-        return self.name
+        return self.restaurant.name + ' ' + self.name
 
 
 class FoodItem(models.Model):
@@ -65,7 +65,7 @@ class FoodItem(models.Model):
     image = models.ImageField(upload_to=get_food_upload_path)
 
     def __unicode__(self):
-        return self.name
+        return self.menu_category.restaurant.name + ' ' + self.name
 
 
 
