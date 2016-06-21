@@ -90,7 +90,6 @@
 .why-us-section-wrapper{
     margin: 50px auto 70px auto;
     max-width: 1200px;
-    overflow: auto;
 }
 .why-us-header{
     text-align: center;
@@ -164,9 +163,8 @@
     max-width: 400px;
 }
 .all-locations-wrapper{
-    margin: 0px auto 0px auto;
+    margin: 0px auto 20px auto;
     max-width: 900px;
-    overflow: auto;
 }
 .our-location-span{
     margin-top: 15px;
@@ -330,7 +328,7 @@
         font-size: 20px;
     }
     .why-us-section-wrapper{
-        overflow: auto;
+
     }
     .why-us-header{
         /* margin-top: 30px; */
