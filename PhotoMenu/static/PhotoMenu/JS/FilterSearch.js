@@ -30,12 +30,14 @@ var moreOptions = (function(){
     // private methods
     function _toggleDropDownMenu(event) {
         event.stopPropagation();
-        var srcElement = event.srcElement;
+        console.log(event);
+        var srcElement = event.srcElement || event.target;
         while (srcElement) {
             if (srcElement == moreOptionsLI) {
                 dropDownIsVisible = !dropDownIsVisible;
                 moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
                 dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+                dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
                 return;
             }
             srcElement = srcElement.parentNode;
@@ -44,6 +46,8 @@ var moreOptions = (function(){
         dropDownIsVisible = false;
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+        dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+                return;
     }
 
     function _adjustSlidingUnderBar(event) {
