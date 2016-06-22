@@ -159,6 +159,8 @@ var mobileInspectorView = (function () {
     // private functions
     function _changeInspectorViewDimensionsOnResize(event) {
         listOfMobileInspectors.style.width = 3 * window.innerWidth + "px";
+        listOfMobileInspectors.style.webkitTransform = "translate3d(-" + window.innerWidth + "px,0px,0px)";
+        listOfMobileInspectors.style.mozTransform = "translate3d(-" + window.innerWidth + "px,0px,0px)";
         listOfMobileInspectors.style.transform = "translate3d(-" + window.innerWidth + "px,0px,0px)";
 
         leftInspectorView.style.width = window.innerWidth + "px";
@@ -179,6 +181,8 @@ var mobileInspectorView = (function () {
     }
     
     function _whileDraggingImage(direction, deltaX, deltaY) {
+        listOfMobileInspectors.style.webkitTransform = "translate3d("+ (-1 * (window.innerWidth - deltaX)) +"px,0px,0px)";
+        listOfMobileInspectors.style.mozTransform = "translate3d("+ (-1 * (window.innerWidth - deltaX)) +"px,0px,0px)";
         listOfMobileInspectors.style.transform = "translate3d("+ (-1 * (window.innerWidth - deltaX)) +"px,0px,0px)";
     }
 
@@ -186,15 +190,22 @@ var mobileInspectorView = (function () {
         var MIN_SWIPE_DISTANCE = window.innerWidth * 0.4;
 
         if (direction == 'left' && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
+            listOfMobileInspectors.style.webkitTransform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
+            listOfMobileInspectors.style.mozTransform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.transform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
             allInspectorView.showNextFood(null);
         }
         else if (direction == 'right' && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
+            listOfMobileInspectors.style.webkitTransform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
+            listOfMobileInspectors.style.mozTransform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.transform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
             allInspectorView.showPreviousFood(null);
         }
         else {
+            listOfMobileInspectors.style.mozTransform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
+            listOfMobileInspectors.style.webkitTransform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.transform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
+
         }
     }
 
@@ -218,6 +229,8 @@ var mobileInspectorView = (function () {
         nextFood = foodEntry.getNextFoodItem(foodElement);
 
         // center the 3 InspectorViews
+        listOfMobileInspectors.style.webkitTransform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
+        listOfMobileInspectors.style.mozTransform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
         listOfMobileInspectors.style.transform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
 
         // update the 3 InspectorViews with their relevant info

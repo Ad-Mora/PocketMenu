@@ -28,6 +28,8 @@ ul.list-of-mobile-inspectors{
     z-index: 2;
     width: calc(320px * 3);
     height: 100%;
+    -webkit-transform: translate3d(-320px, 0px, 0px);
+    -moz-transform: translate3d(-320px, 0px, 0px);
     transform: translate3d(-320px, 0px, 0px);
 }
 
