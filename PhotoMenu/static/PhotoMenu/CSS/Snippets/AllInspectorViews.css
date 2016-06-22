@@ -16,6 +16,8 @@ div.interest-action-positioner{
     bottom: -100px;
     z-index: 2;
     width: 100%;
+    -moz-animation-name: display-action;
+    -moz-animation-duration: 4s;
     -webkit-animation-name: display-action;
     -webkit-animation-duration: 4s;
     animation-name: display-action;
@@ -29,6 +31,8 @@ div.interest-action-wrapper{
     display: inline-block;
     position: relative;
     left: 50%;
+    -moz-transform: translate(-50%);
+    -webkit-transform: translate(-50%);
     transform: translateX(-50%);
 }
 p.interest-action-taken{
