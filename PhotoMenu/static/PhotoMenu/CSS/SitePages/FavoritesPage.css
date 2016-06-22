@@ -38,7 +38,9 @@ ul.list-of-food-lists{
 
 }
 ul.food-type-section-food-list{
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 

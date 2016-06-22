@@ -90,6 +90,7 @@ var allInspectorView = (function () {
     }
 
     function toggleInterestInFood(event) {
+        console.log(event);
         var newInterestInFood = ! (currentFood.getAttribute("data-food-is-liked") == "true");
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
         setInterestIconBasedOnCurrentInterest(desktopInspectorView.interestIcon, currentFood);
