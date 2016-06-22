@@ -41,6 +41,11 @@ a{
     text-decoration: none;
 }
 
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 input:focus,
 select:focus,
 textarea:focus,

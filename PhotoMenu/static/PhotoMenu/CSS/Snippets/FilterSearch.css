@@ -36,6 +36,7 @@ hr.sliding-underbar {
     margin-left: 0px;
     background: #FF9800;
     border: none;
+    -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
     position: relative;
     bottom: 3px;
@@ -43,7 +44,7 @@ hr.sliding-underbar {
 
 /*---------More Options DropDown Menu----------*/
 li.filter-option.more-options-options{
-     border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent;
     position: relative;
 }
 
@@ -59,7 +60,9 @@ i.more-options-drop-down-icon{
     position: absolute;
     right: -10px;
     top: calc(50% - 2px);
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+    -webkit-transition: .20s linear;
     transition: .20s linear;
 }
 
@@ -67,6 +70,7 @@ ul.more-filter-options-list{
     display: none;
     position: absolute;
     left: 50%;
+    -webkit-transform: translate(-50%);
     transform: translate(-50%);
     box-shadow: 0 6px 5px 0 rgba(0, 0, 0, 0.25);
     border-left: 1px solid #CCCCCC;

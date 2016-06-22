@@ -40,8 +40,13 @@ div.mobile-search-select-wrapper{
 
 select.mobile-select-search-type{
     background-color: transparent;
-    width: 120%;
+    width: 100%;
     color: #555555;
+    background-image: url("../../Images/Icons/BlackDownTriangle.png");
+    -webkit-background-size: 12px auto;
+    background-size: 10px auto;
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
 }
 
 span.mobile-search-select-triangle{
@@ -115,6 +120,7 @@ span.close-mobile-search-modal{
     text-align: center;
     position: relative;
     left: 50%;
+    -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
 }
 

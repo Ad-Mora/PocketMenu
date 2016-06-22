@@ -11,8 +11,7 @@ h3.food-type-section-header{
 }
 
 ul.food-type-section-food-list{
-    overflow: auto;
-
+    /*overflow: auto;*/
 }
 
 @media (min-width: 600px) {
