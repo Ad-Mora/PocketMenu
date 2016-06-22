@@ -1,0 +1,11 @@
+<!-- Relevant CSS files -->
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}"> #}
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesLink.css" %}"> #}
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/LogoFavoritesHeader.css" %}"> #}
+
+<div class="header">
+  {% include "PhotoMenu/Snippets/Logo.html" %}
+  {% include "PhotoMenu/Snippets/FavoritesLink.html" %}
+  <span class="header-links-separator"></span>
+  <a class="contact-us-link" href="{% url "PhotoMenu:contact_page" %}">Contact Us</a>
+</div>

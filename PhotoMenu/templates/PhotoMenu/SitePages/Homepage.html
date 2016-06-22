@@ -6,7 +6,9 @@
 	<meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
   <title>Title</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "PhotoMenu/Images/Icons/ChompsFaviconOrange.ico" %}">
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
@@ -15,61 +17,73 @@
 	<link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
 
-	<link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileLogoFavoritesHeader.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/LogoFavoritesHeader.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MasterSearchBar.css" %}">
 	<link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/SitePages/Homepage.css" %}">
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do">
 </head>
 
-{% include "PhotoMenu/Snippets/MobileLogoFavoritesHeader.html" %}
+{% include "PhotoMenu/Snippets/LogoFavoritesHeader.html" %}
 
 <!--Picture area-->
 <div class="homepage-picture">
 	<div class="dark-overlay">
-		<h1 class="large-text">Food looks better when you can see it.</h1>
-		<span class="food-name">Foods</span>
-		<span class="restaurant-name">Restaurants</span>
 
-    {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
+    <div class="background-picture-content">
+      <h1 class="large-text">Food looks better when you can see it.</h1>
+      <span class="search-type selected-type">Foods</span>
+      <span class="search-type">Restaurants</span>
 
-		<p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
-	</div>
+      <!-- Main Search Bar -->
+      {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
+
+      <p class="picture-bottom-text">Browse full photo menus, right on your phone.</p>
+    </div>
+  </div>
 </div>
 
 <!--Why us area-->
-<h1 class="why-us-header">Why Pocket Menu?</h1>
+<div class="why-us-section-wrapper">
+  <h1 class="why-us-header">Why Chomps?</h1>
+  <p class="why-us-detail">Because we're cool, fun, and useful!</p>
 
-<div class="light-bulb-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/LightBulbIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
+  <div class="reason-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/SearchIcon.png" %}">
+    <h3 class="icon-text">Reduce Risk</h3>
+    <p class="icon-description">See pictures of menu items so you know what you’re getting before you order.</p>
+  </div>
+
+  <div class="reason-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/LightBulbIcon.png" %}">
+    <h3 class="icon-text">Faster Browsing</h3>
+    <p class="icon-description">Pictures give you a description worth 1000 words with a single glance.</p>
+  </div>
+
+  <div class="reason-section">
+    <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/HeartIcon.png" %}">
+    <h3 class="icon-text">Track Favorites</h3>
+    <p class="icon-description">“Favorite” the foods you’re interested for help determining what to get.</p>
+  </div>
+  <div style="clear:both"></div>
 </div>
 
-<div class="heart-icon-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/HeartIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
-</div>
-
-<div class="search-icon-section">
-  <img class="why-us-icon" src="{% static "PhotoMenu/Images/Icons/SearchIcon.png" %}">
-  <h3 class="icon-text">Faster Browsing</h3>
-  <p class="icon-description">Pictures give a description worth 1000 words at a single glance.</p>
-</div>
 
 <!--Our locations area-->
 <div class="white-area">
 	<h1 class="our-locations-header">Our Locations</h1>
 	<p class="our-locations-detail">Check out some of these great restaurants!</p>
-	<span class="our-location-span">
-		<img class="el-pelon" src="{% static "PhotoMenu/Images/MockPhotos/ElPelon.jpg" %}">
-		<p class="our-location-name">El Pelon</p>
-	</span>
-	<span class="our-location-span">
-		<img class="crush-pizza" src="{% static "PhotoMenu/Images/MockPhotos/CrushPizza.jpg" %}">
-		<p class="our-location-name">Crush Pizza</p>
-	</span>
+  <div class="all-locations-wrapper">
+    <div class="location-section">
+      <img class="location-image" src="{% static "PhotoMenu/Images/MockPhotos/ElPelon.png" %}">
+      <p class="our-location-name">El Pelon</p>
+    </div>
+    <div class="location-section">
+      <img class="location-image" src="{% static "PhotoMenu/Images/MockPhotos/CrushPizza.png" %}">
+      <p class="our-location-name">Crush Pizza</p>
+    </div>
+  </div>
+  <div style="clear:both"></div>
 </div>
 
 <!--Footer-->

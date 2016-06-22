@@ -3,8 +3,6 @@ li.food-type-section-wrapper{
 }
 
 h3.food-type-section-header{
-
-
     width: calc(90% - 10px);
     color: #777777;
     margin: 30px 5% 5px 5%;
@@ -14,6 +12,7 @@ h3.food-type-section-header{
 
 ul.food-type-section-food-list{
     overflow: auto;
+
 }
 
 @media (min-width: 600px) {

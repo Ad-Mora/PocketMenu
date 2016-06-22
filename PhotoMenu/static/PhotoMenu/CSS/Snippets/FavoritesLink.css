@@ -1,17 +1,17 @@
 .favorites-link{
-    padding: 9px;
+    padding: 8px;
     border: 2px solid white;
     border-radius: 3px;
     background-color: transparent;
     color: white;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* Large mobile view */
 @media (min-width: 355px) {
     .favorites-link{
-        font-size: 18px;
-        padding: 11px;
+        font-size: 16px;
+        padding: 8px;
     }
 }
 
@@ -20,5 +20,6 @@
     .favorites-link{
         padding: 0px;
         border: none;
+        font-size: 18px;
     }
 }

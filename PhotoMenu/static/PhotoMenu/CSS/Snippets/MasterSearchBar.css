@@ -7,15 +7,16 @@ div.search-bar-and-suggestions{
 input.search-bar{
     position: relative;
     z-index: 1;
-    margin-left: 4%;
+    /*margin-left: 4%;*/
     padding-left: 10px;
-    width: 92%;
+    width: 100%;
     height: 35px;
     border: 1px solid #CACACA;
     border-radius: 3px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-size: 14px;
 }
 div.search-suggestions-box{
     display: none;
@@ -24,8 +25,8 @@ div.search-suggestions-box{
     padding-top: 10px;
     border: 1px solid #eeeeee;
     z-index: 0;
-    margin-left: 4%;
-    width: 92%;
+    /*margin-left: 4%;*/
+    width: 100%;
     background-color: white;
     border-radius: 0px 0px 3px 3px;
     -webkit-box-sizing: border-box;
@@ -37,6 +38,7 @@ p.search-suggestion{
     color: #333333;
     line-height: 35px;
     border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
 }
 p.search-suggestion:hover{
     background-color: #eeeeee;
@@ -45,9 +47,9 @@ input.search-submit-button{
     display: none;
 }
 button.search-button{
-    margin-left: 4%;
+    /*margin-left: 4%;*/
     margin-top: 8px;
-    width: 92%;
+    width: 100%;
     height: 35px;
     background: #448AFF;
     color: white;
@@ -58,24 +60,24 @@ button.search-button{
 @media (min-width: 355px) {
     input.search-bar{
         height: 40px;
-        font-size: 20px;
-        margin-left: 6%;
-        width: 88%;
+        font-size: 16px;
+        /*margin-left: 6%;*/
+        /*width: 88%;*/
     }
     div.search-suggestions-box{
         top: 30px;
-        margin-left: 6%;
-        width: 88%;
+        /*margin-left: 6%;*/
+        /*width: 88%;*/
     }
     p.search-suggestion{
-        font-size: 20px;
-        line-height: 40px;
+        /*font-size: 16px;*/
+        /*line-height: 40px;*/
     }
     button.search-button{
         height: 40px;
         font-size: 20px;
-        margin-left: 6%;
-        width: 88%;
+        /*margin-left: 6%;*/
+        /*width: 88%;*/
     }
 }
 
@@ -119,8 +121,8 @@ button.search-button{
         border-top: 1px solid #CACACA;
     }
     p.search-suggestion{
-        font-size: 22px;
-        line-height: 44px;
+        /*font-size: 16px;*/
+        /*line-height: 44px;*/
     }
     input.search-submit-button{
         display: inline-block;

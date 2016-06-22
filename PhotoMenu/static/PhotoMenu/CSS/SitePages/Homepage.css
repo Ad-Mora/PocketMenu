@@ -1,3 +1,4 @@
+/*-------------Background Image & Search Bar----------------*/
 .homepage-picture{
     background-image: url("../../Images/MockPhotos/MobileHomepagePic.jpg");
     background-size: cover;
@@ -5,62 +6,121 @@
 }
 .dark-overlay{
     background-color: rgba(0,0,0,0.5);
-    height: 400px;
+    height: 100%;
+}
+.background-picture-content{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80%;
+    margin: 0px auto 0px auto;
+    max-width: 400px;
 }
 .large-text{
     color: white;
-    width: 70%;
-    padding-top: 100px;
-    margin-left: 15%;
-    margin-bottom: 50px;
+     width: 100%;
+    /* padding-top: 100px; */
+    /* margin-left: 15%; */
+    /* margin-bottom: 50px; */
     font-size: 24px;
-    font-weight: 300;
+    /* font-weight: 300; */
+    margin: 0px auto 20px auto;
+    text-align: center;
 }
-.food-name{
-    margin-left: 4%;
+.search-type{
     display: inline-block;
     color: white;
-    width: 46%;
     text-align: center;
     padding-bottom: 10px;
+    border-bottom: 4px solid transparent;
+    font-size: 16px;
+    width: 48%;
+}
+.selected-type{
     border-bottom: #448AFF solid 4px;
 }
-.restaurant-name{
-    display: inline-block;
-    color: white;
-    width: 46%;
-    text-align: center;
-    padding-bottom: 10px;
-}
-div.search-bar-and-suggestions{
+/*.restaurant-name{*/
+    /*display: inline-block;*/
+    /*color: white;*/
+    /*width: 46%;*/
+    /*text-align: center;*/
+    /*padding-bottom: 10px;*/
+/*}*/
+.search-bar-and-suggestions{
+    position: relative;
     margin-top: 12px;
 }
+.search-suggestions-box{
+    display: none;
+    position: absolute;
+    top: 25px;
+    padding-top: 10px;
+    /* padding-bottom: 5px; */
+    z-index: 0;
+    /* margin-left: 4%; */
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* box-sizing: border-box; */
+}
+.search-suggestion{
+    padding-left: 10px;
+    color: #333333;
+    line-height: 35px;
+    border: 1px solid #eeeeee;
+    border-top: 0px;
+    font-size: 14px;
+}
+.search-suggestion:hover{
+    background-color: #eeeeee;
+}
 .picture-bottom-text{
-    margin-left: 4%;
-    margin-top: 10px;
-    width: 92%;
-    color:white;
+    /* margin-left: 4%; */
+    /* margin-top: 10px; */
+     width: 100%;
+    color: white;
     font-size: 14px;
     text-align: center;
-    font-weight: 300;
+    /* font-weight: 300; */
+    margin: 15px auto 0px auto;
+}
+/*---------------Why Us Header----------------*/
+.why-us-section-wrapper{
+    margin: 50px auto 70px auto;
+    max-width: 1200px;
 }
 .why-us-header{
     text-align: center;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     color: #333333;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+    margin: 0px auto 0px auto;
+}
+.why-us-detail{
+    text-align: center;
+    margin: 10px auto 35px auto;
+    font-size: 14px;
+    color: #333333;
+    max-width: 500px;
+    width: 90%;
+}
+.reason-section{
+    margin: 30px 0px 50px 0px;
 }
 .why-us-icon{
     display: block;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    height: 90px;
+    /* margin-bottom: 5px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* margin-top: 15px; */
+    height: 150px;
     border-radius: 50%;
     border: 2px solid #FF9800;
+    margin: 25px auto 5px auto;
 }
 .icon-text{
     margin-top: 10px;
@@ -70,32 +130,41 @@ div.search-bar-and-suggestions{
     font-weight: 500;
 }
 .icon-description{
-    margin-top: 10px;
-    margin-left: 4%;
-    width: 92%;
+    /*margin-top: 10px;*/
+    /*margin-left: 4%;*/
+    width: 85%;
     text-align: center;
     color: #555555;
     font-size: 14px;
+    margin: 10px auto 0px auto;
 }
+/*---------------Location Section--------------*/
 .white-area{
-    margin-top: 20px;
-    padding-top: 20px;
+    /* margin-top: 20px; */
+    /* padding-top: 20px; */
     background-color: white;
-    height: 210px;
+    /* height: 210px; */
+    padding: 40px 0px 40px 0px;
 }
 .our-locations-header{
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 600;
     color: #333333;
     text-align: center;
 }
 .our-locations-detail{
-    margin-top: 10px;
-    margin-left: 15%;
+    /* margin-top: 10px; */
+    /* margin-left: 15%; */
     text-align: center;
-    width: 70%;
+    width: 90%;
     font-size: 16px;
-    color: #555555;
+    color: #333333;
+    margin: 10px auto 0px auto;
+    max-width: 400px;
+}
+.all-locations-wrapper{
+    margin: 0px auto 20px auto;
+    max-width: 900px;
 }
 .our-location-span{
     margin-top: 15px;
@@ -103,9 +172,17 @@ div.search-bar-and-suggestions{
     width: 49.3%;
     text-align: center;
 }
-.el-pelon{
-    width: 120px;
-    -webkit-clip-path: circle(38px at center);
+.location-section{
+    margin: 50px 0px 0px 0px;
+}
+.location-image{
+    width: 150px;
+    /*-webkit-clip-path: circle(38px at center);*/
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: -1px 1px 5px 0px #555555;
 }
 .crush-pizza{
     width: 120px;
@@ -115,53 +192,76 @@ div.search-bar-and-suggestions{
     margin-top: 5px;
     text-align: center;
     color: #333333;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 /* Large mobile view */
 @media (min-width: 355px) {
     .homepage-picture{
-        height: 500px;
+        /*height: 500px;*/
     }
     .dark-overlay{
-        height: 500px;
+        /*height: 500px;*/
+    }
+    .background-picture-content {
+
     }
     .large-text{
-        font-size: 30px;
-        margin-bottom: 80px;
+        font-size: 26px;
+        /* margin-bottom: 80px; */
     }
-    .food-name{
-        font-size: 22px;
-        margin-left: 6%;
-        width: 44%;
+    .search-type{
+        font-size: 18px;
+        /* margin-left: 6%; */
+        /* width: 44%; */
     }
-    .restaurant-name{
-        font-size: 22px;
-        width: 44%;
+    /*.restaurant-name{*/
+        /*font-size: 22px;*/
+        /*width: 44%;*/
+    /*}*/
+    .search-suggestions-box{
+        top: 30px;
+        /* padding-top: 10px; */
+        /* margin-left: 6%; */
+        /*width: 100%;*/
+    }
+    .search-suggestion{
+        /* font-size: 16px;
+        /* line-height: 40px; */
     }
     .picture-bottom-text{
         margin-top: 15px;
         font-size: 16px;
     }
     .why-us-header{
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 30px;
+        /* margin-top: 20px; */
+        /* margin-bottom: 20px; */
+        font-size: 28px;
+        /*margin: 20px 0px 10px 0px;*/
+    }
+    .why-us-detail{
+        font-size: 18px;
+    }
+    .reason-section {
+        margin: 50px auto 50px auto;
+        max-width: 400px;
     }
     .why-us-icon{
-        height: 120px;
+        /*height: 120px;*/
     }
     .icon-text{
-        font-size: 22px;
+        font-size: 20px;
     }
     .icon-description{
         font-size: 16px;
     }
     .white-area{
-        margin-top: 25px;
-        height: 260px;
+        /* margin-top: 25px; */
+        /* height: 260px; */
     }
     .our-locations-header{
-        font-size: 30px;
+        font-size: 28px;
     }
     .our-locations-detail{
         font-size: 18px;
@@ -169,13 +269,16 @@ div.search-bar-and-suggestions{
     .our-location-span{
         margin-top: 25px;
     }
-    .el-pelon{
-        width: 150px;
-        -webkit-clip-path: circle(50px at center);
-    }
-    .crush-pizza{
-        width: 150px;
-        -webkit-clip-path: circle(50px at center);
+    /*.el-pelon{*/
+        /*width: 150px;*/
+        /*-webkit-clip-path: circle(50px at center);*/
+    /*}*/
+    /*.crush-pizza{*/
+        /*width: 150px;*/
+        /*-webkit-clip-path: circle(50px at center);*/
+    /*}*/
+    .location-image{
+        width: 170px;
     }
     .our-location-name{
         margin-top: 8px;
@@ -186,35 +289,57 @@ div.search-bar-and-suggestions{
 /* Desktop view */
 @media (min-width: 800px) {
     .homepage-picture{
-        height: 600px;
+        /*height: 600px;*/
     }
     .dark-overlay{
-        height: 600px;
+        /*height: 600px;*/
+    }
+    .background-picture-content {
+        max-width: none;
     }
     .large-text{
-        font-size: 44px;
-        width: 80%;
-        margin-left: 10%;
-        padding-top: 200px;
-        text-align: center;
-        margin-bottom: 20px;
+        font-size: 42px;
+        /* width: 80%; */
+        /* margin-left: 10%; */
+        /* padding-top: 200px; */
+        /* text-align: center; */
+        /* margin-bottom: 20px; */
     }
-    .food-name{
+    .search-type{
         display: none;
     }
-    .restaurant-name{
-        display: none;
+    /*.restaurant-name{*/
+        /*display: none;*/
+    /*}*/
+    .search-bar-and-suggestions{
+        display: inline-block;
+        margin-top: 0px;
     }
-    div.search-bar-and-suggestions{
-       margin-top: 0px;
+    .search-suggestions-box{
+        /* width: 400px; */
+        top: 35px;
+        /* margin-left: 0px; */
+    }
+    .search-suggestion{
+        /* font-size: 16px; */
+        /* line-height: 44px; */
     }
     .picture-bottom-text{
         font-size: 20px;
     }
+    .why-us-section-wrapper{
+
+    }
     .why-us-header{
-        margin-top: 30px;
-        margin-bottom: 35px;
-        font-size: 44px;
+        /* margin-top: 30px; */
+        /* margin-bottom: 35px; */
+        font-size: 32px;
+    }
+    .reason-section{
+        width: 33%;
+        float: left;
+        max-width: none;
+        margin: 0px auto 0px auto;
     }
     .light-bulb-section{
         display: inline-block;
@@ -232,27 +357,34 @@ div.search-bar-and-suggestions{
         height: 150px;
     }
     .icon-text{
-        font-size: 24px;
+        font-size: 22px;
         margin-top: 20px;
     }
     .icon-description{
-        margin-left: 15%;
-        width: 70%;
-        font-size: 18px;
+        /*margin-left: 15%;*/
+        /*width: 70%;*/
+        /*font-size: 18px;*/
     }
     .white-area{
-        margin-top: 50px;
-        padding-top: 30px;
-        height: 400px;
+        /* margin-top: 50px; */
+        /* padding-top: 30px; */
+        /* height: 400px; */
     }
     .our-locations-header{
-        font-size: 44px;
+        font-size: 32px;
     }
     .our-locations-detail{
-        font-size: 22px;
+        font-size: 18px;
+    }
+    .location-section {
+        width: 50%;
+        float: left;
     }
     .our-location-span{
         margin-top: 50px;
+    }
+    .location-image{
+        width: 190px;
     }
     .el-pelon{
         width: 270px;

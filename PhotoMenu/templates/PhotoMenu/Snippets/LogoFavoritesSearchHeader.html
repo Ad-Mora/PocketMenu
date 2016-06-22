@@ -1,0 +1,21 @@
+<!-- Relevant CSS files -->
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}"> #}
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HeaderSearchBar.css" %}"> #}
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesLink.css" %}"> #}
+{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileLogoFavoritesSearchHeader.css" %}"> #}
+
+<!-- Relevant JS files -->
+{# <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script> #}
+{# <script src="{%  static "PhotoMenu/JS/HeaderSearch.js" %}" type="text/javascript"></script> #}
+{# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}
+{# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}
+
+{% load staticfiles %}
+<div class="header">
+  {% include "PhotoMenu/Snippets/Logo.html" %}
+  {% include "PhotoMenu/Snippets/HeaderSearchBar.html" %}
+  {% include "PhotoMenu/Snippets/FavoritesLink.html" %}
+  <span class="header-links-separator"></span>
+  <a class="contact-us-link" href="{% url "PhotoMenu:contact_page" %}">Contact Us</a>
+  <img class="search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
+</div>

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Favorites Page</title>
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "PhotoMenu/Images/Icons/ChompsFaviconOrange.ico" %}">
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
@@ -14,7 +15,6 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodSection.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FilterSearch.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/AllInspectorViews.css" %}">
@@ -22,7 +22,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesLink.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HeaderSearchBar.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileLogoFavoritesSearchHeader.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/LogoFavoritesSearchHeader.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileSearchModal.css" %}">
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/SitePages/FavoritesPage.css" %}">
@@ -32,7 +32,7 @@
 <body>
 
   <!--Header-->
-  {% include "PhotoMenu/Snippets/MobileLogoFavoritesSearchHeader.html" %}
+  {% include "PhotoMenu/Snippets/LogoFavoritesSearchHeader.html" %}
 
   <!-- Mobile Search Modal -->
   {%  include "PhotoMenu/Snippets/MobileSearchModal.html" %}
@@ -43,9 +43,6 @@
       <h1 class="favorites-header">My Favorites</h1>
     </div>
   </div>
-
-  <!-- Filter and Search -->
-  {% include "PhotoMenu/Snippets/FilterSearch.html" %}
 
   <!-- Inspector View (mobile & desktop) -->
   {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
@@ -77,7 +74,6 @@
   <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/HeaderSearch.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/DocumentModule.js" %}" type="text/javascript"></script>
-  <script src="{%  static "PhotoMenu/JS/FilterSearch.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/SwipeGesture.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/FoodEntry.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/AllInspectorView.js" %}" type="text/javascript"></script>
