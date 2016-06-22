@@ -57,7 +57,7 @@ class MenuCategory(models.Model):
         return self.restaurant.name + ' ' + self.name
 
 
-class FoodItem(models.Model):
+class MenuItem(models.Model):
     menu_category = models.ForeignKey('MenuCategory', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=200)

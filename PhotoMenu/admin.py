@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Restaurant
-from .models import FoodItem
+from .models import MenuItem
 from .models import MenuCategory
 
 
@@ -8,8 +8,8 @@ class MenuCategoryInline(admin.StackedInline):
     model = MenuCategory
 
 
-class FoodItemInline(admin.StackedInline):
-    model = FoodItem
+class MenuItemInline(admin.StackedInline):
+    model = MenuItem
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -20,9 +20,9 @@ class RestaurantAdmin(admin.ModelAdmin):
 
 class MenuCategoryAdmin(admin.ModelAdmin):
     inlines = [
-        FoodItemInline
+        MenuItemInline
     ]
 
 admin.site.register(Restaurant, RestaurantAdmin)
 admin.site.register(MenuCategory, MenuCategoryAdmin)
-admin.site.register(FoodItem)
+admin.site.register(MenuItem)
