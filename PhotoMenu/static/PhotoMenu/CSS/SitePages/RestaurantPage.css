@@ -17,25 +17,25 @@ div.background-image-dark-overlay{
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.4);
-    overflow: auto;
     max-height: 250px;
+    padding: 0% 0px 5% 5%;
+    box-sizing: border-box;
 }
 h1.restaurant-name{
-    margin:20% 0px 5px 5%;
     width: 70%;
     color: #FFFFFF;
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 1px;
+    padding: 20% 0px 0px 0px;
 }
 p.restaurant-address{
     width: 60%;
-    margin: 0px 0px 0px 5%;
     color: #FFFFFF;
     font-size: 13px;
+    margin: 3px 0px 0px 0px;
 }
 p.restaurant-hours{
-    margin: 0px 0px 3% 5%;
     color: #FFFFFF;
     font-size: 13px;
     line-height: 15px;
@@ -70,6 +70,8 @@ p.category-description{
 ul.food-type-section-food-list{
     display: flex;
     flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap
 }
 
 @media (min-width: 355px) {
@@ -109,8 +111,13 @@ ul.food-type-section-food-list{
 }
 
 @media (min-width: 800px) {
+
+    div.background-image-dark-overlay{
+        padding: 0px 0px 40px 40px;
+    }
+
     h1.restaurant-name{
-        margin: 155px 0px 5px 5%;
+        padding: 160px 0px 0px 0px;
     }
     .restaurant-page-desktop{
         display: inline-block;
@@ -122,7 +129,7 @@ ul.food-type-section-food-list{
 
 @media (min-width: 1200px) {
     ul.list-of-food-lists{
-        max-width: 1280px;
+        max-width: 1310px;
         margin: 0px auto 0px auto;
     }
 }

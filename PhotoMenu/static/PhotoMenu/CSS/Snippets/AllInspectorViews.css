@@ -16,7 +16,7 @@ div.interest-action-positioner{
     bottom: -100px;
     z-index: 2;
     width: 100%;
-    -webkit-animation-name: example;
+    -webkit-animation-name: display-action;
     -webkit-animation-duration: 4s;
     animation-name: display-action;
     animation-duration: 4s;
@@ -55,6 +55,44 @@ span.close-interest-action{
 span.close-interest-action:hover{
     opacity:0.85;
     cursor: pointer;
+}
+
+@-moz-keyframes display-action {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+    }
+    10% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    90% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    100% {
+        bottom: -100px;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes display-action {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+    }
+    10% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    90% {
+        bottom: 20px;
+        opacity: 1;
+    }
+    100% {
+        bottom: -100px;
+        opacity: 0;
+    }
 }
 
 @keyframes display-action {

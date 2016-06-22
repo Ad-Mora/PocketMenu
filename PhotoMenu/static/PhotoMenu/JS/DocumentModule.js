@@ -17,19 +17,19 @@ var documentModule = (function(){
     // public variables
 
     // private functions
-    function _callKeypressFunctions() {
+    function _callKeypressFunctions(event) {
         for (var i = 0; i < onKeyPressEvents.length; i++) {
             (onKeyPressEvents[i])(event);
         }
     }
     
-    function _callResizeFunctions() {
+    function _callResizeFunctions(event) {
         for (var i = 0; i < onResizeEvents.length; i++) {
             (onResizeEvents[i])(event);
         }
     }
 
-    function _callClickFunctions() {
+    function _callClickFunctions(event) {
         for (var i = 0; i < onClickEvents.length; i++) {
             (onClickEvents[i])(event);
         }
