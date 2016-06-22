@@ -1,10 +1,10 @@
-li.food-entry-li{
-    margin: 1% 0% 0px 2%;
+li.food-entry-li, li.ghost-food-item{
+    margin: 5px 0% 0px 2%;
     width: 47%;
     max-width: 290px;
 }
 
-li.food-entry-li.ghost-food-item{
+li.ghost-food-item{
     height: 0px;
 }
 
@@ -95,7 +95,7 @@ p.food-entry-price{
 
 /*--------------Desktop-----------------*/
 @media (min-width: 670px) {
-    li.food-entry-li{
+    li.food-entry-li, li.ghost-food-item{
         -webkit-flex-grow: 1;
         flex-grow: 1;
         -webkit-flex-basis: 215px;
