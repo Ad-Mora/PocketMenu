@@ -51,7 +51,7 @@ p.number-of-search-results{
     display: block;
     margin-top: 10px;
     font-size: 12px;
-    color: #777777;
+    color: #555555;
     margin-left: 4%;
 }
 div.full-width-seperator{
@@ -93,6 +93,22 @@ ul.search-results-list{
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+}
+
+p.no-results-details{
+    margin: 0px 0px 0px 4%;
+    color: #333333;
+    font-weight: bold;
+    font-size: 16px;
+}
+p.no-results-suggestion{
+    margin: 0px 0px 0px 4%;
+
+}
+ul.no-results-suggestions-list{
+    list-style-type: disc;
+    margin: 0px 0px 0px 4%;
+    padding: 0px 0px 0px 30px;
 }
 
 /*--------Next and Previous--------*/
@@ -160,7 +176,7 @@ span.next.page-icon{
 /*-----Desktop view-----*/
 @media (min-width: 800px) {
     h1.search-page-title {
-        margin: 15px 0px 10px 5%;
+        margin: 15px 0px 10px 4%;
         width: 700px;
         text-align: left;
     }
