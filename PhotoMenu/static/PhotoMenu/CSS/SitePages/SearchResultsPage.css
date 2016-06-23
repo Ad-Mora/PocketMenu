@@ -93,6 +93,7 @@ ul.search-results-list{
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    margin: 0px 0px 30px 0px;
 }
 
 p.no-results-details{
@@ -107,7 +108,7 @@ p.no-results-suggestion{
 }
 ul.no-results-suggestions-list{
     list-style-type: disc;
-    margin: 0px 0px 0px 4%;
+    margin: 0px 0px 30px 4%;
     padding: 0px 0px 0px 30px;
 }
 
@@ -169,7 +170,7 @@ span.next.page-icon{
 @media (min-width: 480px) {
     ul.search-results-list{
         width: 91%;
-        margin: 0px 0px 0px 4%;
+        margin: 0px 0px 30px 4%;
     }
 }
 
@@ -216,7 +217,7 @@ span.next.page-icon{
     }
     ul.search-results-list{
         max-width: 1125px;
-        margin: 0px auto 0px auto;
+        margin: 0px auto 30px auto;
     }
     div.more-results-navigator{
         width: 1100px;
