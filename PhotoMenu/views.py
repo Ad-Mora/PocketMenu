@@ -12,7 +12,8 @@ def contact_page(request):
 def search_results_page(request):
     return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html')
 
-def restaurants_page(request):
+def restaurants_page(request,restaurant_name):
+    print restaurant_name
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html')
 
 def favorites_page(request):
