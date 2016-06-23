@@ -41,7 +41,7 @@
     <!-- Main Search Bar -->
     {% include "PhotoMenu/Snippets/MasterSearchBar.html" with query_string=query_string %}
 
-    <p class="number-of-search-results">Showing results 1-50 of 99</p>
+    <p class="number-of-search-results">Showing results 1-{{ food_items.count }} of {{ food_items.count }}</p>
     <div class="full-width-seperator"></div>
   </div>
 
@@ -50,14 +50,10 @@
 
   <!-- List of Search Results -->
   <ul class="search-results-list">
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {%  for food in food_items %}
+      {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+    {% endfor %}
+
 
     <!-- ghost items ensure even spacing and left-alignment -->
     <li class="ghost-food-item"></li>
@@ -67,17 +63,17 @@
   </ul>
 
   <!-- More Results Navigator -->
-  <div class="more-results-navigator">
-    <a href="#" class="previous results-page">
-      <span class="previous page-icon"></span>
-      Previous
-    </a>
-    <a href="#" class="next results-page">
-      Next
-      <span class="next page-icon"></span>
-    </a>
-    <div style="clear:both;"></div>
-  </div>
+{#  <div class="more-results-navigator">#}
+{#    <a href="#" class="previous results-page">#}
+{#      <span class="previous page-icon"></span>#}
+{#      Previous#}
+{#    </a>#}
+{#    <a href="#" class="next results-page">#}
+{#      Next#}
+{#      <span class="next page-icon"></span>#}
+{#    </a>#}
+{#    <div style="clear:both;"></div>#}
+{#  </div>#}
 
   <!-- Website Footer -->
   {% include "PhotoMenu/Snippets/Footer.html" %}

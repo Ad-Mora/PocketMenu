@@ -7,20 +7,17 @@
 
 {% load staticfiles %}
 <li class="food-entry-li"
-    data-food-name="data-food-name"
-    data-food-details="data-food-details"
-    data-food-image-location="data-food-image-location"
-    data-food-price="data-food-price"
+    data-food-name="{{ food.name }}"
+    data-food-details="{{ food.description }}"
+    data-food-image-location="{{ food.image.url }}"
+    data-food-price="{{ food.price }}"
     data-food-is-liked="false">
   <div class="food-entry-wrapper">
     <div class="food-entry-image">
-      <img src="{% static "PhotoMenu/Images/MockPhotos/BeefPotstickers.jpg" %}">
+      <img src="{{ food.image.url }}">
     </div>
-    <h4 class="food-entry-name">Fried Chicken Dumplings</h4>
-    <p class="food-description-name">
-      Diced boneless, white meat chicken tandoori style, and cooked in
-      rich tomato cream sauce.
-    </p>
-    <p class="food-entry-price">11.00</p>
+    <h4 class="food-entry-name">{{ food.name }}</h4>
+    <p class="food-description-name">{{ food.description }}</p>
+    <p class="food-entry-price">{{ food.price }}</p>
   </div>
 </li>
