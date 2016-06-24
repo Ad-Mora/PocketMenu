@@ -2,6 +2,8 @@ var masterSearch = (function(){
 
     // cache DOM objects
     var searchBarForm = document.querySelector("form.search-bar-form");
+    var searchTypeRadioList = searchBarForm.querySelectorAll("input.search-option-radio-btn");
+    var searchTypeSelect = searchBarForm.querySelector("select.select-search-type");
     var searchBar = searchBarForm.querySelector("input.search-bar");
     var searchSuggestions = searchBarForm.querySelector("ul.search-suggestions-list");
     var csrfmiddlewaretoken = searchBarForm.querySelector("input[name='csrfmiddlewaretoken']");
@@ -10,13 +12,24 @@ var masterSearch = (function(){
     searchBar.addEventListener("input", onSearchBarFocus);
     documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener("keyup", querySuggestions);
-    // searchSuggestions.addEventListener("click", autocompleteWithSuggestion);
+    searchTypeRadioList[0].addEventListener("change", updateSearchTypeSelect);
+    searchTypeRadioList[1].addEventListener("change", updateSearchTypeSelect);
+    searchTypeSelect.addEventListener("change", updateSearchTypeRadioButtons);
 
     // public variables
 
     // private variables
 
     // public functions
+
+    // private functions
+    function updateSearchTypeSelect(event) {
+        searchTypeSelect.value = event.target.value;
+    }
+
+    function updateSearchTypeRadioButtons(event) {
+        searchBarForm.querySelector("input[name=radio-search-type][value="+ event.target.value +"]").checked = true;
+    }
 
     function onSearchBarFocus(event) {
         searchSuggestions.style.display = "block";
@@ -49,11 +62,6 @@ var masterSearch = (function(){
         }
 
         ajax.send_ajax_request(destination_file, json_data, csrfmiddlewaretoken.value, postAjaxFunction);
-    }
-
-    function autocompleteWithSuggestion(event) {
-        var chossenOption = event.target;
-        console.log(chossenOption);
     }
 
     // return public pointers to private variables & functions
