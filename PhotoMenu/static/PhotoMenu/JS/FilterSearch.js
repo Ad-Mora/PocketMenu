@@ -19,6 +19,9 @@ var moreOptions = (function(){
         allVisibleOptionLI[i].addEventListener('click', _adjustSlidingUnderBar);
     }
 
+    // Start off the page with the underbar taking up the full width of the first category item
+    _adjustSlidingUnderBar(null, allVisibleOptionLI[0])
+
     // private variables
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
@@ -50,9 +53,10 @@ var moreOptions = (function(){
                 return;
     }
 
-    function _adjustSlidingUnderBar(event) {
+    function _adjustSlidingUnderBar(event, element) {
+
         var referenceX = visibleOptionsUL.getBoundingClientRect().left;
-        var optionRect = this.getBoundingClientRect();
+        var optionRect = (element || this).getBoundingClientRect();
         var deltaX = optionRect.left - referenceX;
         var width = optionRect.width;
 
