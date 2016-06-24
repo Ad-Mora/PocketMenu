@@ -8,13 +8,19 @@ var moreOptions = (function(){
     // cache DOM
     var visibleOptionsUL = document.querySelector("ul.filter-options-list");
     var allVisibleOptionLI = visibleOptionsUL.querySelectorAll("li.filter-option");
-    var moreOptionsLI = visibleOptionsUL.querySelector("li.filter-option.more-options-options");
-    var moreOptionsUL = moreOptionsLI.querySelector("ul.more-filter-options-list");
-    var dropDownIcon = moreOptionsLI.querySelector("i.more-options-drop-down-icon");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
+    var moreOptionsLI = visibleOptionsUL.querySelector("li.filter-option.more-options-options");
+    if (moreOptionsLI) {
+        var moreOptionsUL = moreOptionsLI.querySelector("ul.more-filter-options-list");
+        var dropDownIcon = moreOptionsLI.querySelector("i.more-options-drop-down-icon");
+    }
+
     // bind events
-    moreOptionsLI.addEventListener('click', _toggleDropDownMenu);
+    if (moreOptionsLI) {
+        moreOptionsLI.addEventListener('click', _toggleDropDownMenu);
+    }
+
     for (var i = 0; i < allVisibleOptionLI.length; i++) {
         allVisibleOptionLI[i].addEventListener('click', _adjustSlidingUnderBar);
     }
