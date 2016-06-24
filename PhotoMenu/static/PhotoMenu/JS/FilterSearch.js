@@ -16,50 +16,49 @@ var moreOptions = (function(){
         var dropDownIcon = moreOptionsLI.querySelector("i.more-options-drop-down-icon");
     }
 
+    // Start off the page with the underbar taking up the full width of the first category item
+    adjustSlidingUnderBar(null, allVisibleOptionLI[0])
+
     // bind events
     if (moreOptionsLI) {
-        moreOptionsLI.addEventListener('click', _toggleDropDownMenu);
+        moreOptionsLI.addEventListener('click', toggleDropDownMenu);
     }
 
     for (var i = 0; i < allVisibleOptionLI.length; i++) {
-        allVisibleOptionLI[i].addEventListener('click', _adjustSlidingUnderBar);
+        allVisibleOptionLI[i].addEventListener('click', adjustSlidingUnderBar);
+        allVisibleOptionLI[i].addEventListener('click', scrollToCategory);
     }
-
-    // Start off the page with the underbar taking up the full width of the first category item
-    _adjustSlidingUnderBar(null, allVisibleOptionLI[0])
 
     // private variables
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
-    var hideDropDownCorrectly = documentModule.addOnClickFunction(_toggleDropDownMenu);
-
-    // public variables
+    var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
 
     // private methods
-    function _toggleDropDownMenu(event) {
-        event.stopPropagation();
-        console.log(event);
-        var srcElement = event.srcElement || event.target;
-        while (srcElement) {
-            if (srcElement == moreOptionsLI) {
-                dropDownIsVisible = !dropDownIsVisible;
-                moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
-                dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
-                dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
-                return;
-            }
-            srcElement = srcElement.parentNode;
-        }
-
-        dropDownIsVisible = false;
-        moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
-        dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
-        dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
-                return;
+    function toggleDropDownMenu(event) {
+//        event.stopPropagation();
+//        console.log(event);
+//        var srcElement = event.srcElement || event.target;
+//        while (srcElement) {
+//            if (srcElement == moreOptionsLI) {
+//                dropDownIsVisible = !dropDownIsVisible;
+//                moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
+//                dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+//                dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+//                return;
+//            }
+//            srcElement = srcElement.parentNode;
+//        }
+//
+//        dropDownIsVisible = false;
+//        moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
+//        dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+//        dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+        return;
     }
 
-    function _adjustSlidingUnderBar(event, element) {
+    function adjustSlidingUnderBar(event, element) {
 
         var referenceX = visibleOptionsUL.getBoundingClientRect().left;
         var optionRect = (element || this).getBoundingClientRect();
@@ -70,24 +69,18 @@ var moreOptions = (function(){
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
 
-    // function _hideDropDownAfterOpened(event) {
-    //     var srcElement = event.srcElement;
-    //     while (srcElement) {
-    //         if (srcElement == moreOptionsLI) {
-    //             console.log("clicked inside");
-    //             return;
-    //         }
-    //         srcElement = srcElement.parentNode;
-    //     }
-    //     console.log("clicked outside");
-    //
-    // }
+    function scrollToCategory(event) {
+        var srcElement = event.srcElement;
+        var className = srcElement.className;
+        var category = srcElement.innerHTML;
+        if (className == "filter-option") {
+            category = srcElement.firstElementChild.innerHTML;
+        }
+        alert(category)
+    }
 
-    // public methods
 
     // reveal public pointers to private functions & properties
     return {
-
     };
-
 })();
