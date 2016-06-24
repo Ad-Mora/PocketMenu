@@ -3,7 +3,6 @@ import json
 
 def get_menu_items_for_search_string(query_string, limit=30):
     context = {}
-    print query_string
 
     results = {}
     if query_string != "":

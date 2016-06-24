@@ -37,9 +37,11 @@ var masterSearch = (function(){
 
     function querySuggestions(event) {
         var destination_file = "../drop-down-suggestions/";
-
+        var search_type  = searchBarForm.querySelector('input[name="radio-search-type"]:checked').value;
+        
         var json_data = {
-            "search-bar": searchBar.value
+            "search-bar": searchBar.value,
+            "search-type": search_type
         }
 
         var postAjaxFunction = function(result){

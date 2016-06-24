@@ -10,6 +10,7 @@ def drop_down_suggestions(request):
 
     if request.method == "POST":
         json_data = json.loads(request.body)
+        print json_data
         query_string = json_data['search-bar']
 
     context = get_menu_items_for_search_string(query_string, 5)
@@ -27,6 +28,7 @@ def search_results_page(request):
 
     if request.method == "POST":
         query_string = request.POST['search-bar']
+        print request.POST
 
     context = get_menu_items_for_search_string(query_string)
     return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
