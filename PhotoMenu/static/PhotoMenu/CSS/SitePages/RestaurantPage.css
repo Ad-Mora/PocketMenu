@@ -54,7 +54,7 @@ p.restaurant-hours::before{
 }
 
 /*--------Categories (filter) and Search Bar------*/
-div.categories-and-search-bar.restaurant-page-desktop{
+div.restaurant-page-desktop{
     width: 100%;
 }
 
