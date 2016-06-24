@@ -5,24 +5,12 @@ import os
 
 
 def get_restaurant_upload_path(instance, filename):
-    # upload_dir = './PhotoMenu/static/PhotoMenu/Images/Restaurants/'
-    # cleaned_name = instance.name.replace(' ', '')
-    # upload_path = upload_dir + cleaned_name + '/' + filename
-    # return upload_path
-
     cleaned_name = instance.name.replace(' ', '')
     upload_path = os.path.join(cleaned_name, filename)
     return upload_path
 
 
 def get_menu_item_upload_path(instance, filename):
-    # upload_dir = '/PhotoMenu/static/PhotoMenu/Images/Restaurants/'
-    # restaurant = instance.menu_category.restaurant.name.replace(' ', '')
-    # menu_item_name = instance.name.replace(' ', '')
-    # extension = os.path.splitext(filename)[1]
-    # upload_path = upload_dir + restaurant + '/' + menu_item_name + extension
-    # return upload_path
-
     restaurant = instance.menu_category.restaurant.name.replace(' ', '')
     menu_item_name = instance.name.replace(' ', '')
     extension = os.path.splitext(filename)[1]
@@ -78,7 +66,3 @@ class MenuItem(models.Model):
 
     def __unicode__(self):
         return self.menu_category.restaurant.name + ' ' + self.name
-
-
-
-
