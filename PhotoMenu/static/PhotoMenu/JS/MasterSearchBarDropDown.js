@@ -7,15 +7,42 @@ var searchDropDown = (function(){
     var csrfmiddlewaretoken = searchBarForm.querySelector("input[name='csrfmiddlewaretoken']");
 
     // bind events
-    searchBar.addEventListener("input", toggleSearchDropDown);
-    searchBar.addEventListener("blur", toggleSearchDropDown);
+    searchBar.addEventListener("input", onSearchBarFocus);
+    documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener("keyup", querySuggestions);
+    // searchSuggestions.addEventListener("click", autocompleteWithSuggestion);
 
-    function toggleSearchDropDown(event) {
+    // public variables
+
+    // private variables
+
+    // var visible_states = {true:"block", false:"none"}
+
+    // public functions
+
+    // private functions
+    // function toggleSearchDropDown(event) {
+    //     searchSuggestions.style.display = "block";
+    //     if (searchBar.value === "" || event.type == "blur") {
+    //         searchSuggestions.style.display = "none";
+    //         console.log(event);
+    //     }
+    // }
+    function onSearchBarFocus(event) {
         searchSuggestions.style.display = "block";
-        if (searchBar.value === "" || event.type == "blur") {
-            searchSuggestions.style.display = "none";
+    }
+
+    function selectSuggestionsOrBlurEvent(event) {
+        var targetElement = event.target;
+        if (targetElement.parentNode === searchSuggestions) {
+            var suggestion_text = targetElement.innerHTML;
+            searchBar.value = suggestion_text;
+            searchBarForm.submit();
         }
+        else if (targetElement !== searchBar) {
+            // do nothing
+        }
+        searchSuggestions.style.display = "none";
     }
 
     function querySuggestions(event) {
@@ -31,5 +58,15 @@ var searchDropDown = (function(){
 
         ajax.send_ajax_request(destination_file, json_data, csrfmiddlewaretoken.value, postAjaxFunction);
     }
+
+    function autocompleteWithSuggestion(event) {
+        var chossenOption = event.target;
+        console.log(chossenOption);
+    }
+
+    // return public pointers to private variables & functions
+    return {
+
+    };
 
 })();
