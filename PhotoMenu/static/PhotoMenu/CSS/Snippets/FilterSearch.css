@@ -39,12 +39,11 @@ hr.sliding-underbar {
     background: #FF9800;
     border: none;
     position: relative;
-    bottom: 3px;
+    bottom: 1px;
 }
 
 /*---------More Options DropDown Menu----------*/
 li.filter-option.more-options-options{
-    border-bottom: 2px solid transparent;
     position: relative;
 }
 
