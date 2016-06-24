@@ -8,22 +8,58 @@
   {% csrf_token %}
 
   <!--Search Type Tabs-->
-  <div class="search-options-wrapper">
+  {% if search_type %}
+    <div class="search-options-wrapper">
     <span class="search-option search-option-left">
-      <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant" checked>
+
+      {% if search_type == "restaurant" %}
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant" checked>
+      {% else %}
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant">
+      {% endif %}
+
       <label for="search-type-1" class="search-option-label">Restaurants</label>
     </span>
     <span class="search-option search-option-right">
-      <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food">
+
+      {% if search_type == "food" %}
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food" checked>
+      {% else %}
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food">
+      {% endif %}
+
       <label for="search-type-2" class="search-option-label">Foods</label>
     </span>
   </div>
+  {% else %}
+    <div class="search-options-wrapper">
+      <span class="search-option search-option-left">
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant" checked>
+        <label for="search-type-1" class="search-option-label">Restaurants</label>
+      </span>
+      <span class="search-option search-option-right">
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food">
+        <label for="search-type-2" class="search-option-label">Foods</label>
+      </span>
+    </div>
+  {% endif %}
 
   <div class="search-bar-wrapper">
     <!--Search Type Select-->
-    <select class="select-search-type">
-      <option value="restaurant">Restaurant</option>
-      <option value="food">Food</option>
+    <select class="select-search-type" name="search-type">
+
+      {% if search_type == "restaurant" %}
+        <option value="restaurant" selected>Restaurant</option>
+      {% else %}
+        <option value="restaurant">Restaurant</option>
+      {% endif %}
+
+      {% if search_type == "food" %}
+        <option value="food" selected>Food</option>
+      {% else %}
+        <option value="food">Food</option>
+      {% endif %}
+
     </select>
 
     <!--Search bar and search suggestions-->

@@ -24,14 +24,15 @@ def contact_page(request):
     return render(request, 'PhotoMenu/SitePages/ContactPage.html')
 
 def search_results_page(request):
-    query_string = ""
 
     if request.method == "POST":
         query_string = request.POST['search-bar']
         print request.POST
+        context = get_menu_items_for_search_string(query_string)
+        print request.POST['search-type']
+        context['search_type'] = request.POST['search-type']
 
-    context = get_menu_items_for_search_string(query_string)
-    return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
+        return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
 
 def restaurants_page(request,restaurant_name):
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html')
