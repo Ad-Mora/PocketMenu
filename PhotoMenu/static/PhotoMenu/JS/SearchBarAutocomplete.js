@@ -1,4 +1,4 @@
-var searchDropDown = (function(){
+var masterSearch = (function(){
 
     // cache DOM objects
     var searchBarForm = document.querySelector("form.search-bar-form");
@@ -16,18 +16,8 @@ var searchDropDown = (function(){
 
     // private variables
 
-    // var visible_states = {true:"block", false:"none"}
-
     // public functions
 
-    // private functions
-    // function toggleSearchDropDown(event) {
-    //     searchSuggestions.style.display = "block";
-    //     if (searchBar.value === "" || event.type == "blur") {
-    //         searchSuggestions.style.display = "none";
-    //         console.log(event);
-    //     }
-    // }
     function onSearchBarFocus(event) {
         searchSuggestions.style.display = "block";
     }

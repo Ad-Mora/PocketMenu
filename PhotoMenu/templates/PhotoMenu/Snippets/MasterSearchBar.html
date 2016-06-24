@@ -6,9 +6,21 @@
 <form class="search-bar-form" action="{% url 'PhotoMenu:search_results_page' %}"
   method="post">
   {% csrf_token %}
-  <div class="search-bar-wrapper">
 
-    <!--Select drop down menu-->
+  <!--Search Type Tabs-->
+  <div class="search-options-wrapper">
+    <span class="search-option search-option-left">
+      <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" checked>
+      <label for="search-type-1" class="search-option-label">Restaurants</label>
+    </span>
+    <span class="search-option search-option-right">
+      <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type">
+      <label for="search-type-2" class="search-option-label">Foods</label>
+    </span>
+  </div>
+
+  <div class="search-bar-wrapper">
+    <!--Search Type Select-->
     <select class="select-search-type">
       <option value="restaurant">Restaurant</option>
       <option value="restaurant">Food</option>

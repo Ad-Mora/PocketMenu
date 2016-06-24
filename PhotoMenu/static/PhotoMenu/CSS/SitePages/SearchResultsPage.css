@@ -7,6 +7,9 @@ h1.search-page-title{
 }
 
 /*-----Search bar-----*/
+div.search-options-wrapper{
+    width: 92%;
+}
 div.search-bar-wrapper{
     width: 92%;
     height: 35px;
@@ -62,29 +65,12 @@ div.full-width-seperator{
 }
 
 /*----------Search Option Types----------*/
-div.search-options-wrapper{
-    width: 90%;
-    margin: 16px auto 0px auto;
+input.search-option-radio-btn ~ label.search-option-label{
     color: #555555;
-    overflow: auto;
 }
-span.search-option{
-    width: 49%;
-    height: 100%;
-    text-align: center;
-    border-bottom: 4px solid transparent;
-    padding: 0px 0px 5px 0px;
-}
-span.search-option-left{
-    float: left;
-}
-span.search-option-right{
-    float: right;
-}
-span.selected-search-option{
+input.search-option-radio-btn:checked ~ label.search-option-label{
     border-bottom: 4px solid #FF9800;
     color: #FF9800;
-    height: 16px;
 }
 
 /*-----------Food Results List-----------*/
