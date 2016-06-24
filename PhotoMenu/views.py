@@ -1,3 +1,4 @@
+# from django.core.context_processors import csrf
 from django.shortcuts import render
 from .utils import *
 
@@ -5,7 +6,13 @@ from .utils import *
 
 # AJAX
 def drop_down_suggestions(request):
-    context = get_menu_items_for_search_string(request, 5)
+    query_string = ""
+
+    if request.method == "POST":
+        json_data = json.loads(request.body)
+        query_string = json_data['search-bar']
+
+    context = get_menu_items_for_search_string(query_string, 5)
     return render(request, 'PhotoMenu/Snippets/AutoCompleteSuggestions.html', context)
 
 # SitePages
@@ -16,7 +23,12 @@ def contact_page(request):
     return render(request, 'PhotoMenu/SitePages/ContactPage.html')
 
 def search_results_page(request):
-    context = get_menu_items_for_search_string(request)
+    query_string = ""
+
+    if request.method == "POST":
+        query_string = request.POST['search-bar']
+
+    context = get_menu_items_for_search_string(query_string)
     return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
 
 def restaurants_page(request,restaurant_name):
