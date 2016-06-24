@@ -20,13 +20,13 @@ var searchDropDown = (function(){
 
     function querySuggestions(event) {
         var destination_file = "../drop-down-suggestions/";
-        
+
         var json_data = {
             "search-bar": searchBar.value
         }
 
         var postAjaxFunction = function(result){
-            console.log(result);
+            searchSuggestions.innerHTML = result;
         }
 
         ajax.send_ajax_request(destination_file, json_data, csrfmiddlewaretoken.value, postAjaxFunction);

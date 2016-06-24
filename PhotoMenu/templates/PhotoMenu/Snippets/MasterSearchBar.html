@@ -18,10 +18,10 @@
     <div class="search-bar-and-suggestions">
       {% if query_string %}
         <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
-          value="{{ query_string }}" >
+          value="{{ query_string }}" autocomplete="off" >
       {%  else %}
         <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
-          value="" >
+          value="" autocomplete="off">
       {% endif %}
       <ul class="search-suggestions-list"></ul>
 

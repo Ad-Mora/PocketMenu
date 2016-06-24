@@ -39,7 +39,7 @@
     </div>
 
     <!-- Main Search Bar -->
-    {% include "PhotoMenu/Snippets/MasterSearchBar.html" with query_string=query_string %}
+    {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
     <p class="number-of-search-results">There are {{ menu_items_list.count }} results matching '{{ query_string }}'</p>
     <div class="full-width-seperator"></div>
@@ -63,16 +63,18 @@
 
     </ul>
   {% else %}
-    <br>
-    <p class="no-results-details">Your search did not match anything in our data base.</p>
-    <br>
-    <p class="no-results-suggestion">Suggestions:</p>
-    <br>
-    <ul class="no-results-suggestions-list">
-      <li class="no-results-sugestion">Check the spelling in your search</li>
-      <li class="no-results-sugestion">Try searching a shorter phrase</li>
-      <li class="no-results-sugestion">Try using different key words</li>
-    </ul>
+    <div class="no-results-help-container">
+      <br>
+      <p class="no-results-details">Your search did not match anything in our data base.</p>
+      <br>
+      <p class="no-results-suggestion">Suggestions:</p>
+      <br>
+      <ul class="no-results-suggestions-list">
+        <li class="no-results-sugestion">Check the spelling in your search</li>
+        <li class="no-results-sugestion">Try searching a shorter phrase</li>
+        <li class="no-results-sugestion">Try using different key words</li>
+      </ul>
+    </div>
   {% endif %}
 
   <!-- More Results Navigator -->
