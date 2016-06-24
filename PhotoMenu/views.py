@@ -19,6 +19,10 @@ def restaurants_page(request, restaurant_name):
     restaurant = Restaurant.objects.get(name=restaurant_name)
     menu_categories = MenuCategory.objects.filter(restaurant__name=restaurant_name)
 
+    num_horizontal_cats = 3
+    horizontal_cats = menu_categories[:num_horizontal_cats]
+    remaining_cats = menu_categories[num_horizontal_cats:]
+
     categories = {}
     for category in menu_categories:
         categories[category] = []
@@ -28,11 +32,11 @@ def restaurants_page(request, restaurant_name):
         for item in menu_items:
             categories[category].append(item)
 
-
-
     context = {
         'restaurant': restaurant,
         'categories': categories,
+        'horizontal_cats': horizontal_cats,
+        'remaining_cats': remaining_cats,
     }
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 
