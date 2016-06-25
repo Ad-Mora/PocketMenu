@@ -26,8 +26,7 @@ input.search-bar{
     width: 85%;
     border-radius: 3px 0px 0px 3px;
 }
-div.search-suggestions-box{
-    margin-left: 0px;
+ul.search-suggestions-list{
     width: 85%;
 }
 input.search-submit-button{
@@ -168,10 +167,6 @@ span.next.page-icon{
         text-align: left;
     }
 
-    div.search-options-wrapper {
-        display: none;
-    }
-
     div.search-bar-wrapper {
         height: 45px;
         width: 620px;
@@ -186,8 +181,8 @@ span.next.page-icon{
         border-radius: 0px;
     }
 
-    div.search-suggestions-box {
-        width: 400px;
+    ul.search-suggestions-list{
+        width: 100%;
     }
 
     input.search-submit-button {

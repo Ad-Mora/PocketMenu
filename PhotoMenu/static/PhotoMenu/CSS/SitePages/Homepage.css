@@ -24,6 +24,13 @@
     margin: 0px auto 20px auto;
     text-align: center;
 }
+.picture-bottom-text{
+     width: 100%;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin: 15px auto 0px auto;
+}
 /*----------Search Option Types----------*/
 div.search-options-wrapper{
     width: 100%;
@@ -38,35 +45,8 @@ input.search-option-radio-btn:checked ~ label.search-option-label{
     position: relative;
     margin-top: 12px;
 }
-.search-suggestions-box{
-    display: none;
-    position: absolute;
-    top: 25px;
-    padding-top: 10px;
-    z-index: 0;
+ul.search-suggestions-list{
     width: 100%;
-    background-color: white;
-    border-radius: 3px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-}
-.search-suggestion{
-    padding-left: 10px;
-    color: #333333;
-    line-height: 35px;
-    border: 1px solid #eeeeee;
-    border-top: 0px;
-    font-size: 14px;
-}
-.search-suggestion:hover{
-    background-color: #eeeeee;
-}
-.picture-bottom-text{
-     width: 100%;
-    color: white;
-    font-size: 14px;
-    text-align: center;
-    margin: 15px auto 0px auto;
 }
 /*---------------Why Us Header----------------*/
 .why-us-section-wrapper{
