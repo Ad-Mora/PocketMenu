@@ -81,10 +81,43 @@ var moreOptions = (function(){
         elementRect = element.getBoundingClientRect();
         bodyRect = document.body.getBoundingClientRect();
         offset = elementRect.top - bodyRect.top;
+        alert(elementRect.top);
         return offset;
     }
 
-    function smoothScroll(position, duration) {
+    // Top here is defined as: TODO
+    function getPositionFromTop(element) {
+        elementPositionFromTopViewport = element.getBoundingClientRect().top;
+        offset = window.scrollY + elementPositionFromTopViewport;
+        return offset;
+    }
+
+    function smoothScroll(endPosition, duration) {
+        var startPosition = window.scrollY;
+        var distance = endPosition - startPosition;
+        var increment = distance/duration;
+        var stopAnimation;
+
+        var animateScroll = function () {
+            window.scrollBy(0, increment);
+            stopAnimation();
+        };
+
+        stopAnimation = function() {
+            var currentPosition = window.scrollY;
+
+            if (increment >= 0) {
+                if ( (currentPosition >= (endPosition - increment)) || ((window.innerHeight + currentPosition) >= true) ) {
+                }
+
+
+            } else {
+            }
+
+
+        }
+
+        var runAnimation = setInterval(animateScroll, 16);
     }
 
     function scrollToCategory(event) {
@@ -97,8 +130,11 @@ var moreOptions = (function(){
         elementToScrollTo = categoryNamesToObject[category];
         position = getPosition(elementToScrollTo) - 10;
         window.scrollTo(0, position);
-
     }
+
+
+    alert("body.scrollHeight: " + document.body.scrollHeight);
+    alert(document.body.style.marginTop);
 
 
     // reveal public pointers to private functions & properties
