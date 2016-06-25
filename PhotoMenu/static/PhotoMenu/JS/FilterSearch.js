@@ -77,6 +77,16 @@ var moreOptions = (function(){
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
 
+    function getPosition(element) {
+        elementRect = element.getBoundingClientRect();
+        bodyRect = document.body.getBoundingClientRect();
+        offset = elementRect.top - bodyRect.top;
+        return offset;
+    }
+
+    function smoothScroll(position, duration) {
+    }
+
     function scrollToCategory(event) {
         var srcElement = event.srcElement;
         var className = srcElement.className;
@@ -85,7 +95,9 @@ var moreOptions = (function(){
             category = srcElement.firstElementChild.textContent;
         }
         elementToScrollTo = categoryNamesToObject[category];
-        window.scrollTo(0,0);
+        position = getPosition(elementToScrollTo) - 10;
+        window.scrollTo(0, position);
+
     }
 
 
