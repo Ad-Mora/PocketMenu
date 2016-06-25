@@ -7,21 +7,16 @@
 {# <script src="{%  static "PhotoMenu/JS/MobileHeaderSearch.js" %}" type="text/javascript"></script> #}
 
 {% load staticfiles %}
-<div class="header-search-bar-with-icon">
+<form class="header-search-bar-with-icon" action="{% url 'PhotoMenu:search_results_page' %}" method="post">
+  {% csrf_token %}
+
+  <!-- Hidden select element to always search for Restaurants -->
+  <select class="select-search-type" name="search-type" style="display: none;">
+    <option value="restaurant" selected>Restaurant</option>
+  </select>
+
+  <!-- the actual Search Bar -->
   <img class="header-search-bar-search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
-  <input class="header-search-bar" placeholder="e.g. restaurant or food" type="text">
-  <ul class="header-search-suggestions-list">
-    <li class="header-search-suggestion-options">
-      <a href="#" class="header-search-suggestion-link">Hamburger</a>
-    </li>
-    <li class="header-search-suggestion-options">
-      <a href="#" class="header-search-suggestion-link">Pizza</a>
-    </li>
-    <li class="header-search-suggestion-options">
-      <a href="#" class="header-search-suggestion-link">Salads</a>
-    </li>
-    <li class="header-search-suggestion-options">
-      <a href="#" class="header-search-suggestion-link">Soda</a>
-    </li>
-  </ul>
-</div>
+  <input class="header-search-bar" name="search-bar" placeholder="Restaurant Name" type="text" autocomplete="off">
+  <ul class="header-search-suggestions-list"></ul>
+</form>

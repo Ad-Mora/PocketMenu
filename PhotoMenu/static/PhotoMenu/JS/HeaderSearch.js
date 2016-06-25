@@ -41,8 +41,8 @@ var desktopHeaderSearch = (function () {
 
     // bind events
     searchInput.addEventListener('focus', displaySearchSuggestionsList);
-    searchInput.addEventListener('blur', hideSearchSuggestionsList);
-    searchInput.addEventListener('keydown', queryForSuggestions);
+    documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
+    searchInput.addEventListener('keyup', queryForSuggestions);
 
     // public variables
 
@@ -51,6 +51,18 @@ var desktopHeaderSearch = (function () {
     // public functions
 
     // private functions
+    function selectSuggestionsOrBlurEvent(event) {
+        var targetElement = event.target;
+        if (targetElement.parentNode === suggestionsList) {
+            var suggestion_text = targetElement.innerHTML;
+            searchInput.value = suggestion_text;
+            searchInput.submit();
+        }
+        else if (targetElement !== searchInput) {
+            suggestionsList.style.display = "none";
+        }
+    }
+    
     function displaySearchSuggestionsList(event) {
         suggestionsList.style.display = "block";
     }
@@ -60,7 +72,17 @@ var desktopHeaderSearch = (function () {
     }
 
     function queryForSuggestions(event) {
-        console.log(event.key);
+        var destination_file = "../drop-down-suggestions/";
+        var csrfMiddlewareToken = ajax.getCSRFToken();
+        var json_data = {
+            "search-bar": searchInput.value,
+            "search-type": 'restaurant'         // by default, the desktop search bar always searches restaurant
+        }
+        var postAjaxFunction = function(result){
+            suggestionsList.innerHTML = result;
+        }
+
+        ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
     }
 
     // return public pointers to private variables & functions
