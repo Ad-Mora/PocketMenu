@@ -4,6 +4,8 @@
 var favoritesPage = (function () {
     // cache DOM
     var listOfFoodSections = document.querySelector("ul.list-of-food-lists");
+    var foodEntriesList;
+
     // bind events
 
     // public variables
@@ -24,7 +26,9 @@ var favoritesPage = (function () {
                 "food-ids-list":  Object.keys( dictOfFavoriteFoods )
             }
             var postAjaxFunction = function(result) {
-                console.log(result);
+                listOfFoodSections.innerHTML = result;
+                foodFavoriting.setInterestDataForFoodList();
+                foodEntriesList = foodEntry.bindAllFoodEntriesWithClickEvent();
             }
 
             ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);

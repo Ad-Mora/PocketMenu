@@ -48,22 +48,7 @@
   {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
 
   <!-- List of Food Item Lists -->
-  {% for restaurant in restaurants_list %}
-  <ul class="list-of-food-lists">
-    <li class="food-type-section-wrapper">
-      <h3 class="food-type-section-header">{{ restaurant.name }}</h3>
-      <ul class="food-type-section-food-list">
-        {% for menu_item in restaurant.favorite_foods %}
-          {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {% endfor %}
-        <!-- ghost items ensure even spacing and left-alignment -->
-        <li class="ghost-food-item"></li>
-        <li class="ghost-food-item"></li>
-        <li class="ghost-food-item"></li>
-      </ul>
-    </li>
-  </ul>
-  {% endfor %}
+  <ul class="list-of-food-lists"></ul>
 
   <!-- Website Footer -->
   {% include "PhotoMenu/Snippets/Footer.html" %}
@@ -73,6 +58,7 @@
   <script src="{%  static "PhotoMenu/JS/HeaderSearch.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/DocumentModule.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/SwipeGesture.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/FoodFavoriting.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/FoodEntry.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/AllInspectorView.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script>

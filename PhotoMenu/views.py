@@ -30,8 +30,11 @@ def drop_down_suggestions(request):
 def get_favorite_foods(request):
     if request.method == "POST":
         json_data = json.loads(request.body)
-        food_ids = json_data['food-ids-list']
-        print "you made it!"
+        food_ids_list = json_data['food-ids-list']
+        context = {
+            'restaurants_list': get_favorite_foods_context_data(food_ids_list)
+        }
+        return render(request, 'PhotoMenu/Snippets/FavoritesPageSections.html', context)
 
 # SitePages
 def homepage(request):

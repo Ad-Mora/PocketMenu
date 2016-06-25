@@ -4,13 +4,10 @@
 var foodEntry = (function () {
 
     // cache DOM
-    var listOfFoodEntryLI = document.querySelectorAll("li.food-entry-li");
+    var listOfFoodEntryLI;
 
     // bind events
-    for (var i = 0; i < listOfFoodEntryLI.length; i++) {
-        listOfFoodEntryLI[i].addEventListener('click', _displayInspectorViewForFood);
-        listOfFoodEntryLI[i].setAttribute("data-list-item-number", i);
-    }
+    var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
 
@@ -42,10 +39,24 @@ var foodEntry = (function () {
         return listOfFoodEntryLI[ previousFoodIndex ];
     }
 
+    function bindAllFoodEntriesWithClickEvent() {
+        // If this function ever gets called twice, need to make sure
+        // listOfFoodEntryLI stays up to data
+        listOfFoodEntryLI = document.querySelectorAll("li.food-entry-li");
+
+        for (var i = 0; i < listOfFoodEntryLI.length; i++) {
+            listOfFoodEntryLI[i].addEventListener('click', _displayInspectorViewForFood);
+            listOfFoodEntryLI[i].setAttribute("data-list-item-number", i);
+        }
+
+        return listOfFoodEntryLI;
+    }
+
     // return public points to private variables and functions
     return {
         "getNextFoodItem": getNextFoodItem,
-        "getPreviousFoodItem": getPreviousFoodItem
+        "getPreviousFoodItem": getPreviousFoodItem,
+        bindAllFoodEntriesWithClickEvent: bindAllFoodEntriesWithClickEvent
     };
 
 })();

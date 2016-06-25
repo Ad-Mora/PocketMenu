@@ -19,8 +19,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^', include('PhotoMenu.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('PhotoMenu.urls')),
 ]
 
 if settings.DEBUG is True:

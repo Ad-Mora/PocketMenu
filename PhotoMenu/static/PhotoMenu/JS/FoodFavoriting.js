@@ -3,7 +3,6 @@
  */
 var foodFavoriting = (function () {
     // cache DOM
-    var listOfAllFoodEntries = document.querySelectorAll("li.food-entry-li");
 
     // bind events
 
@@ -32,6 +31,10 @@ var foodFavoriting = (function () {
     }
 
     function setInterestDataForFoodList() {
+        // cant cache listOfAllFoodEntries because some pages load
+        // FoodEntries dynamically
+        var listOfAllFoodEntries = document.querySelectorAll("li.food-entry-li");
+
         for (var i = 0; i < listOfAllFoodEntries.length; i++) {
             var foodElement = listOfAllFoodEntries[ i ];
             var foodID = foodElement.getAttribute("data-food-unique-id");
