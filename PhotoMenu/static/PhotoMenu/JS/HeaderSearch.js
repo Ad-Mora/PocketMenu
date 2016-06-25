@@ -56,7 +56,7 @@ var desktopHeaderSearch = (function () {
         if (targetElement.parentNode === suggestionsList) {
             var suggestion_text = targetElement.innerHTML;
             searchInput.value = suggestion_text;
-            searchInput.submit();
+            searchBarContainer.submit();
         }
         else if (targetElement !== searchInput) {
             suggestionsList.style.display = "none";
