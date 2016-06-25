@@ -11,7 +11,6 @@ div.header-background{
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-position: 0px 25%;
-    margin: 45px 0px 0px 0px;
 }
 div.background-image-dark-overlay{
     width: 100%;
@@ -72,12 +71,6 @@ ul.food-type-section-food-list{
     flex-wrap: wrap;
     display: -webkit-flex;
     -webkit-flex-wrap: wrap
-}
-
-@media (min-width: 355px) {
-    div.header-background{
-        margin: 55px 0px 0px 0px;
-    }
 }
 
 @media (min-width: 480px) {
