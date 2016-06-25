@@ -42,10 +42,11 @@ def search_results_page(request):
         # only MenuItems can be returned to the SearchResultsPage (for now)
         context = {
             'query_string':     query_string,
-            'menu_items_list':  get_menu_items_for_search_string(query_string, 5),
+            'menu_items_list':  get_menu_items_for_search_string(query_string),
             'search_type':      request.POST['search-type']
         }
         return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
+
     else:
         return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html')
 
