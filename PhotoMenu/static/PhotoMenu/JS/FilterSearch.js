@@ -31,7 +31,6 @@ var moreOptions = (function(){
     if (moreOptionsLI) {
         moreOptionsLI.addEventListener('click', toggleDropDownMenu);
     }
-
     for (var i = 0; i < allVisibleOptionLI.length; i++) {
         allVisibleOptionLI[i].addEventListener('click', adjustSlidingUnderBar);
         allVisibleOptionLI[i].addEventListener('click', scrollToCategory);
@@ -81,21 +80,21 @@ var moreOptions = (function(){
         elementRect = element.getBoundingClientRect();
         bodyRect = document.body.getBoundingClientRect();
         offset = elementRect.top - bodyRect.top;
-        alert(elementRect.top);
         return offset;
     }
 
-    // Top here is defined as: TODO
+    // Top here is defined as from the top of the visible document
     function getPositionFromTop(element) {
         elementPositionFromTopViewport = element.getBoundingClientRect().top;
         offset = window.scrollY + elementPositionFromTopViewport;
         return offset;
     }
 
+    // duration is in milliseconds
     function smoothScroll(endPosition, duration) {
         var startPosition = window.scrollY;
         var distance = endPosition - startPosition;
-        var increment = distance/duration;
+        var increment = distance/(duration/5);
         var stopAnimation;
 
         var animateScroll = function () {
@@ -107,17 +106,17 @@ var moreOptions = (function(){
             var currentPosition = window.scrollY;
 
             if (increment >= 0) {
-                if ( (currentPosition >= (endPosition - increment)) || ((window.innerHeight + currentPosition) >= true) ) {
+                if ( (currentPosition >= (endPosition - increment)) ||
+                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+                    clearInterval(runAnimation);
                 }
-
-
             } else {
+                if (currentPosition <= endPosition || currentPosition <= 0) {
+                    clearInterval(runAnimation);
+                }
             }
-
-
         }
-
-        var runAnimation = setInterval(animateScroll, 16);
+        var runAnimation = setInterval(animateScroll, 5);
     }
 
     function scrollToCategory(event) {
@@ -128,16 +127,19 @@ var moreOptions = (function(){
             category = srcElement.firstElementChild.textContent;
         }
         elementToScrollTo = categoryNamesToObject[category];
-        position = getPosition(elementToScrollTo) - 10;
-        window.scrollTo(0, position);
+
+        style = window.getComputedStyle(document.body);
+        paddingTop = style.getPropertyValue("padding-top");
+        paddingTop = parseFloat(paddingTop, 10);
+        position = getPosition(elementToScrollTo) - paddingTop;
+
+        smoothScroll(position, 300);
     }
-
-
-    alert("body.scrollHeight: " + document.body.scrollHeight);
-    alert(document.body.style.marginTop);
 
 
     // reveal public pointers to private functions & properties
     return {
     };
+
+
 })();
