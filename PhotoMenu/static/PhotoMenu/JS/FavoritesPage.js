@@ -4,7 +4,7 @@
 var favoritesPage = (function () {
     // cache DOM
     var listOfFoodSections = document.querySelector("ul.list-of-food-lists");
-    var foodEntriesList;
+    var noFavoritesMessage = document.querySelector("p.my-favorites-empty-message");
 
     // bind events
 
@@ -25,7 +25,7 @@ var favoritesPage = (function () {
             }
         }
 
-        if (dictOfFavoriteFoods !== null) {
+        if (favoriteFoods.length > 0) {
             var destination_file = "../load-favorite-foods/";
             var csrfMiddlewareToken = ajax.getCSRFToken();
 
@@ -35,14 +35,13 @@ var favoritesPage = (function () {
             var postAjaxFunction = function(result) {
                 listOfFoodSections.innerHTML = result;
                 foodFavoriting.setInterestDataForFoodList();
-                foodEntriesList = foodEntry.bindAllFoodEntriesWithClickEvent();
+                foodEntry.bindAllFoodEntriesWithClickEvent();
             }
 
             ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
         }
         else {
-            // tell them that their favorites list is empty :( but that they
-            // should go browse some foods :)
+            noFavoritesMessage.style.display = "block";
         }
 
     }

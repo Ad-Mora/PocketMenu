@@ -43,6 +43,13 @@ ul.food-type-section-food-list{
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+p.my-favorites-empty-message{
+    font-size: 16px;
+    color: #333333;
+    text-align: center;
+    margin: 30px 0px 0px 0px;
+    display: none;
+}
 
 /* Large mobile view */
 @media (min-width: 480px) {
