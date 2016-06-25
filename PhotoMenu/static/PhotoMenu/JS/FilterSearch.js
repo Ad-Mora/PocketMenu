@@ -31,23 +31,24 @@ var moreOptions = (function(){
     function _toggleDropDownMenu(event) {
         event.stopPropagation();
         console.log(event);
-        var srcElement = event.srcElement || event.target;
-        while (srcElement) {
-            if (srcElement == moreOptionsLI) {
+        var target = event.target;
+        while (target) {
+            if (target == moreOptionsLI) {
                 dropDownIsVisible = !dropDownIsVisible;
                 moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
                 dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
                 dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+                dropDownIcon.style.mozTransform = dropDownIconStates[ dropDownIsVisible ];
                 return;
             }
-            srcElement = srcElement.parentNode;
+            target = target.parentNode;
         }
 
         dropDownIsVisible = false;
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
         dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
-                return;
+        dropDownIcon.style.mozTransform = dropDownIconStates[ dropDownIsVisible ];
     }
 
     function _adjustSlidingUnderBar(event) {
@@ -61,13 +62,13 @@ var moreOptions = (function(){
     }
 
     // function _hideDropDownAfterOpened(event) {
-    //     var srcElement = event.srcElement;
-    //     while (srcElement) {
-    //         if (srcElement == moreOptionsLI) {
+    //     var target = event.target;
+    //     while (target) {
+    //         if (target == moreOptionsLI) {
     //             console.log("clicked inside");
     //             return;
     //         }
-    //         srcElement = srcElement.parentNode;
+    //         target = target.parentNode;
     //     }
     //     console.log("clicked outside");
     //
