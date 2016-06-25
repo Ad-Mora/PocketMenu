@@ -18,12 +18,19 @@ var favoritesPage = (function () {
     // private functions
     function populateFavoritesPageWithFavoriteFoods() {
         var dictOfFavoriteFoods = JSON.parse( localStorage.getItem("dictOfFavoriteFoods") );
+        var favoriteFoods = [];
+        for (var food in dictOfFavoriteFoods) {
+            if (dictOfFavoriteFoods[ food ] == true) {
+                favoriteFoods.push(food);
+            }
+        }
 
         if (dictOfFavoriteFoods !== null) {
             var destination_file = "../load-favorite-foods/";
             var csrfMiddlewareToken = ajax.getCSRFToken();
+
             var json_data = {
-                "food-ids-list":  Object.keys( dictOfFavoriteFoods )
+                "food-ids-list": favoriteFoods
             }
             var postAjaxFunction = function(result) {
                 listOfFoodSections.innerHTML = result;
