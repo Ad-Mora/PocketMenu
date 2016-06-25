@@ -13,6 +13,12 @@ var ajax = (function (){
     // private functions
 
     // public functions
+    function getCSRFToken() {
+        var csrfCookie = document.cookie.split(';')[0];
+        var csrfTokenValue = csrfCookie.split('=')[1];
+        return csrfTokenValue
+    }
+    
     function send_ajax_request(destination_file, json_data, csrftoken, postAjaxFunction) {
         var xmlhttp;
         if (window.XMLHttpRequest) {
@@ -42,7 +48,8 @@ var ajax = (function (){
 
     // return public pointers to private variables & functions
     return {
-        send_ajax_request: send_ajax_request
+        send_ajax_request: send_ajax_request,
+        getCSRFToken: getCSRFToken
     };
 
 })();

@@ -6,7 +6,6 @@ var masterSearch = (function(){
     var searchTypeSelect = searchBarForm.querySelector("select.select-search-type");
     var searchBar = searchBarForm.querySelector("input.search-bar");
     var searchSuggestions = searchBarForm.querySelector("ul.search-suggestions-list");
-    var csrfmiddlewaretoken = searchBarForm.querySelector("input[name='csrfmiddlewaretoken']");
 
     // bind events
     searchBar.addEventListener("input", onSearchBarFocus);
@@ -51,17 +50,16 @@ var masterSearch = (function(){
     function querySuggestions(event) {
         var destination_file = "../drop-down-suggestions/";
         var search_type  = searchBarForm.querySelector('input[name="radio-search-type"]:checked').value;
-        
+        var csrfMiddlewareToken = ajax.getCSRFToken();
         var json_data = {
             "search-bar": searchBar.value,
             "search-type": search_type
         }
-
         var postAjaxFunction = function(result){
             searchSuggestions.innerHTML = result;
         }
 
-        ajax.send_ajax_request(destination_file, json_data, csrfmiddlewaretoken.value, postAjaxFunction);
+        ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
     }
 
     // return public pointers to private variables & functions

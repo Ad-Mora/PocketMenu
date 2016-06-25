@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import render
 from .utils import *
 import json
@@ -25,6 +26,12 @@ def drop_down_suggestions(request):
             }
             return render(request, 'PhotoMenu/Snippets/AutoCompleteRestaurantSuggestions.html', context)
 
+
+def get_favorite_foods(request):
+    if request.method == "POST":
+        json_data = json.loads(request.body)
+        food_ids = json_data['food-ids-list']
+        print "you made it!"
 
 # SitePages
 def homepage(request):
@@ -55,6 +62,7 @@ def restaurants_page(request,restaurant_name):
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html')
 
 
+@ensure_csrf_cookie
 def favorites_page(request):
     return render(request, 'PhotoMenu/SitePages/FavoritesPage.html')
 
