@@ -23,9 +23,6 @@ var allInspectorView = (function () {
     // public variables
 
     // private functions-------------------------------------------------------------------------
-
-
-
     function _displayInterestActionSign(foodIsLiked) {
         var interestMessageDict = {
             true: "Item saved to \"Favorites\".",
@@ -90,11 +87,11 @@ var allInspectorView = (function () {
     }
 
     function toggleInterestInFood(event) {
-        console.log(event);
         var newInterestInFood = ! (currentFood.getAttribute("data-food-is-liked") == "true");
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
         setInterestIconBasedOnCurrentInterest(desktopInspectorView.interestIcon, currentFood);
         setInterestIconBasedOnCurrentInterest(mobileInspectorView.interestIcon, currentFood);
+        favoritesModule.saveNewFoodInterest(currentFood, newInterestInFood);
         _displayInterestActionSign(newInterestInFood);
     }
 
