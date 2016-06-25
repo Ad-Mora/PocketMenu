@@ -16,6 +16,14 @@ var moreOptions = (function(){
         var dropDownIcon = moreOptionsLI.querySelector("i.more-options-drop-down-icon");
     }
 
+    // Get dictionary of category strings to category element objects
+    var categoryHeaderObjects = document.querySelectorAll("h3.food-type-section-header");
+    var categoryNamesToObject = {};
+    for (var i = 0; i < categoryHeaderObjects.length; i++) {
+        var categoryObj = categoryHeaderObjects[i];
+        categoryNamesToObject[categoryObj.textContent] = categoryObj;
+    }
+
     // Start off the page with the underbar taking up the full width of the first category item
     adjustSlidingUnderBar(null, allVisibleOptionLI[0])
 
@@ -72,11 +80,12 @@ var moreOptions = (function(){
     function scrollToCategory(event) {
         var srcElement = event.srcElement;
         var className = srcElement.className;
-        var category = srcElement.innerHTML;
+        var category = srcElement.textContent;
         if (className == "filter-option") {
-            category = srcElement.firstElementChild.innerHTML;
+            category = srcElement.firstElementChild.textContent;
         }
-        alert(category)
+        elementToScrollTo = categoryNamesToObject[category];
+        window.scrollTo(0,0);
     }
 
 
