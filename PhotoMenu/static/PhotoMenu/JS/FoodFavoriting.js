@@ -1,8 +1,9 @@
 /**
- * Created by devinm on 6/24/16.
+ * Created by devinm on 6/25/16.
  */
-var favoritesModule = (function () {
+var foodFavoriting = (function () {
     // cache DOM
+    var listOfAllFoodEntries = document.querySelectorAll("li.food-entry-li");
 
     // bind events
 
@@ -10,6 +11,7 @@ var favoritesModule = (function () {
     var dictOfFavoriteFoods = fetchOrInitializeFavoriteFoodsDict();
 
     // private variables
+    var setFoodInterestForLoadedFoods = setInterestDataForFoodList();
 
     // public functions
     function saveNewFoodInterest(foodElement, newFoodInterest) {
@@ -29,13 +31,13 @@ var favoritesModule = (function () {
         return {};
     }
 
-    function setInterestDataForFoodList(listOfFoods) {
-        for (var i in listOfFoods) {
-            var foodElement = listOfFoods[ i ];
+    function setInterestDataForFoodList() {
+        for (var i = 0; i < listOfAllFoodEntries.length; i++) {
+            var foodElement = listOfAllFoodEntries[ i ];
             var foodID = foodElement.getAttribute("data-food-unique-id");
 
-            if (dictOfFavoriteFoods[ foodID ] !== "undefined") {
-                foodElement.setAttribute("data-food-unique-id", dictOfFavoriteFoods[ foodID ] );
+            if (dictOfFavoriteFoods[ foodID ] !== undefined) {
+                foodElement.setAttribute("data-food-is-liked", dictOfFavoriteFoods[ foodID ] );
             }
         }
     }

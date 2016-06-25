@@ -91,7 +91,7 @@ var allInspectorView = (function () {
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
         setInterestIconBasedOnCurrentInterest(desktopInspectorView.interestIcon, currentFood);
         setInterestIconBasedOnCurrentInterest(mobileInspectorView.interestIcon, currentFood);
-        favoritesModule.saveNewFoodInterest(currentFood, newInterestInFood);
+        foodFavoriting.saveNewFoodInterest(currentFood, newInterestInFood);
         _displayInterestActionSign(newInterestInFood);
     }
 
