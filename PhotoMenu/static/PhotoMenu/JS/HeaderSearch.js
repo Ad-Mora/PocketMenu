@@ -55,16 +55,11 @@ var mobileSearchModal = (function(){
     function selectSuggestionsOrBlurEvent() {
         var targetElement = event.target;
         if (targetElement.parentNode === suggestionsList) {
-            if (restaurant_internal_search) {
-                // search the current restaurant
-            }
-            else {
-                var suggestion_text = targetElement.innerHTML;
-                searchBar.value = suggestion_text;
-                mainForm.submit();
-            }
+            var suggestion_text = targetElement.innerHTML;
+            searchBar.value = suggestion_text;
+            mainForm.submit();
         }
-        else if (targetElement !== searchBar) {
+        else if (targetElement !== searchBar && targetElement !== searchIcon) {
             suggestionsList.style.display = "none";
         }
     }
@@ -73,23 +68,25 @@ var mobileSearchModal = (function(){
         var searchType = selectSearchType.value;
         var searchQuery = searchBar.value;
         var csrfMiddlewareToken = ajax.getCSRFToken();
+        var postAjaxFunction = function(result){
+            suggestionsList.innerHTML = result;
+        };
 
         var destinationFile;
-        var postAjaxFunction;
         var jsonData;
 
         if (searchType == "Food" || searchType == "Restaurant") {
             destinationFile = "../drop-down-suggestions/";
-            postAjaxFunction = function(result){
-                suggestionsList.innerHTML = result;
-            }
             jsonData = {
                 "search-bar":   searchQuery,
                 "search-type":  searchType
             }
         }
-        else {
-            // only suggest MenuItems from the current restaurant
+        else { // only suggest MenuItems from the current restaurant
+            destinationFile = "search/drop-down-suggestions";
+            jsonData = {
+                "search-bar":   searchQuery
+            }
         }
 
         ajax.send_ajax_request(destinationFile, jsonData, csrfMiddlewareToken, postAjaxFunction);

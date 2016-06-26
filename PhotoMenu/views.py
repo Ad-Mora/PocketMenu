@@ -29,6 +29,17 @@ def drop_down_suggestions(request):
             return render(request, 'PhotoMenu/Snippets/AutoCompleteRestaurantSuggestions.html', context)
 
 
+def restaurant_internal_search_drop_down_suggestions(request, restaurant_name):
+    if request.method == "POST":
+        json_data = json.loads(request.body)
+        query_string = json_data['search-bar']
+        context = {
+            'menu_items_list':  get_restaurant_menu_items_for_search_string(query_string,
+                                                                            restaurant_name.replace("-"," "))
+        }
+        return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
+
+
 def get_favorite_foods(request):
     if request.method == "POST":
         json_data = json.loads(request.body)
@@ -37,6 +48,7 @@ def get_favorite_foods(request):
             'restaurants_list': get_favorite_foods_context_data(food_ids_list)
         }
         return render(request, 'PhotoMenu/Snippets/FavoritesPageSections.html', context)
+
 
 # SitePages
 def homepage(request):
