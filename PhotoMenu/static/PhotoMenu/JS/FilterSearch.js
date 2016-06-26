@@ -152,13 +152,15 @@ var moreOptions = (function(){
         var srcElement = event.srcElement;
         var className = srcElement.className;
         var category = srcElement.textContent;
+        var paddingTop = getPaddingTop();
+        var endPosition;
+
         if (className == "filter-option") {
             category = srcElement.firstElementChild.textContent;
         }
-
         elementToScrollTo = categoryNamesToObject[category];
-        position = getPosition(elementToScrollTo) - getPaddingTop();
-        smoothScroll(position, 300);
+        endPosition = getPosition(elementToScrollTo) - headerHeight - filterBarHeight;
+        smoothScroll(endPosition, 300);
     }
 
     function onScrollFunctions(event) {
@@ -167,8 +169,7 @@ var moreOptions = (function(){
         var topHeaderViewPos = window.scrollY + headerHeight;
 
         if (topHeaderViewPos >= filterSearchBarPos && !filterBarFixed) {
-//            newPaddingTop = String(paddingTop + filterBarHeight) + "px";
-            newPaddingTop = String(paddingTop + 45) + "px";
+            newPaddingTop = String(paddingTop + filterBarHeight) + "px";
             document.body.style.paddingTop = newPaddingTop;
             filterBarFixed = true;
             filterBar.style.top = String(headerHeight) + "px";
