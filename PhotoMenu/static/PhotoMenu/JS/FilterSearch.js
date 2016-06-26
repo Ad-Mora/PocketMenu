@@ -5,11 +5,11 @@
 //---------Toggle the More Options drop down menu--------
 var moreOptions = (function(){
 
-    /*----------cache DOM----------*/
+    /*----------Cache DOM----------*/
 
     // Visible category filter bar options
     var headerBar = document.querySelector("div.header");
-    var filterBar = document.querySelector("div.filter-and-search-section");
+    var categoryBar = document.querySelector("div.filter-and-search-section");
     var visibleOptionsUL = document.querySelector("ul.filter-options-list");
     var allVisibleOptionLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
@@ -21,22 +21,32 @@ var moreOptions = (function(){
         var dropDownIcon = moreOptionsLI.querySelector("i.more-options-drop-down-icon");
     }
 
-    // Get dictionary of category strings to category element objects
+    // Get dictionary of category strings to category bar element objects
+    var namesToBarCategories = {};
+    var catName;
+    for (var i = 0; i < Object.keys(allVisibleOptionLI).length; i++) {
+        catName = allVisibleOptionLI[i].firstElementChild.textContent;
+        allVisibleOptionLI[i];
+        namesToBarCategories[catName] = allVisibleOptionLI[i];
+    }
+
+    // Get dictionary of category strings to category header element objects
     var categoryHeaderObjects = document.querySelectorAll("h3.food-type-section-header");
     var categoryNamesToObject = {};
-    for (var i = 0; i < categoryHeaderObjects.length; i++) {
+    for (var i = 0; i < Object.keys(categoryHeaderObjects).length; i++) {
         var categoryObj = categoryHeaderObjects[i];
         categoryNamesToObject[categoryObj.textContent] = categoryObj;
     }
 
+    // perform actions whenever the window is scrolled
     window.onscroll = onScrollFunctions;
 
-    /*----------initial loading actions----------*/
+    /*----------Initial loading actions----------*/
 
     // Start off the page with the underbar taking up the full width of the first category item
     adjustSlidingUnderBar(null, allVisibleOptionLI[0])
 
-    /* bind events */
+    /*----------Bind events----------*/
 
     // drop down more options menu
     if (moreOptionsLI) {
@@ -49,23 +59,68 @@ var moreOptions = (function(){
         allVisibleOptionLI[i].addEventListener('click', scrollToCategory);
     }
 
-    /*----------variables----------*/
+    /*----------Variables----------*/
 
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
     var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
 
-    // filter bar variables
-    var filterSearchBarPos = getPosition(filterBar);
-    var filterBarHeight = parseFloat(window.getComputedStyle(filterBar).getPropertyValue("height"), 10);
-    var filterBarFixed = false;
+    var categoryBarFixed = false;
+    var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
 
-    // header height
-    var headerHeight = parseFloat(window.getComputedStyle(headerBar).getPropertyValue("height"), 10);
+    /*----------Functions----------*/
 
+    // Getters
 
-    /*----------functions----------*/
+    // Get dictionary of category positions to menu category elements
+    function getHeaderCategoryPositionsToObjects() {
+        var categoryPositionsToObjects = {};
+        var position;
+        for (var i = 0; i < Object.keys(categoryHeaderObjects).length; i++) {
+            categoryObj = categoryHeaderObjects[i];
+            position = getVerticalPosition(categoryObj);
+            categoryPositionsToObjects[position] = categoryObj;
+        }
+        return categoryPositionsToObjects;
+    }
+
+    // Get a list of sorted category positions
+    function getCategoryHeaderPositions() {
+        var categoryPositions = Object.keys(getHeaderCategoryPositionsToObjects());
+        categoryPositions = categoryPositions.sort(function(a, b) {
+            return a - b;
+        });
+        return categoryPositions;
+    }
+
+    function getHeaderHeight() {
+        var headerHeight = window.getComputedStyle(headerBar).getPropertyValue("height");
+        return parseFloat(headerHeight, 10);
+    }
+
+    function getCategoryBarHeight() {
+        var categoryBarHeight = window.getComputedStyle(categoryBar).getPropertyValue("height");
+        return parseFloat(categoryBarHeight, 10);
+    }
+
+    function getBodyPaddingTop() {
+        style = window.getComputedStyle(document.body);
+        paddingTop = style.getPropertyValue("padding-top");
+        paddingTop = parseFloat(paddingTop, 10);
+        return paddingTop;
+    }
+
+    // Vertical position is defined as from the top of the visible document (top is position 0)
+    function getVerticalPosition(element) {
+        elementRect = element.getBoundingClientRect();
+        bodyRect = document.body.getBoundingClientRect();
+        offset = elementRect.top - bodyRect.top;
+        return offset;
+    }
+
+    // Other functions
+
     function toggleDropDownMenu(event) {
 //        event.stopPropagation();
 //        console.log(event);
@@ -98,27 +153,6 @@ var moreOptions = (function(){
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
 
-    function getPaddingTop() {
-        style = window.getComputedStyle(document.body);
-        paddingTop = style.getPropertyValue("padding-top");
-        paddingTop = parseFloat(paddingTop, 10);
-        return paddingTop;
-    }
-
-    function getPosition(element) {
-        elementRect = element.getBoundingClientRect();
-        bodyRect = document.body.getBoundingClientRect();
-        offset = elementRect.top - bodyRect.top;
-        return offset;
-    }
-
-    // Top here is defined as from the top of the visible document
-    function getPositionFromTop(element) {
-        elementPositionFromTopViewport = element.getBoundingClientRect().top;
-        offset = window.scrollY + elementPositionFromTopViewport;
-        return offset;
-    }
-
     // duration is in milliseconds
     function smoothScroll(endPosition, duration) {
         var startPosition = window.scrollY;
@@ -148,50 +182,73 @@ var moreOptions = (function(){
         var runAnimation = setInterval(animateScroll, 3);
     }
 
+    // Scroll to a specific header category
     function scrollToCategory(event) {
         var srcElement = event.srcElement;
         var className = srcElement.className;
         var category = srcElement.textContent;
-        var paddingTop = getPaddingTop();
+        var paddingTop = getBodyPaddingTop();
         var endPosition;
 
         if (className == "filter-option") {
             category = srcElement.firstElementChild.textContent;
         }
         elementToScrollTo = categoryNamesToObject[category];
-        endPosition = getPosition(elementToScrollTo) - headerHeight - filterBarHeight;
+        endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
         smoothScroll(endPosition, 300);
     }
 
-    function onScrollFunctions(event) {
-        var paddingTop = getPaddingTop();
+    // Set the category bar to a fixed position
+    function fixCategoryBar() {
         var newPaddingTop;
-        var topHeaderViewPos = window.scrollY + headerHeight;
+        var paddingTop = getBodyPaddingTop();
+        var topHeaderViewPos = window.scrollY + getHeaderHeight();
 
-        if (topHeaderViewPos >= filterSearchBarPos && !filterBarFixed) {
-            newPaddingTop = String(paddingTop + filterBarHeight) + "px";
+        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
+            newPaddingTop = String(paddingTop + getCategoryBarHeight()) + "px";
             document.body.style.paddingTop = newPaddingTop;
-            filterBarFixed = true;
-            filterBar.style.top = String(headerHeight) + "px";
-            filterBar.style.position = "fixed";
-            console.log("filter bar make fixed");
-        } else if (topHeaderViewPos < filterSearchBarPos && filterBarFixed) {
-            newPaddingTop = String(headerHeight) + "px"
+            categoryBarFixed = true;
+            categoryBar.style.top = String(getHeaderHeight()) + "px";
+            categoryBar.style.position = "fixed";
+        } else if (topHeaderViewPos < defaultCategoryBarPosition && categoryBarFixed) {
+            newPaddingTop = String(getHeaderHeight()) + "px"
             document.body.style.paddingTop = newPaddingTop;
-            filterBarFixed = false;
-            filterBar.style.top = "";
-            filterBar.style.position = "";
-            console.log("filter bar make not fixed");
+            categoryBarFixed = false;
+            categoryBar.style.top = "";
+            categoryBar.style.position = "";
         }
-
     }
 
+    // Move the orange underbar in the category bar to the correct location depending on
+    // what category area the user is currently in
+    function detectCategoryScroll() {
+        var categoryHeaderPositions = getCategoryHeaderPositions();
+        var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
+        var currentCategory = categoryHeaderPositions[0];
+        var categoryObject;
+        var barCategoryObject;
+        var catName;
+        var catPosition;
 
+        for (var i = 0; i < Object.keys(categoryHeaderPositions).length; i++) {
+            catPosition = categoryHeaderPositions[i];
+            if (currentTopViewPosition >= catPosition) {
+                currentCategory = catPosition;
+            }
+        }
+        categoryObject = getHeaderCategoryPositionsToObjects()[currentCategory];
+        catName = categoryObject.textContent;
+        barCategoryObject = namesToBarCategories[catName];
+        adjustSlidingUnderBar(null, barCategoryObject);
+    }
 
+    function onScrollFunctions(event) {
+        fixCategoryBar();
+        detectCategoryScroll();
+    }
 
     // reveal public pointers to private functions & properties
     return {
     };
-
 
 })();
