@@ -1,12 +1,12 @@
 .logo{
     background-image: url("../../Images/Icons/ChompsHamburgerLogo.png");
-    background-size: auto 100%;
+    background-size: 100% auto;
     background-repeat: no-repeat;
     display: inline-block;
-    width: 175px;
+    width: 180px;
     height: 30px;
     background-position: 0px 0px;
-    margin: 7px 0px 0px 10px;
+    margin: 9px 0px 0px 10px;
 }
 
 /* Large mobile view */
