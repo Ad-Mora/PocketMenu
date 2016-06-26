@@ -30,7 +30,6 @@ var moreOptions = (function(){
     // private methods
     function _toggleDropDownMenu(event) {
         event.stopPropagation();
-        console.log(event);
         var target = event.target;
         while (target) {
             if (target == moreOptionsLI) {

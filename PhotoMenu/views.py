@@ -3,6 +3,8 @@ from django.shortcuts import render
 from .utils import *
 import json
 
+SEARCH_TYPE_RESTAURANT = "Restaurant"
+SEARCH_TYPE_FOOD = "Food"
 
 # AJAX
 def drop_down_suggestions(request):
@@ -10,16 +12,16 @@ def drop_down_suggestions(request):
         json_data = json.loads(request.body)
         search_type = json_data['search-type']
         query_string = json_data['search-bar']
-
+        print search_type
         # either MenuItems or Restaurants can be 'suggested'
-        if search_type == "food":
+        if search_type == SEARCH_TYPE_FOOD:
             context = {
                 'query_string':     query_string,
                 'menu_items_list':  get_menu_items_for_search_string(query_string, 5)
             }
             return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
 
-        elif search_type == "restaurant":
+        elif search_type == SEARCH_TYPE_RESTAURANT:
             context = {
                 'query_string':     query_string,
                 'restaurants_list':  get_restaurants_for_search_string(query_string)
@@ -32,7 +34,8 @@ def get_favorite_foods(request):
         json_data = json.loads(request.body)
         food_ids_list = json_data['food-ids-list']
         context = {
-            'restaurants_list': get_favorite_foods_context_data(food_ids_list)
+            'restaurants_list': get_favorite_foods_context_data(food_ids_list),
+            'search_options_list':   [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
         }
         return render(request, 'PhotoMenu/Snippets/FavoritesPageSections.html', context)
 
@@ -42,7 +45,10 @@ def homepage(request):
 
 
 def contact_page(request):
-    return render(request, 'PhotoMenu/SitePages/ContactPage.html')
+    context = {
+        'search_options_list': [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+    }
+    return render(request, 'PhotoMenu/SitePages/ContactPage.html', context)
 
 
 def search_results_page(request):
@@ -62,7 +68,10 @@ def search_results_page(request):
 
 
 def restaurants_page(request,restaurant_name):
-    return render(request, 'PhotoMenu/SitePages/RestaurantPage.html')
+    context = {
+        'search_options_list': [restaurant_name.replace("-"," "), SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+    }
+    return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 
 
 @ensure_csrf_cookie

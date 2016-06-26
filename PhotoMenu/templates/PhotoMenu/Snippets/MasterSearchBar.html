@@ -12,20 +12,20 @@
     <div class="search-options-wrapper">
     <span class="search-option search-option-left">
 
-      {% if search_type == "restaurant" %}
-        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant" checked>
+      {% if search_type == "Restaurant" %}
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="Restaurant" checked>
       {% else %}
-        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant">
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="Restaurant">
       {% endif %}
 
       <label for="search-type-1" class="search-option-label">Restaurants</label>
     </span>
     <span class="search-option search-option-right">
 
-      {% if search_type == "food" %}
-        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food" checked>
+      {% if search_type == "Food" %}
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="Food" checked>
       {% else %}
-        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food">
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="Food">
       {% endif %}
 
       <label for="search-type-2" class="search-option-label">Foods</label>
@@ -34,11 +34,11 @@
   {% else %}
     <div class="search-options-wrapper">
       <span class="search-option search-option-left">
-        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="restaurant" checked>
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="Restaurant" checked>
         <label for="search-type-1" class="search-option-label">Restaurants</label>
       </span>
       <span class="search-option search-option-right">
-        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="food">
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="Food">
         <label for="search-type-2" class="search-option-label">Foods</label>
       </span>
     </div>
@@ -48,16 +48,16 @@
     <!--Search Type Select-->
     <select class="select-search-type" name="search-type">
 
-      {% if search_type == "restaurant" %}
-        <option value="restaurant" selected>Restaurant</option>
+      {% if search_type == "Restaurant" %}
+        <option value="Restaurant" selected>Restaurant</option>
       {% else %}
-        <option value="restaurant">Restaurant</option>
+        <option value="Restaurant">Restaurant</option>
       {% endif %}
 
-      {% if search_type == "food" %}
-        <option value="food" selected>Food</option>
+      {% if search_type == "Food" %}
+        <option value="Food" selected>Food</option>
       {% else %}
-        <option value="food">Food</option>
+        <option value="Food">Food</option>
       {% endif %}
 
     </select>
