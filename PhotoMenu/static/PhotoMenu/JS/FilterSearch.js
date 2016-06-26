@@ -5,11 +5,16 @@
 //---------Toggle the More Options drop down menu--------
 var moreOptions = (function(){
 
-    // cache DOM
+    /*----------cache DOM----------*/
+
+    // Visible category filter bar options
+    var headerBar = document.querySelector("div.header");
+    var filterBar = document.querySelector("div.filter-and-search-section");
     var visibleOptionsUL = document.querySelector("ul.filter-options-list");
     var allVisibleOptionLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
+    // More options menu
     var moreOptionsLI = visibleOptionsUL.querySelector("li.filter-option.more-options-options");
     if (moreOptionsLI) {
         var moreOptionsUL = moreOptionsLI.querySelector("ul.more-filter-options-list");
@@ -24,25 +29,43 @@ var moreOptions = (function(){
         categoryNamesToObject[categoryObj.textContent] = categoryObj;
     }
 
+    window.onscroll = onScrollFunctions;
+
+    /*----------initial loading actions----------*/
+
     // Start off the page with the underbar taking up the full width of the first category item
     adjustSlidingUnderBar(null, allVisibleOptionLI[0])
 
-    // bind events
+    /* bind events */
+
+    // drop down more options menu
     if (moreOptionsLI) {
         moreOptionsLI.addEventListener('click', toggleDropDownMenu);
     }
+
+    // filter bar event listeners
     for (var i = 0; i < allVisibleOptionLI.length; i++) {
         allVisibleOptionLI[i].addEventListener('click', adjustSlidingUnderBar);
         allVisibleOptionLI[i].addEventListener('click', scrollToCategory);
     }
 
-    // private variables
+    /*----------variables----------*/
+
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
     var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
 
-    // private methods
+    // filter bar variables
+    var filterSearchBarPos = getPosition(filterBar);
+    var filterBarHeight = parseFloat(window.getComputedStyle(filterBar).getPropertyValue("height"), 10);
+    var filterBarFixed = false;
+
+    // header height
+    var headerHeight = parseFloat(window.getComputedStyle(headerBar).getPropertyValue("height"), 10);
+
+
+    /*----------functions----------*/
     function toggleDropDownMenu(event) {
 //        event.stopPropagation();
 //        console.log(event);
@@ -66,7 +89,6 @@ var moreOptions = (function(){
     }
 
     function adjustSlidingUnderBar(event, element) {
-
         var referenceX = visibleOptionsUL.getBoundingClientRect().left;
         var optionRect = (element || this).getBoundingClientRect();
         var deltaX = optionRect.left - referenceX;
@@ -74,6 +96,13 @@ var moreOptions = (function(){
 
         slidingUnderBar.style.width = width + "px";
         slidingUnderBar.style.marginLeft = deltaX + "px";
+    }
+
+    function getPaddingTop() {
+        style = window.getComputedStyle(document.body);
+        paddingTop = style.getPropertyValue("padding-top");
+        paddingTop = parseFloat(paddingTop, 10);
+        return paddingTop;
     }
 
     function getPosition(element) {
@@ -94,7 +123,7 @@ var moreOptions = (function(){
     function smoothScroll(endPosition, duration) {
         var startPosition = window.scrollY;
         var distance = endPosition - startPosition;
-        var increment = distance/(duration/5);
+        var increment = distance/(duration/3);
         var stopAnimation;
 
         var animateScroll = function () {
@@ -116,7 +145,7 @@ var moreOptions = (function(){
                 }
             }
         }
-        var runAnimation = setInterval(animateScroll, 5);
+        var runAnimation = setInterval(animateScroll, 3);
     }
 
     function scrollToCategory(event) {
@@ -126,15 +155,37 @@ var moreOptions = (function(){
         if (className == "filter-option") {
             category = srcElement.firstElementChild.textContent;
         }
+
         elementToScrollTo = categoryNamesToObject[category];
-
-        style = window.getComputedStyle(document.body);
-        paddingTop = style.getPropertyValue("padding-top");
-        paddingTop = parseFloat(paddingTop, 10);
-        position = getPosition(elementToScrollTo) - paddingTop;
-
+        position = getPosition(elementToScrollTo) - getPaddingTop();
         smoothScroll(position, 300);
     }
+
+    function onScrollFunctions(event) {
+        var paddingTop = getPaddingTop();
+        var newPaddingTop;
+        var topHeaderViewPos = window.scrollY + headerHeight;
+
+        if (topHeaderViewPos >= filterSearchBarPos && !filterBarFixed) {
+//            newPaddingTop = String(paddingTop + filterBarHeight) + "px";
+            newPaddingTop = String(paddingTop + 45) + "px";
+            document.body.style.paddingTop = newPaddingTop;
+            filterBarFixed = true;
+            filterBar.style.top = String(headerHeight) + "px";
+            filterBar.style.position = "fixed";
+            console.log("filter bar make fixed");
+        } else if (topHeaderViewPos < filterSearchBarPos && filterBarFixed) {
+            newPaddingTop = String(headerHeight) + "px"
+            document.body.style.paddingTop = newPaddingTop;
+            filterBarFixed = false;
+            filterBar.style.top = "";
+            filterBar.style.position = "";
+            console.log("filter bar make not fixed");
+        }
+
+    }
+
+
 
 
     // reveal public pointers to private functions & properties
