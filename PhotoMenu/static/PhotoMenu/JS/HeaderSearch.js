@@ -16,13 +16,29 @@ var mobileSearchModal = (function(){
     // bind events
     searchIcon.addEventListener('click', openSearchModal);
     cancelButton.addEventListener('click', closeSearchModal);
+    searchBar.addEventListener('focus', displaySearchSuggestionsList);
+    documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener('keyup', queryForSuggestions);
+    selectSearchType.addEventListener('change', updateMainFormPOSTAddress);
 
     // private variables
+    var restaurant_internal_search =
+        (selectSearchType.value != "Restaurant") && (selectSearchType.value != "Food");
 
     // public variables
 
     // private functions
+    function updateMainFormPOSTAddress(event) {
+        if (this.value == "Food" || this.value == "Restaurant") {
+            mainForm.action = "/search/"
+            restaurant_internal_search = false;
+        }
+        else {
+            mainForm.action = window.location.href + "search/";
+            restaurant_internal_search = true;
+        }
+    }
+
     function openSearchModal(event) {
         container.style.display = "block";
         searchBar.focus();
@@ -30,6 +46,27 @@ var mobileSearchModal = (function(){
 
     function closeSearchModal(event) {
         container.style.display = "none";
+    }
+
+    function displaySearchSuggestionsList() {
+        suggestionsList.style.display = "block";
+    }
+
+    function selectSuggestionsOrBlurEvent() {
+        var targetElement = event.target;
+        if (targetElement.parentNode === suggestionsList) {
+            if (restaurant_internal_search) {
+                // search the current restaurant
+            }
+            else {
+                var suggestion_text = targetElement.innerHTML;
+                searchBar.value = suggestion_text;
+                mainForm.submit();
+            }
+        }
+        else if (targetElement !== searchBar) {
+            suggestionsList.style.display = "none";
+        }
     }
 
     function queryForSuggestions(event) {

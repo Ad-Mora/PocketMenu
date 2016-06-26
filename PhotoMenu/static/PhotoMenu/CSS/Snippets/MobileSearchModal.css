@@ -99,6 +99,7 @@ span.mobile-modal-search-bar-icon{
 }
 
 ul.mobile-search-suggestions-list{
+    display: none;
     position: absolute;
     width: 100%;
     top: 44px;

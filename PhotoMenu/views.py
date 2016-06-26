@@ -12,7 +12,7 @@ def drop_down_suggestions(request):
         json_data = json.loads(request.body)
         search_type = json_data['search-type']
         query_string = json_data['search-bar']
-        print search_type
+
         # either MenuItems or Restaurants can be 'suggested'
         if search_type == SEARCH_TYPE_FOOD:
             context = {
@@ -34,8 +34,7 @@ def get_favorite_foods(request):
         json_data = json.loads(request.body)
         food_ids_list = json_data['food-ids-list']
         context = {
-            'restaurants_list': get_favorite_foods_context_data(food_ids_list),
-            'search_options_list':   [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+            'restaurants_list': get_favorite_foods_context_data(food_ids_list)
         }
         return render(request, 'PhotoMenu/Snippets/FavoritesPageSections.html', context)
 
@@ -69,12 +68,16 @@ def search_results_page(request):
 
 def restaurants_page(request,restaurant_name):
     context = {
-        'search_options_list': [restaurant_name.replace("-"," "), SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+        'search_options_list': [restaurant_name.replace("-"," "), SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD],
+        'is_restaurant_page': True
     }
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 
 
 @ensure_csrf_cookie
 def favorites_page(request):
-    return render(request, 'PhotoMenu/SitePages/FavoritesPage.html')
+    context = {
+        'search_options_list': [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+    }
+    return render(request, 'PhotoMenu/SitePages/FavoritesPage.html', context)
 

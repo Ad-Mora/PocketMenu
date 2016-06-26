@@ -6,7 +6,12 @@
 
 <div class="mobile-modal-search-container">
   <div class="mobile-search-background-overlay"></div>
-  <form class="mobile-search-modal-form" action="{% url 'PhotoMenu:search_results_page' %}" method="post">
+  {% if is_restaurant_page %}
+    <form class="mobile-search-modal-form" action="search/" method="post">
+  {% else %}
+    <form class="mobile-search-modal-form" action="{% url 'PhotoMenu:search_results_page' %}" method="post">
+  {% endif %}
+
     {% csrf_token %}
     <div class="mobile-search-select-wrapper">
       <select class="mobile-select-search-type" name="search-type">
