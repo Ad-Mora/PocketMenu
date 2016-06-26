@@ -24,10 +24,12 @@ var masterSearch = (function(){
     // private functions
     function updateSearchTypeSelect(event) {
         searchTypeSelect.value = event.target.value;
+        searchBar.placeholder = "Search for " + event.target.value + "s";
     }
 
     function updateSearchTypeRadioButtons(event) {
         searchBarForm.querySelector("input[name=radio-search-type][value="+ event.target.value +"]").checked = true;
+        searchBar.placeholder = "Search for " + event.target.value + "s";
     }
 
     function onSearchBarFocus(event) {

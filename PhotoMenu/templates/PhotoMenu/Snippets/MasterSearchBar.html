@@ -64,12 +64,24 @@
 
     <!--Search bar and search suggestions-->
     <div class="search-bar-and-suggestions">
-      {% if query_string %}
-        <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
-          value="{{ query_string }}" autocomplete="off" >
-      {%  else %}
-        <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
-          value="" autocomplete="off">
+      {% if search_type %}
+        {% if query_string %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for {{ search_type }}s"
+            value="{{ query_string }}" autocomplete="off" >
+        {%  else %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for {{ search_type }}s"
+            value="" autocomplete="off">
+        {% endif %}
+
+      {% else %}
+        {% if query_string %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
+            value="{{ query_string }}" autocomplete="off" >
+        {%  else %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
+            value="" autocomplete="off">
+        {% endif %}
+
       {% endif %}
       <ul class="search-suggestions-list"></ul>
 
