@@ -67,19 +67,29 @@
 
 
 <!--Our locations area-->
-<div class="white-area">
-	<h1 class="our-locations-header">Our Locations</h1>
-	<p class="our-locations-detail">Check out some of these great restaurants!</p>
-  <div class="all-locations-wrapper">
-    <div class="location-section">
-      <img class="location-image" src="{% static "PhotoMenu/Images/MockPhotos/ElPelon.png" %}">
-      <p class="our-location-name">El Pelon</p>
-    </div>
-    <div class="location-section">
-      <img class="location-image" src="{% static "PhotoMenu/Images/MockPhotos/CrushPizza.png" %}">
-      <p class="our-location-name">Crush Pizza</p>
-    </div>
-  </div>
+{% if restaurant_count < 2 %}
+  <div class="white-area zero-or-one-restaurants">
+{% else %}
+  <div class="white-area">
+{% endif %}
+    <h1 class="our-locations-header">Our Locations</h1>
+    <p class="our-locations-detail">Check out some of these great restaurants!</p>
+    <ul class="all-locations-wrapper">
+      {% for restaurant in restaurants_list %}
+
+        {% if restaurant_count == 2 %}
+          <li class="location-section two-restaurants">
+        {% elif restaurant_count == 3 %}
+          <li class="location-section three-restaurants">
+        {% else %}
+          <li class="location-section four-restaurants">
+        {% endif %}
+            <img class="location-image" src="{{ restaurant.header_image.url }}" alt="{{ restaurant.name }}">
+            <p class="our-location-name">{{ restaurant.name }}</p>
+          </li>
+
+      {% endfor %}
+    </ul>
   <div style="clear:both"></div>
 </div>
 

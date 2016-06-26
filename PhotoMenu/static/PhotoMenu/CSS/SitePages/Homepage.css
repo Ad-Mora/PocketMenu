@@ -114,6 +114,11 @@ ul.search-suggestions-list{
 .all-locations-wrapper{
     margin: 0px auto 20px auto;
     max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
 }
 .our-location-span{
     margin-top: 15px;
@@ -123,6 +128,11 @@ ul.search-suggestions-list{
 }
 .location-section{
     margin: 50px 0px 0px 0px;
+    max-width: 300px;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-basis: 300px;
+    flex-basis: 300px;
 }
 .location-image{
     width: 150px;
@@ -243,10 +253,6 @@ ul.search-suggestions-list{
     .our-locations-detail{
         font-size: 18px;
     }
-    .location-section {
-        width: 50%;
-        float: left;
-    }
     .our-location-span{
         margin-top: 50px;
     }
@@ -265,4 +271,68 @@ ul.search-suggestions-list{
         margin-top: 15px;
         font-size: 22px;
     }
+}
+
+
+/*—————Our Locations Spacing—————*//*----------------------------------NEED TO DEBUG once we get 2+ restaurants*/
+
+/*——————1 restaurant—————— */
+.white-area.zero-or-one-restaurants {
+	display: none;
+}
+
+/*—————— 2 restaurants —————— */
+.location-section.two-restaurants {
+	max-width: 450px;
+	-moz-flex-basis: 450px;
+	-webkit-flex-basis: 450px;
+	flex-basis: 450px;
+}
+
+/*——————3 restaurants ——————*/
+.location-section.three-restaurants {
+	max-width: 400px;
+	-moz-flex-basis: 400px;
+	-webkit-flex-basis: 400px;
+	flex-basis: 400px;
+}
+.all-locations-wrapper.three-restaurants {
+	max-width: 1200px;
+}
+
+/*——————4 restaurants ——————*/
+.location-section.four-restaurants {
+	max-width: 400px;
+	-moz-flex-basis: 301px;
+	-webkit-flex-basis: 301px;
+	flex-basis: 301px;
+}
+
+.all-locations-wrapper.four-restaurats {
+	max-width: 900px;
+}
+
+@media (min-width: 800px) {
+	.location-section.four-restaurats
+ 	{
+		max-width: 400px;
+		-moz-flex-basis:400px;
+		-webkit-flex-basis:400px;
+		flex-basis: 400px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.all-locations-wrapper.four-restaurats
+ 	{
+		max-width: 1200px;
+	}
+
+	.location-section.four-restaurats
+ 		{
+		max-width: 300px;
+		-moz-flex-basis:300px;
+		-webkit-flex-basis:300px;
+		flex-basis: 300px;
+	}
 }

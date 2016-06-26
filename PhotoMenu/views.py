@@ -52,7 +52,11 @@ def get_favorite_foods(request):
 
 # SitePages
 def homepage(request):
-    return render(request, 'PhotoMenu/SitePages/Homepage.html')
+    context = {
+        'restaurants_list': Restaurant.objects.all()[:4],
+        'restaurant_count': Restaurant.objects.count()
+    }
+    return render(request, 'PhotoMenu/SitePages/Homepage.html', context)
 
 
 def contact_page(request):
