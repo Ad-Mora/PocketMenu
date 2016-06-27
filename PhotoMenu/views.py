@@ -6,6 +6,7 @@ import json
 SEARCH_TYPE_RESTAURANT = "Restaurant"
 SEARCH_TYPE_FOOD = "Food"
 
+
 # AJAX
 def drop_down_suggestions(request):
     if request.method == "POST":
@@ -34,7 +35,7 @@ def restaurant_internal_search_drop_down_suggestions(request, restaurant_name):
         json_data = json.loads(request.body)
         query_string = json_data['search-bar']
         context = {
-            'menu_items_list':  get_restaurant_menu_items_for_search_string(query_string,
+            'menu_items_list':  get_restaurant_internal_menu_items(query_string,
                                                                             restaurant_name.replace("-"," "))
         }
         return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)

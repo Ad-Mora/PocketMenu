@@ -58,6 +58,12 @@ var documentModule = (function(){
 
     function addOnScrollFunction(func) {
         onScrollEvents.push(func);
+        return onScrollEvents.length - 1;
+    }
+
+    function removeOnScrollFunction(scrollListenerIndex) {
+        //
+        onScrollEvents[ scrollListenerIndex ] = function(event){};
     }
 
     // return public pointers to private variables & functions

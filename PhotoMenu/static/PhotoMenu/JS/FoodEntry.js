@@ -10,13 +10,46 @@ var foodEntry = (function () {
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
+    var INITIAL_LOAD_VOLUME = 10;
+    var NUM_SCROLL_LISTENERS = 4;
+    var bufferCutOffDepth = window.innerHeight;
+
 
     // public variables
 
     // private functions
+    function loadActualImageForFoodEntry(foodEntry) {
+        var actualSrc = foodEntry.getAttribute("data-food-image-location");
+        var foodEntryImage = foodEntry.querySelector("img.unloaded_image");
+        var tempImage = new Image();
+        tempImage.onload = function (event) {
+            foodEntryImage.src = this.src;
+            foodEntryImage.className = "";
+        }
+        tempImage.src = actualSrc;
+    }
 
-    function _displayInspectorViewForFood(event) {
+    function displayInspectorViewForFood(event) {
         allInspectorView.showInspectorView(this);
+    }
+
+    function listenForScrollDepthToLoad(foodEntry) {
+        var foodEntryIndex = foodEntry.getAttribute("data-list-item-number");
+        documentModule.addOnScrollFunction(function (event) {
+            if (foodEntry.getBoundingClientRect().top <= bufferCutOffDepth) {
+                var eventListenerIndex = loadActualImageForFoodEntry(foodEntry);
+                
+                // place a new event listener on the this + NUM_SCROLL_LISTENERS foodEntry
+                if (foodEntryIndex + NUM_SCROLL_LISTENERS < listOfFoodEntryLI.length) {
+                    listenForScrollDepthToLoad(listOfFoodEntryLI[ foodEntryIndex + NUM_SCROLL_LISTENERS])
+                }
+                
+                // remove the scroll event listener for this element from the document module
+                // because the picture has already loaded
+                
+                
+            }
+        });
     }
 
     // public functions
@@ -46,19 +79,15 @@ var foodEntry = (function () {
         listOfFoodEntryLI = document.querySelectorAll("li.food-entry-li");
         for (var i = 0; i < listOfFoodEntryLI.length; i++) {
             var foodEntryElement = listOfFoodEntryLI[i];
-            foodEntryElement.addEventListener('click', _displayInspectorViewForFood);
+            foodEntryElement.addEventListener('click', displayInspectorViewForFood);
             foodEntryElement.setAttribute("data-list-item-number", i);
 
-            var actualSrc = foodEntryElement.getAttribute("data-food-image-location");
-            foodEntryElement.querySelector("img.unloaded_image").addEventListener('load', function (event) {
-                var that = this;
-                var tempImage = new Image();
-                tempImage.onload = function (event) {
-                    that.src = this.src;
-                    that.className = "";
-                }
-                tempImage.src = actualSrc;
-            })
+            if (i < INITIAL_LOAD_VOLUME) {
+                loadActualImageForFoodEntry(foodEntryElement)
+            }
+            else if (i < INITIAL_LOAD_VOLUME + NUM_SCROLL_LISTENERS) {
+                listenForScrollDepthToLoad(foodEntryElement);
+            }
         }
         return listOfFoodEntryLI;
     }
