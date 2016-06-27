@@ -11,11 +11,11 @@
     data-food-details="{{ menu_item.description }}"
     data-food-image-location="{{ menu_item.image.url }}"
     data-food-price="{{ menu_item.price }}"
-    data-category-name="Category Name"
-    data-category-description="Category descriptions..."
-    data-restaurant-name="Restaurant Name"
-    data-restaurant-link="#"
-    data-food-unique-id="2"
+    data-category-name="{{ menu_item.menu_category.name }}"
+    data-category-description="{{ menu_item.menu_category.description }}"
+    data-restaurant-name="{{ menu_item.menu_category.restaurant.name }}"
+    data-restaurant-link="{{ menu_item.menu_category.restaurant.name_as_link }}"
+    data-food-unique-id="{{ menu_item.pk }}"
     data-food-is-liked="false">
   <div class="food-entry-wrapper">
     <div class="food-entry-image">

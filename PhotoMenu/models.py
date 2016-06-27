@@ -43,6 +43,10 @@ class Restaurant(models.Model):
     def __unicode__(self):
         return self.name
 
+    def name_as_link(self):
+        return "../" + self.name.replace(" ","-")
+
+
 
 class MenuCategory(models.Model):
 

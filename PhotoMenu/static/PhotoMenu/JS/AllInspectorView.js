@@ -121,15 +121,14 @@ var mobileInspectorView = (function () {
     // cache DOM
     var listOfMobileInspectors = document.querySelector("ul.list-of-mobile-inspectors");
     var mobileInspector = listOfMobileInspectors.querySelector("li.mobile-inspector-view-wrapper");
-    var rightMobilePictureIcon = mobileInspector.querySelector("span.inspector.right-arrow");
-    var leftMobilePictureIcon = mobileInspector.querySelector("span.inspector.left-arrow");
-    var mobileInterestIcon = mobileInspector.querySelector("span.inspector.interested-in-food-icon");
-    var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
-    var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
     var leftInspectorView = mobileInspector.cloneNode(true);
-        leftInspectorView.style.background = "blue";
     var rightInspectorView = mobileInspector.cloneNode(true);
-        rightInspectorView.style.background = "red";
+    var rightMobilePictureIcon = mobileInspector.querySelector("span.right-arrow");
+    var leftMobilePictureIcon = mobileInspector.querySelector("span.left-arrow");
+    var mobileInterestIcon = mobileInspector.querySelector("span.interested-in-food-icon");
+    var mobileFoodImage = mobileInspector.querySelector("img.food-image");
+    var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
+    var restaurantLinkIcon = mobileInspector.querySelector("a.restaurant-page-link");
 
     // bind events
     swipeGesture.addSwipeAndDragListener( mobileFoodImage, _whileDraggingImage, _onDragEnd);
@@ -239,6 +238,7 @@ var mobileInspectorView = (function () {
 
         var restaurantLink = foodElement.getAttribute("data-restaurant-link");
         restaurantHeaderLinkElement.href = restaurantLink;
+        restaurantLinkIcon.href = restaurantLink;
 
         var interestIconForView = mobileView.querySelector("span.inspector.interested-in-food-icon");
         allInspectorView.setInterestIconBasedOnCurrentInterest(interestIconForView, foodElement);
