@@ -17,18 +17,18 @@ var searchResultsPage = (function () {
 
     // private functions
     function loadMoreSearchResults() {
-        var destination_file = "../load-favorite-foods/";
-        var csrfMiddlewareToken = ajax.getCSRFToken();
-        var json_data = {
-            "food-ids-list": favoriteFoods
-        }
-        var postAjaxFunction = function(result) {
-            listOfFoodSections.innerHTML = result;
-            foodFavoriting.setInterestDataForFoodList();
-            foodEntry.bindAllFoodEntriesWithClickEvent();
-        }
-
-        ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
+        // var destination_file = "../load-favorite-foods/";
+        // var csrfMiddlewareToken = ajax.getCSRFToken();
+        // var json_data = {
+        //     "food-ids-list": favoriteFoods
+        // }
+        // var postAjaxFunction = function(result) {
+        //     listOfFoodSections.innerHTML = result;
+        //     foodFavoriting.setInterestDataForFoodList();
+        //     foodEntry.bindAllFoodEntriesWithClickEvent();
+        // }
+        //
+        // ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
     }
 
     function checkIfScrolledToBottom(event) {

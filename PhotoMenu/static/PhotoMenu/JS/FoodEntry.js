@@ -48,6 +48,17 @@ var foodEntry = (function () {
             var foodEntryElement = listOfFoodEntryLI[i];
             foodEntryElement.addEventListener('click', _displayInspectorViewForFood);
             foodEntryElement.setAttribute("data-list-item-number", i);
+
+            var actualSrc = foodEntryElement.getAttribute("data-food-image-location");
+            foodEntryElement.querySelector("img.unloaded_image").addEventListener('load', function (event) {
+                var that = this;
+                var tempImage = new Image();
+                tempImage.onload = function (event) {
+                    that.src = this.src;
+                    that.className = "";
+                }
+                tempImage.src = actualSrc;
+            })
         }
         return listOfFoodEntryLI;
     }
