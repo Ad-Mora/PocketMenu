@@ -217,12 +217,13 @@ var mobileInspectorView = (function () {
 
         var foodName = foodElement.getAttribute("data-food-name");
         foodNameElement.innerHTML = foodName;
+        foodImageElement.alt = foodName;
 
         var foodDetails = foodElement.getAttribute("data-food-details");
         foodDetailsElement.innerHTML = foodDetails;
 
-        var foodImageLocaction = foodElement.getAttribute("data-food-image-location");
-        foodImageElement.src = foodImageLocaction;
+        var foodImageLocation = foodElement.getAttribute("data-food-image-location");
+        foodImageElement.src = foodImageLocation;
 
         var foodPrice = foodElement.getAttribute("data-food-price");
         foodPriceElement.innerHTML = foodPrice;
@@ -243,7 +244,7 @@ var mobileInspectorView = (function () {
         var interestIconForView = mobileView.querySelector("span.inspector.interested-in-food-icon");
         allInspectorView.setInterestIconBasedOnCurrentInterest(interestIconForView, foodElement);
     }
-    
+
     // public functions
     function initializeMobileViewWithFood(foodElement) {
         // update module's variables
@@ -300,12 +301,13 @@ var desktopInspectorView = (function () {
     function initializeDesktopViewWithFood(foodElement) {
         var foodName = foodElement.getAttribute("data-food-name");
         foodNameElement.innerHTML = foodName;
+        foodImageElement.alt = foodName;
 
         var foodDetails = foodElement.getAttribute("data-food-details");
         foodDetailsElement.innerHTML = foodDetails;
 
-        var foodImageLocaction = foodElement.getAttribute("data-food-image-location");
-        foodImageElement.src = foodImageLocaction;
+        var foodImageLocation = foodElement.getAttribute("data-food-image-location");
+        foodImageElement.src = foodImageLocation;
 
         var foodPrice = foodElement.getAttribute("data-food-price");
         foodPriceElement.innerHTML = foodPrice;
