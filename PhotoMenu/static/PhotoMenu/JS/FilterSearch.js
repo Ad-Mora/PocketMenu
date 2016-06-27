@@ -11,53 +11,44 @@ var moreOptions = (function(){
     var headerBar = document.querySelector("div.header");
     var categoryBar = document.querySelector("div.filter-and-search-section");
     var visibleOptionsUL = document.querySelector("ul.filter-options-list");
-    var allVisibleOptionLI = visibleOptionsUL.querySelectorAll("li.filter-option");
+    var allVisibleOptionsLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
     // More options menu
-    var moreOptionsLI = visibleOptionsUL.querySelector("li.filter-option.more-options-options");
-    if (moreOptionsLI) {
-        var moreOptionsUL = moreOptionsLI.querySelector("ul.more-filter-options-list");
-        var dropDownIcon = moreOptionsLI.querySelector("i.more-options-drop-down-icon");
+    var moreBox = visibleOptionsUL.querySelector("li.more-options-options");
+    var moreOptionsUL;
+    var dropDownIcon;
+    var hiddenOptions;
+    if (moreBox) {
+        moreOptionsUL = moreBox.querySelector("ul.more-filter-options-list");
+        dropDownIcon = moreBox.querySelector("i.more-options-drop-down-icon");
+        hiddenOptions = moreBox.querySelectorAll("li.hidden-filter-option");
     }
-
-    // Get dictionary of category strings to category bar element objects
-    var namesToBarCategories = {};
-    var catName;
-    for (var i = 0; i < Object.keys(allVisibleOptionLI).length; i++) {
-        catName = allVisibleOptionLI[i].firstElementChild.textContent;
-        allVisibleOptionLI[i];
-        namesToBarCategories[catName] = allVisibleOptionLI[i];
-    }
-
-    // Get dictionary of category strings to category header element objects
-    var categoryHeaderObjects = document.querySelectorAll("h3.food-type-section-header");
-    var categoryNamesToObject = {};
-    for (var i = 0; i < Object.keys(categoryHeaderObjects).length; i++) {
-        var categoryObj = categoryHeaderObjects[i];
-        categoryNamesToObject[categoryObj.textContent] = categoryObj;
-    }
-
-    // perform actions whenever the window is scrolled
-    window.onscroll = onScrollFunctions;
 
     /*----------Initial loading actions----------*/
 
     // Start off the page with the underbar taking up the full width of the first category item
-    adjustSlidingUnderBar(null, allVisibleOptionLI[0])
+    adjustSlidingUnderBar(null, allVisibleOptionsLI[0])
 
     /*----------Bind events----------*/
 
     // drop down more options menu
-    if (moreOptionsLI) {
-        moreOptionsLI.addEventListener('click', toggleDropDownMenu);
+    if (moreBox) {
+        moreBox.addEventListener('click', toggleDropDownMenu);
     }
 
-    // filter bar event listeners
-    for (var i = 0; i < allVisibleOptionLI.length; i++) {
-        allVisibleOptionLI[i].addEventListener('click', adjustSlidingUnderBar);
-        allVisibleOptionLI[i].addEventListener('click', scrollToCategory);
+    // category bar event listeners
+    for (var i = 0; i < allVisibleOptionsLI.length; i++) {
+        allVisibleOptionsLI[i].addEventListener('click', adjustSlidingUnderBar);
+        allVisibleOptionsLI[i].addEventListener('click', scrollToCategory);
     }
+    for (var i = 0; i < hiddenOptions.length; i++) {
+        hiddenOptions[i].addEventListener('click', scrollToCategory);
+        hiddenOptions[i].addEventListener('click', slideUnderBarToMoreBox);
+    }
+
+    // perform actions whenever the window is scrolled
+    window.onscroll = onScrollFunctions;
 
     /*----------Variables----------*/
 
@@ -65,20 +56,56 @@ var moreOptions = (function(){
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
     var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
-
     var categoryBarFixed = false;
     var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
+    var currentCategoryName = getHeaderCategoryNamesToHeaderElements()[0];
 
     /*----------Functions----------*/
 
-    // Getters
+    // get dictionaries and lists
+
+    // Get dictionary of category names to element header categories
+    function getHeaderCategoryNamesToHeaderElements() {
+        var categoryHeaderObjects = document.querySelectorAll("h3.food-type-section-header");
+        var categoryNamesToHeaderElements = {};
+        for (var i = 0; i < Object.keys(categoryHeaderObjects).length; i++) {
+            categoryNamesToHeaderElements[categoryHeaderObjects[i].textContent] = categoryHeaderObjects[i];
+        }
+        return categoryNamesToHeaderElements;
+    }
+
+    // Get dictionary of visible bar category names to visible bar category elements
+    function getBarCategoryNamesToBarElements() {
+        var visibleBarCategoryNames = [];
+        var visibleCategoryName;
+        var visibleBarCategoryNameToVisibleBarCategoryElement = {}
+        for (var i = 0; i < Object.keys(allVisibleOptionsLI).length; i++) {
+            visibleCategoryName = allVisibleOptionsLI[i].firstElementChild.textContent;
+            visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
+        }
+        return visibleBarCategoryNameToVisibleBarCategoryElement;
+    }
+
+    // Get dictionary of hidden more box category names to hidden more box category elements
+    function getHiddenCategoryNamesToHiddenCategoryElements() {
+        var moreBoxCategoryNames = [];
+        var hiddenOptionName;
+        var hiddenCategoryNamesToHiddenCategoryElements = {}
+        for (var i = 0; i < Object.keys(hiddenOptions).length; i++) {
+            hiddenOptionName = hiddenOptions[i].firstElementChild.textContent;
+            hiddenCategoryNamesToHiddenCategoryElements[hiddenOptionName] = hiddenOptions[i];
+        }
+        return hiddenCategoryNamesToHiddenCategoryElements;
+    }
 
     // Get dictionary of category positions to menu category elements
-    function getHeaderCategoryPositionsToObjects() {
+    function getHeaderCategoryPositionsToHeaderElements() {
         var categoryPositionsToObjects = {};
+        var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
+        var categoryObj;
         var position;
-        for (var i = 0; i < Object.keys(categoryHeaderObjects).length; i++) {
-            categoryObj = categoryHeaderObjects[i];
+        for (var i = 0; i < Object.keys(getHeaderCategoryNamesToHeaderElements()).length; i++) {
+            categoryObj = headerCategoryNamesToHeaderElements[i];
             position = getVerticalPosition(categoryObj);
             categoryPositionsToObjects[position] = categoryObj;
         }
@@ -86,13 +113,15 @@ var moreOptions = (function(){
     }
 
     // Get a list of sorted category positions
-    function getCategoryHeaderPositions() {
-        var categoryPositions = Object.keys(getHeaderCategoryPositionsToObjects());
+    function getSortedHeaderCategoryPositions() {
+        var categoryPositions = Object.keys(getHeaderCategoryPositionsToHeaderElements());
         categoryPositions = categoryPositions.sort(function(a, b) {
             return a - b;
         });
         return categoryPositions;
     }
+
+    // getters
 
     function getHeaderHeight() {
         var headerHeight = window.getComputedStyle(headerBar).getPropertyValue("height");
@@ -121,37 +150,7 @@ var moreOptions = (function(){
 
     // Other functions
 
-    function toggleDropDownMenu(event) {
-//        event.stopPropagation();
-//        console.log(event);
-//        var srcElement = event.srcElement || event.target;
-//        while (srcElement) {
-//            if (srcElement == moreOptionsLI) {
-//                dropDownIsVisible = !dropDownIsVisible;
-//                moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
-//                dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
-//                dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
-//                return;
-//            }
-//            srcElement = srcElement.parentNode;
-//        }
-//
-//        dropDownIsVisible = false;
-//        moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
-//        dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
-//        dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
-        return;
-    }
-
-    function adjustSlidingUnderBar(event, element) {
-        var referenceX = visibleOptionsUL.getBoundingClientRect().left;
-        var optionRect = (element || this).getBoundingClientRect();
-        var deltaX = optionRect.left - referenceX;
-        var width = optionRect.width;
-
-        slidingUnderBar.style.width = width + "px";
-        slidingUnderBar.style.marginLeft = deltaX + "px";
-    }
+    // helpers
 
     // duration is in milliseconds
     function smoothScroll(endPosition, duration) {
@@ -182,40 +181,82 @@ var moreOptions = (function(){
         var runAnimation = setInterval(animateScroll, 3);
     }
 
-    // Scroll to a specific header category
+    // main functions
+
+    function toggleDropDownMenu(event) {
+        event.stopPropagation();
+        var srcElement = event.srcElement || event.target;
+        while (srcElement) {
+            if (srcElement == moreBox) {
+                dropDownIsVisible = !dropDownIsVisible;
+                moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
+                dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+                dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+                return;
+            }
+            srcElement = srcElement.parentNode;
+        }
+        dropDownIsVisible = false;
+        moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
+        dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
+        dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+        return;
+    }
+
+    // move the underbar on the category bar to the specified (li) element on the bar
+    function adjustSlidingUnderBar(event, element) {
+        var referenceX = visibleOptionsUL.getBoundingClientRect().left;
+        var optionRect = (element || this).getBoundingClientRect();
+        var deltaX = optionRect.left - referenceX;
+        var width = optionRect.width;
+
+        slidingUnderBar.style.width = width + "px";
+        slidingUnderBar.style.marginLeft = deltaX + "px";
+    }
+
+    // move category bar underbar to more box element
+    function slideUnderBarToMoreBox(event) {
+        adjustSlidingUnderBar(null, moreBox);
+    }
+
+    // scroll to a specific header category
     function scrollToCategory(event) {
+        var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
         var srcElement = event.srcElement;
         var className = srcElement.className;
-        var category = srcElement.textContent;
-        var paddingTop = getBodyPaddingTop();
+        var categoryName = srcElement.textContent;
+        var categoryPosition;
         var endPosition;
 
+        // in case the li container was clicked instead of the span element
         if (className == "filter-option") {
-            category = srcElement.firstElementChild.textContent;
+            categoryName = srcElement.firstElementChild.textContent;
         }
-        elementToScrollTo = categoryNamesToObject[category];
+        elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
         endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
+        categoryPosition = getVerticalPosition(elementToScrollTo);
+        currentCategory = categoryName;
+
         smoothScroll(endPosition, 300);
     }
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
         var newPaddingTop;
-        var paddingTop = getBodyPaddingTop();
         var topHeaderViewPos = window.scrollY + getHeaderHeight();
 
         if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
-            newPaddingTop = String(paddingTop + getCategoryBarHeight()) + "px";
+            newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
             document.body.style.paddingTop = newPaddingTop;
-            categoryBarFixed = true;
             categoryBar.style.top = String(getHeaderHeight()) + "px";
             categoryBar.style.position = "fixed";
-        } else if (topHeaderViewPos < defaultCategoryBarPosition && categoryBarFixed) {
+            categoryBarFixed = true;
+        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
             newPaddingTop = String(getHeaderHeight()) + "px"
             document.body.style.paddingTop = newPaddingTop;
-            categoryBarFixed = false;
             categoryBar.style.top = "";
             categoryBar.style.position = "";
+            categoryBarFixed = false;
         }
     }
 
@@ -224,22 +265,36 @@ var moreOptions = (function(){
     function detectCategoryScroll() {
         var categoryHeaderPositions = getCategoryHeaderPositions();
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
-        var currentCategory = categoryHeaderPositions[0];
+        var newCategory = currentCategoryName;
         var categoryObject;
         var barCategoryObject;
         var catName;
         var catPosition;
+        var newCategoryName;
 
         for (var i = 0; i < Object.keys(categoryHeaderPositions).length; i++) {
-            catPosition = categoryHeaderPositions[i];
+            catPosition = categoryHeaderPositions[i] - 10;
             if (currentTopViewPosition >= catPosition) {
-                currentCategory = catPosition;
+                newCategory = catPosition;
             }
         }
-        categoryObject = getHeaderCategoryPositionsToObjects()[currentCategory];
-        catName = categoryObject.textContent;
-        barCategoryObject = namesToBarCategories[catName];
-        adjustSlidingUnderBar(null, barCategoryObject);
+        newCategoryName = categoryHeaderPositions
+
+        if (newCategory != currentCategoryName) {
+            console.log("new: " + newCategory);
+            console.log("current: " + currentCategoryName);
+            currentCategoryName = newCategory;
+            categoryObject = getHeaderCategoryPositionsToObjects()[currentCategory];
+            catName = categoryObject.textContent;
+
+            if (barCategoryNames.indexOf(catName) > -1) {
+                barCategoryObject = namesToBarCategories[catName];
+                adjustSlidingUnderBar(null, barCategoryObject);
+            } else {
+                adjustSlidingUnderBar(null, moreBox);
+            }
+            console.log(currentCategory);
+        }
     }
 
     function onScrollFunctions(event) {

@@ -6,25 +6,20 @@ div.filter-and-search-section{
     box-shadow: 0px 1px 1px 0px #9B9B9B;
     display: none;
 }
-
 ul.filter-options-list{
     margin: 0px auto 0px auto;
     display: inline-block;
 }
-
 li.filter-option{
     display: inline-block;
     height: 33px;
     line-height: 35px;
-    /*padding: 0px 10px 0px 10px;*/
 }
-
 span.filter-name{
     font-size: 14px;
     color: #555555;
     padding: 0px 10px 7px 10px;
 }
-
 span.filter-name:hover{
     color: #FF9800;
     cursor: pointer;
@@ -44,10 +39,13 @@ hr.sliding-underbar {
 }
 
 /*---------More Options DropDown Menu----------*/
-li.filter-option.more-options-options{
-    position: relative;
-}
 
+li.more-options-options{
+    position: relative;
+    display: inline-block;
+    height: 33px;
+    line-height: 35px;
+}
 i.more-options-drop-down-icon{
     content: '';
     background-image: url("../../Images/Icons/DropDownIcon.png");
@@ -65,7 +63,6 @@ i.more-options-drop-down-icon{
     -webkit-transition: .20s linear;
     transition: .20s linear;
 }
-
 ul.more-filter-options-list{
     display: none;
     position: absolute;
@@ -77,12 +74,10 @@ ul.more-filter-options-list{
     border-bottom: 1px solid #CCCCCC;
     border-right: 1px solid #CCCCCC;
 }
-
 li.hidden-filter-option{
     width: 115px;
     background: #FFFFFF;
 }
-
 div.current-page-search-wrapper{
     display: none;
 }
@@ -91,7 +86,11 @@ div.current-page-search-wrapper{
     div.filter-and-search-section {
         height: 45px;
     }
-    li.filter-option {
+    li.filter-option{
+        height: 43px;
+        line-height: 45px;
+    }
+    li.more-options-options{
         height: 43px;
         line-height: 45px;
     }
