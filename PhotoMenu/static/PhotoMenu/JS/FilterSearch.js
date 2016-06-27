@@ -5,9 +5,15 @@
 //---------Toggle the More Options drop down menu--------
 var moreOptions = (function(){
 
-    /*----------Cache DOM----------*/
+    /*--------------------------------------------------*/
+    /*----------Global Variables and DOM Cache----------*/
+    /*--------------------------------------------------*/
 
-    // Visible category filter bar options
+    var moreBoxPresent = document.querySelector("li.more-options-options") != null
+
+    // DOM objects
+
+    // Category bar objects
     var headerBar = document.querySelector("div.header");
     var categoryBar = document.querySelector("div.filter-and-search-section");
     var categoryHeaderElements = document.querySelectorAll("h3.food-type-section-header");
@@ -15,26 +21,40 @@ var moreOptions = (function(){
     var allVisibleOptionsLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
-    // More options menu
-    var moreBox = visibleOptionsUL.querySelector("li.more-options-options");
+    // More options box objects
+    var moreBox;
     var moreOptionsUL;
     var dropDownIcon;
     var hiddenOptions;
-    if (moreBox) {
+    if (moreBoxPresent) {
+        moreBox = visibleOptionsUL.querySelector("li.more-options-options");
         moreOptionsUL = moreBox.querySelector("ul.more-filter-options-list");
         dropDownIcon = moreBox.querySelector("i.more-options-drop-down-icon");
         hiddenOptions = moreBox.querySelectorAll("li.hidden-filter-option");
     }
 
+    // Global variables
+    var dropDownIsVisible = false;
+    var dropDownMenuStates = {true: "block", false: "none"};
+    var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
+    var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
+    var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
+    var currentCategoryName = categoryHeaderElements[0].textContent;
+    var categoryBarFixed = false;
+
+    /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
+    /*--------------------------------------------------*/
 
     // Start off the page with the underbar taking up the full width of the first category item
     adjustSlidingUnderBar(null, allVisibleOptionsLI[0])
 
+    /*--------------------------------------------------*/
     /*----------Bind events----------*/
+    /*--------------------------------------------------*/
 
     // drop down more options menu
-    if (moreBox) {
+    if (moreBoxPresent) {
         moreBox.addEventListener('click', toggleDropDownMenu);
     }
 
@@ -43,27 +63,21 @@ var moreOptions = (function(){
         allVisibleOptionsLI[i].addEventListener('click', adjustSlidingUnderBar);
         allVisibleOptionsLI[i].addEventListener('click', scrollToCategory);
     }
-    for (var i = 0; i < hiddenOptions.length; i++) {
-        hiddenOptions[i].addEventListener('click', scrollToCategory);
-        hiddenOptions[i].addEventListener('click', slideUnderBarToMoreBox);
+    if (moreBoxPresent) {
+        for (var i = 0; i < hiddenOptions.length; i++) {
+            hiddenOptions[i].addEventListener('click', scrollToCategory);
+            hiddenOptions[i].addEventListener('click', slideUnderBarToMoreBox);
+        }
     }
 
     // perform actions whenever the window is scrolled
     window.onscroll = onScrollFunctions;
 
-    /*----------Variables----------*/
-
-    var dropDownIsVisible = false;
-    var dropDownMenuStates = {true: "block", false: "none"};
-    var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
-    var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
-    var categoryBarFixed = false;
-    var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
-    var currentCategoryName = categoryHeaderElements[0].textContent;
-
+    /*--------------------------------------------------*/
     /*----------Functions----------*/
+    /*--------------------------------------------------*/
 
-    // get dictionaries and lists
+    /*-----Get dictionaries and lists-----*/
 
     // Get dictionary of category names to element header categories
     function getHeaderCategoryNamesToHeaderElements() {
@@ -123,7 +137,7 @@ var moreOptions = (function(){
         return categoryPositions;
     }
 
-    // getters
+    /*-----Getters-----*/
 
     function getHeaderHeight() {
         var headerHeight = window.getComputedStyle(headerBar).getPropertyValue("height");
@@ -143,9 +157,7 @@ var moreOptions = (function(){
         return offset;
     }
 
-    // Other functions
-
-    // helpers
+    /*-----Helpers-----*/
 
     function getCategoryNameFromPosition(position) {
         var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
@@ -191,7 +203,7 @@ var moreOptions = (function(){
         var runAnimation = setInterval(animateScroll, 3);
     }
 
-    // main functions
+    /*-----Main Functions-----*/
 
     function toggleDropDownMenu(event) {
         event.stopPropagation();
