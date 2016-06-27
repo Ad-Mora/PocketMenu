@@ -10,7 +10,6 @@ var foodEntry = (function () {
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
-    var loadFirstPhotoBatch = loadNextBatchOfPhotos();
 
     // public variables
 
@@ -46,8 +45,25 @@ var foodEntry = (function () {
         listOfFoodEntryLI = document.querySelectorAll("li.food-entry-li");
 
         for (var i = 0; i < listOfFoodEntryLI.length; i++) {
-            listOfFoodEntryLI[i].addEventListener('click', _displayInspectorViewForFood);
-            listOfFoodEntryLI[i].setAttribute("data-list-item-number", i);
+            var foodEntryElement = listOfFoodEntryLI[i];
+            var actualImageSrc = foodEntryElement.getAttribute("data-food-image-location");
+
+            foodEntryElement.addEventListener('click', _displayInspectorViewForFood);
+            foodEntryElement.setAttribute("data-list-item-number", i);
+
+            // By default the placeholder img is loaded. Once the placeholder image is loaded
+            // then the actual food image is loaded. The following functions does that
+            foodEntryElement.querySelector("img.unloaded_image").addEventListener('load', function (event) {
+                var that = this; // the img element in the HTML
+                var actualImage = new Image();
+                actualImage.onload = function (event) {
+                    // this --> the temporary img element
+                    that.src = this.src;
+                    that.className = "";
+                }
+                actualImage.src = actualImageSrc;
+            });
+
         }
 
         return listOfFoodEntryLI;
