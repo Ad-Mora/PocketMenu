@@ -95,11 +95,6 @@ ul.no-results-suggestions-list{
     list-style-type: disc;
     padding: 0px 0px 0px 30px;
 }
-/*---------------Food Entries--------------*/
-h3.food-item-restaurant-name{
-    display: block;
-}
-
 /*-----Large mobile view-----*/
 @media (min-width: 355px) {
 
@@ -158,6 +153,9 @@ h3.food-item-restaurant-name{
     input.search-submit-button {
         width: 90px;
         height: 45px;
+    }
+    h3.food-item-restaurant-name{
+        display: block;
     }
 }
 
