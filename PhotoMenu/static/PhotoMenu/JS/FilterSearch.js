@@ -37,10 +37,14 @@ var moreOptions = (function(){
     var dropDownIsVisible = false;
     var dropDownMenuStates = {true: "block", false: "none"};
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
-    var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
+
     var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
     var currentCategoryName = categoryHeaderElements[0].textContent;
     var categoryBarFixed = false;
+
+    // headerCategoryExtraScrollDetectHeight must be larger than headerCategoryScrollToPadding
+    var headerCategoryExtraScrollDetectHeight = 20;
+    var headerCategoryScrollToPadding = 10;
 
     /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
@@ -68,10 +72,12 @@ var moreOptions = (function(){
             hiddenOptions[i].addEventListener('click', scrollToCategory);
             hiddenOptions[i].addEventListener('click', slideUnderBarToMoreBox);
         }
+        // click anywhere to get rid of drop down menu
+        var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
     }
 
     // perform actions whenever the window is scrolled
-    window.onscroll = onScrollFunctions;
+    document.addEventListener("scroll", onScrollFunctions);
 
     /*--------------------------------------------------*/
     /*----------Functions----------*/
@@ -271,7 +277,7 @@ var moreOptions = (function(){
         var endPosition;
 
         // in case the li container was clicked instead of the span element
-        if (className == "filter-option") {
+        if (className == "filter-option" || className == "hidden-filter-option") {
             categoryName = srcElement.firstElementChild.textContent;
         }
         elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
@@ -279,7 +285,7 @@ var moreOptions = (function(){
         categoryPosition = getVerticalPosition(elementToScrollTo);
         currentCategoryName = categoryName;
 
-        smoothScroll(endPosition, 300);
+        smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
     }
 
     // Move the orange underbar in the category bar to the correct location depending on
@@ -293,7 +299,7 @@ var moreOptions = (function(){
         var newCategoryName = currentCategoryName;
         var barCategoryElement;
 
-        newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + 10);
+        newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + headerCategoryExtraScrollDetectHeight);
 
         if (newCategoryName != currentCategoryName) {
             currentCategoryName = newCategoryName;

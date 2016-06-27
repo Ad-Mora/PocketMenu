@@ -19,7 +19,7 @@ def restaurants_page(request, restaurant_name):
     restaurant = Restaurant.objects.get(name=restaurant_name)
     menu_categories = MenuCategory.objects.filter(restaurant__name=restaurant_name)
 
-    num_horizontal_cats = 3
+    num_horizontal_cats = 1
     horizontal_cats = menu_categories[:num_horizontal_cats]
     remaining_cats = menu_categories[num_horizontal_cats:]
 
