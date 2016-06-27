@@ -70,3 +70,5 @@ class MenuItem(models.Model):
 
     def __unicode__(self):
         return self.menu_category.restaurant.name + ' ' + self.name
+
+

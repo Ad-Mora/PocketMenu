@@ -5,33 +5,41 @@ var documentModule = (function(){
     // cache DOM
 
     // bind events
-    document.addEventListener('keydown', _callKeypressFunctions);
-    window.addEventListener('resize', _callResizeFunctions);
-    window.addEventListener('click', _callClickFunctions);
+    document.addEventListener('keydown', callKeypressFunctions);
+    window.addEventListener('resize', callResizeFunctions);
+    window.addEventListener('click', callClickFunctions);
+    window.addEventListener('scroll', callClickFunctions);
 
     // private variables
     var onKeyPressEvents = [];
     var onResizeEvents = [];
     var onClickEvents = [];
+    var onScrollEvents = [];
 
     // public variables
 
     // private functions
-    function _callKeypressFunctions(event) {
+    function callKeypressFunctions(event) {
         for (var i = 0; i < onKeyPressEvents.length; i++) {
             (onKeyPressEvents[i])(event);
         }
     }
     
-    function _callResizeFunctions(event) {
+    function callResizeFunctions(event) {
         for (var i = 0; i < onResizeEvents.length; i++) {
             (onResizeEvents[i])(event);
         }
     }
 
-    function _callClickFunctions(event) {
+    function callClickFunctions(event) {
         for (var i = 0; i < onClickEvents.length; i++) {
             (onClickEvents[i])(event);
+        }
+    }
+
+    function callScrollFunctions(event) {
+        for (var i = 0; i < onScrollEvents.length; i++) {
+            (onScrollEvents[i])(event);
         }
     }
 
@@ -48,11 +56,16 @@ var documentModule = (function(){
         onClickEvents.push(func);
     }
 
+    function addOnScrollFunction(func) {
+        onScrollEvents.push(func);
+    }
+
     // return public pointers to private variables & functions
     return {
         addOnKeyPressFunction: addOnKeyPressFunction,
         addOnResizeFunction: addOnResizeFunction,
-        addOnClickFunction: addOnClickFunction
+        addOnClickFunction: addOnClickFunction,
+        addOnScrollFunction: addOnScrollFunction
     };
 
 })();

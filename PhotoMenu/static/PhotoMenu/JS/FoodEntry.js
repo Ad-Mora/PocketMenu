@@ -10,10 +10,15 @@ var foodEntry = (function () {
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
+    var loadFirstBatchOfImages = loadNextImageBatch();
 
     // public variables
 
     // private functions
+    function loadNextImageBatch() {
+        // var actualImageSrc = foodEntryElement.getAttribute("data-food-image-location");
+    }
+
     function _displayInspectorViewForFood(event) {
         allInspectorView.showInspectorView(this);
     }
@@ -43,29 +48,11 @@ var foodEntry = (function () {
         // If this function ever gets called twice, need to make sure
         // listOfFoodEntryLI stays up to data
         listOfFoodEntryLI = document.querySelectorAll("li.food-entry-li");
-
         for (var i = 0; i < listOfFoodEntryLI.length; i++) {
             var foodEntryElement = listOfFoodEntryLI[i];
-            var actualImageSrc = foodEntryElement.getAttribute("data-food-image-location");
-
             foodEntryElement.addEventListener('click', _displayInspectorViewForFood);
             foodEntryElement.setAttribute("data-list-item-number", i);
-
-            // By default the placeholder img is loaded. Once the placeholder image is loaded
-            // then the actual food image is loaded. The following functions does that
-            foodEntryElement.querySelector("img.unloaded_image").addEventListener('load', function (event) {
-                var that = this; // the img element in the HTML
-                var actualImage = new Image();
-                actualImage.onload = function (event) {
-                    // this --> the temporary img element
-                    that.src = this.src;
-                    that.className = "";
-                }
-                actualImage.src = actualImageSrc;
-            });
-
         }
-
         return listOfFoodEntryLI;
     }
 

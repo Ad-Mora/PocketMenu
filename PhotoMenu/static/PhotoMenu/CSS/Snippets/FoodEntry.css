@@ -8,6 +8,14 @@ li.ghost-food-item{
     height: 0px;
 }
 
+h3.food-item-restaurant-name{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px 0px 10px 0px;
+    color: #333333;
+}
+
 div.food-entry-wrapper{
     width: 100%;
     background-color: #FFFFFF;

@@ -84,7 +84,6 @@ div.no-results-help-container{
     margin: 0px 4% 0px 4%;
 }
 p.no-results-details{
-
     color: #333333;
     font-weight: bold;
     font-size: 16px;
@@ -96,38 +95,9 @@ ul.no-results-suggestions-list{
     list-style-type: disc;
     padding: 0px 0px 0px 30px;
 }
-
-/*--------Next and Previous--------*/
-div.more-results-navigator{
-    width: 96%;
-    border-top: 1px solid #777777;
-    margin: 25px 0px 45px 2%;
-    padding: 5px 0px 0px 0px;
-}
-a.results-page{
-    color: #555555;
-    font-size: 14px;
-}
-a.previous.results-page{
-    float: left;
-}
-a.next.results-page{
-    float: right;
-}
-span.page-icon{
-    background-size: 100% auto;
-    width: 20px;
-    height: 15px;
-    display: inline-block;
-    position: relative;
-    top: 3px;
-    background-repeat: no-repeat;
-}
-span.previous.page-icon{
-    background-image: url("../../Images/Icons/BackArrowIcon.png");
-}
-span.next.page-icon{
-    background-image: url("../../Images/Icons/ForwardArrowIcon.png");
+/*---------------Food Entries--------------*/
+h3.food-item-restaurant-name{
+    display: block;
 }
 
 /*-----Large mobile view-----*/
