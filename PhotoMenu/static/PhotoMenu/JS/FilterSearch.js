@@ -275,15 +275,11 @@ var moreOptions = (function(){
 
     // TODO: look out for expensive function calls here; this is called every time the page scrolls
     function detectCategoryScroll() {
-        var categoryHeaderPositions = getSortedHeaderCategoryPositions();
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
         var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements();
         var barCategoryNames = Object.keys(barCategoryNamesToBarElements);
         var newCategoryName = currentCategoryName;
-        var headerCategoryObject;
-        var barCategoryObject;
-        var headerCategoryName;
-        var headerCategoryPosition;
+        var barCategoryElement;
 
         newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + 10);
 
@@ -291,8 +287,8 @@ var moreOptions = (function(){
             currentCategoryName = newCategoryName;
 
             if (barCategoryNames.indexOf(newCategoryName) > -1) {
-                barCategoryObject = barCategoryNamesToBarElements[newCategoryName];
-                adjustSlidingUnderBar(null, barCategoryObject);
+                barCategoryElement = barCategoryNamesToBarElements[newCategoryName];
+                adjustSlidingUnderBar(null, barCategoryElement);
             } else {
                 adjustSlidingUnderBar(null, moreBox);
             }
