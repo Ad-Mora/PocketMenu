@@ -133,13 +133,6 @@ var moreOptions = (function(){
         return parseFloat(categoryBarHeight, 10);
     }
 
-    function getBodyPaddingTop() {
-        style = window.getComputedStyle(document.body);
-        paddingTop = style.getPropertyValue("padding-top");
-        paddingTop = parseFloat(paddingTop, 10);
-        return paddingTop;
-    }
-
     // Vertical position is defined as from the top of the visible document (top is position 0)
     function getVerticalPosition(element) {
         elementRect = element.getBoundingClientRect();
@@ -219,6 +212,26 @@ var moreOptions = (function(){
         adjustSlidingUnderBar(null, moreBox);
     }
 
+    // Set the category bar to a fixed position
+    function fixCategoryBar() {
+        var newPaddingTop;
+        var topHeaderViewPos = window.scrollY + getHeaderHeight();
+
+        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
+            newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
+            document.body.style.paddingTop = newPaddingTop;
+            categoryBar.style.top = String(getHeaderHeight()) + "px";
+            categoryBar.style.position = "fixed";
+            categoryBarFixed = true;
+        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
+            newPaddingTop = String(getHeaderHeight()) + "px"
+            document.body.style.paddingTop = newPaddingTop;
+            categoryBar.style.top = "";
+            categoryBar.style.position = "";
+            categoryBarFixed = false;
+        }
+    }
+
     // scroll to a specific header category
     function scrollToCategory(event) {
         var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
@@ -240,60 +253,43 @@ var moreOptions = (function(){
         smoothScroll(endPosition, 300);
     }
 
-    // Set the category bar to a fixed position
-    function fixCategoryBar() {
-        var newPaddingTop;
-        var topHeaderViewPos = window.scrollY + getHeaderHeight();
-
-        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
-            newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
-            document.body.style.paddingTop = newPaddingTop;
-            categoryBar.style.top = String(getHeaderHeight()) + "px";
-            categoryBar.style.position = "fixed";
-            categoryBarFixed = true;
-        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
-            newPaddingTop = String(getHeaderHeight()) + "px"
-            document.body.style.paddingTop = newPaddingTop;
-            categoryBar.style.top = "";
-            categoryBar.style.position = "";
-            categoryBarFixed = false;
-        }
-    }
-
     // Move the orange underbar in the category bar to the correct location depending on
     // what category area the user is currently in
+
+    // TODO: look out for expensive function calls here; this is called every time the page scrolls
     function detectCategoryScroll() {
-        var categoryHeaderPositions = getCategoryHeaderPositions();
+        var categoryHeaderPositions = getSortedHeaderCategoryPositions();
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
-        var newCategory = currentCategoryName;
-        var categoryObject;
+        var newCategoryName = currentCategoryName;
+        var headerCategoryObject;
         var barCategoryObject;
-        var catName;
-        var catPosition;
-        var newCategoryName;
+        var headerCategoryName;
+        var headerCategoryPosition;
 
         for (var i = 0; i < Object.keys(categoryHeaderPositions).length; i++) {
-            catPosition = categoryHeaderPositions[i] - 10;
+            headerCategoryPosition = categoryHeaderPositions[i] - 10;
             if (currentTopViewPosition >= catPosition) {
-                newCategory = catPosition;
+                newCategoryName = headerCategoryPosition;
             }
         }
-        newCategoryName = categoryHeaderPositions
 
-        if (newCategory != currentCategoryName) {
+        if (newCategoryName != currentCategoryName) {
             console.log("new: " + newCategory);
             console.log("current: " + currentCategoryName);
-            currentCategoryName = newCategory;
-            categoryObject = getHeaderCategoryPositionsToObjects()[currentCategory];
-            catName = categoryObject.textContent;
+            currentCategoryName = newCategoryName;
 
-            if (barCategoryNames.indexOf(catName) > -1) {
-                barCategoryObject = namesToBarCategories[catName];
+            // TODO: this may not line up exactly; fix
+            headerCategoryObject = getHeaderCategoryPositionsToObjects()[currentCategory];
+            headerCategoryName = headerCategoryObject.textContent;
+
+            // TODO: get bar category names here (no longer global)
+            if (barCategoryNames.indexOf(headerCategoryName) > -1) {
+                barCategoryObject = namesToBarCategories[headerCategoryName];
                 adjustSlidingUnderBar(null, barCategoryObject);
             } else {
                 adjustSlidingUnderBar(null, moreBox);
             }
-            console.log(currentCategory);
+            console.log(currentCategoryName);
         }
     }
 
