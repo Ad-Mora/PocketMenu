@@ -10,6 +10,7 @@ var foodEntry = (function () {
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
+    var loadFirstPhotoBatch = loadNextBatchOfPhotos();
 
     // public variables
 

@@ -19,7 +19,7 @@
     data-food-is-liked="false">
   <div class="food-entry-wrapper">
     <div class="food-entry-image">
-      <img src="{{ menu_item.image.url }}" alt="{{ menu_item.name }}">
+      <img class="unloaded_image" src="{% static "PhotoMenu/Images/Icons/ImgLoadingPlaceholder.png" %}" alt="{{ menu_item.name }}">
     </div>
     <h4 class="food-entry-name">{{ menu_item.name }}</h4>
     <p class="food-description-name">{{ menu_item.description }}</p>
