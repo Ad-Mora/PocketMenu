@@ -10,6 +10,7 @@ var moreOptions = (function(){
     // Visible category filter bar options
     var headerBar = document.querySelector("div.header");
     var categoryBar = document.querySelector("div.filter-and-search-section");
+    var categoryHeaderElements = document.querySelectorAll("h3.food-type-section-header");
     var visibleOptionsUL = document.querySelector("ul.filter-options-list");
     var allVisibleOptionsLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
@@ -58,7 +59,7 @@ var moreOptions = (function(){
     var hideDropDownCorrectly = documentModule.addOnClickFunction(toggleDropDownMenu);
     var categoryBarFixed = false;
     var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
-    var currentCategoryName = getHeaderCategoryNamesToHeaderElements()[0];
+    var currentCategoryName = categoryHeaderElements[0].textContent;
 
     /*----------Functions----------*/
 
@@ -66,10 +67,9 @@ var moreOptions = (function(){
 
     // Get dictionary of category names to element header categories
     function getHeaderCategoryNamesToHeaderElements() {
-        var categoryHeaderObjects = document.querySelectorAll("h3.food-type-section-header");
         var categoryNamesToHeaderElements = {};
-        for (var i = 0; i < Object.keys(categoryHeaderObjects).length; i++) {
-            categoryNamesToHeaderElements[categoryHeaderObjects[i].textContent] = categoryHeaderObjects[i];
+        for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
+            categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
         }
         return categoryNamesToHeaderElements;
     }
@@ -98,23 +98,25 @@ var moreOptions = (function(){
         return hiddenCategoryNamesToHiddenCategoryElements;
     }
 
-    // Get dictionary of category positions to menu category elements
-    function getHeaderCategoryPositionsToHeaderElements() {
-        var categoryPositionsToObjects = {};
+    // Get a dictionary of category header positions to category names
+    function getCategoryHeaderPositionsToCategoryNames() {
         var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
-        var categoryObj;
+        var categoryHeaderPositionsToCategoryNames = {};
+        var element;
         var position;
-        for (var i = 0; i < Object.keys(getHeaderCategoryNamesToHeaderElements()).length; i++) {
-            categoryObj = headerCategoryNamesToHeaderElements[i];
-            position = getVerticalPosition(categoryObj);
-            categoryPositionsToObjects[position] = categoryObj;
+        for (var categoryName in headerCategoryNamesToHeaderElements) {
+            if (headerCategoryNamesToHeaderElements.hasOwnProperty(categoryName)) {
+                element = headerCategoryNamesToHeaderElements[categoryName];
+                position = getVerticalPosition(element);
+                categoryHeaderPositionsToCategoryNames[position] = element.textContent;
+            }
         }
-        return categoryPositionsToObjects;
+        return categoryHeaderPositionsToCategoryNames;
     }
 
     // Get a list of sorted category positions
     function getSortedHeaderCategoryPositions() {
-        var categoryPositions = Object.keys(getHeaderCategoryPositionsToHeaderElements());
+        var categoryPositions = Object.keys(getCategoryHeaderPositionsToCategoryNames());
         categoryPositions = categoryPositions.sort(function(a, b) {
             return a - b;
         });
@@ -135,15 +137,30 @@ var moreOptions = (function(){
 
     // Vertical position is defined as from the top of the visible document (top is position 0)
     function getVerticalPosition(element) {
-        elementRect = element.getBoundingClientRect();
-        bodyRect = document.body.getBoundingClientRect();
-        offset = elementRect.top - bodyRect.top;
+        var elementRect = element.getBoundingClientRect();
+        var bodyRect = document.body.getBoundingClientRect();
+        var offset = elementRect.top - bodyRect.top;
         return offset;
     }
 
     // Other functions
 
     // helpers
+
+    function getCategoryNameFromPosition(position) {
+        var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
+        var sortedPositionsList = getSortedHeaderCategoryPositions();
+        var currentPosition = sortedPositionsList[0];
+        var categoryName;
+        var currentPosition;
+        for (var i = 0; i < sortedPositionsList.length; i++) {
+            if (position >= sortedPositionsList[i]) {
+                currentPosition = sortedPositionsList[i];
+            }
+        }
+        categoryName = categoryHeaderPositionsToCategoryNames[currentPosition];
+        return categoryName;
+    }
 
     // duration is in milliseconds
     function smoothScroll(endPosition, duration) {
@@ -248,7 +265,7 @@ var moreOptions = (function(){
         elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
         endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
         categoryPosition = getVerticalPosition(elementToScrollTo);
-        currentCategory = categoryName;
+        currentCategoryName = categoryName;
 
         smoothScroll(endPosition, 300);
     }
@@ -260,36 +277,25 @@ var moreOptions = (function(){
     function detectCategoryScroll() {
         var categoryHeaderPositions = getSortedHeaderCategoryPositions();
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
+        var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements();
+        var barCategoryNames = Object.keys(barCategoryNamesToBarElements);
         var newCategoryName = currentCategoryName;
         var headerCategoryObject;
         var barCategoryObject;
         var headerCategoryName;
         var headerCategoryPosition;
 
-        for (var i = 0; i < Object.keys(categoryHeaderPositions).length; i++) {
-            headerCategoryPosition = categoryHeaderPositions[i] - 10;
-            if (currentTopViewPosition >= catPosition) {
-                newCategoryName = headerCategoryPosition;
-            }
-        }
+        newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + 10);
 
         if (newCategoryName != currentCategoryName) {
-            console.log("new: " + newCategory);
-            console.log("current: " + currentCategoryName);
             currentCategoryName = newCategoryName;
 
-            // TODO: this may not line up exactly; fix
-            headerCategoryObject = getHeaderCategoryPositionsToObjects()[currentCategory];
-            headerCategoryName = headerCategoryObject.textContent;
-
-            // TODO: get bar category names here (no longer global)
-            if (barCategoryNames.indexOf(headerCategoryName) > -1) {
-                barCategoryObject = namesToBarCategories[headerCategoryName];
+            if (barCategoryNames.indexOf(newCategoryName) > -1) {
+                barCategoryObject = barCategoryNamesToBarElements[newCategoryName];
                 adjustSlidingUnderBar(null, barCategoryObject);
             } else {
                 adjustSlidingUnderBar(null, moreBox);
             }
-            console.log(currentCategoryName);
         }
     }
 
