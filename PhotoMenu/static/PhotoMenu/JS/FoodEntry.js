@@ -10,14 +10,10 @@ var foodEntry = (function () {
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
-    var loadFirstBatchOfImages = loadNextImageBatch();
 
     // public variables
 
     // private functions
-    function loadNextImageBatch() {
-        // var actualImageSrc = foodEntryElement.getAttribute("data-food-image-location");
-    }
 
     function _displayInspectorViewForFood(event) {
         allInspectorView.showInspectorView(this);
