@@ -251,21 +251,24 @@ var moreOptions = (function(){
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
-        var newPaddingTop;
-        var topHeaderViewPos = window.scrollY + getHeaderHeight();
+        // we only care if we are in desktop view
+        if (window.innerWidth >= 800) {
+            var newPaddingTop;
+            var topHeaderViewPos = window.scrollY + getHeaderHeight();
 
-        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
-            newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
-            document.body.style.paddingTop = newPaddingTop;
-            categoryBar.style.top = String(getHeaderHeight()) + "px";
-            categoryBar.style.position = "fixed";
-            categoryBarFixed = true;
-        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
-            newPaddingTop = String(getHeaderHeight()) + "px"
-            document.body.style.paddingTop = newPaddingTop;
-            categoryBar.style.top = "";
-            categoryBar.style.position = "";
-            categoryBarFixed = false;
+            if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
+                newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
+                document.body.style.paddingTop = newPaddingTop;
+                categoryBar.style.top = String(getHeaderHeight()) + "px";
+                categoryBar.style.position = "fixed";
+                categoryBarFixed = true;
+            } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
+                newPaddingTop = String(getHeaderHeight()) + "px"
+                document.body.style.paddingTop = newPaddingTop;
+                categoryBar.style.top = "";
+                categoryBar.style.position = "";
+                categoryBarFixed = false;
+            }
         }
     }
 
