@@ -48,7 +48,7 @@ def get_favorite_foods_context_data(food_ids_list):
     return restaurant_list
 
 
-def get_restaurant_menu_items_for_search_string(query_string, restaurant_name, limit=5):
+def get_restaurant_internal_menu_items(query_string, restaurant_name, limit=5):
     results = {}
     if query_string != "":
         results = MenuItem.objects.filter(menu_category__restaurant__name=restaurant_name).\

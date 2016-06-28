@@ -8,7 +8,7 @@ var documentModule = (function(){
     document.addEventListener('keydown', callKeypressFunctions);
     window.addEventListener('resize', callResizeFunctions);
     window.addEventListener('click', callClickFunctions);
-    window.addEventListener('scroll', callClickFunctions);
+    document.addEventListener('scroll', callScrollFunctions);
 
     // private variables
     var onKeyPressEvents = [];
@@ -59,7 +59,7 @@ var documentModule = (function(){
     function addOnScrollFunction(func) {
         onScrollEvents.push(func);
     }
-
+    
     // return public pointers to private variables & functions
     return {
         addOnKeyPressFunction: addOnKeyPressFunction,

@@ -7,7 +7,7 @@
 <div class="mobile-modal-search-container">
   <div class="mobile-search-background-overlay"></div>
   {% if is_restaurant_page %}
-    <form class="mobile-search-modal-form" action="search/" method="post">
+    <form class="mobile-search-modal-form" action="" method="post">
   {% else %}
     <form class="mobile-search-modal-form" action="{% url 'PhotoMenu:search_results_page' %}" method="post">
   {% endif %}

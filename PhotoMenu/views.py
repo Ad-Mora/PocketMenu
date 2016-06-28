@@ -8,6 +8,7 @@ import json
 SEARCH_TYPE_RESTAURANT = "Restaurant"
 SEARCH_TYPE_FOOD = "Food"
 
+
 # AJAX
 def drop_down_suggestions(request):
     if request.method == "POST":
@@ -32,12 +33,12 @@ def drop_down_suggestions(request):
 
 
 def restaurant_internal_search_drop_down_suggestions(request, restaurant_name):
+    restaurant_name_with_spaces = restaurant_name.replace("-", " ")
     if request.method == "POST":
         json_data = json.loads(request.body)
         query_string = json_data['search-bar']
         context = {
-            'menu_items_list':  get_restaurant_menu_items_for_search_string(query_string,
-                                                                            restaurant_name.replace("-"," "))
+            'menu_items_list':  get_restaurant_internal_menu_items(query_string, restaurant_name_with_spaces)
         }
         return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
 
@@ -85,24 +86,56 @@ def search_results_page(request):
 
 
 def restaurants_page(request, restaurant_name):
-
+    context = {}
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
     menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
-
     num_horizontal_cats = 3
+    menu_categories = None
+    categories = None
+
+    # used when somebody tries to search for foods withing a restaurant
+    if request.method == "POST":
+        query_string = request.POST['search-bar']
+        # get all of the foods from the restaurant that match the query_string
+        menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name=restaurant_name).\
+            filter(name__contains=query_string)
+
+        # collect the relevant categories for selected foods
+        categories = {}
+        for menu_item in menu_item_results:
+            # get the menu category of the current food
+            foods_menu_category = menu_item.menu_category
+
+            # add this food to the list of other 'matching' foods
+            category_menu_items_list = categories.get(foods_menu_category, [])
+            category_menu_items_list.append(menu_item)
+
+            # set this list as the new list in categories
+            categories[foods_menu_category] = category_menu_items_list
+
+        # compute horizontal categories and remaining categories
+        menu_categories = []
+        for category in categories:
+            menu_categories.append(category)
+
+    # used when somebody normally visits a restaurant's page
+    elif request.method == "GET":
+        menu_categories = MenuCategory.objects.filter(restaurant__name=restaurant_name)
+
+        # possibly redundant code---------------------------
+        categories = {}
+        for category in menu_categories:
+            categories[category] = []
+
+        for category in menu_categories:
+            menu_items = MenuItem.objects.filter(menu_category_id=category.id)
+            for item in menu_items:
+                categories[category].append(item)
+        # ----------------------------------------------------
+
     horizontal_cats = menu_categories[:num_horizontal_cats]
     remaining_cats = menu_categories[num_horizontal_cats:]
-
-    categories = {}
-    for category in menu_categories:
-        categories[category] = []
-
-    for category in menu_categories:
-        menu_items = MenuItem.objects.filter(menu_category_id=category.id)
-        for item in menu_items:
-            categories[category].append(item)
-
     context = {
         'restaurant': restaurant,
         'categories': categories,
