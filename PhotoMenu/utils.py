@@ -4,18 +4,18 @@ from .models import MenuItem, Restaurant
 def get_menu_items_for_search_string(query_string, limit=30):
     results = {}
     if query_string != "":
-        results = MenuItem.objects.filter(name__contains=query_string)[:limit]
+        results = MenuItem.objects.filter(name__icontains=query_string)[:limit]
     return results
 
 
 def get_restaurants_for_search_string(query_string, limit=5):
     restaurant_list = []
     if query_string != "":
-        results = Restaurant.objects.filter(name__contains=query_string)[:limit]
+        results = Restaurant.objects.filter(name__icontains=query_string)[:limit]
         for restaurant in results:
             restaurant_list.append({
                 'name': restaurant.name,
-                'link': "../" + restaurant.name.replace(" ", "-")
+                'link': restaurant.get_restaurant_url_path()
             })
     return restaurant_list
 
@@ -51,6 +51,6 @@ def get_favorite_foods_context_data(food_ids_list):
 def get_restaurant_internal_menu_items(query_string, restaurant_name, limit=5):
     results = {}
     if query_string != "":
-        results = MenuItem.objects.filter(menu_category__restaurant__name=restaurant_name).\
-            filter(name__contains=query_string)[:limit]
+        results = MenuItem.objects.filter(menu_category__restaurant__name__iexact=restaurant_name).\
+            filter(name__icontains=query_string)[:limit]
     return results

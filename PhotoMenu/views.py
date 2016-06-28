@@ -86,10 +86,8 @@ def search_results_page(request):
 
 
 def restaurants_page(request, restaurant_name):
-    context = {}
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
-    menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
     num_horizontal_cats = 3
     menu_categories = None
     categories = None
@@ -98,8 +96,8 @@ def restaurants_page(request, restaurant_name):
     if request.method == "POST":
         query_string = request.POST['search-bar']
         # get all of the foods from the restaurant that match the query_string
-        menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name=restaurant_name).\
-            filter(name__contains=query_string)
+        menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name__iexact=restaurant_name).\
+            filter(name__icontains=query_string)
 
         # collect the relevant categories for selected foods
         categories = {}
@@ -121,7 +119,8 @@ def restaurants_page(request, restaurant_name):
 
     # used when somebody normally visits a restaurant's page
     elif request.method == "GET":
-        menu_categories = MenuCategory.objects.filter(restaurant__name=restaurant_name)
+
+        menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
 
         # possibly redundant code---------------------------
         categories = {}
