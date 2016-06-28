@@ -107,16 +107,16 @@ var moreOptions = (function(){
     }
 
     // Get dictionary of hidden more box category names to hidden more box category elements
-    function getHiddenCategoryNamesToHiddenCategoryElements() {
-        var moreBoxCategoryNames = [];
-        var hiddenOptionName;
-        var hiddenCategoryNamesToHiddenCategoryElements = {}
-        for (var i = 0; i < Object.keys(hiddenOptions).length; i++) {
-            hiddenOptionName = hiddenOptions[i].firstElementChild.textContent;
-            hiddenCategoryNamesToHiddenCategoryElements[hiddenOptionName] = hiddenOptions[i];
-        }
-        return hiddenCategoryNamesToHiddenCategoryElements;
-    }
+    // function getHiddenCategoryNamesToHiddenCategoryElements() {
+    //     var moreBoxCategoryNames = [];
+    //     var hiddenOptionName;
+    //     var hiddenCategoryNamesToHiddenCategoryElements = {}
+    //     for (var i = 0; i < Object.keys(hiddenOptions).length; i++) {
+    //         hiddenOptionName = hiddenOptions[i].firstElementChild.textContent;
+    //         hiddenCategoryNamesToHiddenCategoryElements[hiddenOptionName] = hiddenOptions[i];
+    //     }
+    //     return hiddenCategoryNamesToHiddenCategoryElements;
+    // }
 
     // Get a dictionary of category header positions to category names
     function getCategoryHeaderPositionsToCategoryNames() {
@@ -213,7 +213,7 @@ var moreOptions = (function(){
 
     function toggleDropDownMenu(event) {
         event.stopPropagation();
-        var srcElement = event.srcElement || event.target;
+        var srcElement = event.target;
         while (srcElement) {
             if (srcElement == moreBox) {
                 dropDownIsVisible = !dropDownIsVisible;
@@ -275,7 +275,7 @@ var moreOptions = (function(){
     // scroll to a specific header category
     function scrollToCategory(event) {
         var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
-        var srcElement = event.srcElement;
+        var srcElement = event.target;
         var className = srcElement.className;
         var categoryName = srcElement.textContent;
         var categoryPosition;
