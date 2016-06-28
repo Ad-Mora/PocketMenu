@@ -43,8 +43,8 @@ var moreOptions = (function(){
     var categoryBarFixed = false;
 
     // headerCategoryExtraScrollDetectHeight must be larger than headerCategoryScrollToPadding
-    var headerCategoryExtraScrollDetectHeight = 20;
-    var headerCategoryScrollToPadding = 10;
+    var headerCategoryExtraScrollDetectHeight = 24;
+    var headerCategoryScrollToPadding = 8;
 
     /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
