@@ -87,8 +87,8 @@ def search_results_page(request):
 def restaurants_page(request, restaurant_name):
 
     restaurant_name = restaurant_name.replace('-', ' ')
-    restaurant = Restaurant.objects.get(name=restaurant_name)
-    menu_categories = MenuCategory.objects.filter(restaurant__name=restaurant_name)
+    restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
+    menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
 
     num_horizontal_cats = 3
     horizontal_cats = menu_categories[:num_horizontal_cats]

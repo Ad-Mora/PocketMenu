@@ -15,7 +15,7 @@
     data-category-name="{{ menu_item.menu_category.name }}"
     data-category-description="{{ menu_item.menu_category.description }}"
     data-restaurant-name="{{ menu_item.menu_category.restaurant.name }}"
-    data-restaurant-link="{{ menu_item.menu_category.restaurant.name_as_link }}"
+    data-restaurant-link="{% url "PhotoMenu:restaurant_homepage" menu_item.menu_category.restaurant.get_restaurant_url_path %}"
     data-food-unique-id="{{ menu_item.pk }}"
     data-food-is-liked="false">
   <h3 class="food-item-restaurant-name">{{ menu_item.menu_category.restaurant.name }}</h3>

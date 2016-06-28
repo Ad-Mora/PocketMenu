@@ -48,10 +48,6 @@ class Restaurant(models.Model):
         lowercase_name = name_without_spaces.lower()
         return lowercase_name
 
-    def name_as_link(self):
-        return "../" + self.name.replace(" ","-")
-
-
 
 class MenuCategory(models.Model):
 
