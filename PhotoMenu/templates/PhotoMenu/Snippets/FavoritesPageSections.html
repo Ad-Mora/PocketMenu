@@ -1,0 +1,15 @@
+{% load staticfiles %}
+{% for restaurant in restaurants_list %}
+  <li class="food-type-section-wrapper">
+    <h3 class="food-type-section-header">{{ restaurant.name }}</h3>
+    <ul class="food-type-section-food-list">
+      {% for menu_item in restaurant.favorite_foods %}
+        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+      {% endfor %}
+      <!-- ghost items ensure even spacing and left-alignment -->
+      <li class="ghost-food-item"></li>
+      <li class="ghost-food-item"></li>
+      <li class="ghost-food-item"></li>
+    </ul>
+  </li>
+{% endfor %}

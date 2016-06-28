@@ -33,15 +33,16 @@
   <!-- Top Section of SearchResultsPage -->
   <div class="top-section">
     <h1 class="search-page-title">Search Results</h1>
-    <div class="search-options-wrapper">
-      <span class="search-option search-option-left selected-search-option">Restaurant</span>
-      <span class="search-option search-option-right">Food Name</span>
-    </div>
+{#    <div class="search-options-wrapper">#}
+{#      <span class="search-option search-option-left selected-search-option">Restaurant</span>#}
+{#      <span class="search-option search-option-right">Food Name</span>#}
+{#    </div>#}
+
 
     <!-- Main Search Bar -->
     {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
-    <p class="number-of-search-results">Showing results 1-50 of 99</p>
+    <p class="number-of-search-results">There are {{ menu_items_list.count }} results matching '{{ query_string }}'</p>
     <div class="full-width-seperator"></div>
   </div>
 
@@ -49,45 +50,58 @@
  {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
 
   <!-- List of Search Results -->
-  <ul class="search-results-list">
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-    {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+  {% if menu_items_list %}
+    <ul class="search-results-list">
+      {%  for menu_item in menu_items_list %}
+        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+      {% endfor %}
 
-    <!-- ghost items ensure even spacing and left-alignment -->
-    <li class="ghost-food-item"></li>
-    <li class="ghost-food-item"></li>
-    <li class="ghost-food-item"></li>
 
-  </ul>
+      <!-- ghost items ensure even spacing and left-alignment -->
+      <li class="ghost-food-item"></li>
+      <li class="ghost-food-item"></li>
+      <li class="ghost-food-item"></li>
+
+    </ul>
+  {% else %}
+    <div class="no-results-help-container">
+      <br>
+      <p class="no-results-details">Your search did not match anything in our data base.</p>
+      <br>
+      <p class="no-results-suggestion">Suggestions:</p>
+      <br>
+      <ul class="no-results-suggestions-list">
+        <li class="no-results-sugestion">Check the spelling in your search</li>
+        <li class="no-results-sugestion">Try searching a shorter phrase</li>
+        <li class="no-results-sugestion">Try using different key words</li>
+      </ul>
+    </div>
+  {% endif %}
 
   <!-- More Results Navigator -->
-  <div class="more-results-navigator">
-    <a href="#" class="previous results-page">
-      <span class="previous page-icon"></span>
-      Previous
-    </a>
-    <a href="#" class="next results-page">
-      Next
-      <span class="next page-icon"></span>
-    </a>
-    <div style="clear:both;"></div>
-  </div>
+{#  <div class="more-results-navigator">#}
+{#    <a href="#" class="previous results-page">#}
+{#      <span class="previous page-icon"></span>#}
+{#      Previous#}
+{#    </a>#}
+{#    <a href="#" class="next results-page">#}
+{#      Next#}
+{#      <span class="next page-icon"></span>#}
+{#    </a>#}
+{#    <div style="clear:both;"></div>#}
+{#  </div>#}
 
   <!-- Website Footer -->
   {% include "PhotoMenu/Snippets/Footer.html" %}
 
   <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/DocumentModule.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/Ajax.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/SwipeGesture.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/FoodFavoriting.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/FoodEntry.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/AllInspectorView.js" %}" type="text/javascript"></script>
-  <script src="{%  static "PhotoMenu/JS/MasterSearchBarDropDown.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/SearchBarAutocomplete.js" %}" type="text/javascript"></script>
 
 
 </body>

@@ -220,14 +220,16 @@ var moreOptions = (function(){
                 moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
                 dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
                 dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+                dropDownIcon.style.mozTransform = dropDownIconStates[ dropDownIsVisible ];
                 return;
             }
-            srcElement = srcElement.parentNode;
+            target = target.parentNode;
         }
         dropDownIsVisible = false;
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
         dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
+        dropDownIcon.style.mozTransform = dropDownIconStates[ dropDownIsVisible ];
         return;
     }
 

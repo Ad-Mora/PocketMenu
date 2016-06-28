@@ -23,9 +23,6 @@ var allInspectorView = (function () {
     // public variables
 
     // private functions-------------------------------------------------------------------------
-
-
-
     function _displayInterestActionSign(foodIsLiked) {
         var interestMessageDict = {
             true: "Item saved to \"Favorites\".",
@@ -90,11 +87,11 @@ var allInspectorView = (function () {
     }
 
     function toggleInterestInFood(event) {
-        console.log(event);
         var newInterestInFood = ! (currentFood.getAttribute("data-food-is-liked") == "true");
         currentFood.setAttribute("data-food-is-liked", newInterestInFood);
         setInterestIconBasedOnCurrentInterest(desktopInspectorView.interestIcon, currentFood);
         setInterestIconBasedOnCurrentInterest(mobileInspectorView.interestIcon, currentFood);
+        foodFavoriting.saveNewFoodInterest(currentFood, newInterestInFood);
         _displayInterestActionSign(newInterestInFood);
     }
 
@@ -124,15 +121,14 @@ var mobileInspectorView = (function () {
     // cache DOM
     var listOfMobileInspectors = document.querySelector("ul.list-of-mobile-inspectors");
     var mobileInspector = listOfMobileInspectors.querySelector("li.mobile-inspector-view-wrapper");
-    var rightMobilePictureIcon = mobileInspector.querySelector("span.inspector.right-arrow");
-    var leftMobilePictureIcon = mobileInspector.querySelector("span.inspector.left-arrow");
-    var mobileInterestIcon = mobileInspector.querySelector("span.inspector.interested-in-food-icon");
-    var mobileFoodImage = mobileInspector.querySelector("img.inspector.food-image");
-    var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
     var leftInspectorView = mobileInspector.cloneNode(true);
-        leftInspectorView.style.background = "blue";
     var rightInspectorView = mobileInspector.cloneNode(true);
-        rightInspectorView.style.background = "red";
+    var rightMobilePictureIcon = mobileInspector.querySelector("span.right-arrow");
+    var leftMobilePictureIcon = mobileInspector.querySelector("span.left-arrow");
+    var mobileInterestIcon = mobileInspector.querySelector("span.interested-in-food-icon");
+    var mobileFoodImage = mobileInspector.querySelector("img.food-image");
+    var exitMobileInspectorIcon = mobileInspector.querySelector("span.close-inspector-icon");
+    var restaurantLinkIcon = mobileInspector.querySelector("a.restaurant-page-link");
 
     // bind events
     swipeGesture.addSwipeAndDragListener( mobileFoodImage, _whileDraggingImage, _onDragEnd);
@@ -210,17 +206,45 @@ var mobileInspectorView = (function () {
     }
 
     function _populateMobileViewWithFoodData(mobileView, foodElement) { /*--------------------------------STILL NEED TO FINISH---------------------*/
+        var foodNameElement = mobileView.querySelector("h3.food-name");
+        var foodDetailsElement = mobileView.querySelector("p.food-description");
+        var foodImageElement = mobileView.querySelector("img.food-image");
+        var foodPriceElement = mobileView.querySelector("p.food-price");
+        var categoryNameElement = mobileView.querySelector("h4.food-category-name");
+        var categoryDescriptionElement = mobileView.querySelector("p.food-category-description");
+        var restaurantHeaderLinkElement = mobileView.querySelector("h2.inspector.restaurant-name a");
+
+
         var foodName = foodElement.getAttribute("data-food-name");
+        foodNameElement.innerHTML = foodName;
+        foodImageElement.alt = foodName;
+
         var foodDetails = foodElement.getAttribute("data-food-details");
-        var foodImageLocaction = foodElement.getAttribute("data-food-image-location");
+        foodDetailsElement.innerHTML = foodDetails;
+
+        var foodImageLocation = foodElement.getAttribute("data-food-image-location");
+        foodImageElement.src = foodImageLocation;
+
         var foodPrice = foodElement.getAttribute("data-food-price");
-        var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
-        var listItemNumber = foodElement.getAttribute("data-list-item-number");
+        foodPriceElement.innerHTML = foodPrice;
+
+        var categoryName = foodElement.getAttribute("data-category-name");
+        categoryNameElement.innerHTML = categoryName;
+
+        var categoryDescription = foodElement.getAttribute("data-category-description");
+        categoryDescriptionElement.innerHTML = categoryDescription;
+
+        var restaurantName = foodElement.getAttribute("data-restaurant-name");
+        restaurantHeaderLinkElement.innerHTML = restaurantName;
+
+        var restaurantLink = foodElement.getAttribute("data-restaurant-link");
+        restaurantHeaderLinkElement.href = restaurantLink;
+        restaurantLinkIcon.href = restaurantLink;
 
         var interestIconForView = mobileView.querySelector("span.inspector.interested-in-food-icon");
         allInspectorView.setInterestIconBasedOnCurrentInterest(interestIconForView, foodElement);
     }
-    
+
     // public functions
     function initializeMobileViewWithFood(foodElement) {
         // update module's variables
@@ -257,6 +281,13 @@ var desktopInspectorView = (function () {
     var leftDesktopPictureIcon = desktopInspector.querySelector("span.food-modal-left-arrow-icon");
     var desktopInterestIcon = desktopInspector.querySelector("span.food-interest-icon");
     var exitDesktopInspectorIcon = desktopInspector.querySelector("span.exit-food-modal-icon");
+    var foodImageElement = desktopInspector.querySelector("img.food-modal-image");
+    var restaurantHeaderLinkElement = desktopInspector.querySelector("h3.food-modal-restaurant-name a");
+    var foodNameElement = desktopInspector.querySelector("h1.food-modal-food-name");
+    var foodDetailsElement = desktopInspector.querySelector("p.food-modal-food-description");
+    var categoryNameElement = desktopInspector.querySelector("h5.food-modal-category-name");
+    var categoryDescriptionElement = desktopInspector.querySelector("p.food-modal-category-details");
+    var foodPriceElement = desktopInspector.querySelector("span.food-modal-food-price");
 
     // bind events
     rightDesktopPictureIcon.addEventListener('click', allInspectorView.showNextFood);
@@ -269,12 +300,32 @@ var desktopInspectorView = (function () {
     // public functions
     function initializeDesktopViewWithFood(foodElement) {
         var foodName = foodElement.getAttribute("data-food-name");
+        foodNameElement.innerHTML = foodName;
+        foodImageElement.alt = foodName;
+
         var foodDetails = foodElement.getAttribute("data-food-details");
-        var foodImageLocaction = foodElement.getAttribute("data-food-image-location");
+        foodDetailsElement.innerHTML = foodDetails;
+
+        var foodImageLocation = foodElement.getAttribute("data-food-image-location");
+        foodImageElement.src = foodImageLocation;
+
         var foodPrice = foodElement.getAttribute("data-food-price");
+        foodPriceElement.innerHTML = foodPrice;
+
+        var categoryName = foodElement.getAttribute("data-category-name");
+        categoryNameElement.innerHTML = categoryName;
+
+        var categoryDescription = foodElement.getAttribute("data-category-description");
+        categoryDescriptionElement.innerHTML = categoryDescription;
+
+        var restaurantName = foodElement.getAttribute("data-restaurant-name");
+        restaurantHeaderLinkElement.innerHTML = restaurantName;
+
+        var restaurantLink = foodElement.getAttribute("data-restaurant-link");
+        restaurantHeaderLinkElement.href = restaurantLink;
+
         var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
         var listItemNumber = foodElement.getAttribute("data-list-item-number");
-
         allInspectorView.setInterestIconBasedOnCurrentInterest(desktopInterestIcon, foodElement);
 
         console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!

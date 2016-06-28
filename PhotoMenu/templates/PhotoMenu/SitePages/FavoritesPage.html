@@ -48,37 +48,24 @@
   {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
 
   <!-- List of Food Item Lists -->
-  <ul class="list-of-food-lists">
-    <li class="food-type-section-wrapper">
-      <h3 class="food-type-section-header">Kathy's Asian Kitchen</h3>
-      <ul class="food-type-section-food-list">
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
-        {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
+  <ul class="list-of-food-lists"></ul>
 
-        <!-- ghost items ensure even spacing and left-alignment -->
-        <li class="ghost-food-item"></li>
-        <li class="ghost-food-item"></li>
-        <li class="ghost-food-item"></li>
-      </ul>
-    </li>
-  </ul>
+   <!-- My Favorites is empty Message -->
+  <p class="my-favorites-empty-message">Your Favorites list is currently empty. Go browse some foods! :)</p>
+
 
   <!-- Website Footer -->
   {% include "PhotoMenu/Snippets/Footer.html" %}
 
+  <script src="{%  static "PhotoMenu/JS/Ajax.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/DocumentModule.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/HeaderSearch.js" %}" type="text/javascript"></script>
-  <script src="{%  static "PhotoMenu/JS/DocumentModule.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/SwipeGesture.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/FoodFavoriting.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/FoodEntry.js" %}" type="text/javascript"></script>
   <script src="{%  static "PhotoMenu/JS/AllInspectorView.js" %}" type="text/javascript"></script>
-  <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script>
-  <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script>
+  <script src="{%  static "PhotoMenu/JS/FavoritesPage.js" %}" type="text/javascript"></script>
 
 </body>
 </html>

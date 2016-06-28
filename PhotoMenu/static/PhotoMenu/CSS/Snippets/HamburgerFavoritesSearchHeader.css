@@ -77,61 +77,30 @@ span.hamburger-bar-middle::after{
 }
 
 /* -----------------Mobile Category Menu--------------------*/
-div.mobile-categories-menu-wrapper{
-
-}
-div.categories-menu-background-overlay{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.7);
-    top: 45px;
-    left: 0px;
-    z-index: 1;
-    display: none;
-}
-div.mobile-category-list–wrapper{
-    position: fixed;
-    width: 280px;
-    height: 100%;
-    background-color: #FFFFFF;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    overflow: scroll;
-    -webkit-transform: translateX(-280px);
-    transform: translateX(-280px);
-}
-h1.mobile-categories-menu-header{
-    color: #FFFFFF;
-    font-weight: bold;
-    font-size: 20px;
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    background-color: #FF9800;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    box-shadow: 0px 1px 3px 0px #DDDDDD;
-}
 ul.mobile-categories-menu-list{
-    position: absolute;
+    display: none;
+    position: fixed;
     top: 45px;
+    left: 0px;
     overflow: scroll;
     max-height: calc(100% - 45px);
-    width: 100%;
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    z-index: 1;
+}
+li.mobile-categories-menu-header{
+    color: #555555;
+    font-weight: 500;
+    font-size: 22px;
+    padding: 15px 0px 15px 20px;
 }
 li.categories-menu-category-option{
     width: 100%;
-    border-bottom: 1px solid #EEEEEE;
+    border-top: 1px solid #EEEEEE;
     padding: 10px 10px 10px 20px;
     box-sizing: border-box;
-}
-h3.categories-menu-category-name{
-    font-size: 16px;
-    color: #555555;
 }
 p.category-items-count{
     font-size: 12px;
@@ -139,21 +108,6 @@ p.category-items-count{
     margin: 2px 0px 0px 0px;
 }
 
-/*----------------------Category Menu Animation States------------------------*/
-.hidden-state{
-    -moz-animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-    -webkit-animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-    animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-    -webkit-transform:translateX(-280px);
-    transform:translateX(-280px);
-}
-.visible-state{
-    -moz-animation:show-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-    -webkit-animation:show-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-    animation:show-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-    -webkit-transform:translateX(0px);
-    transform:translateX(0px);
-}
 /*----------------Show Menu Animation-----------------*/
 @-webkit-keyframes show-menu{
     from{
@@ -209,17 +163,6 @@ p.category-items-count{
         transform:translateX(-280px)
     }
 }
-span.hamburger-x{
-    background-color: transparent;
-}
-span.hamburger-x::before{
-    -webkit-transform: rotate(45deg) translate(7px, 7px);
-    transform: rotate(45deg) translate(7px, 7px);
-}
-span.hamburger-x::after{
-    -webkit-transform: rotate(-45deg) translate(4px, -5px);
-    transform: rotate(-45deg) translate(4px, -5px);
-}
 
 /* Large mobile view */
 @media (min-width: 355px) {
@@ -250,7 +193,6 @@ span.hamburger-x::after{
     ul.mobile-categories-menu-list{
         top: 55px;
     }
-
 }
 
 /* Desktop view */
@@ -295,19 +237,9 @@ span.hamburger-x::after{
     div.hamburger-icon-wrapper{
         display: none;
     }
-    div.mobile-categories-menu-wrapper{
+    ul.mobile-categories-menu-list{
         display: none;
     }
-
-    .visible-state{
-        -moz-animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-        -webkit-animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-        animation:hide-menu cubic-bezier(0.6, 0, 0.735, 0.045) 0.2s 0.1s both;
-        -moz-transform:translateX(-280px);
-        -webkit-transform:translateX(-280px);
-        transform:translateX(-280px);
-    }
-
 }
 
 

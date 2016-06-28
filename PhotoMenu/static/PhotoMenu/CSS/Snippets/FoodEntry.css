@@ -8,6 +8,14 @@ li.ghost-food-item{
     height: 0px;
 }
 
+h3.food-item-restaurant-name{
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px 0px 10px 0px;
+    color: #333333;
+}
+
 div.food-entry-wrapper{
     width: 100%;
     background-color: #FFFFFF;
@@ -42,6 +50,14 @@ div.food-entry-image{
 div.food-entry-image img{
     width: 100%;
     height: auto;
+}
+
+img.unloaded_image{
+    background-color: #EEEEEE;
+    height: auto;
+    width: 100%;
+    padding: 30px 10px 30px 10px;
+    box-sizing: border-box;
 }
 
 p.food-entry-price{

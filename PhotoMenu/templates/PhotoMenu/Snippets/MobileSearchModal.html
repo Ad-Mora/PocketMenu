@@ -6,19 +6,27 @@
 
 <div class="mobile-modal-search-container">
   <div class="mobile-search-background-overlay"></div>
-  <form class="mobile-search-modal-form">
+  {% if is_restaurant_page %}
+    <form class="mobile-search-modal-form" action="search/" method="post">
+  {% else %}
+    <form class="mobile-search-modal-form" action="{% url 'PhotoMenu:search_results_page' %}" method="post">
+  {% endif %}
+
+    {% csrf_token %}
     <div class="mobile-search-select-wrapper">
-      <select class="mobile-select-search-type">
-        <option class="mobile-search-option">Kathy's Asian Kitchen</option>
-        <option class="mobile-search-option">All Restaurants</option>
-        <option class="mobile-search-option">All Foods</option>
+      <select class="mobile-select-search-type" name="search-type">
+        {% for search_option in search_options_list %}
+          <option class="mobile-search-option" value="{{ search_option }}">{{ search_option }}</option>
+        {% endfor %}
       </select>
     </div>
     <div class="mobile-modal-search-bar-wrapper">
       <span class="mobile-modal-search-bar-icon"></span>
-      <input placeholder="e.g. Hamburgers, pad thai, etc." class="mobile-modal-search-bar" type="text">
+      <input placeholder="Enter your search here..." name="search-bar" class="mobile-modal-search-bar" type="text" autocomplete="off">
+      <ul class="mobile-search-suggestions-list"></ul>
     </div>
     <input class="submit-mobile-search-modal" type="submit" value="Search">
     <span class="close-mobile-search-modal">Cancel</span>
+
   </form>
 </div>

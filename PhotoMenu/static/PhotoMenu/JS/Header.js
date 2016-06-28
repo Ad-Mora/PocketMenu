@@ -5,7 +5,7 @@ var websiteHeader = (function () {
     // cache DOM
     var headerElement = document.querySelector("div.header");
     var hamburgerIcon = headerElement.querySelector("div.hamburger-icon-wrapper");
-    var desktopSearchBar = headerElement.querySelector("div.header-search-bar-with-icon");
+    var desktopSearchBar = headerElement.querySelector("form.header-search-bar-with-icon");
     var searchIcon = headerElement.querySelector("img.search-icon");
 
     // bind events

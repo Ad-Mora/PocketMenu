@@ -4,24 +4,92 @@
 var mobileSearchModal = (function(){
     // cached DOM
     var searchIcon = websiteHeader.mobileSearchIcon;
-    var mobileSearchContainer = document.querySelector("div.mobile-modal-search-container");
-    var cancelSearchButton = mobileSearchContainer.querySelector("span.close-mobile-search-modal");
+    var container = document.querySelector("div.mobile-modal-search-container");
+    var backgroundOverlay = container.querySelector("div.mobile-search-background-overlay");
+    var mainForm = container.querySelector("form.mobile-search-modal-form");
+    var selectSearchType = container.querySelector("select.mobile-select-search-type");
+    var searchBar = container.querySelector("input.mobile-modal-search-bar");
+    var submitButton = container.querySelector("input.submit-mobile-search-modal");
+    var cancelButton = container.querySelector("span.close-mobile-search-modal");
+    var suggestionsList = container.querySelector("ul.mobile-search-suggestions-list");
 
     // bind events
     searchIcon.addEventListener('click', openSearchModal);
-    cancelSearchButton.addEventListener('click', closeSearchModal);
+    cancelButton.addEventListener('click', closeSearchModal);
+    searchBar.addEventListener('focus', displaySearchSuggestionsList);
+    documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
+    searchBar.addEventListener('keyup', queryForSuggestions);
+    selectSearchType.addEventListener('change', updateMainFormPOSTAddress);
 
     // private variables
+    var restaurant_internal_search =
+        (selectSearchType.value != "Restaurant") && (selectSearchType.value != "Food");
 
     // public variables
 
     // private functions
+    function updateMainFormPOSTAddress(event) {
+        if (this.value == "Food" || this.value == "Restaurant") {
+            mainForm.action = "/search/"
+            restaurant_internal_search = false;
+        }
+        else {
+            mainForm.action = window.location.href + "search/";
+            restaurant_internal_search = true;
+        }
+    }
+
     function openSearchModal(event) {
-        mobileSearchContainer.style.display = "block";
+        container.style.display = "block";
+        searchBar.focus();
     }
 
     function closeSearchModal(event) {
-        mobileSearchContainer.style.display = "none";
+        container.style.display = "none";
+    }
+
+    function displaySearchSuggestionsList() {
+        suggestionsList.style.display = "block";
+    }
+
+    function selectSuggestionsOrBlurEvent() {
+        var targetElement = event.target;
+        if (targetElement.parentNode === suggestionsList) {
+            var suggestion_text = targetElement.innerHTML;
+            searchBar.value = suggestion_text;
+            mainForm.submit();
+        }
+        else if (targetElement !== searchBar && targetElement !== searchIcon) {
+            suggestionsList.style.display = "none";
+        }
+    }
+
+    function queryForSuggestions(event) {
+        var searchType = selectSearchType.value;
+        var searchQuery = searchBar.value;
+        var csrfMiddlewareToken = ajax.getCSRFToken();
+        var postAjaxFunction = function(result){
+            suggestionsList.innerHTML = result;
+        };
+
+        var destinationFile;
+        var jsonData;
+
+        if (searchType == "Food" || searchType == "Restaurant") {
+            destinationFile = "../drop-down-suggestions/";
+            jsonData = {
+                "search-bar":   searchQuery,
+                "search-type":  searchType
+            }
+        }
+        else { // only suggest MenuItems from the current restaurant
+            destinationFile = "search/drop-down-suggestions";
+            jsonData = {
+                "search-bar":   searchQuery
+            }
+        }
+
+        ajax.send_ajax_request(destinationFile, jsonData, csrfMiddlewareToken, postAjaxFunction);
     }
 
     // public functions
@@ -41,8 +109,8 @@ var desktopHeaderSearch = (function () {
 
     // bind events
     searchInput.addEventListener('focus', displaySearchSuggestionsList);
-    searchInput.addEventListener('blur', hideSearchSuggestionsList);
-    searchInput.addEventListener('keydown', queryForSuggestions);
+    documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
+    searchInput.addEventListener('keyup', queryForSuggestions);
 
     // public variables
 
@@ -51,6 +119,18 @@ var desktopHeaderSearch = (function () {
     // public functions
 
     // private functions
+    function selectSuggestionsOrBlurEvent(event) {
+        var targetElement = event.target;
+        if (targetElement.parentNode === suggestionsList) {
+            var suggestion_text = targetElement.innerHTML;
+            searchInput.value = suggestion_text;
+            searchBarContainer.submit();
+        }
+        else if (targetElement !== searchInput) {
+            suggestionsList.style.display = "none";
+        }
+    }
+    
     function displaySearchSuggestionsList(event) {
         suggestionsList.style.display = "block";
     }
@@ -60,7 +140,17 @@ var desktopHeaderSearch = (function () {
     }
 
     function queryForSuggestions(event) {
-        console.log(event.key);
+        var destination_file = "../drop-down-suggestions/";
+        var csrfMiddlewareToken = ajax.getCSRFToken();
+        var json_data = {
+            "search-bar": searchInput.value,
+            "search-type": 'Restaurant'         // by default, the desktop search bar always searches restaurant
+        }
+        var postAjaxFunction = function(result){
+            suggestionsList.innerHTML = result;
+        }
+
+        ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
     }
 
     // return public pointers to private variables & functions

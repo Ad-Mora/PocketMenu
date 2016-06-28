@@ -1,22 +1,90 @@
-<form class="search-bar-form">
-  <div class="search-bar-wrapper">
+{% if error_message %}
+  <h1><strong>{{ error_message }}</strong></h1>
+{% endif %}
 
-    <!--Select drop down menu-->
-    <select class="select-search-type">
-      <option value="restaurant">Restaurant</option>
-      <option value="restaurant">Food</option>
+
+<form class="search-bar-form" action="{% url 'PhotoMenu:search_results_page' %}"
+  method="post">
+  {% csrf_token %}
+
+  <!--Search Type Tabs-->
+  {% if search_type %}
+    <div class="search-options-wrapper">
+    <span class="search-option search-option-left">
+
+      {% if search_type == "Restaurant" %}
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="Restaurant" checked>
+      {% else %}
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="Restaurant">
+      {% endif %}
+
+      <label for="search-type-1" class="search-option-label">Restaurants</label>
+    </span>
+    <span class="search-option search-option-right">
+
+      {% if search_type == "Food" %}
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="Food" checked>
+      {% else %}
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="Food">
+      {% endif %}
+
+      <label for="search-type-2" class="search-option-label">Foods</label>
+    </span>
+  </div>
+  {% else %}
+    <div class="search-options-wrapper">
+      <span class="search-option search-option-left">
+        <input type="radio" id="search-type-1" class="search-option-radio-btn" name="radio-search-type" value="Restaurant" checked>
+        <label for="search-type-1" class="search-option-label">Restaurants</label>
+      </span>
+      <span class="search-option search-option-right">
+        <input type="radio" id="search-type-2" class="search-option-radio-btn" name="radio-search-type" value="Food">
+        <label for="search-type-2" class="search-option-label">Foods</label>
+      </span>
+    </div>
+  {% endif %}
+
+  <div class="search-bar-wrapper">
+    <!--Search Type Select-->
+    <select class="select-search-type" name="search-type">
+
+      {% if search_type == "Restaurant" %}
+        <option value="Restaurant" selected>Restaurant</option>
+      {% else %}
+        <option value="Restaurant">Restaurant</option>
+      {% endif %}
+
+      {% if search_type == "Food" %}
+        <option value="Food" selected>Food</option>
+      {% else %}
+        <option value="Food">Food</option>
+      {% endif %}
+
     </select>
 
     <!--Search bar and search suggestions-->
     <div class="search-bar-and-suggestions">
-      <input type="text" class="search-bar" placeholder="Search for Restaurants">
-      <div class="search-suggestions-box">
-        <p class="search-suggestion">This is the first suggestion</p>
-        <p class="search-suggestion">This is the second suggestion</p>
-        <p class="search-suggestion">This is the third suggestion</p>
-        <p class="search-suggestion">This is the fourth suggestion</p>
-        <p class="search-suggestion">This is the fifth suggestion</p>
-      </div>
+      {% if search_type %}
+        {% if query_string %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for {{ search_type }}s"
+            value="{{ query_string }}" autocomplete="off" >
+        {%  else %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for {{ search_type }}s"
+            value="" autocomplete="off">
+        {% endif %}
+
+      {% else %}
+        {% if query_string %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
+            value="{{ query_string }}" autocomplete="off" >
+        {%  else %}
+          <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
+            value="" autocomplete="off">
+        {% endif %}
+
+      {% endif %}
+      <ul class="search-suggestions-list"></ul>
+
     </div>
 
     <!--Search button with white search icon-->

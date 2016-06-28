@@ -43,28 +43,55 @@
 /*-------------Drop down suggestions list--------------*/
 ul.header-search-suggestions-list{
     position: absolute;
+    display: none;
     top: 38px;
     left: 0px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.03);
+    border-radius: 0px 0px 3px 3px;
+    -webkit-box-shadow: 0px 0px 5px 0px #777777;
+    -moz-box-shadow: 0px 0px 5px 0px #777777;
+    box-shadow: 0px 0px 5px 0px #777777;
     border: 1px solid #cacaca;
-    display: none;
 }
-
-li.header-search-suggestion-options{
+ul.header-search-suggestions-list a.search-suggestion{
     width: 230px;
-    background-color: #FFFFFF;
-    font-size: 14px;
-    box-sizing: border-box;
-    border-bottom: 1px solid #EEEEEE;
 }
-
-a.header-search-suggestion-link{
-    color: #555555;
-    padding: 10px 0px 10px 23px;
+.search-suggestion{
     display: block;
+    padding-left: 10px;
+    color: #333333;
+    line-height: 35px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+.search-suggestion:hover{
+    background-color: #eeeeee;
 }
 
-a.header-search-suggestion-link:hover{
-    background-color: #EEEEEE;
-    cursor: pointer;
-}
+
+
+
+
+
+
+
+
+/*li.header-search-suggestion-options{*/
+
+    /*background-color: #FFFFFF;*/
+    /*font-size: 14px;*/
+    /*box-sizing: border-box;*/
+    /*border-bottom: 1px solid #EEEEEE;*/
+/*}*/
+
+/*a.header-search-suggestion-link{*/
+    /*color: #555555;*/
+    /*padding: 10px 0px 10px 23px;*/
+    /*display: block;*/
+/*}*/
+
+/*a.header-search-suggestion-link:hover{*/
+    /*background-color: #EEEEEE;*/
+    /*cursor: pointer;*/
+/*}*/

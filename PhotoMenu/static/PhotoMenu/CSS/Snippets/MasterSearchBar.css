@@ -1,3 +1,34 @@
+/*-------------Search Option Tabs-------------*/
+div.search-options-wrapper{
+    margin: 16px auto 0px auto;
+    color: #555555;
+    overflow: auto;
+}
+span.search-option{
+    width: 49%;
+}
+span.search-option-left {
+    float: left;
+}
+span.search-option-right{
+    float: right;
+}
+input.search-option-radio-btn{
+    display: none;
+}
+input.search-option-radio-btn ~ label.search-option-label{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border-bottom: 4px solid transparent;
+    padding: 0px 0px 5px 0px;
+}
+label.search-option-label{
+
+}
+
+
+/*-------------Search Option Select-----------------*/
 select.select-search-type{
     display: none;
     padding: 0px 0px 0px 10px;
@@ -7,13 +38,13 @@ select.select-search-type{
     background-repeat: no-repeat;
     background-position: 110px 19px;
 }
+/*--------------Search Bar-------------------*/
 div.search-bar-and-suggestions{
     position: relative;
 }
 input.search-bar{
     position: relative;
     z-index: 1;
-    /*margin-left: 4%;*/
     padding-left: 10px;
     width: 100%;
     height: 35px;
@@ -24,36 +55,36 @@ input.search-bar{
     box-sizing: border-box;
     font-size: 14px;
 }
-div.search-suggestions-box{
+ul.search-suggestions-list{
     display: none;
     position: absolute;
-    top: 25px;
-    padding-top: 10px;
+    top: 35px;
     border: 1px solid #eeeeee;
-    z-index: 0;
-    /*margin-left: 4%;*/
-    width: 100%;
     background-color: white;
     border-radius: 0px 0px 3px 3px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    -webkit-box-shadow: 0px 0px 5px 0px #777777;
+    -moz-box-shadow: 0px 0px 5px 0px #777777;
+    box-shadow: 0px 0px 5px 0px #777777;
 }
-p.search-suggestion{
+.search-suggestion{
+    display: block;
     padding-left: 10px;
     color: #333333;
     line-height: 35px;
     border-bottom: 1px solid #eeeeee;
     font-size: 14px;
+    font-weight: bold;
 }
-p.search-suggestion:hover{
+.search-suggestion:hover{
     background-color: #eeeeee;
 }
 input.search-submit-button{
     display: none;
 }
 button.search-button{
-    /*margin-left: 4%;*/
     margin-top: 8px;
     width: 100%;
     height: 35px;
@@ -67,28 +98,25 @@ button.search-button{
     input.search-bar{
         height: 40px;
         font-size: 16px;
-        /*margin-left: 6%;*/
-        /*width: 88%;*/
     }
-    div.search-suggestions-box{
-        top: 30px;
-        /*margin-left: 6%;*/
-        /*width: 88%;*/
-    }
-    p.search-suggestion{
-        /*font-size: 16px;*/
-        /*line-height: 40px;*/
+    ul.search-suggestions-list{
+        top: 40px;
+
     }
     button.search-button{
         height: 40px;
         font-size: 20px;
-        /*margin-left: 6%;*/
-        /*width: 88%;*/
+    }
+    label.search-option-label {
+        font-size: 18px;
     }
 }
 
 /* Desktop view */
 @media (min-width: 800px) {
+    div.search-options-wrapper {
+        display: none;
+    }
     div.search-bar-wrapper{
         margin: 0px auto 0px auto;
         height: 45px;
@@ -119,16 +147,12 @@ button.search-button{
         border-left: 1px solid #CACACA;
         border-radius: 0px;
     }
-    div.search-suggestions-box{
+    ul.search-suggestions-list{
         width: 400px;
         padding-top: 0px;
         top: 45px;
         margin-left: 0px;
         border-top: 1px solid #CACACA;
-    }
-    p.search-suggestion{
-        /*font-size: 16px;*/
-        /*line-height: 44px;*/
     }
     input.search-submit-button{
         display: inline-block;
