@@ -44,7 +44,7 @@ class Restaurant(models.Model):
         return self.name
 
     def get_restaurant_url_path(self):
-        name_without_spaces = self.name.replace(' ', '')
+        name_without_spaces = self.name.replace(' ', '-')
         lowercase_name = name_without_spaces.lower()
         return lowercase_name
 
