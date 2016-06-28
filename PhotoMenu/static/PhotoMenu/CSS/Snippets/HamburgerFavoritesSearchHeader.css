@@ -78,6 +78,7 @@ span.hamburger-bar-middle::after{
 
 /* -----------------Mobile Category Menu--------------------*/
 ul.mobile-categories-menu-list{
+    display: none;
     position: fixed;
     top: 45px;
     left: 0px;
