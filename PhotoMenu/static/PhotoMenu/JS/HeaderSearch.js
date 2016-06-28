@@ -30,7 +30,7 @@ var mobileSearchModal = (function(){
     // private functions
     function updateMainFormPOSTAddress(event) {
         if (this.value == "Food" || this.value == "Restaurant") {
-            mainForm.action = "/search/"
+            mainForm.action = "";
             restaurant_internal_search = false;
         }
         else {
