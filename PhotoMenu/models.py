@@ -11,7 +11,7 @@ def get_restaurant_upload_path(instance, filename):
 
 
 def get_menu_item_upload_path(instance, filename):
-    upload_path = instance.get_restaurant_url_path()
+    upload_path = instance.menu_category.restaurant.get_restaurant_url_path()
     menu_item_name = instance.name.replace(' ', '')
     extension = os.path.splitext(filename)[1]
     full_filename = menu_item_name + extension
