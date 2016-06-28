@@ -7,12 +7,12 @@ var foodEntry = (function () {
     var listOfFoodEntryLI;
 
     // bind events
-    var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // private variables
-    var INITIAL_LOAD_VOLUME = 10;
+    var INITIAL_LOAD_VOLUME = 5;
     var NUM_SCROLL_LISTENERS = 4;
     var bufferCutOffDepth = window.innerHeight;
+    var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
 
     // public variables
@@ -34,20 +34,28 @@ var foodEntry = (function () {
     }
 
     function listenForScrollDepthToLoad(foodEntry) {
-        var foodEntryIndex = foodEntry.getAttribute("data-list-item-number");
-        documentModule.addOnScrollFunction(function (event) {
+        var foodEntryIndex = parseInt( foodEntry.getAttribute("data-list-item-number") );
+        document.addEventListener('scroll', function test(event) {
             if (foodEntry.getBoundingClientRect().top <= bufferCutOffDepth) {
-                var eventListenerIndex = loadActualImageForFoodEntry(foodEntry);
-                
-                // place a new event listener on the this + NUM_SCROLL_LISTENERS foodEntry
-                if (foodEntryIndex + NUM_SCROLL_LISTENERS < listOfFoodEntryLI.length) {
-                    listenForScrollDepthToLoad(listOfFoodEntryLI[ foodEntryIndex + NUM_SCROLL_LISTENERS])
+                console.log(foodEntryIndex);
+                loadActualImageForFoodEntry(foodEntry);
+                this.removeEventListener('scroll', test);
+                var nextFoodEntryIndex = foodEntryIndex + NUM_SCROLL_LISTENERS
+                if (nextFoodEntryIndex < listOfFoodEntryLI.length) {
+                    listenForScrollDepthToLoad(listOfFoodEntryLI[ nextFoodEntryIndex ]);
                 }
-                
-                // remove the scroll event listener for this element from the document module
-                // because the picture has already loaded
-                
-                
+
+                // var eventListenerIndex = loadActualImageForFoodEntry(foodEntry);
+                //
+                // // place a new event listener on the this + NUM_SCROLL_LISTENERS foodEntry
+                // if (foodEntryIndex + NUM_SCROLL_LISTENERS < listOfFoodEntryLI.length) {
+                //     listenForScrollDepthToLoad(listOfFoodEntryLI[ foodEntryIndex + NUM_SCROLL_LISTENERS])
+                // }
+                //
+                // // remove the scroll event listener for this element from the document module
+                // // because the picture has already loaded
+
+
             }
         });
     }
