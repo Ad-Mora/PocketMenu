@@ -10,7 +10,7 @@ var mobileCategoriesMenu = (function () {
     // bind events
     hamburgerIcon.addEventListener('click', toggleMobileCategoryOptions);
     for (var i = 0; i < listOfCategoryOptions.length; i++) {
-        listOfCategoryOptions[i].addEventListener('click', toggleMobileCategoryOptions);
+        listOfCategoryOptions[i].addEventListener('click', goToMenuCategory);
     }
 
     // private variables
@@ -20,6 +20,11 @@ var mobileCategoriesMenu = (function () {
     // public variables
 
     // private functions
+    function goToMenuCategory(event) {
+        toggleMobileCategoryOptions(event);
+        moreOptions.scrollToCategory(event);
+    }
+
     function toggleMobileCategoryOptions(event) {
         displayIsVisible = !displayIsVisible
         categoriesMenuUL.style.display = categoriesMenuDisplayStates[ displayIsVisible ];

@@ -107,16 +107,16 @@ var moreOptions = (function(){
     }
 
     // Get dictionary of hidden more box category names to hidden more box category elements
-    function getHiddenCategoryNamesToHiddenCategoryElements() {
-        var moreBoxCategoryNames = [];
-        var hiddenOptionName;
-        var hiddenCategoryNamesToHiddenCategoryElements = {}
-        for (var i = 0; i < Object.keys(hiddenOptions).length; i++) {
-            hiddenOptionName = hiddenOptions[i].firstElementChild.textContent;
-            hiddenCategoryNamesToHiddenCategoryElements[hiddenOptionName] = hiddenOptions[i];
-        }
-        return hiddenCategoryNamesToHiddenCategoryElements;
-    }
+    // function getHiddenCategoryNamesToHiddenCategoryElements() {
+    //     var moreBoxCategoryNames = [];
+    //     var hiddenOptionName;
+    //     var hiddenCategoryNamesToHiddenCategoryElements = {}
+    //     for (var i = 0; i < Object.keys(hiddenOptions).length; i++) {
+    //         hiddenOptionName = hiddenOptions[i].firstElementChild.textContent;
+    //         hiddenCategoryNamesToHiddenCategoryElements[hiddenOptionName] = hiddenOptions[i];
+    //     }
+    //     return hiddenCategoryNamesToHiddenCategoryElements;
+    // }
 
     // Get a dictionary of category header positions to category names
     function getCategoryHeaderPositionsToCategoryNames() {
@@ -213,7 +213,7 @@ var moreOptions = (function(){
 
     function toggleDropDownMenu(event) {
         event.stopPropagation();
-        var srcElement = event.srcElement || event.target;
+        var srcElement = event.target;
         while (srcElement) {
             if (srcElement == moreBox) {
                 dropDownIsVisible = !dropDownIsVisible;
@@ -251,38 +251,42 @@ var moreOptions = (function(){
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
-        var newPaddingTop;
-        var topHeaderViewPos = window.scrollY + getHeaderHeight();
+        // we only care if we are in desktop view
+        if (window.innerWidth >= 800) {
+            var newPaddingTop;
+            var topHeaderViewPos = window.scrollY + getHeaderHeight();
 
-        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
-            newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
-            document.body.style.paddingTop = newPaddingTop;
-            categoryBar.style.top = String(getHeaderHeight()) + "px";
-            categoryBar.style.position = "fixed";
-            categoryBarFixed = true;
-        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
-            newPaddingTop = String(getHeaderHeight()) + "px"
-            document.body.style.paddingTop = newPaddingTop;
-            categoryBar.style.top = "";
-            categoryBar.style.position = "";
-            categoryBarFixed = false;
+            if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
+                newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
+                document.body.style.paddingTop = newPaddingTop;
+                categoryBar.style.top = String(getHeaderHeight()) + "px";
+                categoryBar.style.position = "fixed";
+                categoryBarFixed = true;
+            } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
+                newPaddingTop = String(getHeaderHeight()) + "px"
+                document.body.style.paddingTop = newPaddingTop;
+                categoryBar.style.top = "";
+                categoryBar.style.position = "";
+                categoryBarFixed = false;
+            }
         }
     }
 
     // scroll to a specific header category
     function scrollToCategory(event) {
         var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
-        var srcElement = event.srcElement;
-        var className = srcElement.className;
-        var categoryName = srcElement.textContent;
-        var categoryPosition;
-        var endPosition;
+        var srcElement = event.target;
 
         // in case the li container was clicked instead of the span element
-        if (className == "filter-option" || className == "hidden-filter-option") {
-            categoryName = srcElement.firstElementChild.textContent;
+        while (srcElement && srcElement.tagName != "LI") {
+            srcElement = srcElement.parentNode;
         }
-        elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
+
+        var categoryName = srcElement.getAttribute("data-category-name");
+        var categoryPosition;
+        var endPosition;
+        
+        var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
         endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
         categoryPosition = getVerticalPosition(elementToScrollTo);
         currentCategoryName = categoryName;
@@ -322,6 +326,7 @@ var moreOptions = (function(){
 
     // reveal public pointers to private functions & properties
     return {
+        scrollToCategory: scrollToCategory
     };
 
 })();
