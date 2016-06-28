@@ -27,7 +27,7 @@
 <ul class="mobile-categories-menu-list">
   <li class="mobile-categories-menu-header">Menu Categories</li>
   {% for category, item_list in categories.items %}
-    <li class="categories-menu-category-option">
+    <li class="categories-menu-category-option" data-category-name="{{ category.name }}">
       <h3 class="categories-menu-category-name">{{ category.name }}</h3>
       <p class="category-items-count">{{ item_list|length }} items</p>
     </li>

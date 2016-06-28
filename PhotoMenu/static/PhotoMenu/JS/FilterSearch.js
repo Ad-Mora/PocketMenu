@@ -276,16 +276,17 @@ var moreOptions = (function(){
     function scrollToCategory(event) {
         var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
         var srcElement = event.target;
-        var className = srcElement.className;
-        var categoryName = srcElement.textContent;
-        var categoryPosition;
-        var endPosition;
 
         // in case the li container was clicked instead of the span element
-        if (className == "filter-option" || className == "hidden-filter-option") {
-            categoryName = srcElement.firstElementChild.textContent;
+        while (srcElement && srcElement.tagName != "LI") {
+            srcElement = srcElement.parentNode;
         }
-        elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
+
+        var categoryName = srcElement.getAttribute("data-category-name");
+        var categoryPosition;
+        var endPosition;
+        
+        var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
         endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
         categoryPosition = getVerticalPosition(elementToScrollTo);
         currentCategoryName = categoryName;
@@ -325,6 +326,7 @@ var moreOptions = (function(){
 
     // reveal public pointers to private functions & properties
     return {
+        scrollToCategory: scrollToCategory
     };
 
 })();

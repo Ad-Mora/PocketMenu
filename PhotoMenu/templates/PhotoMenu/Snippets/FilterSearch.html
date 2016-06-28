@@ -9,7 +9,7 @@
   <ul class="filter-options-list">
 
     {% for cat in horizontal_cats %}
-      <li class="filter-option">
+      <li class="filter-option" data-category-name="{{ cat.name }}">
         <span class="filter-name">{{ cat.name }}</span>
       </li>
     {% endfor %}
@@ -21,7 +21,7 @@
         <ul class="more-filter-options-list">
 
           {% for cat in remaining_cats %}
-            <li class="hidden-filter-option">
+            <li class="hidden-filter-option" data-category-name="{{ cat.name }}">
               <span class="hidden-filter-name">{{ cat.name }}</span>
             </li>
           {% endfor %}
@@ -34,6 +34,6 @@
   </ul>
   <div class="current-page-search-wrapper">
     <span class="current-page-search-icon"></span>
-    <input placeholder="Search 'My Favorites'..." class="current-page-search-bar" type="text">
+    <input placeholder="Search {{ restaurant.name }}" class="current-page-search-bar" type="text">
   </div>
 </div>
