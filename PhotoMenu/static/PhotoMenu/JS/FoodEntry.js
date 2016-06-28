@@ -9,9 +9,9 @@ var foodEntry = (function () {
     // bind events
 
     // private variables
-    var INITIAL_LOAD_VOLUME = 5;
-    var NUM_SCROLL_LISTENERS = 4;
-    var bufferCutOffDepth = window.innerHeight;
+    var MAX_NUMBER_OF_SCROLL_LISTENERS = 1;
+    var scrollListenersCount = 0;
+    var bufferCutOffDepth = window.innerHeight + 300;
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
 
@@ -38,24 +38,20 @@ var foodEntry = (function () {
         document.addEventListener('scroll', function test(event) {
             if (foodEntry.getBoundingClientRect().top <= bufferCutOffDepth) {
                 console.log(foodEntryIndex);
+
+                // okay, the user wants to see these photos so load them
                 loadActualImageForFoodEntry(foodEntry);
+
+                // now that we have loaded the photo, we don't need to the
+                // eventListener anymore so remove it
                 this.removeEventListener('scroll', test);
-                var nextFoodEntryIndex = foodEntryIndex + NUM_SCROLL_LISTENERS
+
+                // pass the event listener on to the next unloaded photo (that doesn't
+                // already have an event listner so that it will load when necessary too
+                var nextFoodEntryIndex = foodEntryIndex + MAX_NUMBER_OF_SCROLL_LISTENERS
                 if (nextFoodEntryIndex < listOfFoodEntryLI.length) {
                     listenForScrollDepthToLoad(listOfFoodEntryLI[ nextFoodEntryIndex ]);
                 }
-
-                // var eventListenerIndex = loadActualImageForFoodEntry(foodEntry);
-                //
-                // // place a new event listener on the this + NUM_SCROLL_LISTENERS foodEntry
-                // if (foodEntryIndex + NUM_SCROLL_LISTENERS < listOfFoodEntryLI.length) {
-                //     listenForScrollDepthToLoad(listOfFoodEntryLI[ foodEntryIndex + NUM_SCROLL_LISTENERS])
-                // }
-                //
-                // // remove the scroll event listener for this element from the document module
-                // // because the picture has already loaded
-
-
             }
         });
     }
@@ -90,11 +86,12 @@ var foodEntry = (function () {
             foodEntryElement.addEventListener('click', displayInspectorViewForFood);
             foodEntryElement.setAttribute("data-list-item-number", i);
 
-            if (i < INITIAL_LOAD_VOLUME) {
+            if (foodEntryElement.getBoundingClientRect().top <= bufferCutOffDepth) {
                 loadActualImageForFoodEntry(foodEntryElement)
             }
-            else if (i < INITIAL_LOAD_VOLUME + NUM_SCROLL_LISTENERS) {
+            else if (scrollListenersCount < MAX_NUMBER_OF_SCROLL_LISTENERS) {
                 listenForScrollDepthToLoad(foodEntryElement);
+                scrollListenersCount++;
             }
         }
         return listOfFoodEntryLI;
