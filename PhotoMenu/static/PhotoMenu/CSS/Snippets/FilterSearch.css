@@ -18,9 +18,18 @@ li.filter-option{
 span.filter-name{
     font-size: 14px;
     color: #555555;
-    padding: 0px 10px 7px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+span.hidden-filter-name{
+    font-size: 14px;
+    color: #555555;
 }
 span.filter-name:hover{
+    color: #FF9800;
+    cursor: pointer;
+}
+span.hidden-filter-name:hover{
     color: #FF9800;
     cursor: pointer;
 }
@@ -67,16 +76,20 @@ ul.more-filter-options-list{
     display: none;
     position: absolute;
     left: 50%;
+    background-color: white;
     -webkit-transform: translate(-50%);
     transform: translate(-50%);
     box-shadow: 0 6px 5px 0 rgba(0, 0, 0, 0.25);
-    border-left: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
-    border-right: 1px solid #CCCCCC;
+    border-left: 1px solid #CACACA;
+    border-right: 1px solid #CACACA;
+    border-bottom: 1px solid #CACACA;
 }
 li.hidden-filter-option{
-    width: 115px;
-    background: #FFFFFF;
+    line-height: normal;
+    width: 150px;
+    background: white;
+    padding: 10px;
+    border-bottom: 1px solid #CACACA;
 }
 div.current-page-search-wrapper{
     display: none;
@@ -95,6 +108,9 @@ div.current-page-search-wrapper{
         line-height: 45px;
     }
     span.filter-name {
+        font-size: 16px;
+    }
+    span.hidden-filter-name{
         font-size: 16px;
     }
 }
