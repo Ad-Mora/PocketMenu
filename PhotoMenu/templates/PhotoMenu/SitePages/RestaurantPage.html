@@ -41,7 +41,7 @@
       <img class="white-clock-icon" src="{% static "PhotoMenu/Images/Icons/WhiteClockIcon.png" %}">
       <div class="all-restaurant-hours">
         {% for item in store_hours %}
-          <p class="restaurant-hours">{{ item.0 }} {{ item.1|time:"g:i a"}} {{ item.2|time:"g:i a"}}</p>
+          <p class="restaurant-hours">{{ item.0 }} {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
         {% endfor %}
       </div>
     </div>
