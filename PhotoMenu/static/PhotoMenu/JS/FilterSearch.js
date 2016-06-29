@@ -147,7 +147,6 @@ var moreOptions = (function(){
         categoryPositions = categoryPositions.sort(function(a, b) {
             return a - b;
         });
-        // console.log(categoryPositions);
         return categoryPositions;
     }
 
@@ -184,7 +183,6 @@ var moreOptions = (function(){
             }
         }
         categoryName = categoryHeaderPositionsToCategoryNames[currentPosition];
-        console.log(categoryName);
         return categoryName;
     }
 
@@ -261,25 +259,19 @@ var moreOptions = (function(){
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
-        // we only care if we are in desktop view
-        if (window.innerWidth >= 800) {
-            var newPaddingTop;
-            var topHeaderViewPos = window.scrollY + getHeaderHeight();
+        var newPaddingTop;
+        var topHeaderViewPos = window.scrollY + getHeaderHeight();
 
-            if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
-                newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
-                document.body.style.paddingTop = newPaddingTop;
-                categoryBar.style.top = String(getHeaderHeight()) + "px";
-                categoryBar.style.position = "fixed";
-                categoryBarFixed = true;
-            } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
-                newPaddingTop = String(getHeaderHeight()) + "px"
-                document.body.style.paddingTop = newPaddingTop;
-                categoryBar.style.top = "";
-                categoryBar.style.position = "";
-                categoryBarFixed = false;
-            }
+        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
+            document.body.classList.add("fix-filter-search");
+            categoryBar.classList.add("fix-filter-search");
+            categoryBarFixed = true;
+        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
+            document.body.classList.remove("fix-filter-search");
+            categoryBar.classList.remove("fix-filter-search");
+            categoryBarFixed = false;
         }
+
     }
 
     // scroll to a specific header category
