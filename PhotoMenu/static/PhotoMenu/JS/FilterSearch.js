@@ -266,11 +266,12 @@ var moreOptions = (function(){
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
-        if (backgroundImage.getBoundingClientRect().bottom <= 55 && !categoryBarFixed) {
+        if (backgroundImage.getBoundingClientRect().bottom <= getHeaderHeight() && !categoryBarFixed) {
             categoryBar.classList.add("fix-filter-search");
             document.body.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed) {
+        } else if (backgroundImage.getBoundingClientRect().bottom >= getHeaderHeight() + getCategoryBarHeight()
+                && categoryBarFixed) {
             categoryBar.classList.remove("fix-filter-search");
             document.body.classList.remove("fix-filter-search");
             categoryBarFixed = false;
@@ -286,7 +287,8 @@ var moreOptions = (function(){
         if (window.innerWidth >= desktopWidth) {
             endPosition -= getCategoryBarHeight();
         }
-        smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
+        endPosition -= headerCategoryScrollToPadding
+        smoothScroll(endPosition, 300);
     }
 
     // Move the orange underbar in the category bar to the correct location depending on
