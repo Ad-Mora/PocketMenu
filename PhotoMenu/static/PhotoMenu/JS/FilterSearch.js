@@ -189,11 +189,11 @@ var moreOptions = (function(){
 
     // duration is in milliseconds
     function smoothScroll(endPosition, duration) {
-        var startPosition = window.scrollY;
-        var distance = endPosition - startPosition;
-        var increment = distance/(duration/3);
-        var stopAnimation;
-
+        // var startPosition = window.scrollY;
+        // var distance = endPosition - startPosition;
+        // var increment = distance/(duration/3);
+        // var stopAnimation;
+        //
         // var animateScroll = function () {
         //     window.scrollBy(0, increment);
         //     stopAnimation();
@@ -260,18 +260,13 @@ var moreOptions = (function(){
     }
 
     // Set the category bar to a fixed position
-    var previous_scroll_top = 0;
     function fixCategoryBar() {
-        var new_scroll_top = window.scrollY;
-        var moving_up = new_scroll_top - previous_scroll_top < 0;
-        previous_scroll_top = new_scroll_top;
-
-        if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed && !moving_up) {
+        if (backgroundImage.getBoundingClientRect().bottom <= 55 && !categoryBarFixed ) {
             categoryBar.classList.add("fix-filter-search");
             // categoryBar.style.position = "fixed";
             document.body.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed && moving_up) {
+        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed ) {
             categoryBar.classList.remove("fix-filter-search");
             // categoryBar.style.position = "";
             document.body.classList.remove("fix-filter-search");
