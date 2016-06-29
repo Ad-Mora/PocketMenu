@@ -43,9 +43,17 @@ var moreOptions = (function(){
     var currentCategoryName = categoryHeaderElements[0].textContent;
     var categoryBarFixed = false;
 
+    // category names to header elements
+    var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements()
+
+    // bar category names to bar elements
+    var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements()
+
     // headerCategoryExtraScrollDetectHeight must be larger than headerCategoryScrollToPadding
-    var headerCategoryExtraScrollDetectHeight = 24;
-    var headerCategoryScrollToPadding = 8;
+    var headerCategoryExtraScrollDetectHeight = 10;
+    var headerCategoryScrollToPadding = 0;
+
+    var desktopWidth = 800;
 
     /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
@@ -87,21 +95,20 @@ var moreOptions = (function(){
     /*-----Get dictionaries and lists-----*/
 
     // Get dictionary of category names to element header categories
-    var categoryNamesToHeaderElements;
     function getHeaderCategoryNamesToHeaderElements() {
+        var categoryNamesToHeaderElements;
         if (categoryNamesToHeaderElements == undefined) {
             categoryNamesToHeaderElements = {};
             for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
                 categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
             }
         }
-
         return categoryNamesToHeaderElements;
     }
 
     // Get dictionary of visible bar category names to visible bar category elements
-    var visibleBarCategoryNameToVisibleBarCategoryElement;
     function getBarCategoryNamesToBarElements() {
+        var visibleBarCategoryNameToVisibleBarCategoryElement;
         if (visibleBarCategoryNameToVisibleBarCategoryElement == undefined) {
             visibleBarCategoryNameToVisibleBarCategoryElement = {}
             var visibleCategoryName;
@@ -110,7 +117,6 @@ var moreOptions = (function(){
                 visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
             }
         }
-
         return visibleBarCategoryNameToVisibleBarCategoryElement;
     }
 
@@ -151,7 +157,7 @@ var moreOptions = (function(){
         return categoryPositions;
     }
 
-    /*-----Getters-----*/
+    /*-----Helpers-----*/
 
     function getHeaderHeight() {
         var headerHeight = window.getComputedStyle(headerBar).getPropertyValue("height");
@@ -171,8 +177,6 @@ var moreOptions = (function(){
         return offset;
     }
 
-    /*-----Helpers-----*/
-
     function getCategoryNameFromPosition(position) {
         var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
         var sortedPositionsList = getSortedHeaderCategoryPositions();
@@ -185,37 +189,6 @@ var moreOptions = (function(){
         }
         categoryName = categoryHeaderPositionsToCategoryNames[currentPosition];
         return categoryName;
-    }
-
-    // duration is in milliseconds
-    function smoothScroll(endPosition, duration) {
-        var startPosition = window.scrollY;
-        var distance = endPosition - startPosition;
-        // var increment = distance/(duration/3);
-        // var stopAnimation;
-        //
-        // var animateScroll = function () {
-        //     window.scrollBy(0, increment);
-        //     stopAnimation();
-        // };
-        //
-        // stopAnimation = function() {
-        //     var currentPosition = window.scrollY;
-        //
-        //     if (increment >= 0) {
-        //         if ( (currentPosition >= (endPosition - increment)) ||
-        //         ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-        //             clearInterval(runAnimation);
-        //         }
-        //     } else {
-        //         if (currentPosition <= endPosition || currentPosition <= 0) {
-        //             clearInterval(runAnimation);
-        //         }
-        //     }
-        // }
-        // var runAnimation = setInterval(animateScroll, 3);
-
-        window.scrollBy(0, distance);
     }
 
     /*-----Main Functions-----*/
@@ -260,40 +233,60 @@ var moreOptions = (function(){
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
-        var new_scroll_top = window.scrollY;
-        var moving_up = new_scroll_top - previous_scroll_top < 0;
-        previous_scroll_top = new_scroll_top;
-
-        if (backgroundImage.getBoundingClientRect().bottom <= 55 && !categoryBarFixed) {
+        if (backgroundImage.getBoundingClientRect().bottom <= getHeaderHeight() && !categoryBarFixed) {
             categoryBar.classList.add("fix-filter-search");
             document.body.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed) {
+        } else if (backgroundImage.getBoundingClientRect().bottom >= getHeaderHeight() + getCategoryBarHeight()
+                && categoryBarFixed) {
             categoryBar.classList.remove("fix-filter-search");
             document.body.classList.remove("fix-filter-search");
             categoryBarFixed = false;
         }
     }
 
+    // duration is in milliseconds
+    function smoothScroll(endPosition, duration) {
+        var startPosition = window.scrollY;
+        var distance = endPosition - startPosition;
+        var increment = distance/(duration/3);
+        var stopAnimation;
+
+        var animateScroll = function () {
+            window.scrollBy(0, increment);
+            stopAnimation();
+        };
+
+        stopAnimation = function() {
+            var currentPosition = window.scrollY;
+
+            if (increment >= 0) {
+                if ( (currentPosition >= (endPosition - increment)) ||
+                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+                    clearInterval(runAnimation);
+                }
+            } else {
+                if (currentPosition <= endPosition || currentPosition <= 0) {
+                    clearInterval(runAnimation);
+                }
+            }
+        }
+        var runAnimation = setInterval(animateScroll, 3);
+
+//        window.scrollBy(0, distance);
+    }
+
     // scroll to a specific header category
     function scrollToCategory(event) {
-        var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
-        var srcElement = event.target;
-
-        // in case the li container was clicked instead of the span element
-        while (srcElement && srcElement.tagName != "LI") {
-            srcElement = srcElement.parentNode;
-        }
-
+        var srcElement = event.currentTarget;
         var categoryName = srcElement.getAttribute("data-category-name");
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
-        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight();
-        if (window.innerWidth >= 800) {
+
+        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - headerCategoryScrollToPadding;
+        if (window.innerWidth >= desktopWidth) {
             endPosition -= getCategoryBarHeight();
         }
-        currentCategoryName = categoryName;
-
-        smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
+        smoothScroll(endPosition, 300);
     }
 
     // Move the orange underbar in the category bar to the correct location depending on
