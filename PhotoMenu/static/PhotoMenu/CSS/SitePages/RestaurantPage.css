@@ -2,18 +2,17 @@
 
 div.header-background{
     width: 100%;
-    background-image: url("../../Images/MockPhotos/CrispyShrimp.jpg");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
     background-position: 0px 25%;
 }
 div.background-image-dark-overlay{
-    width: 100%;
-    height: 100%;
     background-color: rgba(0,0,0,.4);
-    max-height: 250px;
-    padding: 0% 0px 5% 5%;
+    background-repeat: no-repeat;
     box-sizing: border-box;
+    padding-left: 5%;
+    padding-bottom: 10px;
+    padding-top: 100px;
 }
 h1.restaurant-name{
     width: 70%;
@@ -21,30 +20,27 @@ h1.restaurant-name{
     font-size: 20px;
     font-weight: 500;
     letter-spacing: 1px;
-    padding: 20% 0px 0px 0px;
 }
 p.restaurant-address{
     width: 60%;
-    color: #FFFFFF;
+    color: white;
     font-size: 13px;
-    margin: 3px 0px 0px 0px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+img.white-clock-icon{
+    float: left;
+    height: 15px;
+    width: 15px;
+}
+div.all-restaurant-hours{
+    display: inline-block;
+    margin-left: 5px;
 }
 p.restaurant-hours{
     color: #FFFFFF;
     font-size: 13px;
     line-height: 15px;
-}
-p.restaurant-hours::before{
-    content: '';
-    background-image: url("../../Images/Icons/WhiteClockIcon.png");
-    -webkit-background-size: 100% auto;
-    background-size: 100% auto;
-    width: 15px;
-    height: 15px;
-    display: inline-block;
-    position: relative;
-    top: 3px;
-    margin: 0px 5px 0px 0px;
 }
 
 /*-------Menu Categories-------*/
@@ -75,31 +71,27 @@ ul.food-type-section-food-list{
     }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
+    div.background-image-dark-overlay{
+        padding-top: 150px;
+        padding-bottom: 15px;
+    }
     h1.restaurant-name{
         font-size: 24px;
         font-weight: bold;
         font-size: 28px;
     }
     p.restaurant-address{
+        margin-bottom: 5px;
+        margin-top: 5px;
         font-size: 15px;
+    }
+    img.white-clock-icon{
+        height: 18px;
+        width: 18px;
     }
     p.restaurant-hours{
         font-size: 15px;
-    }
-    p.restaurant-hours::before{
-        width: 18px;
-        height: 18px;
-    }
-
-}
-
-@media (min-width: 800px) {
-    div.background-image-dark-overlay{
-        padding: 0px 0px 40px 40px;
-    }
-    h1.restaurant-name{
-        padding: 160px 0px 0px 0px;
     }
     p.category-description{
         font-size: 16px;
