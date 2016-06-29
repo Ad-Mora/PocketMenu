@@ -30,17 +30,12 @@ def drop_down_suggestions(request):
                 'restaurants_list':  get_restaurants_for_search_string(query_string)
             }
             return render(request, 'PhotoMenu/Snippets/AutoCompleteRestaurantSuggestions.html', context)
-
-
-def restaurant_internal_search_drop_down_suggestions(request, restaurant_name):
-    restaurant_name_with_spaces = restaurant_name.replace("-", " ")
-    if request.method == "POST":
-        json_data = json.loads(request.body)
-        query_string = json_data['search-bar']
-        context = {
-            'menu_items_list':  get_restaurant_internal_menu_items(query_string, restaurant_name_with_spaces)
-        }
-        return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
+        else:
+            restaurant_name = search_type
+            context = {
+                'menu_items_list': get_restaurant_internal_menu_items(query_string, restaurant_name)
+            }
+            return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
 
 
 def get_favorite_foods(request):

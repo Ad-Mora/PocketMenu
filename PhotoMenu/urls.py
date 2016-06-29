@@ -10,8 +10,8 @@ urlpatterns = [
     url(r'^drop-down-suggestions/$', views.drop_down_suggestions, name='drop_down_suggestions'),
     url(r'^load-favorite-foods/$', views.get_favorite_foods),
     url(r'^my-favorites/$', views.favorites_page, name='favorites_page'),
-    url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/search/drop-down-suggestions$',
-        views.restaurant_internal_search_drop_down_suggestions),
+    # url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/search/drop-down-suggestions$',
+    #     views.restaurant_internal_search_drop_down_suggestions),
     # url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/search/$', views.restaurant_internal_search),
     url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/$', views.restaurants_page, name='restaurant_homepage'),
 ]

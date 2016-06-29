@@ -68,22 +68,13 @@ var mobileSearchModal = (function(){
             suggestionsList.innerHTML = result;
         };
 
-        var destinationFile;
-        var jsonData;
-
-        if (searchType == "Food" || searchType == "Restaurant") {
-            destinationFile = "../drop-down-suggestions/";
-            jsonData = {
+        var destinationFile = event.target.getAttribute("data-autocomplete-suggestions-href");
+        var jsonData = {
                 "search-bar":   searchQuery,
                 "search-type":  searchType
-            }
-        }
-        else { // only suggest MenuItems from the current restaurant
-            destinationFile = "search/drop-down-suggestions";
-            jsonData = {
-                "search-bar":   searchQuery
-            }
-        }
+            };
+            // destinationFile = "search/drop-down-suggestions";
+
         console.log(destinationFile);
         ajax.send_ajax_request(destinationFile, jsonData, csrfMiddlewareToken, postAjaxFunction);
     }

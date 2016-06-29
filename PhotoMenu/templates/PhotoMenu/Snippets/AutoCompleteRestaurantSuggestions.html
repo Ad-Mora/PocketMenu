@@ -1,3 +1,4 @@
 {% for restaurant in restaurants_list %}
-   <a class="search-suggestion" href="{% url "PhotoMenu:restaurant_homepage" restaurant.link %}">{{ restaurant.name }}</a>
+   <a class="search-suggestion"
+      href="{% url "PhotoMenu:restaurant_homepage" restaurant.get_restaurant_url_path %}">{{ restaurant.name }}</a>
 {% endfor %}
