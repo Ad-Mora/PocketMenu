@@ -11,12 +11,7 @@ def get_menu_items_for_search_string(query_string, limit=30):
 def get_restaurants_for_search_string(query_string, limit=5):
     restaurant_list = []
     if query_string != "":
-        results = Restaurant.objects.filter(name__icontains=query_string)[:limit]
-        for restaurant in results:
-            restaurant_list.append({
-                'name': restaurant.name,
-                'link': restaurant.get_restaurant_url_path()
-            })
+        restaurant_list = Restaurant.objects.filter(name__icontains=query_string)[:limit]
     return restaurant_list
 
 

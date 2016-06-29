@@ -5,6 +5,7 @@
     height: 45px;
     background-color: #FF9800;
     display: inline-block;
+    z-index: 1;
 }
 .logo{
     display: inline-block;

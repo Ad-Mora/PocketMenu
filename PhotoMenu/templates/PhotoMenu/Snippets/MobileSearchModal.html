@@ -13,6 +13,7 @@
   {% endif %}
 
     {% csrf_token %}
+    <!-- Select search type-->
     <div class="mobile-search-select-wrapper">
       <select class="mobile-select-search-type" name="search-type">
         {% for search_option in search_options_list %}
@@ -20,11 +21,17 @@
         {% endfor %}
       </select>
     </div>
+
+    <!-- Search Bar -->
     <div class="mobile-modal-search-bar-wrapper">
       <span class="mobile-modal-search-bar-icon"></span>
-      <input placeholder="Enter your search here..." name="search-bar" class="mobile-modal-search-bar" type="text" autocomplete="off">
+      <input placeholder="Enter your search here..." name="search-bar" class="mobile-modal-search-bar" type="text"
+             autocomplete="off"
+             data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
       <ul class="mobile-search-suggestions-list"></ul>
     </div>
+
+    <!-- Submit Button -->
     <input class="submit-mobile-search-modal" type="submit" value="Search">
     <span class="close-mobile-search-modal">Cancel</span>
 
