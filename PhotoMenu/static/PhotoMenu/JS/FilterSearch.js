@@ -157,7 +157,7 @@ var moreOptions = (function(){
         return categoryPositions;
     }
 
-    /*-----Getters-----*/
+    /*-----Helpers-----*/
 
     function getHeaderHeight() {
         var headerHeight = window.getComputedStyle(headerBar).getPropertyValue("height");
@@ -176,8 +176,6 @@ var moreOptions = (function(){
         var offset = elementRect.top - bodyRect.top;
         return offset;
     }
-
-    /*-----Helpers-----*/
 
     function getCategoryNameFromPosition(position) {
         var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
@@ -203,23 +201,23 @@ var moreOptions = (function(){
         var animateScroll = function () {
             window.scrollBy(0, increment);
             stopAnimation();
-    };
+        };
 
-    stopAnimation = function() {
-        var currentPosition = window.scrollY;
+        stopAnimation = function() {
+            var currentPosition = window.scrollY;
 
-        if (increment >= 0) {
-            if ( (currentPosition >= (endPosition - increment)) ||
-            ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-                clearInterval(runAnimation);
-            }
-        } else {
-            if (currentPosition <= endPosition || currentPosition <= 0) {
-                clearInterval(runAnimation);
+            if (increment >= 0) {
+                if ( (currentPosition >= (endPosition - increment)) ||
+                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+                    clearInterval(runAnimation);
+                }
+            } else {
+                if (currentPosition <= endPosition || currentPosition <= 0) {
+                    clearInterval(runAnimation);
+                }
             }
         }
-    }
-    var runAnimation = setInterval(animateScroll, 3);
+        var runAnimation = setInterval(animateScroll, 3);
 
 //        window.scrollBy(0, distance);
     }
@@ -283,11 +281,11 @@ var moreOptions = (function(){
         var srcElement = event.currentTarget;
         var categoryName = srcElement.getAttribute("data-category-name");
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
-        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight();
+
+        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - headerCategoryScrollToPadding;
         if (window.innerWidth >= desktopWidth) {
             endPosition -= getCategoryBarHeight();
         }
-        endPosition -= headerCategoryScrollToPadding
         smoothScroll(endPosition, 300);
     }
 
