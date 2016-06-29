@@ -86,23 +86,30 @@ var moreOptions = (function(){
     /*-----Get dictionaries and lists-----*/
 
     // Get dictionary of category names to element header categories
+    var categoryNamesToHeaderElements;
     function getHeaderCategoryNamesToHeaderElements() {
-        var categoryNamesToHeaderElements = {};
-        for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
-            categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
+        if (categoryNamesToHeaderElements == undefined) {
+            categoryNamesToHeaderElements = {};
+            for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
+                categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
+            }
         }
+
         return categoryNamesToHeaderElements;
     }
 
     // Get dictionary of visible bar category names to visible bar category elements
+    var visibleBarCategoryNameToVisibleBarCategoryElement;
     function getBarCategoryNamesToBarElements() {
-        var visibleBarCategoryNames = [];
-        var visibleCategoryName;
-        var visibleBarCategoryNameToVisibleBarCategoryElement = {}
-        for (var i = 0; i < Object.keys(allVisibleOptionsLI).length; i++) {
-            visibleCategoryName = allVisibleOptionsLI[i].firstElementChild.textContent;
-            visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
+        if (visibleBarCategoryNameToVisibleBarCategoryElement == undefined) {
+            visibleBarCategoryNameToVisibleBarCategoryElement = {}
+            var visibleCategoryName;
+            for (var i = 0; i < Object.keys(allVisibleOptionsLI).length; i++) {
+                visibleCategoryName = allVisibleOptionsLI[i].firstElementChild.textContent;
+                visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
+            }
         }
+
         return visibleBarCategoryNameToVisibleBarCategoryElement;
     }
 
@@ -140,6 +147,7 @@ var moreOptions = (function(){
         categoryPositions = categoryPositions.sort(function(a, b) {
             return a - b;
         });
+        // console.log(categoryPositions);
         return categoryPositions;
     }
 
@@ -168,7 +176,6 @@ var moreOptions = (function(){
     function getCategoryNameFromPosition(position) {
         var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
         var sortedPositionsList = getSortedHeaderCategoryPositions();
-        var currentPosition = sortedPositionsList[0];
         var categoryName;
         var currentPosition;
         for (var i = 0; i < sortedPositionsList.length; i++) {
@@ -177,6 +184,7 @@ var moreOptions = (function(){
             }
         }
         categoryName = categoryHeaderPositionsToCategoryNames[currentPosition];
+        console.log(categoryName);
         return categoryName;
     }
 
@@ -187,26 +195,28 @@ var moreOptions = (function(){
         var increment = distance/(duration/3);
         var stopAnimation;
 
-        var animateScroll = function () {
-            window.scrollBy(0, increment);
-            stopAnimation();
-        };
+        // var animateScroll = function () {
+        //     window.scrollBy(0, increment);
+        //     stopAnimation();
+        // };
+        //
+        // stopAnimation = function() {
+        //     var currentPosition = window.scrollY;
+        //
+        //     if (increment >= 0) {
+        //         if ( (currentPosition >= (endPosition - increment)) ||
+        //         ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+        //             clearInterval(runAnimation);
+        //         }
+        //     } else {
+        //         if (currentPosition <= endPosition || currentPosition <= 0) {
+        //             clearInterval(runAnimation);
+        //         }
+        //     }
+        // }
+        // var runAnimation = setInterval(animateScroll, 30);
 
-        stopAnimation = function() {
-            var currentPosition = window.scrollY;
-
-            if (increment >= 0) {
-                if ( (currentPosition >= (endPosition - increment)) ||
-                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-                    clearInterval(runAnimation);
-                }
-            } else {
-                if (currentPosition <= endPosition || currentPosition <= 0) {
-                    clearInterval(runAnimation);
-                }
-            }
-        }
-        var runAnimation = setInterval(animateScroll, 3);
+        window.scrollBy(0, distance);
     }
 
     /*-----Main Functions-----*/
@@ -283,12 +293,8 @@ var moreOptions = (function(){
         }
 
         var categoryName = srcElement.getAttribute("data-category-name");
-        var categoryPosition;
-        var endPosition;
-        
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
-        endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
-        categoryPosition = getVerticalPosition(elementToScrollTo);
+        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
         currentCategoryName = categoryName;
 
         smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
@@ -302,10 +308,9 @@ var moreOptions = (function(){
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
         var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements();
         var barCategoryNames = Object.keys(barCategoryNamesToBarElements);
-        var newCategoryName = currentCategoryName;
         var barCategoryElement;
 
-        newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + headerCategoryExtraScrollDetectHeight);
+        var newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + headerCategoryExtraScrollDetectHeight);
 
         if (newCategoryName != currentCategoryName) {
             currentCategoryName = newCategoryName;
@@ -313,7 +318,8 @@ var moreOptions = (function(){
             if (barCategoryNames.indexOf(newCategoryName) > -1) {
                 barCategoryElement = barCategoryNamesToBarElements[newCategoryName];
                 adjustSlidingUnderBar(null, barCategoryElement);
-            } else {
+            }
+            else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
         }

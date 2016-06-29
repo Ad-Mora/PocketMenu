@@ -3,8 +3,9 @@ div.filter-and-search-section{
     background-color: #FFFFFF;
     height: 35px;
     text-align: center;
-    box-shadow: 0px 1px 1px 0px #9B9B9B;
+    box-shadow: 0px 0px 6px 0px #9B9B9B;
     display: none;
+    border-top: 1px solid #BBBBBB;
 }
 ul.filter-options-list{
     margin: 0px auto 0px auto;

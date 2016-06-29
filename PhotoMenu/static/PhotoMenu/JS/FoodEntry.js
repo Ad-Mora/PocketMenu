@@ -9,7 +9,7 @@ var foodEntry = (function () {
     // bind events
 
     // private variables
-    var MAX_NUMBER_OF_SCROLL_LISTENERS = 1;
+    var MAX_NUMBER_OF_SCROLL_LISTENERS = 4;
     var scrollListenersCount = 0;
     var bufferCutOffDepth = window.innerHeight;
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
@@ -37,7 +37,6 @@ var foodEntry = (function () {
         var foodEntryIndex = parseInt( foodEntry.getAttribute("data-list-item-number") );
         document.addEventListener('scroll', function test(event) {
             if (foodEntry.getBoundingClientRect().top <= bufferCutOffDepth) {
-                console.log(foodEntryIndex);
 
                 // okay, the user wants to see these photos so load them
                 loadActualImageForFoodEntry(foodEntry);
