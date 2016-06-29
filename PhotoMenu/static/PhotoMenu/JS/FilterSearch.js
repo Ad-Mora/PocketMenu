@@ -326,7 +326,7 @@ var moreOptions = (function(){
             }
 
             // for mobile categories menu
-            mobileCategoriesMenu.categoriesMenuUL.querySelector("li.")
+            // mobileCategoriesMenu.categoriesMenuUL.querySelector("li.")
         }
     }
 
