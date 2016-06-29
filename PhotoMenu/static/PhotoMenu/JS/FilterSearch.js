@@ -9,15 +9,16 @@ var moreOptions = (function(){
     /*----------Global Variables and DOM Cache----------*/
     /*--------------------------------------------------*/
 
-    var moreBoxPresent = document.querySelector("li.more-options-options") != null
+    var moreBoxPresent = document.querySelector("li.more-options-options") != null;
 
     // DOM objects
+    var backgroundImage = document.querySelector("div.header-background");
 
     // Category bar objects
     var headerBar = document.querySelector("div.header");
-    var categoryBar = document.querySelector("div.filter-and-search-section");
     var categoryHeaderElements = document.querySelectorAll("h3.food-type-section-header");
-    var visibleOptionsUL = document.querySelector("ul.filter-options-list");
+    var categoryBar = document.querySelector("div.filter-and-search-section");
+    var visibleOptionsUL = categoryBar.querySelector("ul.filter-options-list");
     var allVisibleOptionsLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
@@ -243,11 +244,13 @@ var moreOptions = (function(){
 
     // move the underbar on the category bar to the specified (li) element on the bar
     function adjustSlidingUnderBar(event, element) {
+        categoryBar.style.display = "block";
         var referenceX = visibleOptionsUL.getBoundingClientRect().left;
         var optionRect = (element || this).getBoundingClientRect();
+        categoryBar.style.display = "";
         var deltaX = optionRect.left - referenceX;
         var width = optionRect.width;
-
+        // console.log(deltaX + "   " + width);
         slidingUnderBar.style.width = width + "px";
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
@@ -258,20 +261,17 @@ var moreOptions = (function(){
     }
 
     // Set the category bar to a fixed position
-    function fixCategoryBar() {
-        var newPaddingTop;
-        var topHeaderViewPos = window.scrollY + getHeaderHeight();
 
-        if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
+    function fixCategoryBar() {
+        if (backgroundImage.getBoundingClientRect().bottom <= 10 && !categoryBarFixed) {
             document.body.classList.add("fix-filter-search");
             categoryBar.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
+        } else if (backgroundImage.getBoundingClientRect().bottom > 90 && categoryBarFixed) {
             document.body.classList.remove("fix-filter-search");
             categoryBar.classList.remove("fix-filter-search");
             categoryBarFixed = false;
         }
-
     }
 
     // scroll to a specific header category
@@ -312,12 +312,15 @@ var moreOptions = (function(){
 
             if (barCategoryNames.indexOf(newCategoryName) > -1) {
                 barCategoryElement = barCategoryNamesToBarElements[newCategoryName];
+                // console.log("hello world");
                 adjustSlidingUnderBar(null, barCategoryElement);
             }
             else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
+            // console.log(newCategoryName);
         }
+
     }
 
     function onScrollFunctions(event) {
