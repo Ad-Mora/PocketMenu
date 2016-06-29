@@ -28,10 +28,10 @@ var mobileSearchModal = (function(){
     // private functions
     function updateMainFormPOSTAddress(event) {
         if (this.value == "Food" || this.value == "Restaurant") {
-            mainForm.action = "";
+            mainForm.action = "/search/";
         }
         else {
-            mainForm.action = window.location.href + "search/";
+            mainForm.action = window.location.href + "";
         }
     }
 
@@ -75,7 +75,6 @@ var mobileSearchModal = (function(){
             };
             // destinationFile = "search/drop-down-suggestions";
 
-        console.log(destinationFile);
         ajax.send_ajax_request(destinationFile, jsonData, csrfMiddlewareToken, postAjaxFunction);
     }
 
