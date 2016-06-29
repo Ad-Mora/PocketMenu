@@ -18,6 +18,9 @@ var mobileCategoriesMenu = (function () {
     var categoriesMenuDisplayStates = {true:"block", false:"none"}
 
     // public variables
+    function removeCurrentLca() {
+        
+    }
 
     // private functions
     function goToMenuCategory(event) {
@@ -34,7 +37,7 @@ var mobileCategoriesMenu = (function () {
 
     // return public pointers to private variables
     return {
-        
+        "categoriesMenuUL": categoriesMenuUL
     };
 
 })();

@@ -194,28 +194,28 @@ var moreOptions = (function(){
         var increment = distance/(duration/3);
         var stopAnimation;
 
-        var animateScroll = function () {
-            window.scrollBy(0, increment);
-            stopAnimation();
-        };
+        // var animateScroll = function () {
+        //     window.scrollBy(0, increment);
+        //     stopAnimation();
+        // };
+        //
+        // stopAnimation = function() {
+        //     var currentPosition = window.scrollY;
+        //
+        //     if (increment >= 0) {
+        //         if ( (currentPosition >= (endPosition - increment)) ||
+        //         ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+        //             clearInterval(runAnimation);
+        //         }
+        //     } else {
+        //         if (currentPosition <= endPosition || currentPosition <= 0) {
+        //             clearInterval(runAnimation);
+        //         }
+        //     }
+        // }
+        // var runAnimation = setInterval(animateScroll, 3);
 
-        stopAnimation = function() {
-            var currentPosition = window.scrollY;
-
-            if (increment >= 0) {
-                if ( (currentPosition >= (endPosition - increment)) ||
-                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-                    clearInterval(runAnimation);
-                }
-            } else {
-                if (currentPosition <= endPosition || currentPosition <= 0) {
-                    clearInterval(runAnimation);
-                }
-            }
-        }
-        var runAnimation = setInterval(animateScroll, 3);
-
-        // window.scrollBy(0, distance);
+        window.scrollBy(0, distance);
     }
 
     /*-----Main Functions-----*/
@@ -267,12 +267,14 @@ var moreOptions = (function(){
         previous_scroll_top = new_scroll_top;
 
         if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed && !moving_up) {
-            document.body.classList.add("fix-filter-search");
             categoryBar.classList.add("fix-filter-search");
+            // categoryBar.style.position = "fixed";
+            document.body.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (backgroundImage.getBoundingClientRect().bottom > 100 && categoryBarFixed && moving_up) {
-            document.body.classList.remove("fix-filter-search");
+        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed && moving_up) {
             categoryBar.classList.remove("fix-filter-search");
+            // categoryBar.style.position = "";
+            document.body.classList.remove("fix-filter-search");
             categoryBarFixed = false;
         }
     }
@@ -312,14 +314,19 @@ var moreOptions = (function(){
 
         if (newCategoryName != currentCategoryName) {
             currentCategoryName = newCategoryName;
+            var categoryIndex = barCategoryNames.indexOf(newCategoryName);
 
-            if (barCategoryNames.indexOf(newCategoryName) > -1) {
+            // for desktop filterSearchBar
+            if (categoryIndex > -1) {
                 barCategoryElement = barCategoryNamesToBarElements[newCategoryName];
                 adjustSlidingUnderBar(null, barCategoryElement);
             }
             else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
+
+            // for mobile categories menu
+            mobileCategoriesMenu.categoriesMenuUL.querySelector("li.")
         }
     }
 
