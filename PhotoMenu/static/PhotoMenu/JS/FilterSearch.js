@@ -194,32 +194,31 @@ var moreOptions = (function(){
         var increment = distance/(duration/3);
         var stopAnimation;
 
-        // var animateScroll = function () {
-        //     window.scrollBy(0, increment);
-        //     stopAnimation();
-        // };
-        //
-        // stopAnimation = function() {
-        //     var currentPosition = window.scrollY;
-        //
-        //     if (increment >= 0) {
-        //         if ( (currentPosition >= (endPosition - increment)) ||
-        //         ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-        //             clearInterval(runAnimation);
-        //         }
-        //     } else {
-        //         if (currentPosition <= endPosition || currentPosition <= 0) {
-        //             clearInterval(runAnimation);
-        //         }
-        //     }
-        // }
-        // var runAnimation = setInterval(animateScroll, 30);
+        var animateScroll = function () {
+            window.scrollBy(0, increment);
+            stopAnimation();
+        };
 
-        window.scrollBy(0, distance);
+        stopAnimation = function() {
+            var currentPosition = window.scrollY;
+
+            if (increment >= 0) {
+                if ( (currentPosition >= (endPosition - increment)) ||
+                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+                    clearInterval(runAnimation);
+                }
+            } else {
+                if (currentPosition <= endPosition || currentPosition <= 0) {
+                    clearInterval(runAnimation);
+                }
+            }
+        }
+        var runAnimation = setInterval(animateScroll, 3);
+
+        // window.scrollBy(0, distance);
     }
 
     /*-----Main Functions-----*/
-
     function toggleDropDownMenu(event) {
         event.stopPropagation();
         var srcElement = event.target;
@@ -261,13 +260,17 @@ var moreOptions = (function(){
     }
 
     // Set the category bar to a fixed position
-
+    var previous_scroll_top = 0;
     function fixCategoryBar() {
-        if (backgroundImage.getBoundingClientRect().bottom <= 10 && !categoryBarFixed) {
+        var new_scroll_top = window.scrollY;
+        var moving_up = new_scroll_top - previous_scroll_top < 0;
+        previous_scroll_top = new_scroll_top;
+
+        if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed && !moving_up) {
             document.body.classList.add("fix-filter-search");
             categoryBar.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (backgroundImage.getBoundingClientRect().bottom > 90 && categoryBarFixed) {
+        } else if (backgroundImage.getBoundingClientRect().bottom > 100 && categoryBarFixed && moving_up) {
             document.body.classList.remove("fix-filter-search");
             categoryBar.classList.remove("fix-filter-search");
             categoryBarFixed = false;
@@ -312,15 +315,12 @@ var moreOptions = (function(){
 
             if (barCategoryNames.indexOf(newCategoryName) > -1) {
                 barCategoryElement = barCategoryNamesToBarElements[newCategoryName];
-                // console.log("hello world");
                 adjustSlidingUnderBar(null, barCategoryElement);
             }
             else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
-            // console.log(newCategoryName);
         }
-
     }
 
     function onScrollFunctions(event) {
