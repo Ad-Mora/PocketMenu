@@ -294,7 +294,10 @@ var moreOptions = (function(){
 
         var categoryName = srcElement.getAttribute("data-category-name");
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
-        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
+        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight();
+        if (window.innerWidth >= 800) {
+            endPosition -= getCategoryBarHeight();
+        }
         currentCategoryName = categoryName;
 
         smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
