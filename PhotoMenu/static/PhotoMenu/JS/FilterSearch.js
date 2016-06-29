@@ -44,8 +44,8 @@ var moreOptions = (function(){
     var categoryBarFixed = false;
 
     // headerCategoryExtraScrollDetectHeight must be larger than headerCategoryScrollToPadding
-    var headerCategoryExtraScrollDetectHeight = 24;
-    var headerCategoryScrollToPadding = 8;
+    var headerCategoryExtraScrollDetectHeight = 10;
+    var headerCategoryScrollToPadding = 0;
 
     /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
@@ -191,31 +191,31 @@ var moreOptions = (function(){
     function smoothScroll(endPosition, duration) {
         var startPosition = window.scrollY;
         var distance = endPosition - startPosition;
-        // var increment = distance/(duration/3);
-        // var stopAnimation;
-        //
-        // var animateScroll = function () {
-        //     window.scrollBy(0, increment);
-        //     stopAnimation();
-        // };
-        //
-        // stopAnimation = function() {
-        //     var currentPosition = window.scrollY;
-        //
-        //     if (increment >= 0) {
-        //         if ( (currentPosition >= (endPosition - increment)) ||
-        //         ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-        //             clearInterval(runAnimation);
-        //         }
-        //     } else {
-        //         if (currentPosition <= endPosition || currentPosition <= 0) {
-        //             clearInterval(runAnimation);
-        //         }
-        //     }
-        // }
-        // var runAnimation = setInterval(animateScroll, 3);
+         var increment = distance/(duration/3);
+         var stopAnimation;
 
-        window.scrollBy(0, distance);
+         var animateScroll = function () {
+             window.scrollBy(0, increment);
+             stopAnimation();
+         };
+
+         stopAnimation = function() {
+             var currentPosition = window.scrollY;
+
+             if (increment >= 0) {
+                 if ( (currentPosition >= (endPosition - increment)) ||
+                 ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+                     clearInterval(runAnimation);
+                 }
+             } else {
+                 if (currentPosition <= endPosition || currentPosition <= 0) {
+                     clearInterval(runAnimation);
+                 }
+             }
+         }
+         var runAnimation = setInterval(animateScroll, 3);
+
+//        window.scrollBy(0, distance);
     }
 
     /*-----Main Functions-----*/
