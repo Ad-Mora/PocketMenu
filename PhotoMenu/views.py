@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MenuCategory, Restaurant, MenuItem
 from .utils import *
+import collections
 import json
 
 SEARCH_TYPE_RESTAURANT = "Restaurant"
@@ -126,7 +127,7 @@ def restaurants_page(request, restaurant_name):
         # populate body with category and menu items
         menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
 
-        categories = {}
+        categories = collections.OrderedDict()
         for category in menu_categories:
             categories[category] = MenuItem.objects.filter(menu_category_id=category.id)
 
