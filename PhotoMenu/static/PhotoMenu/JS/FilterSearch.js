@@ -197,29 +197,29 @@ var moreOptions = (function(){
     function smoothScroll(endPosition, duration) {
         var startPosition = window.scrollY;
         var distance = endPosition - startPosition;
-         var increment = distance/(duration/3);
-         var stopAnimation;
+        var increment = distance/(duration/3);
+        var stopAnimation;
 
-         var animateScroll = function () {
-             window.scrollBy(0, increment);
-             stopAnimation();
-         };
+        var animateScroll = function () {
+            window.scrollBy(0, increment);
+            stopAnimation();
+    };
 
-         stopAnimation = function() {
-             var currentPosition = window.scrollY;
+    stopAnimation = function() {
+        var currentPosition = window.scrollY;
 
-             if (increment >= 0) {
-                 if ( (currentPosition >= (endPosition - increment)) ||
-                 ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-                     clearInterval(runAnimation);
-                 }
-             } else {
-                 if (currentPosition <= endPosition || currentPosition <= 0) {
-                     clearInterval(runAnimation);
-                 }
-             }
-         }
-         var runAnimation = setInterval(animateScroll, 3);
+        if (increment >= 0) {
+            if ( (currentPosition >= (endPosition - increment)) ||
+            ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+                clearInterval(runAnimation);
+            }
+        } else {
+            if (currentPosition <= endPosition || currentPosition <= 0) {
+                clearInterval(runAnimation);
+            }
+        }
+    }
+    var runAnimation = setInterval(animateScroll, 3);
 
 //        window.scrollBy(0, distance);
     }
