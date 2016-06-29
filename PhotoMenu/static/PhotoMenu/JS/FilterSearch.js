@@ -260,10 +260,6 @@ var moreOptions = (function(){
 
     // Set the category bar to a fixed position
     function fixCategoryBar() {
-        var new_scroll_top = window.scrollY;
-        var moving_up = new_scroll_top - previous_scroll_top < 0;
-        previous_scroll_top = new_scroll_top;
-
         if (backgroundImage.getBoundingClientRect().bottom <= 55 && !categoryBarFixed) {
             categoryBar.classList.add("fix-filter-search");
             document.body.classList.add("fix-filter-search");
