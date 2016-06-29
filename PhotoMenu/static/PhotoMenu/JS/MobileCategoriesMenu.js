@@ -15,29 +15,48 @@ var mobileCategoriesMenu = (function () {
 
     // private variables
     var displayIsVisible = false;
-    var categoriesMenuDisplayStates = {true:"block", false:"none"}
+    var categoriesMenuDisplayStates = {true:"show-mobile-category-menu", false:"hide-mobile-category-menu"}
 
     // public variables
-    function removeCurrentLca() {
-        
+    function changeHighlightedMenuCategory(categoryName) {
+        // unhighlight the current currently highlighted category option
+        var currentCategoryLI = categoriesMenuUL.querySelector("li.current-category");
+        currentCategoryLI.classList.remove("current-category");
+
+         // highlight the new category option
+        if (categoryName != undefined) {
+            categoriesMenuUL.
+                querySelector("li.categories-menu-category-option[data-category-name='" + categoryName + "']").
+                classList.add("current-category");
+        }
+        else { // undefined means you are at the top of the page
+            listOfCategoryOptions[0].classList.add("current-category");
+        }
     }
 
     // private functions
     function goToMenuCategory(event) {
         toggleMobileCategoryOptions(event);
         moreOptions.scrollToCategory(event);
+        var target = event.target;
+        while (target.tagName != "LI") {
+            target = target.parentNode;
+        }
+        var categoryName = target.getAttribute("data-category-name");
+        changeHighlightedMenuCategory(categoryName);
     }
 
     function toggleMobileCategoryOptions(event) {
-        displayIsVisible = !displayIsVisible
-        categoriesMenuUL.style.display = categoriesMenuDisplayStates[ displayIsVisible ];
+        categoriesMenuUL.classList.remove(categoriesMenuDisplayStates[displayIsVisible])
+        displayIsVisible = !displayIsVisible;
+        categoriesMenuUL.classList.add(categoriesMenuDisplayStates[displayIsVisible])
     }
 
     // public functions
 
     // return public pointers to private variables
     return {
-        "categoriesMenuUL": categoriesMenuUL
+        changeHighlightedMenuCategory: changeHighlightedMenuCategory
     };
 
 })();

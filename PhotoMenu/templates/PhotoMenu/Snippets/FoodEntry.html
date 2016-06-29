@@ -7,7 +7,7 @@
 
 {% load staticfiles %}
 
-<li class="food-entry-li"
+<li class="food-entry-li unloaded-image"
     data-food-name="{{ menu_item.name }}"
     data-food-details="{{ menu_item.description }}"
     data-food-image-location="{{ menu_item.image.url }}"
@@ -21,7 +21,7 @@
   <h3 class="food-item-restaurant-name">{{ menu_item.menu_category.restaurant.name }}</h3>
   <div class="food-entry-wrapper">
     <div class="food-entry-image">
-      <img class="unloaded_image" src="{% static "PhotoMenu/Images/Icons/ImgLoadingPlaceholder.png" %}" alt="{{ menu_item.name }}">
+      <img src="{% static "PhotoMenu/Images/Icons/ImgLoadingPlaceholder.png" %}" alt="{{ menu_item.name }}">
     </div>
     <h4 class="food-entry-name">{{ menu_item.name }}</h4>
     <p class="food-description-name">{{ menu_item.description }}</p>

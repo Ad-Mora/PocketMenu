@@ -191,9 +191,9 @@ var moreOptions = (function(){
     function smoothScroll(endPosition, duration) {
         var startPosition = window.scrollY;
         var distance = endPosition - startPosition;
-        var increment = distance/(duration/3);
-        var stopAnimation;
-
+        // var increment = distance/(duration/3);
+        // var stopAnimation;
+        //
         // var animateScroll = function () {
         //     window.scrollBy(0, increment);
         //     stopAnimation();
@@ -259,13 +259,12 @@ var moreOptions = (function(){
     }
 
     // Set the category bar to a fixed position
-    var previous_scroll_top = 0;
     function fixCategoryBar() {
         var new_scroll_top = window.scrollY;
         var moving_up = new_scroll_top - previous_scroll_top < 0;
         previous_scroll_top = new_scroll_top;
 
-        if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed) {
+        if (backgroundImage.getBoundingClientRect().bottom <= 55 && !categoryBarFixed) {
             categoryBar.classList.add("fix-filter-search");
             document.body.classList.add("fix-filter-search");
             categoryBarFixed = true;
@@ -299,7 +298,6 @@ var moreOptions = (function(){
 
     // Move the orange underbar in the category bar to the correct location depending on
     // what category area the user is currently in
-
     // TODO: look out for expensive function calls here; this is called every time the page scrolls
     function detectCategoryScroll() {
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
@@ -321,6 +319,9 @@ var moreOptions = (function(){
             else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
+
+            // for mobile categories menu
+            mobileCategoriesMenu.changeHighlightedMenuCategory(newCategoryName);
         }
     }
 

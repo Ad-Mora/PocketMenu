@@ -52,7 +52,7 @@ div.food-entry-image img{
     height: auto;
 }
 
-img.unloaded_image{
+li.unloaded-image img{
     background-color: #EEEEEE;
     height: auto;
     width: 100%;
