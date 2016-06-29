@@ -120,18 +120,44 @@ def restaurants_page(request, restaurant_name):
     # used when somebody normally visits a restaurant's page
     elif request.method == "GET":
 
+        # populate body with category and menu items
         menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
 
-        # possibly redundant code---------------------------
         categories = {}
         for category in menu_categories:
-            categories[category] = []
+            categories[category] = MenuItem.objects.filter(menu_category_id=category.id)
 
-        for category in menu_categories:
-            menu_items = MenuItem.objects.filter(menu_category_id=category.id)
-            for item in menu_items:
-                categories[category].append(item)
-        # ----------------------------------------------------
+        # get store hours
+        hours_grouping_list = [['mon']]
+        num_groups = 0
+
+        days_of_week = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+        opening_times = [restaurant.mon_open_time, restaurant.tue_open_time,
+                         restaurant.wed_open_time, restaurant.thu_open_time,
+                         restaurant.fri_open_time, restaurant.sat_open_time,
+                         restaurant.sun_open_time]
+
+        closing_times = [restaurant.mon_close_time, restaurant.tue_close_time,
+                         restaurant.wed_close_time, restaurant.thu_close_time,
+                         restaurant.fri_close_time, restaurant.sat_close_time,
+                         restaurant.sun_close_time]
+
+        for i in range(len(days_of_week)-1):
+            if opening_times[i] == opening_times[i+1] and closing_times[i] == closing_times[i+1]:
+                hours_grouping_list[num_groups].append(days_of_week[i+1])
+            else:
+                hours_grouping_list.append([days_of_week[i+1]])
+                num_groups += 1
+
+
+
+
+
+
+
+
+
 
     horizontal_cats = menu_categories[:num_horizontal_cats]
     remaining_cats = menu_categories[num_horizontal_cats:]
