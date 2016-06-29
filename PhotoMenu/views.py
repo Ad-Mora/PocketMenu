@@ -89,8 +89,11 @@ def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
     num_horizontal_cats = 3
+    horizontal_cats = None
+    remaining_cats = None
     menu_categories = None
     categories = None
+    store_hours = None
 
     # used when somebody tries to search for foods withing a restaurant
     if request.method == "POST":
@@ -127,11 +130,16 @@ def restaurants_page(request, restaurant_name):
         for category in menu_categories:
             categories[category] = MenuItem.objects.filter(menu_category_id=category.id)
 
-        # get store hours
-        hours_grouping_list = [['mon']]
-        num_groups = 0
+        horizontal_cats = menu_categories[:num_horizontal_cats]
+        remaining_cats = menu_categories[num_horizontal_cats:]
 
-        days_of_week = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+        # get store hours
+        hours_grouping_list = [['Mon']]
+        time_groupings = [(restaurant.mon_open_time, restaurant.mon_close_time)]
+        num_groups = 0
+        store_hours = []
+
+        days_of_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
         opening_times = [restaurant.mon_open_time, restaurant.tue_open_time,
                          restaurant.wed_open_time, restaurant.thu_open_time,
@@ -148,24 +156,23 @@ def restaurants_page(request, restaurant_name):
                 hours_grouping_list[num_groups].append(days_of_week[i+1])
             else:
                 hours_grouping_list.append([days_of_week[i+1]])
+                time_groupings.append((opening_times[i+1], closing_times[i+1]))
                 num_groups += 1
 
+        for i in range(len(hours_grouping_list)):
+            first_day_in_group = hours_grouping_list[i][0]
+            last_day_in_group = hours_grouping_list[i][-1]
+            days_string = first_day_in_group + '-' + last_day_in_group + ':'
+            if first_day_in_group == last_day_in_group:
+                days_string = first_day_in_group + ':'
+            store_hours.append((days_string, time_groupings[i][0], time_groupings[i][1]))
 
-
-
-
-
-
-
-
-
-    horizontal_cats = menu_categories[:num_horizontal_cats]
-    remaining_cats = menu_categories[num_horizontal_cats:]
     context = {
         'restaurant': restaurant,
         'categories': categories,
         'horizontal_cats': horizontal_cats,
         'remaining_cats': remaining_cats,
+        'store_hours': store_hours,
         'search_options_list': [restaurant_name.replace("-", " "), SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD],
         'is_restaurant_page': True
     }

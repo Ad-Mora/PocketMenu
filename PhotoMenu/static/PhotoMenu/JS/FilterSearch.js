@@ -249,7 +249,6 @@ var moreOptions = (function(){
         categoryBar.style.display = "";
         var deltaX = optionRect.left - referenceX;
         var width = optionRect.width;
-        // console.log(deltaX + "   " + width);
         slidingUnderBar.style.width = width + "px";
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
@@ -266,14 +265,12 @@ var moreOptions = (function(){
         var moving_up = new_scroll_top - previous_scroll_top < 0;
         previous_scroll_top = new_scroll_top;
 
-        if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed && !moving_up) {
+        if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed) {
             categoryBar.classList.add("fix-filter-search");
-            // categoryBar.style.position = "fixed";
             document.body.classList.add("fix-filter-search");
             categoryBarFixed = true;
-        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed && moving_up) {
+        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed) {
             categoryBar.classList.remove("fix-filter-search");
-            // categoryBar.style.position = "";
             document.body.classList.remove("fix-filter-search");
             categoryBarFixed = false;
         }
@@ -324,9 +321,6 @@ var moreOptions = (function(){
             else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
-
-            // for mobile categories menu
-            // mobileCategoriesMenu.categoriesMenuUL.querySelector("li.")
         }
     }
 
