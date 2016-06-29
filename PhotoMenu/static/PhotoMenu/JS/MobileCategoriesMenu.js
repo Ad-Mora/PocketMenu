@@ -15,7 +15,7 @@ var mobileCategoriesMenu = (function () {
 
     // private variables
     var displayIsVisible = false;
-    var categoriesMenuDisplayStates = {true:"block", false:"none"}
+    var categoriesMenuDisplayStates = {true:"show-mobile-category-menu", false:"hide-mobile-category-menu"}
 
     // public variables
     function changeHilightedMenuCategory(categoryName) {
@@ -47,8 +47,9 @@ var mobileCategoriesMenu = (function () {
     }
 
     function toggleMobileCategoryOptions(event) {
-        displayIsVisible = !displayIsVisible
-        categoriesMenuUL.style.display = categoriesMenuDisplayStates[ displayIsVisible ];
+        categoriesMenuUL.classList.remove(categoriesMenuDisplayStates[displayIsVisible])
+        displayIsVisible = !displayIsVisible;
+        categoriesMenuUL.classList.add(categoriesMenuDisplayStates[displayIsVisible])
     }
 
     // public functions

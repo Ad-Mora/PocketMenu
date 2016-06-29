@@ -75,7 +75,6 @@ span.hamburger-bar-middle::after{
 
 /* -----------------Mobile Category Menu--------------------*/
 ul.mobile-categories-menu-list{
-    display: none;
     position: fixed;
     top: 45px;
     left: 0px;
@@ -86,6 +85,12 @@ ul.mobile-categories-menu-list{
     background-color: #ffffff;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     z-index: 1;
+}
+ul.show-mobile-category-menu{
+    display: block;
+}
+ul.hide-mobile-category-menu{
+    display: none;
 }
 li.mobile-categories-menu-header{
     color: #555555;
@@ -186,7 +191,7 @@ li.current-category p{
     div.hamburger-icon-wrapper{
         display: none;
     }
-    ul.mobile-categories-menu-list{
+    ul.show-mobile-category-menu{
         display: none;
     }
 }
