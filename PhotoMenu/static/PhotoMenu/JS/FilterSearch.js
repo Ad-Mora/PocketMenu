@@ -43,9 +43,17 @@ var moreOptions = (function(){
     var currentCategoryName = categoryHeaderElements[0].textContent;
     var categoryBarFixed = false;
 
+    // category names to header elements
+    var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements()
+
+    // bar category names to bar elements
+    var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements()
+
     // headerCategoryExtraScrollDetectHeight must be larger than headerCategoryScrollToPadding
     var headerCategoryExtraScrollDetectHeight = 10;
     var headerCategoryScrollToPadding = 0;
+
+    var desktopWidth = 800;
 
     /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
@@ -87,21 +95,20 @@ var moreOptions = (function(){
     /*-----Get dictionaries and lists-----*/
 
     // Get dictionary of category names to element header categories
-    var categoryNamesToHeaderElements;
     function getHeaderCategoryNamesToHeaderElements() {
+        var categoryNamesToHeaderElements;
         if (categoryNamesToHeaderElements == undefined) {
             categoryNamesToHeaderElements = {};
             for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
                 categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
             }
         }
-
         return categoryNamesToHeaderElements;
     }
 
     // Get dictionary of visible bar category names to visible bar category elements
-    var visibleBarCategoryNameToVisibleBarCategoryElement;
     function getBarCategoryNamesToBarElements() {
+        var visibleBarCategoryNameToVisibleBarCategoryElement;
         if (visibleBarCategoryNameToVisibleBarCategoryElement == undefined) {
             visibleBarCategoryNameToVisibleBarCategoryElement = {}
             var visibleCategoryName;
@@ -110,7 +117,6 @@ var moreOptions = (function(){
                 visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
             }
         }
-
         return visibleBarCategoryNameToVisibleBarCategoryElement;
     }
 
@@ -273,22 +279,13 @@ var moreOptions = (function(){
 
     // scroll to a specific header category
     function scrollToCategory(event) {
-        var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
-        var srcElement = event.target;
-
-        // in case the li container was clicked instead of the span element
-        while (srcElement && srcElement.tagName != "LI") {
-            srcElement = srcElement.parentNode;
-        }
-
+        var srcElement = event.currentTarget;
         var categoryName = srcElement.getAttribute("data-category-name");
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
         var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight();
-        if (window.innerWidth >= 800) {
+        if (window.innerWidth >= desktopWidth) {
             endPosition -= getCategoryBarHeight();
         }
-        currentCategoryName = categoryName;
-
         smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
     }
 
