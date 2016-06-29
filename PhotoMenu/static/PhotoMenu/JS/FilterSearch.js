@@ -9,15 +9,16 @@ var moreOptions = (function(){
     /*----------Global Variables and DOM Cache----------*/
     /*--------------------------------------------------*/
 
-    var moreBoxPresent = document.querySelector("li.more-options-options") != null
+    var moreBoxPresent = document.querySelector("li.more-options-options") != null;
 
     // DOM objects
+    var backgroundImage = document.querySelector("div.header-background");
 
     // Category bar objects
     var headerBar = document.querySelector("div.header");
-    var categoryBar = document.querySelector("div.filter-and-search-section");
     var categoryHeaderElements = document.querySelectorAll("h3.food-type-section-header");
-    var visibleOptionsUL = document.querySelector("ul.filter-options-list");
+    var categoryBar = document.querySelector("div.filter-and-search-section");
+    var visibleOptionsUL = categoryBar.querySelector("ul.filter-options-list");
     var allVisibleOptionsLI = visibleOptionsUL.querySelectorAll("li.filter-option");
     var slidingUnderBar = visibleOptionsUL.querySelector("hr.sliding-underbar");
 
@@ -86,23 +87,30 @@ var moreOptions = (function(){
     /*-----Get dictionaries and lists-----*/
 
     // Get dictionary of category names to element header categories
+    var categoryNamesToHeaderElements;
     function getHeaderCategoryNamesToHeaderElements() {
-        var categoryNamesToHeaderElements = {};
-        for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
-            categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
+        if (categoryNamesToHeaderElements == undefined) {
+            categoryNamesToHeaderElements = {};
+            for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
+                categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
+            }
         }
+
         return categoryNamesToHeaderElements;
     }
 
     // Get dictionary of visible bar category names to visible bar category elements
+    var visibleBarCategoryNameToVisibleBarCategoryElement;
     function getBarCategoryNamesToBarElements() {
-        var visibleBarCategoryNames = [];
-        var visibleCategoryName;
-        var visibleBarCategoryNameToVisibleBarCategoryElement = {}
-        for (var i = 0; i < Object.keys(allVisibleOptionsLI).length; i++) {
-            visibleCategoryName = allVisibleOptionsLI[i].firstElementChild.textContent;
-            visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
+        if (visibleBarCategoryNameToVisibleBarCategoryElement == undefined) {
+            visibleBarCategoryNameToVisibleBarCategoryElement = {}
+            var visibleCategoryName;
+            for (var i = 0; i < Object.keys(allVisibleOptionsLI).length; i++) {
+                visibleCategoryName = allVisibleOptionsLI[i].firstElementChild.textContent;
+                visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
+            }
         }
+
         return visibleBarCategoryNameToVisibleBarCategoryElement;
     }
 
@@ -168,7 +176,6 @@ var moreOptions = (function(){
     function getCategoryNameFromPosition(position) {
         var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
         var sortedPositionsList = getSortedHeaderCategoryPositions();
-        var currentPosition = sortedPositionsList[0];
         var categoryName;
         var currentPosition;
         for (var i = 0; i < sortedPositionsList.length; i++) {
@@ -187,30 +194,31 @@ var moreOptions = (function(){
         var increment = distance/(duration/3);
         var stopAnimation;
 
-        var animateScroll = function () {
-            window.scrollBy(0, increment);
-            stopAnimation();
-        };
+        // var animateScroll = function () {
+        //     window.scrollBy(0, increment);
+        //     stopAnimation();
+        // };
+        //
+        // stopAnimation = function() {
+        //     var currentPosition = window.scrollY;
+        //
+        //     if (increment >= 0) {
+        //         if ( (currentPosition >= (endPosition - increment)) ||
+        //         ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+        //             clearInterval(runAnimation);
+        //         }
+        //     } else {
+        //         if (currentPosition <= endPosition || currentPosition <= 0) {
+        //             clearInterval(runAnimation);
+        //         }
+        //     }
+        // }
+        // var runAnimation = setInterval(animateScroll, 3);
 
-        stopAnimation = function() {
-            var currentPosition = window.scrollY;
-
-            if (increment >= 0) {
-                if ( (currentPosition >= (endPosition - increment)) ||
-                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-                    clearInterval(runAnimation);
-                }
-            } else {
-                if (currentPosition <= endPosition || currentPosition <= 0) {
-                    clearInterval(runAnimation);
-                }
-            }
-        }
-        var runAnimation = setInterval(animateScroll, 3);
+        window.scrollBy(0, distance);
     }
 
     /*-----Main Functions-----*/
-
     function toggleDropDownMenu(event) {
         event.stopPropagation();
         var srcElement = event.target;
@@ -235,11 +243,13 @@ var moreOptions = (function(){
 
     // move the underbar on the category bar to the specified (li) element on the bar
     function adjustSlidingUnderBar(event, element) {
+        categoryBar.style.display = "block";
         var referenceX = visibleOptionsUL.getBoundingClientRect().left;
         var optionRect = (element || this).getBoundingClientRect();
+        categoryBar.style.display = "";
         var deltaX = optionRect.left - referenceX;
         var width = optionRect.width;
-
+        // console.log(deltaX + "   " + width);
         slidingUnderBar.style.width = width + "px";
         slidingUnderBar.style.marginLeft = deltaX + "px";
     }
@@ -250,25 +260,22 @@ var moreOptions = (function(){
     }
 
     // Set the category bar to a fixed position
+    var previous_scroll_top = 0;
     function fixCategoryBar() {
-        // we only care if we are in desktop view
-        if (window.innerWidth >= 800) {
-            var newPaddingTop;
-            var topHeaderViewPos = window.scrollY + getHeaderHeight();
+        var new_scroll_top = window.scrollY;
+        var moving_up = new_scroll_top - previous_scroll_top < 0;
+        previous_scroll_top = new_scroll_top;
 
-            if (topHeaderViewPos >= defaultCategoryBarPosition && !categoryBarFixed) {
-                newPaddingTop = String(getHeaderHeight() + getCategoryBarHeight()) + "px";
-                document.body.style.paddingTop = newPaddingTop;
-                categoryBar.style.top = String(getHeaderHeight()) + "px";
-                categoryBar.style.position = "fixed";
-                categoryBarFixed = true;
-            } else if (topHeaderViewPos <= defaultCategoryBarPosition && categoryBarFixed) {
-                newPaddingTop = String(getHeaderHeight()) + "px"
-                document.body.style.paddingTop = newPaddingTop;
-                categoryBar.style.top = "";
-                categoryBar.style.position = "";
-                categoryBarFixed = false;
-            }
+        if (backgroundImage.getBoundingClientRect().bottom < 55 && !categoryBarFixed && !moving_up) {
+            categoryBar.classList.add("fix-filter-search");
+            // categoryBar.style.position = "fixed";
+            document.body.classList.add("fix-filter-search");
+            categoryBarFixed = true;
+        } else if (backgroundImage.getBoundingClientRect().bottom >= 100 && categoryBarFixed && moving_up) {
+            categoryBar.classList.remove("fix-filter-search");
+            // categoryBar.style.position = "";
+            document.body.classList.remove("fix-filter-search");
+            categoryBarFixed = false;
         }
     }
 
@@ -283,12 +290,11 @@ var moreOptions = (function(){
         }
 
         var categoryName = srcElement.getAttribute("data-category-name");
-        var categoryPosition;
-        var endPosition;
-        
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
-        endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - getCategoryBarHeight();
-        categoryPosition = getVerticalPosition(elementToScrollTo);
+        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight();
+        if (window.innerWidth >= 800) {
+            endPosition -= getCategoryBarHeight();
+        }
         currentCategoryName = categoryName;
 
         smoothScroll(endPosition - headerCategoryScrollToPadding, 300);
@@ -302,20 +308,25 @@ var moreOptions = (function(){
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
         var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements();
         var barCategoryNames = Object.keys(barCategoryNamesToBarElements);
-        var newCategoryName = currentCategoryName;
         var barCategoryElement;
 
-        newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + headerCategoryExtraScrollDetectHeight);
+        var newCategoryName = getCategoryNameFromPosition(currentTopViewPosition + headerCategoryExtraScrollDetectHeight);
 
         if (newCategoryName != currentCategoryName) {
             currentCategoryName = newCategoryName;
+            var categoryIndex = barCategoryNames.indexOf(newCategoryName);
 
-            if (barCategoryNames.indexOf(newCategoryName) > -1) {
+            // for desktop filterSearchBar
+            if (categoryIndex > -1) {
                 barCategoryElement = barCategoryNamesToBarElements[newCategoryName];
                 adjustSlidingUnderBar(null, barCategoryElement);
-            } else {
+            }
+            else if (moreBoxPresent) {
                 adjustSlidingUnderBar(null, moreBox);
             }
+
+            // for mobile categories menu
+            // mobileCategoriesMenu.categoriesMenuUL.querySelector("li.")
         }
     }
 

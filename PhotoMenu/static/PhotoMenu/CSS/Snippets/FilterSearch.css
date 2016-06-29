@@ -1,10 +1,11 @@
 div.filter-and-search-section{
     width: 100%;
     background-color: #FFFFFF;
-    height: 35px;
+    height: 45px;
     text-align: center;
-    box-shadow: 0px 1px 1px 0px #9B9B9B;
+    box-shadow: 0px 0px 6px 0px #9B9B9B;
     display: none;
+    border-top: 1px solid #BBBBBB;
 }
 ul.filter-options-list{
     margin: 0px auto 0px auto;
@@ -12,17 +13,17 @@ ul.filter-options-list{
 }
 li.filter-option{
     display: inline-block;
-    height: 33px;
-    line-height: 35px;
+    height: 43px;
+    line-height: 45px;
 }
 span.filter-name{
-    font-size: 14px;
+    font-size: 16px;
     color: #555555;
     padding-left: 10px;
     padding-right: 10px;
 }
 span.hidden-filter-name{
-    font-size: 14px;
+    font-size: 16px;
     color: #555555;
 }
 span.filter-name:hover{
@@ -52,8 +53,8 @@ hr.sliding-underbar {
 li.more-options-options{
     position: relative;
     display: inline-block;
-    height: 33px;
-    line-height: 35px;
+    height: 43px;
+    line-height: 45px;
 }
 i.more-options-drop-down-icon{
     content: '';
@@ -95,26 +96,6 @@ div.current-page-search-wrapper{
     display: none;
 }
 
-@media (min-width: 355px){
-    div.filter-and-search-section {
-        height: 45px;
-    }
-    li.filter-option{
-        height: 43px;
-        line-height: 45px;
-    }
-    li.more-options-options{
-        height: 43px;
-        line-height: 45px;
-    }
-    span.filter-name {
-        font-size: 16px;
-    }
-    span.hidden-filter-name{
-        font-size: 16px;
-    }
-}
-
 @media (min-width: 800px){
     ul.filter-options-list {
         display: inline-block;
@@ -154,4 +135,27 @@ div.current-page-search-wrapper{
         display: inline-block;
     }
 
+}
+
+
+body.fix-filter-search {
+	padding-top: 45px;
+}
+div.fix-filter-search{
+	position: fixed;
+	top: 45px;
+}
+
+@media(min-width: 355px) {
+	body.fix-filter-search {
+		padding-top: 55px;
+	}
+	div.fix-filter-search{
+		top: 55px;
+	}
+}
+@media(min-width: 800px) {
+	body.fix-filter-search {
+		padding-top: 100px;
+	}
 }
