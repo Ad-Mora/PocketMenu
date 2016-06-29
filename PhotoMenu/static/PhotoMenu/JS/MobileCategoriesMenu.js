@@ -18,14 +18,32 @@ var mobileCategoriesMenu = (function () {
     var categoriesMenuDisplayStates = {true:"block", false:"none"}
 
     // public variables
-    function removeCurrentLca() {
-        
+    function changeHilightedMenuCategory(categoryName) {
+        // unhighlight the current currently highlighted category option
+        var currentCategoryLI = categoriesMenuUL.querySelector("li.current-category");
+        currentCategoryLI.classList.remove("current-category");
+
+         // highlight the new category option
+        if (categoryName != undefined) {
+            categoriesMenuUL.
+                querySelector("li.categories-menu-category-option[data-category-name='" + categoryName + "']").
+                classList.add("current-category");
+        }
+        else { // undefined means you are at the top of the page
+            listOfCategoryOptions[0].classList.add("current-category");
+        }
     }
 
     // private functions
     function goToMenuCategory(event) {
         toggleMobileCategoryOptions(event);
         moreOptions.scrollToCategory(event);
+        var target = event.target;
+        while (target.tagName != "LI") {
+            target = target.parentNode;
+        }
+        var categoryName = target.getAttribute("data-category-name");
+        changeHilightedMenuCategory(categoryName);
     }
 
     function toggleMobileCategoryOptions(event) {
@@ -37,7 +55,7 @@ var mobileCategoriesMenu = (function () {
 
     // return public pointers to private variables
     return {
-        "categoriesMenuUL": categoriesMenuUL
+        changeHilightedMenuCategory: changeHilightedMenuCategory
     };
 
 })();

@@ -189,8 +189,8 @@ var moreOptions = (function(){
 
     // duration is in milliseconds
     function smoothScroll(endPosition, duration) {
-        // var startPosition = window.scrollY;
-        // var distance = endPosition - startPosition;
+        var startPosition = window.scrollY;
+        var distance = endPosition - startPosition;
         // var increment = distance/(duration/3);
         // var stopAnimation;
         //
@@ -297,7 +297,6 @@ var moreOptions = (function(){
 
     // Move the orange underbar in the category bar to the correct location depending on
     // what category area the user is currently in
-
     // TODO: look out for expensive function calls here; this is called every time the page scrolls
     function detectCategoryScroll() {
         var currentTopViewPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
@@ -321,7 +320,7 @@ var moreOptions = (function(){
             }
 
             // for mobile categories menu
-            // mobileCategoriesMenu.categoriesMenuUL.querySelector("li.")
+            mobileCategoriesMenu.changeHilightedMenuCategory(newCategoryName);
         }
     }
 

@@ -104,6 +104,14 @@ p.category-items-count{
     color: #777777;
     margin: 2px 0px 0px 0px;
 }
+li.current-category{
+    background-color: #448AFF;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+li.current-category p{
+    color: #FFFFFF;
+}
 
 /* Large mobile view */
 @media (min-width: 355px) {
