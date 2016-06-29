@@ -22,8 +22,6 @@ var mobileSearchModal = (function(){
     selectSearchType.addEventListener('change', updateMainFormPOSTAddress);
 
     // private variables
-    var restaurant_internal_search =
-        (selectSearchType.value != "Restaurant") && (selectSearchType.value != "Food");
 
     // public variables
 
@@ -31,11 +29,9 @@ var mobileSearchModal = (function(){
     function updateMainFormPOSTAddress(event) {
         if (this.value == "Food" || this.value == "Restaurant") {
             mainForm.action = "";
-            restaurant_internal_search = false;
         }
         else {
             mainForm.action = window.location.href + "search/";
-            restaurant_internal_search = true;
         }
     }
 
@@ -88,7 +84,7 @@ var mobileSearchModal = (function(){
                 "search-bar":   searchQuery
             }
         }
-
+        console.log(destinationFile);
         ajax.send_ajax_request(destinationFile, jsonData, csrfMiddlewareToken, postAjaxFunction);
     }
 
