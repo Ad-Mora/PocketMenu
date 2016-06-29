@@ -14,17 +14,16 @@ var foodEntry = (function () {
     var bufferCutOffDepth = window.innerHeight;
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
-
     // public variables
 
     // private functions
     function loadActualImageForFoodEntry(foodEntry) {
         var actualSrc = foodEntry.getAttribute("data-food-image-location");
-        var foodEntryImage = foodEntry.querySelector("img.unloaded_image");
+        var foodEntryImage = foodEntry.querySelector("img");
         var tempImage = new Image();
         tempImage.onload = function (event) {
             foodEntryImage.src = this.src;
-            foodEntryImage.className = "";
+            foodEntry.classList.remove("unloaded-image");
         }
         tempImage.src = actualSrc;
     }
@@ -33,26 +32,14 @@ var foodEntry = (function () {
         allInspectorView.showInspectorView(this);
     }
 
-    function listenForScrollDepthToLoad(foodEntry) {
-        var foodEntryIndex = parseInt( foodEntry.getAttribute("data-list-item-number") );
-        document.addEventListener('scroll', function test(event) {
-            if (foodEntry.getBoundingClientRect().top <= bufferCutOffDepth) {
-
-                // okay, the user wants to see these photos so load them
-                loadActualImageForFoodEntry(foodEntry);
-
-                // now that we have loaded the photo, we don't need to the
-                // eventListener anymore so remove it
-                this.removeEventListener('scroll', test);
-
-                // pass the event listener on to the next unloaded photo (that doesn't
-                // already have an event listner so that it will load when necessary too
-                var nextFoodEntryIndex = foodEntryIndex + MAX_NUMBER_OF_SCROLL_LISTENERS
-                if (nextFoodEntryIndex < listOfFoodEntryLI.length) {
-                    listenForScrollDepthToLoad(listOfFoodEntryLI[ nextFoodEntryIndex ]);
-                }
+    function loadFoodsAboveBufferCutoff() {
+        var foodsToLoad = document.querySelectorAll("li.unloaded-image");
+        for (var i = 0; i < foodsToLoad.length; i++) {
+            var verticalImageOffset = foodsToLoad[ i ].getBoundingClientRect().top;
+            if (verticalImageOffset < bufferCutOffDepth) {
+                loadActualImageForFoodEntry( foodsToLoad[ i ] );
             }
-        });
+        }
     }
 
     // public functions
@@ -84,15 +71,15 @@ var foodEntry = (function () {
             var foodEntryElement = listOfFoodEntryLI[i];
             foodEntryElement.addEventListener('click', displayInspectorViewForFood);
             foodEntryElement.setAttribute("data-list-item-number", i);
-
-            if (foodEntryElement.getBoundingClientRect().top <= bufferCutOffDepth) {
-                loadActualImageForFoodEntry(foodEntryElement)
-            }
-            else if (scrollListenersCount < MAX_NUMBER_OF_SCROLL_LISTENERS) {
-                listenForScrollDepthToLoad(foodEntryElement);
-                scrollListenersCount++;
-            }
         }
+
+        // because its possible this function can get called multiple times,
+        // we should esnure that there is only 1 event listener
+        document.removeEventListener('scroll', loadFoodsAboveBufferCutoff);
+        document.addEventListener('scroll', loadFoodsAboveBufferCutoff);
+        loadFoodsAboveBufferCutoff();
+
+
         return listOfFoodEntryLI;
     }
 
