@@ -189,7 +189,12 @@ var moreOptions = (function(){
     function toggleDropDownMenu(event) {
         event.stopPropagation();
         var target = event.currentTarget;
-        dropDownIsVisible = false;
+
+        if (target != moreBox) {
+            dropDownIsVisible = false;
+        } else {
+            dropDownIsVisible = !dropDownIsVisible;
+        }
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
         dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
