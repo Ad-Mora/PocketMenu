@@ -175,7 +175,7 @@ var moreOptions = (function(){
         var categoryHeaderPositionsToCategoryNames = getCategoryHeaderPositionsToCategoryNames();
         var sortedPositionsList = getSortedHeaderCategoryPositions();
         var categoryName;
-        var currentPosition;
+        var currentPosition = sortedPositionsList[0];
         for (var i = 0; i < sortedPositionsList.length; i++) {
             if (position >= sortedPositionsList[i]) {
                 currentPosition = sortedPositionsList[i];
@@ -188,24 +188,12 @@ var moreOptions = (function(){
     /*-----Main Functions-----*/
     function toggleDropDownMenu(event) {
         event.stopPropagation();
-        var srcElement = event.target;
-        while (srcElement) {
-            if (srcElement == moreBox) {
-                dropDownIsVisible = !dropDownIsVisible;
-                moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
-                dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
-                dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
-                dropDownIcon.style.mozTransform = dropDownIconStates[ dropDownIsVisible ];
-                return;
-            }
-            target = target.parentNode;
-        }
+        var target = event.currentTarget;
         dropDownIsVisible = false;
         moreOptionsUL.style.display = dropDownMenuStates[ dropDownIsVisible ];
         dropDownIcon.style.transform = dropDownIconStates[ dropDownIsVisible ];
         dropDownIcon.style.webkitTransform = dropDownIconStates[ dropDownIsVisible ];
         dropDownIcon.style.mozTransform = dropDownIconStates[ dropDownIsVisible ];
-        return;
     }
 
     // move the underbar on the category bar to the specified (li) element on the bar

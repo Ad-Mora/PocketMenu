@@ -84,7 +84,7 @@ def search_results_page(request):
 def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
-    num_horizontal_cats = 3
+    num_horizontal_cats = 2
     menu_categories = None
     categories = None
 
