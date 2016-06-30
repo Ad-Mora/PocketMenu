@@ -212,6 +212,9 @@ ul.search-suggestions-list{
 
 /* Desktop view */
 @media (min-width: 800px) {
+    .homepage-picture{
+        background-position: 0px -100px;
+    }
     .background-picture-content {
         max-width: none;
     }
