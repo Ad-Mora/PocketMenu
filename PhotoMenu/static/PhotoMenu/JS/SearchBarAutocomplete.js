@@ -50,7 +50,7 @@ var masterSearch = (function(){
     }
 
     function querySuggestions(event) {
-        var destination_file = "../drop-down-suggestions/";
+        var destination_file = event.target.getAttribute("data-autocomplete-suggestions-href");
         var search_type  = searchBarForm.querySelector('input[name="radio-search-type"]:checked').value;
         var csrfMiddlewareToken = ajax.getCSRFToken();
         var json_data = {

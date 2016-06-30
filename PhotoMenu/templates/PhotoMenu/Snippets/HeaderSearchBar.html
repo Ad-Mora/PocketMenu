@@ -17,6 +17,7 @@
 
   <!-- the actual Search Bar -->
   <img class="header-search-bar-search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
-  <input class="header-search-bar" name="search-bar" placeholder="Search for Restaurants" type="text" autocomplete="off">
+  <input class="header-search-bar" name="search-bar" placeholder="Search for Restaurants" type="text"
+         autocomplete="off" data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
   <ul class="header-search-suggestions-list"></ul>
 </form>

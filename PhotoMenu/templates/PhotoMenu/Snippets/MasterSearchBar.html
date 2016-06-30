@@ -67,19 +67,23 @@
       {% if search_type %}
         {% if query_string %}
           <input type="text" class="search-bar" name="search-bar" placeholder="Search for {{ search_type }}s"
-            value="{{ query_string }}" autocomplete="off" >
+            value="{{ query_string }}" autocomplete="off"
+                 data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
         {%  else %}
           <input type="text" class="search-bar" name="search-bar" placeholder="Search for {{ search_type }}s"
-            value="" autocomplete="off">
+            value="" autocomplete="off"
+                 data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
         {% endif %}
 
       {% else %}
         {% if query_string %}
           <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
-            value="{{ query_string }}" autocomplete="off" >
+            value="{{ query_string }}" autocomplete="off"
+                 data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
         {%  else %}
           <input type="text" class="search-bar" name="search-bar" placeholder="Search for Restaurants"
-            value="" autocomplete="off">
+            value="" autocomplete="off"
+                 data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
         {% endif %}
 
       {% endif %}

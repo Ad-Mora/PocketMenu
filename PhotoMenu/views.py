@@ -31,17 +31,12 @@ def drop_down_suggestions(request):
                 'restaurants_list':  get_restaurants_for_search_string(query_string)
             }
             return render(request, 'PhotoMenu/Snippets/AutoCompleteRestaurantSuggestions.html', context)
-
-
-def restaurant_internal_search_drop_down_suggestions(request, restaurant_name):
-    restaurant_name_with_spaces = restaurant_name.replace("-", " ")
-    if request.method == "POST":
-        json_data = json.loads(request.body)
-        query_string = json_data['search-bar']
-        context = {
-            'menu_items_list':  get_restaurant_internal_menu_items(query_string, restaurant_name_with_spaces)
-        }
-        return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
+        else:
+            restaurant_name = search_type
+            context = {
+                'menu_items_list': get_restaurant_internal_menu_items(query_string, restaurant_name)
+            }
+            return render(request, 'PhotoMenu/Snippets/AutoCompleteFoodSuggestions.html', context)
 
 
 def get_favorite_foods(request):
@@ -90,11 +85,8 @@ def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
     num_horizontal_cats = 3
-    horizontal_cats = None
-    remaining_cats = None
     menu_categories = None
     categories = None
-    store_hours = None
 
     # used when somebody tries to search for foods withing a restaurant
     if request.method == "POST":
@@ -104,7 +96,7 @@ def restaurants_page(request, restaurant_name):
             filter(name__icontains=query_string)
 
         # collect the relevant categories for selected foods
-        categories = {}
+        categories = collections.OrderedDict()
         for menu_item in menu_item_results:
             # get the menu category of the current food
             foods_menu_category = menu_item.menu_category
@@ -116,7 +108,7 @@ def restaurants_page(request, restaurant_name):
             # set this list as the new list in categories
             categories[foods_menu_category] = category_menu_items_list
 
-        # compute horizontal categories and remaining categories
+        # used to compute horizontal categories and remaining categories
         menu_categories = []
         for category in categories:
             menu_categories.append(category)
@@ -131,53 +123,54 @@ def restaurants_page(request, restaurant_name):
         for category in menu_categories:
             categories[category] = MenuItem.objects.filter(menu_category_id=category.id)
 
-        horizontal_cats = menu_categories[:num_horizontal_cats]
-        remaining_cats = menu_categories[num_horizontal_cats:]
+    #----------------------------------------Should this go in utils.py ?
+    # get store hours
+    hours_grouping_list = [['Mon']]
+    time_groupings = [(restaurant.mon_open_time, restaurant.mon_close_time)]
+    num_groups = 0
+    store_hours = []
 
-        # get store hours
-        hours_grouping_list = [['Mon']]
-        time_groupings = [(restaurant.mon_open_time, restaurant.mon_close_time)]
-        num_groups = 0
-        store_hours = []
+    days_of_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
-        days_of_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    opening_times = [restaurant.mon_open_time, restaurant.tue_open_time,
+                     restaurant.wed_open_time, restaurant.thu_open_time,
+                     restaurant.fri_open_time, restaurant.sat_open_time,
+                     restaurant.sun_open_time]
 
-        opening_times = [restaurant.mon_open_time, restaurant.tue_open_time,
-                         restaurant.wed_open_time, restaurant.thu_open_time,
-                         restaurant.fri_open_time, restaurant.sat_open_time,
-                         restaurant.sun_open_time]
+    closing_times = [restaurant.mon_close_time, restaurant.tue_close_time,
+                     restaurant.wed_close_time, restaurant.thu_close_time,
+                     restaurant.fri_close_time, restaurant.sat_close_time,
+                     restaurant.sun_close_time]
 
-        closing_times = [restaurant.mon_close_time, restaurant.tue_close_time,
-                         restaurant.wed_close_time, restaurant.thu_close_time,
-                         restaurant.fri_close_time, restaurant.sat_close_time,
-                         restaurant.sun_close_time]
+    for i in range(len(days_of_week)-1):
+        if opening_times[i] == opening_times[i+1] and closing_times[i] == closing_times[i+1]:
+            hours_grouping_list[num_groups].append(days_of_week[i+1])
+        else:
+            hours_grouping_list.append([days_of_week[i+1]])
+            time_groupings.append((opening_times[i+1], closing_times[i+1]))
+            num_groups += 1
 
-        for i in range(len(days_of_week)-1):
-            if opening_times[i] == opening_times[i+1] and closing_times[i] == closing_times[i+1]:
-                hours_grouping_list[num_groups].append(days_of_week[i+1])
-            else:
-                hours_grouping_list.append([days_of_week[i+1]])
-                time_groupings.append((opening_times[i+1], closing_times[i+1]))
-                num_groups += 1
+    for i in range(len(hours_grouping_list)):
+        first_day_in_group = hours_grouping_list[i][0]
+        last_day_in_group = hours_grouping_list[i][-1]
+        days_string = first_day_in_group + '-' + last_day_in_group + ':'
+        if first_day_in_group == last_day_in_group:
+            days_string = first_day_in_group + ':'
+        store_hours.append((days_string, time_groupings[i][0], time_groupings[i][1]))
 
-        for i in range(len(hours_grouping_list)):
-            first_day_in_group = hours_grouping_list[i][0]
-            last_day_in_group = hours_grouping_list[i][-1]
-            days_string = first_day_in_group + '-' + last_day_in_group + ':'
-            if first_day_in_group == last_day_in_group:
-                days_string = first_day_in_group + ':'
-            store_hours.append((days_string, time_groupings[i][0], time_groupings[i][1]))
+    #--------------------------------------------
 
+    horizontal_cats = menu_categories[:num_horizontal_cats]
+    remaining_cats = menu_categories[num_horizontal_cats:]
     context = {
         'restaurant': restaurant,
         'categories': categories,
         'horizontal_cats': horizontal_cats,
         'remaining_cats': remaining_cats,
         'store_hours': store_hours,
-        'search_options_list': [restaurant_name.replace("-", " "), SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD],
+        'search_options_list': [restaurant.name, SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD],
         'is_restaurant_page': True
     }
-    print store_hours
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 
 
