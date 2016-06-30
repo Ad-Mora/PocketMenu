@@ -23,15 +23,16 @@ var mobileSearchModal = (function(){
 
     // private variables
 
+
     // public variables
 
     // private functions
     function updateMainFormPOSTAddress(event) {
         if (this.value == "Food" || this.value == "Restaurant") {
-            mainForm.action = "/search/";
+            mainForm.action = event.currentTarget.getAttribute("data-regular-search-href");
         }
         else {
-            mainForm.action = window.location.href + "";
+            mainForm.action = event.currentTarget.getAttribute("data-internal-search-href");
         }
     }
 

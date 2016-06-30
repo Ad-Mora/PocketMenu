@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^my-favorites/$', views.favorites_page, name='favorites_page'),
     # url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/search/drop-down-suggestions$',
     #     views.restaurant_internal_search_drop_down_suggestions),
-    # url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/search/$', views.restaurant_internal_search),
+    url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/search/$',
+        views.restaurants_page, name='restaurant_internal_search'),
     url(r'^(?P<restaurant_name>[a-zA-Z]+(-[a-zA-z]+)*)/$', views.restaurants_page, name='restaurant_homepage'),
 ]

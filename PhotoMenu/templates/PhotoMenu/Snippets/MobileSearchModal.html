@@ -7,7 +7,9 @@
 <div class="mobile-modal-search-container">
   <div class="mobile-search-background-overlay"></div>
   {% if is_restaurant_page %}
-    <form class="mobile-search-modal-form" action="" method="post">
+    <form class="mobile-search-modal-form"
+          action="{% url 'PhotoMenu:restaurant_internal_search' restaurant.get_restaurant_url_path %}"
+          method="post">
   {% else %}
     <form class="mobile-search-modal-form" action="{% url 'PhotoMenu:search_results_page' %}" method="post">
   {% endif %}
@@ -15,7 +17,11 @@
     {% csrf_token %}
     <!-- Select search type-->
     <div class="mobile-search-select-wrapper">
-      <select class="mobile-select-search-type" name="search-type">
+      <select class="mobile-select-search-type" name="search-type"
+        {% if is_restaurant_page %}
+          data-internal-search-href="{% url 'PhotoMenu:restaurant_internal_search' restaurant.get_restaurant_url_path %}"
+        {% endif %}
+          data-regular-search-href="{% url 'PhotoMenu:search_results_page' %}">
         {% for search_option in search_options_list %}
           <option class="mobile-search-option" value="{{ search_option }}">{{ search_option }}</option>
         {% endfor %}

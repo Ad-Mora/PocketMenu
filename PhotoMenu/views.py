@@ -171,7 +171,6 @@ def restaurants_page(request, restaurant_name):
         'search_options_list': [restaurant.name, SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD],
         'is_restaurant_page': True
     }
-    print store_hours
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 
 
