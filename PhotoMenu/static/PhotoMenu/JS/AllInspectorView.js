@@ -328,7 +328,7 @@ var desktopInspectorView = (function () {
         var listItemNumber = foodElement.getAttribute("data-list-item-number");
         allInspectorView.setInterestIconBasedOnCurrentInterest(desktopInterestIcon, foodElement);
 
-        console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
+        // console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
     }
 
     // return public pointers to private variables & functions
