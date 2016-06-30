@@ -11,7 +11,7 @@ var foodEntry = (function () {
     // private variables
     var MAX_NUMBER_OF_SCROLL_LISTENERS = 4;
     var scrollListenersCount = 0;
-    var bufferCutOffDepth = window.innerHeight;
+    var bufferCutOffDepth = window.innerHeight + 500;
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // public variables

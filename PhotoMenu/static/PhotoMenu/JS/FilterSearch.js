@@ -336,6 +336,24 @@ var moreOptions = (function(){
         detectCategoryScroll();
     }
 
+    /*--------Function for the SearchBar-------------*/
+    var searchBarContainer = categoryBar.querySelector("form.current-page-search-wrapper");
+    var searchInput = searchBarContainer.querySelector("input.current-page-search-bar");
+    var selectSearchType = searchBarContainer.querySelector("select.select-search-type");
+    var suggestionsList = searchBarContainer.querySelector("ul.filter-search-suggestions-list");
+
+    searchInput.addEventListener('focus', function (event) {
+        desktopHeaderSearch.displaySearchSuggestionsList(event, suggestionsList);
+    });
+    searchInput.addEventListener('keyup', function(event) {
+        var destinationFile = event.target.getAttribute("data-autocomplete-suggestions-href");
+        var searchType = selectSearchType.value;
+        desktopHeaderSearch.queryForSuggestions(event, searchInput, suggestionsList, destinationFile, searchType);
+    });
+    documentModule.addOnClickFunction(function (event) {
+        desktopHeaderSearch.selectSuggestionsOrBlurEvent(event, searchInput, searchBarContainer, suggestionsList);
+    });
+
     // reveal public pointers to private functions & properties
     return {
         scrollToCategory: scrollToCategory
