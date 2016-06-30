@@ -39,9 +39,7 @@ var ajax = (function (){
 
         };
 
-        // console.log(JSON.stringify(json_data));
         xmlhttp.open("POST",destination_file,true);
-
         xmlhttp.setRequestHeader("X-CSRFToken", csrftoken);
         xmlhttp.send(JSON.stringify(json_data));
     }
