@@ -22,7 +22,9 @@ h3.food-type-section-header{
 
 @media (min-width: 800px) {
     h3.food-type-section-header{
-        margin: 50px 5% 5px 5%;
+        width: 91%;
+        margin: 50px auto 5px auto;
+        padding-left: 1%;
         font-size: 26px;
     }
 }
