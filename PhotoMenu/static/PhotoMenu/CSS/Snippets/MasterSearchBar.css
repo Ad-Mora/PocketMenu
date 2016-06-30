@@ -23,11 +23,6 @@ input.search-option-radio-btn ~ label.search-option-label{
     border-bottom: 4px solid transparent;
     padding: 0px 0px 5px 0px;
 }
-label.search-option-label{
-
-}
-
-
 /*-------------Search Option Select-----------------*/
 select.select-search-type{
     display: none;
@@ -41,6 +36,9 @@ select.select-search-type{
 /*--------------Search Bar-------------------*/
 div.search-bar-and-suggestions{
     position: relative;
+}
+label.search-option-label{
+    font-weight: 500;
 }
 input.search-bar{
     position: relative;
@@ -84,7 +82,7 @@ input.search-submit-button{
     display: none;
 }
 button.search-button{
-    margin-top: 8px;
+    margin-top: 6px;
     width: 100%;
     height: 35px;
     background: #448AFF;
