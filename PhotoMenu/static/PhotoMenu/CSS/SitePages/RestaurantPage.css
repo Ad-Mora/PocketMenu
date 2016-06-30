@@ -16,17 +16,17 @@ div.background-image-dark-overlay{
 }
 h1.restaurant-name{
     width: 70%;
-    color: #FFFFFF;
-    font-size: 20px;
+    color: white;
+    font-size: 24px;
     font-weight: 500;
-    letter-spacing: 1px;
 }
 p.restaurant-address{
+    margin-top: 4px;
+    margin-bottom: 5px;
     width: 60%;
     color: white;
-    font-size: 13px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    font-weight: 500;
+    font-size: 15px;
 }
 img.white-clock-icon{
     float: left;
@@ -38,9 +38,10 @@ div.all-restaurant-hours{
     margin-left: 5px;
 }
 p.restaurant-hours{
-    color: #FFFFFF;
-    font-size: 13px;
+    color: white;
+    font-size: 15px;
     line-height: 15px;
+    font-weight: 500;
 }
 
 /*-------Menu Categories-------*/
@@ -59,7 +60,30 @@ ul.food-type-section-food-list{
     -webkit-flex-wrap: wrap
 }
 
-
+@media (min-width: 355px) {
+    div.background-image-dark-overlay{
+        padding-top: 150px;
+    }
+    h1.restaurant-name{
+        font-size: 30px;
+    }
+    p.restaurant-address{
+        margin-top: 5px;
+        margin-bottom: 6px;
+        font-size: 18px;
+    }
+    img.white-clock-icon{
+        height: 18px;
+        width: 18px;
+    }
+    div.all-restaurant-hours{
+        margin-left: 6px;
+    }
+    p.restaurant-hours{
+        font-size: 18px;
+        line-height: 18px;
+    }
+}
 @media (min-width: 480px) {
     ul.food-type-section-food-list{
         width: 91%;

@@ -1,33 +1,28 @@
 li.food-type-section-wrapper{
     margin: 0px 0px 20px 0px;
 }
-
 h3.food-type-section-header{
     width: calc(90% - 10px);
-    color: #777777;
-    margin: 30px 5% 5px 5%;
-    font-size: 16px;
+    color: #555555;
+    margin: 30px 5% 5px 3%;
+    font-size: 20px;
     font-weight: 600;
 }
 
-ul.food-type-section-food-list{
-    /*overflow: auto;*/
+@media (min-width: 355px) {
+    h3.food-type-section-header{
+        font-size: 24px;
+    }
 }
-
 @media (min-width: 600px) {
-
     h3.food-type-section-header{
         margin: 50px 5% 5px 5%;
-        font-size: 18px;
     }
-
 }
 
 @media (min-width: 800px) {
-
     h3.food-type-section-header{
         margin: 50px 5% 5px 5%;
         font-size: 20px;
     }
-
 }
