@@ -1,30 +1,26 @@
 li.food-type-section-wrapper{
-    margin: 0px 0px 20px 0px;
+    margin-bottom: 20px;
 }
 h3.food-type-section-header{
-    width: calc(90% - 10px);
     color: #555555;
-    margin: 30px 5% 5px 3%;
+    margin: 30px auto 5px auto;
+    padding-left: 2%;
     font-size: 20px;
     font-weight: 600;
+    box-sizing: border-box;
 }
 
 @media (min-width: 355px) {
     h3.food-type-section-header{
+        width: 91%;
         font-size: 24px;
-    }
-}
-@media (min-width: 600px) {
-    h3.food-type-section-header{
-        margin: 50px 5% 5px 5%;
+        padding-left: 1%;
     }
 }
 
 @media (min-width: 800px) {
     h3.food-type-section-header{
-        width: 91%;
-        margin: 50px auto 5px auto;
-        padding-left: 1%;
+        margin-top: 50px;
         font-size: 26px;
     }
 }
