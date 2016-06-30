@@ -117,6 +117,6 @@ p.food-entry-price{
         -webkit-flex-basis: 215px;
         flex-basis: 215px;
         width: 290px;
-        margin: 15px 1% 0px 1%;
+        margin: 0px 1% 15px 1%;
     }
 }

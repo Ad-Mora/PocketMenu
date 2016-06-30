@@ -28,12 +28,6 @@ h1.favorites-header{
     font-size: 24px;
     font-weight: bold;
 }
-ul.food-type-section-food-list{
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
 p.my-favorites-empty-message{
     display: none;
     font-size: 16px;
@@ -49,13 +43,8 @@ p.my-favorites-empty-message{
         height: 120px;
     }
     h1.favorites-header{
-        font-size: 26px;
+        font-size: 28px;
         line-height: 120px;
-    }
-    ul.food-type-section-food-list{
-        width: 91%;
-        margin-left: auto;
-        margin-right: auto;
     }
     p.my-favorites-empty-message{
         font-size: 18px;
@@ -69,7 +58,7 @@ p.my-favorites-empty-message{
     }
     h1.favorites-header {
         line-height: 150px;
-        font-size: 30px;
+        font-size: 36px;
     }
 }
 
@@ -86,11 +75,5 @@ p.my-favorites-empty-message{
     }
     div.header-background{
         background-position: 0px -100px;
-    }
-}
-@media (min-width: 1200px) {
-    ul.list-of-food-lists{
-        max-width: 1240px;
-        margin: 0px auto 0px auto;
     }
 }
