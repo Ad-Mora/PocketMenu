@@ -157,15 +157,23 @@ ul.search-suggestions-list{
 
 /* Large mobile view */
 @media (min-width: 355px) {
+    .homepage-picture{
+        height: 500px;
+        background-position: -150px 0px;
+    }
     .large-text{
-        font-size: 26px;
+        font-size: 28px;
+        margin-bottom: 50px;
+    }
+    input.search-option-radio-btn:checked ~ label.search-option-label{
+        border-bottom: 6px solid #448AFF;
     }
     .search-suggestions-box{
         top: 30px;
     }
     .picture-bottom-text{
         margin-top: 15px;
-        font-size: 16px;
+        font-size: 18px;
     }
     .why-us-header{
         font-size: 28px;
@@ -178,10 +186,11 @@ ul.search-suggestions-list{
         max-width: 400px;
     }
     .icon-text{
-        font-size: 20px;
+        font-size: 22px;
+        margin-top: 15px;
     }
     .icon-description{
-        font-size: 16px;
+        font-size: 18px;
     }
     .our-locations-header{
         font-size: 28px;

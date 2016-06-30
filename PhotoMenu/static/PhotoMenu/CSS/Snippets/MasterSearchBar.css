@@ -98,14 +98,16 @@ button.search-button{
     }
     ul.search-suggestions-list{
         top: 40px;
-
     }
     button.search-button{
         height: 40px;
         font-size: 20px;
     }
     label.search-option-label {
-        font-size: 18px;
+        font-size: 20px;
+    }
+    input.search-option-radio-btn ~ label.search-option-label{
+        padding-bottom: 10px;
     }
 }
 
