@@ -92,9 +92,6 @@ li.hidden-filter-option{
     padding: 10px;
     border-bottom: 1px solid #CACACA;
 }
-div.current-page-search-wrapper{
-    display: none;
-}
 
 @media (min-width: 800px){
     ul.filter-options-list {
@@ -102,13 +99,31 @@ div.current-page-search-wrapper{
         float: left;
         margin: 0px 0px 0px 20px;
     }
-    div.current-page-search-wrapper{
+    form.current-page-search-wrapper {
         display: inline-block;
         margin: 7px 10px 0px 0px;
         float: right;
         height: 30px;
         width: 30%;
         max-width: 300px;
+        position: relative;
+    }
+    ul.filter-search-suggestions-list{
+        position: absolute;
+        display: none;
+        top: 38px;
+        left: 30px;
+        border-radius: 0px 0px 3px 3px;
+        -webkit-box-shadow: 0px 0px 5px 0px #777777;
+        -moz-box-shadow: 0px 0px 5px 0px #777777;
+        box-shadow: 0px 0px 5px 0px #777777;
+        border: 1px solid #cacaca;
+        width: calc(100% - 60px);
+        overflow: hidden;
+    }
+    li.search-suggestion{
+        width: 100%;
+        text-align: left;
     }
     input.current-page-search-bar{
         width: calc(100% - 30px);

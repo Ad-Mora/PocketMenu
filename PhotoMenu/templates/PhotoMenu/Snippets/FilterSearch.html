@@ -6,6 +6,8 @@
 {# <script src="{%  static "PhotoMenu/JS/FilterSearch.js" %}" type="text/javascript"></script> #}
 
 <div class="filter-and-search-section">
+
+  <!-- Menu Category Options -->
   <ul class="filter-options-list">
 
     {% for cat in horizontal_cats %}
@@ -32,8 +34,24 @@
 
     <hr class="sliding-underbar"/>
   </ul>
-  <div class="current-page-search-wrapper">
+
+  <!-- Restaurant Internal Search Bar -->
+  <form class="current-page-search-wrapper"
+        action="{% url 'PhotoMenu:restaurant_internal_search' restaurant.get_restaurant_url_path %}" method="post">
+    {% csrf_token %}
+
+    <!-- Hidden select element to always search for Restaurants -->
+    <select class="select-search-type" name="search-type" style="display: none;">
+      <option value="{{ restaurant.name }}" selected>Restaurant</option>
+    </select>
+
+
     <span class="current-page-search-icon"></span>
-    <input placeholder="Search {{ restaurant.name }}" class="current-page-search-bar" type="text">
-  </div>
+    <input placeholder="Search {{ restaurant.name }}"
+           class="current-page-search-bar" type="text"
+           autocomplete="off"
+           name="search-bar"
+           data-autocomplete-suggestions-href="{% url "PhotoMenu:drop_down_suggestions" %}">
+    <ul class="filter-search-suggestions-list"></ul>
+  </form>
 </div>
