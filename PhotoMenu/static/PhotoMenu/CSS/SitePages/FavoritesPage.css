@@ -13,9 +13,9 @@
 div.header-background{
     width: 100%;
     height: 80px;
-    background-image: url("../../Images/MockPhotos/IndianFood.jpg");
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
+    background-position: 0px -150px;
 }
 
 div.background-image-dark-overlay{

@@ -1,6 +1,5 @@
 /*-------------Background Image & Search Bar----------------*/
 .homepage-picture{
-    background-image: url("../../Images/MockPhotos/MobileHomepagePic.jpg");
     background-size: cover;
     height: 400px;
 }
