@@ -83,7 +83,7 @@ var mobileSearchModal = (function(){
 
     // return public pointers to private variables & functions
     return {
-
+        
     };
 
 })();
@@ -95,9 +95,16 @@ var desktopHeaderSearch = (function () {
     var suggestionsList = searchBarContainer.querySelector("ul.header-search-suggestions-list");
 
     // bind events
-    searchInput.addEventListener('focus', displaySearchSuggestionsList);
-    documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
-    searchInput.addEventListener('keyup', queryForSuggestions);
+    searchInput.addEventListener('focus', function (event) {
+        displaySearchSuggestionsList(event, suggestionsList);
+    });
+    documentModule.addOnClickFunction(function (event) {
+        selectSuggestionsOrBlurEvent(event, searchInput, searchBarContainer, suggestionsList);
+    });
+    searchInput.addEventListener('keyup', function(event) {
+        var destinationFile = event.target.getAttribute("data-autocomplete-suggestions-href");
+        queryForSuggestions(event, searchInput, suggestionsList, destinationFile, 'Restaurant');
+    });
 
     // public variables
 
@@ -106,11 +113,10 @@ var desktopHeaderSearch = (function () {
     // public functions
 
     // private functions
-    function selectSuggestionsOrBlurEvent(event) {
+    function selectSuggestionsOrBlurEvent(event, searchInput, searchBarContainer, suggestionsList) {
         var targetElement = event.target;
         if (targetElement.parentNode === suggestionsList) {
-            var suggestion_text = targetElement.innerHTML;
-            searchInput.value = suggestion_text;
+            searchInput.value = targetElement.innerHTML;
             searchBarContainer.submit();
         }
         else if (targetElement !== searchInput) {
@@ -118,30 +124,29 @@ var desktopHeaderSearch = (function () {
         }
     }
     
-    function displaySearchSuggestionsList(event) {
+    function displaySearchSuggestionsList(event, suggestionsList) {
         suggestionsList.style.display = "block";
     }
 
-    function hideSearchSuggestionsList(event) {
-        suggestionsList.style.display = "none";
-    }
-
-    function queryForSuggestions(event) {
-        var destination_file = "../drop-down-suggestions/";
+    function queryForSuggestions(event, searchInput, suggestionsList, destinationFile, searchType) {
+        // var destination_file = "../drop-down-suggestions/";
         var csrfMiddlewareToken = ajax.getCSRFToken();
         var json_data = {
             "search-bar": searchInput.value,
-            "search-type": 'Restaurant'         // by default, the desktop search bar always searches restaurant
+            "search-type": searchType         // by default, the desktop search bar always searches restaurant
         }
         var postAjaxFunction = function(result){
             suggestionsList.innerHTML = result;
         }
 
-        ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
+        ajax.send_ajax_request(destinationFile, json_data, csrfMiddlewareToken, postAjaxFunction);
     }
 
     // return public pointers to private variables & functions
     return {
+        selectSuggestionsOrBlurEvent: selectSuggestionsOrBlurEvent,
+        displaySearchSuggestionsList: displaySearchSuggestionsList,
+        queryForSuggestions: queryForSuggestions
 
     };
 

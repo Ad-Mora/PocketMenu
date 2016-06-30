@@ -11,7 +11,7 @@ var foodEntry = (function () {
     // private variables
     var MAX_NUMBER_OF_SCROLL_LISTENERS = 4;
     var scrollListenersCount = 0;
-    var bufferCutOffDepth = window.innerHeight;
+    var bufferCutOffDepth = window.innerHeight + 500;
     var intializeFoodEntries = bindAllFoodEntriesWithClickEvent();
 
     // public variables
@@ -76,7 +76,7 @@ var foodEntry = (function () {
         // because its possible this function can get called multiple times,
         // we should esnure that there is only 1 event listener
         document.removeEventListener('scroll', loadFoodsAboveBufferCutoff);
-        document.addEventListener('scroll', loadFoodsAboveBufferCutoff);
+        // document.addEventListener('scroll', loadFoodsAboveBufferCutoff);
         loadFoodsAboveBufferCutoff();
 
 
