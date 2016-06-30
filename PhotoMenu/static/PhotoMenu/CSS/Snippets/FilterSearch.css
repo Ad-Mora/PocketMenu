@@ -132,7 +132,7 @@ div.current-page-search-wrapper{
         left: 3px;
     }
     div.filter-and-search-section{
-        display: inline-block;
+        display: block;
     }
 
 }

@@ -50,8 +50,8 @@ var moreOptions = (function(){
     var barCategoryNamesToBarElements = getBarCategoryNamesToBarElements()
 
     // headerCategoryExtraScrollDetectHeight must be larger than headerCategoryScrollToPadding
-    var headerCategoryExtraScrollDetectHeight = 10;
-    var headerCategoryScrollToPadding = 0;
+    var headerCategoryExtraScrollDetectHeight = 20;
+    var headerCategoryScrollToPadding = 10;
 
     var desktopWidth = 800;
 
@@ -120,18 +120,6 @@ var moreOptions = (function(){
         return visibleBarCategoryNameToVisibleBarCategoryElement;
     }
 
-    // Get dictionary of hidden more box category names to hidden more box category elements
-    // function getHiddenCategoryNamesToHiddenCategoryElements() {
-    //     var moreBoxCategoryNames = [];
-    //     var hiddenOptionName;
-    //     var hiddenCategoryNamesToHiddenCategoryElements = {}
-    //     for (var i = 0; i < Object.keys(hiddenOptions).length; i++) {
-    //         hiddenOptionName = hiddenOptions[i].firstElementChild.textContent;
-    //         hiddenCategoryNamesToHiddenCategoryElements[hiddenOptionName] = hiddenOptions[i];
-    //     }
-    //     return hiddenCategoryNamesToHiddenCategoryElements;
-    // }
-
     // Get a dictionary of category header positions to category names
     function getCategoryHeaderPositionsToCategoryNames() {
         var headerCategoryNamesToHeaderElements = getHeaderCategoryNamesToHeaderElements();
@@ -166,7 +154,13 @@ var moreOptions = (function(){
 
     function getCategoryBarHeight() {
         var categoryBarHeight = window.getComputedStyle(categoryBar).getPropertyValue("height");
-        return parseFloat(categoryBarHeight, 10);
+        var borderTopHeight = window.getComputedStyle(categoryBar).getPropertyValue("border-top-width");
+        var borderBottomHeight = window.getComputedStyle(categoryBar).getPropertyValue("border-bottom-width");
+
+        categoryBarHeight = parseFloat(categoryBarHeight, 10);
+        borderBottomHeight = parseFloat(borderBottomHeight, 10);
+        borderTopHeight = parseFloat(borderTopHeight, 10);
+        return categoryBarHeight + borderBottomHeight + borderTopHeight;
     }
 
     // Vertical position is defined as from the top of the visible document (top is position 0)
@@ -246,34 +240,65 @@ var moreOptions = (function(){
     }
 
     // duration is in milliseconds
-    function smoothScroll(endPosition, duration) {
-        var startPosition = window.scrollY;
-        var distance = endPosition - startPosition;
-        var increment = distance/(duration/3);
-        var stopAnimation;
+    function smoothScroll(element, duration) {
 
-        var animateScroll = function () {
-            window.scrollBy(0, increment);
-            stopAnimation();
-        };
-
-        stopAnimation = function() {
-            var currentPosition = window.scrollY;
-
-            if (increment >= 0) {
-                if ( (currentPosition >= (endPosition - increment)) ||
-                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
-                    clearInterval(runAnimation);
-                }
-            } else {
-                if (currentPosition <= endPosition || currentPosition <= 0) {
-                    clearInterval(runAnimation);
-                }
+        function getEndPosition() {
+            var endPosition = getVerticalPosition(element) - getHeaderHeight() - headerCategoryScrollToPadding;
+            if (window.innerWidth >= desktopWidth) {
+                endPosition -= getCategoryBarHeight();
             }
+            return endPosition;
         }
-        var runAnimation = setInterval(animateScroll, 3);
+        var endPosition = getEndPosition();
+        window.scrollTo(0, endPosition);
 
-//        window.scrollBy(0, distance);
+////      var startPosition = window.scrollY + getHeaderHeight() + getCategoryBarHeight();
+//        var startPosition = window.scrollY;
+//        var endPosition = getEndPosition();
+//        var distance = endPosition - startPosition
+//        var increment = distance/(duration/3);
+//
+//        var animateScroll = function () {
+//            window.scrollBy(0, increment);
+//
+//            var currentPosition = window.scrollY;
+//            if (increment >= 0) {
+//                if ( (currentPosition >= (endPosition - increment)) ||
+//                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+//                    clearInterval(runAnimation);
+//                }
+//            } else {
+//                if (currentPosition <= endPosition || currentPosition <= 0) {
+//                    clearInterval(runAnimation);
+//                }
+//            }
+//        };
+//        var runAnimation = setInterval(animateScroll, 3);
+
+
+// TEST STUFF BELOW
+
+//        var startPosition = window.scrollY;
+//        var endPosition = getEndPosition();
+//        var distance = endPosition - startPosition
+//        var increment = distance/duration;
+//
+//        var animateScroll = function () {
+//            window.scrollBy(0, increment);
+//
+//            var currentPosition = window.scrollY;
+//            if (increment >= 0) {
+//                if ( (currentPosition >= (endPosition - increment)) ||
+//                ((window.innerHeight + currentPosition) >= document.body.getBoundingClientRect().height) ) {
+//                    clearInterval(runAnimation);
+//                }
+//            } else {
+//                if (currentPosition <= endPosition || currentPosition <= 0) {
+//                    clearInterval(runAnimation);
+//                }
+//            }
+//        };
+//        var runAnimation = setInterval(animateScroll, 10);
     }
 
     // scroll to a specific header category
@@ -281,12 +306,7 @@ var moreOptions = (function(){
         var srcElement = event.currentTarget;
         var categoryName = srcElement.getAttribute("data-category-name");
         var elementToScrollTo = headerCategoryNamesToHeaderElements[categoryName];
-
-        var endPosition = getVerticalPosition(elementToScrollTo) - getHeaderHeight() - headerCategoryScrollToPadding;
-        if (window.innerWidth >= desktopWidth) {
-            endPosition -= getCategoryBarHeight();
-        }
-        smoothScroll(endPosition, 300);
+        smoothScroll(elementToScrollTo, 300);
     }
 
     // Move the orange underbar in the category bar to the correct location depending on
