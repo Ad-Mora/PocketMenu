@@ -76,7 +76,7 @@ var foodEntry = (function () {
         // because its possible this function can get called multiple times,
         // we should esnure that there is only 1 event listener
         document.removeEventListener('scroll', loadFoodsAboveBufferCutoff);
-        // document.addEventListener('scroll', loadFoodsAboveBufferCutoff);
+        document.addEventListener('scroll', loadFoodsAboveBufferCutoff);
         loadFoodsAboveBufferCutoff();
 
 
