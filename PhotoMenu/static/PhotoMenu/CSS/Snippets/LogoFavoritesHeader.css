@@ -37,7 +37,7 @@
         line-height: 55px;
     }
     .favorites-link{
-        margin-top: 9.5px;
+        margin-top: 5.5px;
     }
 }
 /* Desktop view */
@@ -49,6 +49,7 @@
         line-height: 55px;
         color: white;
         font-size: 18px;
+        font-weight: 500;
     }
     .header-links-separator{
         position: absolute;
