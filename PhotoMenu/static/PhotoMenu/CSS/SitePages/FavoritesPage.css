@@ -8,65 +8,57 @@
 .header-links-separator{
     display: none;
 }
-
-/*-------Title and Background Image------*/
 div.header-background{
     width: 100%;
-    height: 80px;
-    background-image: url("../../Images/MockPhotos/IndianFood.jpg");
+    height: 90px;
     -webkit-background-size: 100% auto;
     background-size: 100% auto;
+    background-position: 0px -20px;
+    background-repeat: no-repeat;
 }
-
 div.background-image-dark-overlay{
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,.4);
 }
-
 h1.favorites-header{
     text-align: center;
-    color: #FFFFFF;
-    line-height: 80px;
-    font-size: 20px;
+    color: white;
+    line-height: 90px;
+    font-size: 24px;
     font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/*-------Food Sections------*/
-ul.list-of-food-lists{
-
-}
-ul.food-type-section-food-list{
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
 }
 p.my-favorites-empty-message{
+    display: none;
     font-size: 16px;
+    line-height: 18px;
     color: #333333;
     text-align: center;
     margin: 30px 0px 0px 0px;
-    display: none;
 }
 
 /* Large mobile view */
-@media (min-width: 480px) {
-    ul.food-type-section-food-list{
-        width: 91%;
-        margin: 0px 0px 0px 4%;
-        padding: 0px 4px 0px 0px;
+@media (min-width: 355px) {
+    div.header-background{
+        height: 120px;
+    }
+    h1.favorites-header{
+        font-size: 28px;
+        line-height: 120px;
+    }
+    p.my-favorites-empty-message{
+        font-size: 18px;
+        line-height: 20px;
     }
 }
 
 @media (min-width: 650px) {
     div.header-background {
-        height: 120px;
+        height: 150px;
     }
     h1.favorites-header {
-        line-height: 120px;
-        font-size: 24px;
+        line-height: 150px;
+        font-size: 36px;
     }
 }
 
@@ -81,10 +73,7 @@ p.my-favorites-empty-message{
     span.navbar-mobile.header-search-icon{
         display: none;
     }
-}
-@media (min-width: 1200px) {
-    ul.list-of-food-lists{
-        max-width: 1240px;
-        margin: 0px auto 0px auto;
+    div.header-background{
+        background-position: 0px -100px;
     }
 }

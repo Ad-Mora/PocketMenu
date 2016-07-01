@@ -10,7 +10,6 @@ body{
 }
 .contact-page-header{
     height: 78px;
-    background-image: url("../../Images/MockPhotos/IndianFood.jpg");
     background-position: 0px 0px;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -23,7 +22,7 @@ body{
     vertical-align: middle;
     line-height: 78px;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
 }
 .contact-us-header-container{
@@ -116,6 +115,7 @@ body{
     background-color: #555555;
 }
 
+/* Large mobile view */
 @media (min-width: 355px) {
     .contact-page-header{
         height: 110px;
@@ -147,7 +147,6 @@ body{
     }
     .send-message{
         margin-top: 15px;
-        /*height: 40px;*/
         font-size: 18px;
     }
 }
@@ -155,27 +154,22 @@ body{
 @media (min-width: 800px) {
     .contact-page-header{
         height: 150px;
-        background-position: 0px -85px;
+        background-position: 0px -100px;
     }
     .picture-text{
         line-height: 150px;
-        font-size: 48px;
+        font-size: 36px;
     }
     .text-header{
         margin-top: 20px;
         font-size: 28px;
-        /*margin-left: 15%;*/
     }
     .divider-line{
-        /*margin-left: 15%;*/
         width: 100%;
     }
     .contact-us-text{
-        /*margin-left: 15%;*/
-        /*margin-right: 20%;*/
         margin-bottom: 20px;
         font-size: 16px;
-        /*width: 600px;*/
     }
     .contact-us-header-container{
         max-width: 600px;
@@ -184,24 +178,19 @@ body{
         max-width: 600px;
     }
     .input-field-name{
-        /*margin-left: 15%;*/
         font-size: 16px;
     }
     .text-input-field{
-        /*margin-left: 15%;*/
         height: 34px;
         font-size: 14px;
         width: 50%;
     }
     .message-area{
-        /*margin-left: 15%;*/
         font-size: 14px;
         width: 100%
     }
     .send-message{
         margin-top: 20px;
-        /*margin-left: 15%;*/
-        /*width: 30%;*/
         font-size: 16px;
         max-width: 200px;
     }
