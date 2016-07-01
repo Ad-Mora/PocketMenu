@@ -3,11 +3,9 @@ li.food-entry-li, li.ghost-food-item{
     width: 48%;
     max-width: 290px;
 }
-
 li.ghost-food-item{
     height: 0px;
 }
-
 h3.food-item-restaurant-name{
     text-align: center;
     font-weight: bold;
@@ -15,7 +13,6 @@ h3.food-item-restaurant-name{
     margin-bottom: 10px;
     color: #333333;
 }
-
 div.food-entry-wrapper{
     width: 100%;
     background-color: #FFFFFF;
@@ -24,34 +21,26 @@ div.food-entry-wrapper{
     -moz-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
     box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
 }
-
 h4.food-entry-name{
     font-size: 13px;
     overflow: hidden;
     text-align: left;
     margin: 3% 0px 3% 4%;
     font-weight: bold;
-    /*-ms-text-overflow: ellipsis;*/
-    /*text-overflow: ellipsis;*/
-    /*white-space: nowrap;*/
     width: 92%;
     color: rgb(53,53,53);
 }
-
 p.food-description-name{
     display: none;
 }
-
 div.food-entry-image{
     width: 92%;
     margin: 4% 4% 0% 4%;
 }
-
 div.food-entry-image img{
     width: 100%;
     height: auto;
 }
-
 li.unloaded-image img{
     background-color: #EEEEEE;
     height: auto;
@@ -59,7 +48,6 @@ li.unloaded-image img{
     padding: 23% 10px 23% 10px;
     box-sizing: border-box;
 }
-
 p.food-entry-price{
     width: 92%;
     font-size: 13px;
@@ -69,27 +57,23 @@ p.food-entry-price{
 }
 
 /*-----------------Large Mobile----------------*/
-@media (min-width: 365px) {
-
+@media (min-width: 355px) {
     div.food-entry-wrapper{
         padding: 0px;
     }
-
     h4.food-entry-name{
-        font-size: 14px;
+        font-size: 16px;
+    }
+    p.food-entry-price{
+        font-size: 16px;
     }
 
-    p.food-entry-price{
-        font-size: 14px;
-    }
 }
 
-/*-----------------Tablet----------------*/
-@media (min-width: 480px) {
-    h4.food-entry-name{
-        margin: 5px 0px 5px 4%;
-    }
 
+/*-----------------Tablet----------------*/
+/*
+@media (min-width: 480px) {
     p.food-description-name{
         display: block;
         font-size: 14px;
@@ -99,18 +83,11 @@ p.food-entry-price{
         width: 92%;
         line-height: 16px;
     }
-
-    div.food-entry-wrapper{
-        /*background-color: transparent;*/
-        /*border: 0px;*/
-        /*-webkit-box-shadow: none;*/
-        /*-moz-box-shadow: none;*/
-        /*box-shadow: none;*/
-    }
 }
+*/
 
 /*--------------Desktop-----------------*/
-@media (min-width: 670px) {
+@media (min-width: 800px) {
     li.food-entry-li, li.ghost-food-item{
         -webkit-flex-grow: 1;
         flex-grow: 1;
@@ -118,5 +95,14 @@ p.food-entry-price{
         flex-basis: 215px;
         width: 290px;
         margin: 0px 1% 15px 1%;
+    }
+    p.food-description-name{
+        display: block;
+        font-size: 16px;
+        overflow: hidden;
+        margin: 0px 0px 7px 4%;
+        color: rgb(120,120,120);
+        width: 92%;
+        line-height: 16px;
     }
 }
