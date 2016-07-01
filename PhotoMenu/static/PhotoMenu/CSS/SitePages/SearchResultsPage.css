@@ -2,7 +2,7 @@ h1.search-page-title{
     font-size: 28px;
     font-weight: 200;
     color: #555555;
-    margin: 15px 0px 10px 0px;
+    margin-top: 15px;
     text-align: center;
 }
 
@@ -78,7 +78,7 @@ ul.search-results-list{
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin: 0px 0px 30px 0px;
+    margin-bottom: 30px;
 }
 div.no-results-help-container{
     margin: 0px 4% 0px 4%;
@@ -93,11 +93,14 @@ p.no-results-suggestion{
 }
 ul.no-results-suggestions-list{
     list-style-type: disc;
-    padding: 0px 0px 0px 30px;
+    padding-left: 30px;
 }
 /*-----Large mobile view-----*/
 @media (min-width: 355px) {
-
+    h1.search-page-title{
+        font-size: 36px;
+        font-weight: 200;
+    }
     div.search-bar-wrapper{
         height: 40px;
     }
@@ -131,7 +134,6 @@ ul.no-results-suggestions-list{
         width: 700px;
         text-align: left;
     }
-
     div.search-bar-wrapper {
         height: 45px;
         width: 620px;
@@ -140,22 +142,23 @@ ul.no-results-suggestions-list{
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
     }
-
     input.search-bar {
         width: 400px;
         border-radius: 0px;
     }
-
     ul.search-suggestions-list{
         width: 100%;
     }
-
     input.search-submit-button {
         width: 90px;
         height: 45px;
     }
+    div.full-width-seperator{
+        margin-bottom: 20px;
+    }
     h3.food-item-restaurant-name{
         display: block;
+
     }
 }
 
