@@ -235,6 +235,9 @@ ul.search-suggestions-list{
     .why-us-header{
         font-size: 32px;
     }
+    .why-us-detail{
+        margin-bottom: 20px;
+    }
     .reason-section{
         width: 33%;
         float: left;
@@ -326,8 +329,7 @@ ul.search-suggestions-list{
 }
 
 @media (min-width: 800px) {
-	.location-section.four-restaurats
- 	{
+	.location-section.four-restaurats {
 		max-width: 400px;
 		-moz-flex-basis:400px;
 		-webkit-flex-basis:400px;
@@ -336,13 +338,11 @@ ul.search-suggestions-list{
 }
 
 @media (min-width: 1200px) {
-	.all-locations-wrapper.four-restaurats
- 	{
+	.all-locations-wrapper.four-restaurats {
 		max-width: 1200px;
 	}
 
-	.location-section.four-restaurats
- 		{
+	.location-section.four-restaurats {
 		max-width: 300px;
 		-moz-flex-basis:300px;
 		-webkit-flex-basis:300px;
