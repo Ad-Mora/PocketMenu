@@ -70,21 +70,12 @@ p.food-entry-price{
 
 }
 
-
 /*-----------------Tablet----------------*/
-/*
-@media (min-width: 480px) {
-    p.food-description-name{
-        display: block;
-        font-size: 14px;
-        overflow: hidden;
-        margin: 0px 0px 7px 4%;
-        color: rgb(120,120,120);
-        width: 92%;
-        line-height: 16px;
+@media (min-width: 600px) {
+    li.food-entry-li, li.ghost-food-item{
+        width: 31%;
     }
 }
-*/
 
 /*--------------Desktop-----------------*/
 @media (min-width: 800px) {
