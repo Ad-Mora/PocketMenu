@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
 
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
-  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodSection.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntryGrid.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
@@ -38,7 +38,7 @@
   {%  include "PhotoMenu/Snippets/MobileSearchModal.html" %}
 
   <!-- Background Image w/ title -->
-  <div class="header-background">
+  <div class="header-background" style="background-image: url('{{ MEDIA_URL }}miracle-of-science/VeggieSkewers.jpg')">
     <div class="background-image-dark-overlay">
       <h1 class="favorites-header">My Favorites</h1>
     </div>

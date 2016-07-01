@@ -8,6 +8,7 @@
 .logo{
     display: inline-block;
     line-height: 45px;
+    margin-top: 9px;
     margin-left: 10px;
 }
 .header-search-bar-with-icon{
@@ -42,12 +43,14 @@
         line-height: 55px;
     }
     .favorites-link{
-        right: 48px;
-        margin-top: 8.5px;
+        right: 50px;
+        margin-top: 5.5px;
     }
     .search-icon{
-        /* height: 25px; */
-        margin-top: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 30px;
+        margin-top: 0px;
     }
 }
 
@@ -63,6 +66,7 @@
         line-height: 55px;
         color: white;
         font-size: 18px;
+        font-weight: 500;
     }
     .header-links-separator{
         display: inline-block;

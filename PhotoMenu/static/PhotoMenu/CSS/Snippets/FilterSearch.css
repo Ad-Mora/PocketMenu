@@ -17,13 +17,13 @@ li.filter-option{
     line-height: 45px;
 }
 span.filter-name{
-    font-size: 16px;
+    font-size: 17px;
     color: #555555;
     padding-left: 10px;
     padding-right: 10px;
 }
 span.hidden-filter-name{
-    font-size: 16px;
+    font-size: 17px;
     color: #555555;
 }
 span.filter-name:hover{
