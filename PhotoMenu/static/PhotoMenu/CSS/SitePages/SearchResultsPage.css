@@ -56,7 +56,7 @@ p.number-of-search-results{
     color: #555555;
     margin-left: 4%;
 }
-div.full-width-seperator{
+div.full-width-separator{
     height: 1px;
     width: 92%;
     margin: 8px 4% 4px 4%;
@@ -129,12 +129,19 @@ ul.no-results-suggestions-list{
 
 /*-----Desktop view-----*/
 @media (min-width: 800px) {
+    div.top-section{
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
     h1.search-page-title {
-        margin: 15px 0px 10px 4%;
+        margin: 15px 0px 10px 0px;
         width: 700px;
         text-align: left;
     }
     div.search-bar-wrapper {
+        margin-left: 0px;
+        margin-right: 0px;
         height: 45px;
         width: 620px;
         position: relative;
@@ -153,30 +160,21 @@ ul.no-results-suggestions-list{
         width: 90px;
         height: 45px;
     }
-    div.full-width-seperator{
-        margin-bottom: 20px;
+    div.full-width-separator{
+        margin-bottom: 15px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    p.number-of-search-results{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    div.no-results-help-container{
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
     }
     h3.food-item-restaurant-name{
         display: block;
-
-    }
-}
-
-@media (min-width: 1200px) {
-    div.top-section{
-        width: 1200px;
-        margin: 0px auto 0px auto;
-    }
-    ul.search-results-list{
-        max-width: 1125px;
-        margin: 0px auto 30px auto;
-    }
-    div.no-results-help-container{
-        width: 1125px;
-        margin: 0px auto 30px auto;
-    }
-    div.more-results-navigator{
-        width: 1100px;
-        margin: 0px auto 25px auto;
     }
 }
