@@ -115,6 +115,7 @@ body{
     background-color: #555555;
 }
 
+/* Large mobile view */
 @media (min-width: 355px) {
     .contact-page-header{
         height: 110px;

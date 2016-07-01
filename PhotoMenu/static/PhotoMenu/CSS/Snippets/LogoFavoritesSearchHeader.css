@@ -42,12 +42,14 @@
         line-height: 55px;
     }
     .favorites-link{
-        right: 48px;
-        margin-top: 8.5px;
+        right: 50px;
+        margin-top: 5.5px;
     }
     .search-icon{
-        /* height: 25px; */
-        margin-top: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 30px;
+        margin-top: 0px;
     }
 }
 
