@@ -36,13 +36,16 @@
   <!-- Background Image w/ title -->
   <div class="header-background" style="background-image: url('{{ restaurant.header_image.url }}')">
     <div class="background-image-dark-overlay">
-      <h1 class="restaurant-name">{{ restaurant.name }}</h1>
-      <p class="restaurant-address">{{ restaurant.address }}</p>
-      <img class="white-clock-icon" src="{% static "PhotoMenu/Images/Icons/WhiteClockIcon.png" %}">
-      <div class="all-restaurant-hours">
-        {% for item in store_hours %}
-          <p class="restaurant-hours">{{ item.0 }} {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
-        {% endfor %}
+      <div class="restaurant-info-wrapper">
+        <h1 class="restaurant-name">{{ restaurant.name }}</h1>
+        <p class="restaurant-address">410 Memorial Drive Cambridge, Ma 02139</p> {# { restaurant.address } #}
+        <div class="all-restaurant-hours">
+{#          <img class="white-clock-icon" src="{% static "PhotoMenu/Images/Icons/WhiteClockIcon.png" %}">#}
+          {% for item in store_hours %}
+            <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
+          {% endfor %}
+        </div>
+
       </div>
     </div>
   </div>
