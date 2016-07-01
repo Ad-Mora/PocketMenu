@@ -34,6 +34,7 @@
 /*----------Search Option Types----------*/
 div.search-options-wrapper{
     width: 100%;
+    margin: 16px auto 0px auto;
 }
 input.search-option-radio-btn ~ label.search-option-label{
     color: #FFFFFF;

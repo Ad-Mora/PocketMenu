@@ -9,6 +9,7 @@ h1.search-page-title{
 /*-----Search bar-----*/
 div.search-options-wrapper{
     width: 92%;
+    margin: 16px auto 0px auto;
 }
 div.search-bar-wrapper{
     width: 92%;
