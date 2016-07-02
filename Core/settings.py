@@ -128,8 +128,8 @@ MEDIA_URL = '/media/'
 # Settings I changed because Django told me to :(    #
 ######################################################
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #False
-ALLOWED_HOSTS = [] #['chomps.io']
+DEBUG = False
+ALLOWED_HOSTS = ['chomps.io', 'chompsio.herokuapp.com']
 # SECURE_HSTS_SECONDS = 0
 # SECURE_CONTENT_TYPE_NOSNIFF = True
 # SECURE_BROWSER_XSS_FILTER = True
