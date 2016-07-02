@@ -74,8 +74,12 @@ WSGI_APPLICATION = 'Core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'restaurants',
+        'USER': 'db_name',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -128,8 +132,8 @@ MEDIA_URL = '/media/'
 # Settings I changed because Django told me to :(    #
 ######################################################
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['chomps.io', 'chompsio.herokuapp.com']
+DEBUG = True #False
+ALLOWED_HOSTS = [] #['chomps.io', 'chompsio.herokuapp.com']
 # SECURE_HSTS_SECONDS = 0
 # SECURE_CONTENT_TYPE_NOSNIFF = True
 # SECURE_BROWSER_XSS_FILTER = True
@@ -139,6 +143,7 @@ ALLOWED_HOSTS = ['chomps.io', 'chompsio.herokuapp.com']
 # CSRF_COOKIE_HTTPONLY = False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
 #                                 # on every page we use Ajax. This isn't difficult we just haven't done it yet
 # X_FRAME_OPTIONS = 'DENY'
+#CONN_MAX_AGE 0
 
 
 
