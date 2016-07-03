@@ -1,0 +1,181 @@
+h1.search-page-title{
+    font-size: 28px;
+    font-weight: 200;
+    color: #555555;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/*-----Search bar-----*/
+div.search-options-wrapper{
+    width: 92%;
+    margin: 16px auto 0px auto;
+}
+div.search-bar-wrapper{
+    width: 92%;
+    height: 35px;
+    margin-left: 4%;
+    margin-top: 12px;
+    background-color: white;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+input.search-bar{
+    float: left;
+    margin-left: 0px;
+    width: 85%;
+    border-radius: 3px 0px 0px 3px;
+}
+ul.search-suggestions-list{
+    width: 85%;
+}
+input.search-submit-button{
+    display: inline-block;
+    float: right;
+    width: 15%;
+    height: 35px;
+    background-color: #448AFF;
+    background-image: url("../../Images/Icons/WhiteSearchIcon.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    -webkit-background-size: 20px 20px;
+    background-position: center center;
+    border-radius: 0px 3px 3px 0px;
+    -webkit-border-radius: 0px 3px 3px 0px;
+    -moz-border-radius: 0px 3px 3px 0px;
+}
+button.search-button{
+    display: none;
+}
+/*-----End search bar-----*/
+
+p.number-of-search-results{
+    display: block;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #555555;
+    margin-left: 4%;
+}
+div.full-width-separator{
+    height: 1px;
+    width: 92%;
+    margin: 8px 4% 4px 4%;
+    background-color: #979797;
+}
+
+/*----------Search Option Types----------*/
+input.search-option-radio-btn ~ label.search-option-label{
+    color: #555555;
+}
+input.search-option-radio-btn:checked ~ label.search-option-label{
+    border-bottom: 4px solid #FF9800;
+    color: #FF9800;
+}
+
+/*-----------Food Results List-----------*/
+ul.search-results-list{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+div.no-results-help-container{
+    margin: 0px 4% 0px 4%;
+}
+p.no-results-details{
+    color: #333333;
+    font-weight: bold;
+    font-size: 16px;
+}
+p.no-results-suggestion{
+
+}
+ul.no-results-suggestions-list{
+    list-style-type: disc;
+    padding-left: 30px;
+}
+/*-----Large mobile view-----*/
+@media (min-width: 355px) {
+    h1.search-page-title{
+        font-size: 36px;
+        font-weight: 200;
+    }
+    div.search-bar-wrapper{
+        height: 40px;
+    }
+    input.search-submit-button{
+        height: 40px;
+    }
+    p.number-of-search-results{
+        font-size: 14px;
+    }
+    a.results-page{
+        font-size: 16px;
+    }
+    span.page-icon{
+        width: 25px;
+        height: 20px;
+        top: 6px;
+    }
+}
+
+@media (min-width: 480px) {
+    ul.search-results-list{
+        width: 91%;
+        margin: 0px 0px 30px 4%;
+    }
+}
+
+/*-----Desktop view-----*/
+@media (min-width: 800px) {
+    div.top-section{
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h1.search-page-title {
+        margin: 15px 0px 10px 0px;
+        width: 700px;
+        text-align: left;
+    }
+    div.search-bar-wrapper {
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 45px;
+        width: 620px;
+        position: relative;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+    }
+    input.search-bar {
+        width: 400px;
+        border-radius: 0px;
+    }
+    ul.search-suggestions-list{
+        width: 100%;
+    }
+    input.search-submit-button {
+        width: 90px;
+        height: 45px;
+    }
+    div.full-width-separator{
+        margin-bottom: 15px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    p.number-of-search-results{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    div.no-results-help-container{
+        width: 92%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h3.food-item-restaurant-name{
+        display: block;
+    }
+}
