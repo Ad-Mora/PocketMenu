@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from secret_settings import *
+# from secret_settings import *
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -145,7 +145,7 @@ CSRF_COOKIE_HTTPONLY = False    # ----> Ideally we'd set this to true but that m
 X_FRAME_OPTIONS = 'DENY'
 CONN_MAX_AGE = 0
 
-
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 
