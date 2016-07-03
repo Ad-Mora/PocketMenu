@@ -3,3 +3,4 @@ Core/secret_settings.py
 db.sqlite3
 *.pyc
 venv/*
+.env

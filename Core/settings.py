@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'Core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':   os.environ['DATABASE_NAME'],
-        'USER':   os.environ['DATABASE_USER'],
+        'NAME': os.environ['DATABASE_NAME'],
+        'USER': os.environ['DATABASE_USER'],
         'PASSWORD': os.environ['PASSWORD'],
         'HOST': os.environ['HOST'],
         'PORT': os.environ['PORT'],
@@ -85,7 +85,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Password validationf
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -132,18 +132,18 @@ MEDIA_URL = '/media/'
 # Settings I changed because Django told me to :(    #
 ######################################################
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ['DEBUG'] == 'True' #False
 ALLOWED_HOSTS = ['chomps.io', 'chompsio.herokuapp.com']
-SECURE_HSTS_SECONDS = 0
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
+SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS']) #0
+SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True' #True
+SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True' #True
+SECURE_SSL_REDIRECT = os.environ['SECURE_SSL_REDIRECT'] == 'True'#False
+SESSION_COOKIE_SECURE = os.environ['SESSION_COOKIE_SECURE'] == 'True'#True
+CSRF_COOKIE_SECURE = os.environ['CSRF_COOKIE_SECURE'] == 'True'#True
+CSRF_COOKIE_HTTPONLY = os.environ['CSRF_COOKIE_HTTPONLY'] == 'True'#False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
                                 # on every page we use Ajax. This isn't difficult we just haven't done it yet
-X_FRAME_OPTIONS = 'DENY'
-CONN_MAX_AGE = 0
+X_FRAME_OPTIONS = os.environ['X_FRAME_OPTIONS'] #'DENY'
+CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE']) #0
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
