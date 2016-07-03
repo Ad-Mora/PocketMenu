@@ -132,18 +132,18 @@ MEDIA_URL = '/media/'
 # Settings I changed because Django told me to :(    #
 ######################################################
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #False
-ALLOWED_HOSTS = [] #['chomps.io', 'chompsio.herokuapp.com']
-# SECURE_HSTS_SECONDS = 0
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_SSL_REDIRECT = False
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# CSRF_COOKIE_HTTPONLY = False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
-#                                 # on every page we use Ajax. This isn't difficult we just haven't done it yet
-# X_FRAME_OPTIONS = 'DENY'
-#CONN_MAX_AGE 0
+DEBUG = False
+ALLOWED_HOSTS = ['chomps.io', 'chompsio.herokuapp.com']
+SECURE_HSTS_SECONDS = 0
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
+                                # on every page we use Ajax. This isn't difficult we just haven't done it yet
+X_FRAME_OPTIONS = 'DENY'
+CONN_MAX_AGE = 0
 
 
 
