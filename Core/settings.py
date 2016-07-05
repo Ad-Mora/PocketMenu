@@ -76,16 +76,16 @@ WSGI_APPLICATION = 'Core.wsgi.application'
 
 DATABASES = {}
 # --------Necessary for python manage.py runserver------
-DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'HOST': os.environ['HOST'],
-        'PORT': os.environ['PORT'],
-    }
+# DATABASES['default'] = {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ['DATABASE_NAME'],
+#         'USER': os.environ['DATABASE_USER'],
+#         'PASSWORD': os.environ['PASSWORD'],
+#         'HOST': os.environ['HOST'],
+#         'PORT': os.environ['PORT'],
+#     }
 # --------Necessary for heroku local---------------------
-# DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config()
 
 
 
