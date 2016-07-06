@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
-# from secret_settings import *
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -22,8 +21,6 @@ BASE_DIR = os.path.dirname(CURRENT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
-
-# Secret key here
 
 
 # Application definition
@@ -70,6 +67,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Core.wsgi.application'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.RemoteUserBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
