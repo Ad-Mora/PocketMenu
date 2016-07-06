@@ -129,7 +129,10 @@ input.submit-mobile-search-modal{
     -moz-border-radius: 3px;
     border-radius: 3px;
     margin: 10px 0px 0px 0px;
-    letter-spacing: 0.5px
+    letter-spacing: 0.5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 span.close-mobile-search-modal{

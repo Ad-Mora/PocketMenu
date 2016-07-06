@@ -48,6 +48,8 @@
     }
     .search-icon{
         top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
         transform: translateY(-50%);
         height: 30px;
         margin-top: 0px;
