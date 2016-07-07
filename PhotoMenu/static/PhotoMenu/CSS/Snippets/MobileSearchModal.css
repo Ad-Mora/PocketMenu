@@ -130,8 +130,8 @@ input.submit-mobile-search-modal{
     border-radius: 3px;
     margin: 10px 0px 0px 0px;
     letter-spacing: 0.5px;
-    -webkit-appearance: none;
     -moz-appearance: none;
+    -webkit-appearance: none;
     appearance: none;
 }
 

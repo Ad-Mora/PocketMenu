@@ -32,6 +32,9 @@
     right: 10px;
     margin-top: 11px;
     height: 23px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 /* Large mobile view */
@@ -48,7 +51,6 @@
     }
     .search-icon{
         top: 50%;
-        transform: translateY(-50%);
         height: 30px;
         margin-top: 0px;
     }
