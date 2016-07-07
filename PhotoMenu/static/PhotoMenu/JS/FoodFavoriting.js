@@ -26,8 +26,10 @@ var foodFavoriting = (function () {
             return JSON.parse( localStorage.getItem("dictOfFavoriteFoods") );
         }
         // otherwise just create a new dict and store it locally
-        localStorage.setItem("dictOfFavoriteFoods", JSON.stringify({}) );
-        return {};
+        else {
+            localStorage.setItem("dictOfFavoriteFoods", JSON.stringify({}) );
+            return {};
+        }
     }
 
     function setInterestDataForFoodList() {
