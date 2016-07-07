@@ -4,7 +4,7 @@ div.mobile-inspector-background-overlay {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: rgba(238,238,238,0.9);
+    background-color: rgb(238,238,238);
     z-index: 2;
 }
 
