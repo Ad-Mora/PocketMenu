@@ -33,6 +33,12 @@ ul.list-of-mobile-inspectors{
     transform: translate3d(-320px, 0px, 0px);
 }
 
+ul.enable-list-gliding{
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    transition: .3s ease;
+}
+
 li.mobile-inspector-view-wrapper {
     width: 320px;
     max-height: 100%;

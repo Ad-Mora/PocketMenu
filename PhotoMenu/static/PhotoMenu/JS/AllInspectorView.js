@@ -144,6 +144,7 @@ var mobileInspectorView = (function () {
     var previousFood;
     var centerFood;
     var nextFood;
+    var GLIDING_ANIMATION_CLASS = "enable-list-gliding";
 
     var initializeInspectorViewList = _addLeftAndRightInspectorView();
     var intializeInspectorViewDimensions = _changeInspectorViewDimensionsOnResize();
@@ -183,25 +184,41 @@ var mobileInspectorView = (function () {
     }
 
     function _onDragEnd(direction, deltaX, deltaY) {
-        var MIN_SWIPE_DISTANCE = window.innerWidth * 0.4;
-
+        var MIN_SWIPE_DISTANCE = window.innerWidth * 0.1;
+        var GLIDE_TO_PLACE_DURATION = 300;
+        // add gliding animation class here
+        listOfMobileInspectors.classList.add(GLIDING_ANIMATION_CLASS);
+        
         if (direction == 'left' && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
             listOfMobileInspectors.style.webkitTransform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.mozTransform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.transform = "translate3d("+ LEFT_POSITION +"px,0px,0px)";
-            allInspectorView.showNextFood(null);
+            setTimeout(function () {
+                // remove gliding animation class here
+                listOfMobileInspectors.classList.remove(GLIDING_ANIMATION_CLASS);
+                allInspectorView.showNextFood(null);
+            }, GLIDE_TO_PLACE_DURATION);
+
         }
         else if (direction == 'right' && Math.abs(deltaX) > MIN_SWIPE_DISTANCE) {
             listOfMobileInspectors.style.webkitTransform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.mozTransform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.transform = "translate3d("+ RIGHT_POSITION +"px,0px,0px)";
-            allInspectorView.showPreviousFood(null);
+            setTimeout(function () {
+                // remove gliding animation class here
+                listOfMobileInspectors.classList.remove(GLIDING_ANIMATION_CLASS);
+                allInspectorView.showPreviousFood(null);
+            }, GLIDE_TO_PLACE_DURATION);
+
         }
         else {
             listOfMobileInspectors.style.mozTransform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.webkitTransform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
             listOfMobileInspectors.style.transform = "translate3d("+ CENTER_POSITION +"px,0px,0px)";
-
+            setTimeout(function () {
+                // remove gliding animation class here
+                listOfMobileInspectors.classList.remove(GLIDING_ANIMATION_CLASS);
+            }, GLIDE_TO_PLACE_DURATION);
         }
     }
 
