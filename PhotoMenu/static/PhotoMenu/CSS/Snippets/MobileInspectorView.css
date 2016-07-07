@@ -34,9 +34,9 @@ ul.list-of-mobile-inspectors{
 }
 
 ul.enable-list-gliding{
-    -webkit-transition: .3s ease;
-    -moz-transition: .3s ease;
-    transition: .3s ease;
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    transition: .2s ease;
 }
 
 li.mobile-inspector-view-wrapper {

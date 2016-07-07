@@ -24,6 +24,7 @@
   {% include "PhotoMenu/Snippets/FavoritesLink.html" %}
   <img class="search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
 </div>
+<div class="mobile-category-menu-background-overlay hide-mobile-category-menu"></div>
 <ul class="mobile-categories-menu-list hide-mobile-category-menu" data-categories-count="{{ categories.items|length }}">
   <li class="mobile-categories-menu-header">Menu Categories</li>
   {% for category, item_list in categories.items %}

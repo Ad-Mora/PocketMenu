@@ -185,7 +185,7 @@ var mobileInspectorView = (function () {
 
     function _onDragEnd(direction, deltaX, deltaY) {
         var MIN_SWIPE_DISTANCE = window.innerWidth * 0.1;
-        var GLIDE_TO_PLACE_DURATION = 300;
+        var GLIDE_TO_PLACE_DURATION = 200;
         // add gliding animation class here
         listOfMobileInspectors.classList.add(GLIDING_ANIMATION_CLASS);
         

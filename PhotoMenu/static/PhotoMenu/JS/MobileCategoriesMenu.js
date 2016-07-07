@@ -3,12 +3,14 @@
  */
 var mobileCategoriesMenu = (function () {
     // cache DOM
-    var categoriesMenuUL = document.querySelector("ul.mobile-categories-menu-list");
+    var backgroundOverlay = document.querySelector("div.mobile-category-menu-background-overlay");
+    var categoriesMenuUL = backgroundOverlay.nextElementSibling;
     var listOfCategoryOptions = categoriesMenuUL.querySelectorAll("li.categories-menu-category-option");
     var hamburgerIcon = websiteHeader.categoriesIcon;
 
     // bind events
     hamburgerIcon.addEventListener('click', toggleMobileCategoryOptions);
+    backgroundOverlay.addEventListener('click', toggleMobileCategoryOptions);
     for (var i = 0; i < listOfCategoryOptions.length; i++) {
         listOfCategoryOptions[i].addEventListener('click', goToMenuCategory);
     }
@@ -47,9 +49,11 @@ var mobileCategoriesMenu = (function () {
     }
 
     function toggleMobileCategoryOptions(event) {
-        categoriesMenuUL.classList.remove(categoriesMenuDisplayStates[displayIsVisible])
+        categoriesMenuUL.classList.remove(categoriesMenuDisplayStates[displayIsVisible]);
+        backgroundOverlay.classList.remove(categoriesMenuDisplayStates[displayIsVisible]);
         displayIsVisible = !displayIsVisible;
-        categoriesMenuUL.classList.add(categoriesMenuDisplayStates[displayIsVisible])
+        backgroundOverlay.classList.add(categoriesMenuDisplayStates[displayIsVisible]);
+        categoriesMenuUL.classList.add(categoriesMenuDisplayStates[displayIsVisible]);
     }
 
     // public functions
