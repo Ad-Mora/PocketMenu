@@ -4,4 +4,4 @@ db.sqlite3
 venv
 .env
 .DS_Store
-Core/local_settings.py
+
