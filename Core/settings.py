@@ -128,7 +128,7 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Media root
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 MEDIA_URL = '/media/'
 
 
@@ -138,12 +138,13 @@ MEDIA_URL = '/media/'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG'] == 'True' #False
 ALLOWED_HOSTS = ['18.189.105.8', '0.0.0.0', 'www.chomps.io', 'chompsio.herokuapp.com']
+# ALLOWED_HOSTS = ['*']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS']) #0
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True' #True
 SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True' #True
 SECURE_SSL_REDIRECT = os.environ['SECURE_SSL_REDIRECT'] == 'True'#False
-SESSION_COOKIE_SECURE = os.environ['SESSION_COOKIE_SECURE'] == 'True'#True
-CSRF_COOKIE_SECURE = os.environ['CSRF_COOKIE_SECURE'] == 'True'#True
+# SESSION_COOKIE_SECURE = os.environ['SESSION_COOKIE_SECURE'] == 'True'#True
+# CSRF_COOKIE_SECURE = os.environ['CSRF_COOKIE_SECURE'] == 'True'#True
 CSRF_COOKIE_HTTPONLY = os.environ['CSRF_COOKIE_HTTPONLY'] == 'True'#False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
                                 # on every page we use Ajax. This isn't difficult we just haven't done it yet
 X_FRAME_OPTIONS = os.environ['X_FRAME_OPTIONS'] #'DENY'
