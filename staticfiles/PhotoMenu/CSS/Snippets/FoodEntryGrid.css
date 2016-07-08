@@ -1,0 +1,42 @@
+li.food-type-section-wrapper{
+    margin-bottom: 20px;
+}
+h3.food-type-section-header{
+    color: #555555;
+    margin: 30px auto 5px auto;
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 2%;
+}
+ul.food-type-section-food-list{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+@media (min-width: 355px) {
+    h3.food-type-section-header{
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 800px) {
+    li.food-type-section-wrapper {
+        width: 91%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h3.food-type-section-header{
+        padding-left: calc(1% - 2px);
+        margin-top: 50px;
+        font-size: 26px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    ul.list-of-food-lists{
+        max-width: 1310px;
+        margin: 0px auto 0px auto;
+    }
+}

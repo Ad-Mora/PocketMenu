@@ -1,0 +1,231 @@
+div.mobile-inspector-background-overlay {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(238,238,238);
+    z-index: 2;
+}
+
+
+span.close-inspector-icon {
+background-image: url("../../Images/Icons/QuitInspectorIcon.png");
+-webkit-background-size: 100% auto;
+background-size: 100% auto;
+width: 20px;
+height: 20px;
+position: absolute;
+top: Calc(50% - 10px);
+left: 3%;
+z-index: 2;
+}
+
+ul.list-of-mobile-inspectors{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+    width: calc(320px * 3);
+    height: 100%;
+    -webkit-transform: translate3d(-320px, 0px, 0px);
+    -moz-transform: translate3d(-320px, 0px, 0px);
+    transform: translate3d(-320px, 0px, 0px);
+}
+
+ul.enable-list-gliding{
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    transition: .2s ease;
+}
+
+li.mobile-inspector-view-wrapper {
+    width: 320px;
+    max-height: 100%;
+    overflow: scroll;
+    float: left;
+}
+
+div.inspector{
+    -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,.1), 0px -1px 3px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 1px 3px rgba(0,0,0,.1), 0px -1px 3px rgba(0,0,0,.1);
+    box-shadow: 0px 1px 3px rgba(0,0,0,.1), 0px -1px 3px rgba(0,0,0,.1);
+    width: 100%;
+    background-color: #FFFFFF;
+    margin: 0px 0px 5px 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid #D2D2D2;
+}
+
+div.inspector.restaurant-header{
+    position: relative;
+    margin: 2% 0px 5px 0px;
+}
+
+a.inspector.restaurant-page-link{
+    content: '';
+    width: 20px;
+    height: 25px;
+    display: inline-block;
+    background-image: url("../../Images/Icons/ClickableLinkIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 3%;
+    top: -webkit-calc(50% - 8px);
+    top: calc(50% - 12px);
+}
+
+h2.inspector.restaurant-name{
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+h2.inspector.restaurant-name a{
+    color: #000000;
+}
+
+div.inspector.main-view{
+
+}
+
+img.inspector.food-image{
+    width: 100%;
+    height: auto;
+}
+
+div.directions-and-food-interest{
+    height: 30px;
+    margin: 5px 0px 0px 0px;
+    text-align: center;
+}
+
+span.inspector.left-arrow{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url("../../Images/Icons/GreyLeftArrowIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+span.inspector.interested-in-food-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+span.inspector.interested-in-food-icon:hover{
+    cursor: pointer;
+}
+
+span.inspector.right-arrow{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url("../../Images/Icons/GreyRightArrowIcon.png");
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    float: right;
+}
+
+div.inspector.food-details{
+
+}
+
+h3.inspector.food-name{
+    font-size: 16px;
+    margin: 0px 0px 7px 0px;
+    font-weight: bold;
+}
+
+p.inspector.food-description{
+    font-size: 14px;
+    margin: 0px 0px 10px 0px;
+    line-height: 16px;
+}
+
+div.inspector.food-category-details{
+    margin: 0px 0px 2% 0px;
+}
+
+p.inspector.food-price{
+    color: #FF9800;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+h4.inspector.food-category-name{
+    font-size: 16px;
+    color: #777777;
+    font-weight: 500;
+    margin: 0px 0px 5px 0px;
+}
+
+p.inspector.food-category-description{
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
+
+
+@media (min-width: 355px) {
+    h2.inspector.restaurant-name{
+        font-size: 18px;
+    }
+
+    span.close-inspector-icon {
+        width: 25px;
+        height: 25px;
+        top: Calc(50% - 12px);
+    }
+
+    div.inspector.restaurant-header::after{
+        width: 18px;
+        height: 25px;
+        top: -webkit-calc(50% - 10px);
+        top: calc(50% - 10px);
+    }
+
+    h3.inspector.food-name{
+        font-size: 18px;
+    }
+
+    p.inspector.food-description{
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    p.inspector.food-price{
+        font-size: 16px;
+    }
+
+    h4.inspector.food-category-name{
+        font-size: 18px;
+    }
+
+    p.inspector.food-category-description{
+        font-size: 15px;
+        line-height: 18px;
+    }
+}
+
+@media (min-width: 600px) {
+
+    div.mobile-inspector-background-overlay, span.close-inspector-icon, li.mobile-inspector-view-wrapper {
+        display: none;
+    }
+
+}

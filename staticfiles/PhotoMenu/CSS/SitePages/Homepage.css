@@ -1,0 +1,351 @@
+/*-------------Background Image & Search Bar----------------*/
+.homepage-picture{
+    background-size: cover;
+    background-position: -120px 0px;
+    height: 400px;
+}
+.dark-overlay{
+    background-color: rgba(0,0,0,0.5);
+    height: 100%;
+}
+.background-picture-content{
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 80%;
+    margin: 0px auto 0px auto;
+    max-width: 400px;
+}
+.large-text{
+    color: white;
+    width: 100%;
+    font-size: 24px;
+    margin: 0px auto 25px auto;
+    text-align: center;
+}
+.picture-bottom-text{
+     width: 100%;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    margin: 15px auto 0px auto;
+}
+/*----------Search Option Types----------*/
+div.search-options-wrapper{
+    width: 100%;
+    margin: 16px auto 0px auto;
+}
+input.search-option-radio-btn ~ label.search-option-label{
+    color: #FFFFFF;
+}
+input.search-option-radio-btn:checked ~ label.search-option-label{
+    border-bottom: 4px solid #448AFF;
+}
+.search-bar-and-suggestions{
+    position: relative;
+    margin-top: 12px;
+}
+ul.search-suggestions-list{
+    width: 100%;
+}
+/*---------------Why Us Header----------------*/
+.why-us-section-wrapper{
+    margin: 50px auto 70px auto;
+    max-width: 1200px;
+}
+.why-us-header{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0px auto 0px auto;
+}
+.why-us-detail{
+    text-align: center;
+    margin: 10px auto 35px auto;
+    font-size: 14px;
+    color: #333333;
+    max-width: 500px;
+    width: 90%;
+}
+.reason-section{
+    margin: 30px 0px 50px 0px;
+}
+.why-us-icon{
+    display: block;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #FF9800;
+    margin: 25px auto 5px auto;
+}
+.icon-text{
+    margin-top: 10px;
+    text-align: center;
+    color: #333333;
+    font-size: 18px;
+    font-weight: 500;
+}
+.icon-description{
+    width: 85%;
+    text-align: center;
+    color: #555555;
+    font-size: 14px;
+    margin: 10px auto 0px auto;
+}
+/*---------------Location Section--------------*/
+.white-area{
+    background-color: white;
+    padding: 40px 0px 40px 0px;
+}
+.our-locations-header{
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    text-align: center;
+}
+.our-locations-detail{
+    text-align: center;
+    width: 90%;
+    font-size: 16px;
+    color: #333333;
+    margin: 10px auto 0px auto;
+    max-width: 400px;
+}
+.all-locations-wrapper{
+    margin: 0px auto 20px auto;
+    max-width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+}
+.our-location-span{
+    margin-top: 15px;
+    display: inline-block;
+    width: 49.3%;
+    text-align: center;
+}
+.location-section{
+    margin: 50px 0px 0px 0px;
+    max-width: 300px;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    -webkit-flex-basis: 300px;
+    flex-basis: 300px;
+}
+.location-image{
+    width: 150px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    border-radius: 50%;
+    box-shadow: -1px 1px 5px 0px #555555;
+}
+.crush-pizza{
+    width: 120px;
+    -webkit-clip-path: circle(38px at center);
+}
+.our-location-name{
+    margin-top: 5px;
+    text-align: center;
+    color: #333333;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Large mobile view */
+@media (min-width: 355px) {
+    .homepage-picture{
+        height: 500px;
+        background-position: -150px 0px;
+    }
+    .large-text{
+        font-size: 28px;
+        margin-bottom: 50px;
+    }
+    input.search-option-radio-btn:checked ~ label.search-option-label{
+        border-bottom: 6px solid #448AFF;
+    }
+    .search-suggestions-box{
+        top: 30px;
+    }
+    .picture-bottom-text{
+        margin-top: 15px;
+        font-size: 18px;
+    }
+    .why-us-header{
+        font-size: 28px;
+    }
+    .why-us-detail{
+        font-size: 18px;
+    }
+    .reason-section {
+        margin: 50px auto 50px auto;
+        max-width: 400px;
+    }
+    .icon-text{
+        font-size: 22px;
+        margin-top: 15px;
+    }
+    .icon-description{
+        font-size: 18px;
+    }
+    .our-locations-header{
+        font-size: 28px;
+    }
+    .our-locations-detail{
+        font-size: 18px;
+    }
+    .our-location-span{
+        margin-top: 25px;
+    }
+    .location-image{
+        width: 170px;
+    }
+    .our-location-name{
+        margin-top: 8px;
+        font-size: 18px;
+    }
+}
+
+/* Desktop view */
+@media (min-width: 800px) {
+    .homepage-picture{
+        background-position: 0px -100px;
+    }
+    .background-picture-content {
+        max-width: none;
+    }
+    .large-text{
+        font-size: 42px;
+    }
+    .search-bar-and-suggestions{
+        display: inline-block;
+        margin-top: 0px;
+    }
+    .search-suggestions-box{
+        top: 35px;
+    }
+    .picture-bottom-text{
+        font-size: 20px;
+    }
+    .why-us-header{
+        font-size: 32px;
+    }
+    .why-us-detail{
+        margin-bottom: 20px;
+    }
+    .reason-section{
+        width: 33%;
+        float: left;
+        max-width: none;
+        margin: 0px auto 0px auto;
+    }
+    .light-bulb-section{
+        display: inline-block;
+        width: 33%;
+    }
+    .heart-icon-section{
+        display: inline-block;
+        width: 33%;
+    }
+    .search-icon-section{
+        display: inline-block;
+        width: 33%;
+    }
+    .why-us-icon{
+        height: 150px;
+    }
+    .icon-text{
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    .our-locations-header{
+        font-size: 32px;
+    }
+    .our-locations-detail{
+        font-size: 18px;
+    }
+    .our-location-span{
+        margin-top: 50px;
+    }
+    .location-image{
+        width: 190px;
+    }
+    .el-pelon{
+        width: 270px;
+        -webkit-clip-path: circle(90px at center);
+    }
+    .crush-pizza{
+        width: 270px;
+        -webkit-clip-path: circle(90px at center);
+    }
+    .our-location-name{
+        margin-top: 15px;
+        font-size: 22px;
+    }
+}
+
+
+/*—————Our Locations Spacing—————*//*----------------------------------NEED TO DEBUG once we get 2+ restaurants*/
+
+/*——————1 restaurant—————— */
+.white-area.zero-or-one-restaurants {
+	display: none;
+}
+
+/*—————— 2 restaurants —————— */
+.location-section.two-restaurants {
+	max-width: 450px;
+	-moz-flex-basis: 450px;
+	-webkit-flex-basis: 450px;
+	flex-basis: 450px;
+}
+
+/*——————3 restaurants ——————*/
+.location-section.three-restaurants {
+	max-width: 400px;
+	-moz-flex-basis: 400px;
+	-webkit-flex-basis: 400px;
+	flex-basis: 400px;
+}
+.all-locations-wrapper.three-restaurants {
+	max-width: 1200px;
+}
+
+/*——————4 restaurants ——————*/
+.location-section.four-restaurants {
+	max-width: 400px;
+	-moz-flex-basis: 301px;
+	-webkit-flex-basis: 301px;
+	flex-basis: 301px;
+}
+
+.all-locations-wrapper.four-restaurats {
+	max-width: 900px;
+}
+
+@media (min-width: 800px) {
+	.location-section.four-restaurats {
+		max-width: 400px;
+		-moz-flex-basis:400px;
+		-webkit-flex-basis:400px;
+		flex-basis: 400px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.all-locations-wrapper.four-restaurats {
+		max-width: 1200px;
+	}
+
+	.location-section.four-restaurats {
+		max-width: 300px;
+		-moz-flex-basis:300px;
+		-webkit-flex-basis:300px;
+		flex-basis: 300px;
+	}
+}

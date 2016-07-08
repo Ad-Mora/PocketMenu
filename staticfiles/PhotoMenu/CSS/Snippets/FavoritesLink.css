@@ -1,0 +1,26 @@
+.favorites-link{
+    padding: 8px;
+    border: 2px solid white;
+    border-radius: 3px;
+    background-color: transparent;
+    color: white;
+    font-size: 15px;
+}
+
+/* Large mobile view */
+@media (min-width: 355px) {
+    .favorites-link{
+        font-size: 20px;
+        padding: 10px;
+    }
+}
+
+/* Desktop view */
+@media (min-width: 800px) {
+    .favorites-link{
+        padding: 0px;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
