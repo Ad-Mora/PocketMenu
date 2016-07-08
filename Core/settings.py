@@ -137,8 +137,6 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 MEDIA_URL = '/media/'
 
-COMPRESS_ENABLED = True
-
 ######################################################
 # Settings I changed because Django told me to :(    #
 ######################################################
