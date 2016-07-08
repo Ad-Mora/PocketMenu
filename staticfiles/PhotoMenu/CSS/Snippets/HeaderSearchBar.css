@@ -1,0 +1,97 @@
+.header-search-bar-with-icon{
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 255px;
+}
+.header-search-bar-search-icon{
+    display: inline-block;
+    position: absolute;
+    float: left;
+    height: 20px;
+    opacity: 0.6;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.header-search-bar{
+    display: inline-block;
+    float: right;
+    height: 25px;
+    font-size: 18px;
+    background-color: transparent;
+    color: white;
+    width: 230px;
+}
+
+.header-search-bar::-webkit-input-placeholder {
+    color: white;
+    opacity: 0.6;
+}
+.header-search-bar::-moz-placeholder {
+    color: white;
+    opacity: 0.6;
+}
+.header-search-bar:-ms-input-placeholder {
+    color: white;
+    opacity: 0.6;
+}
+
+/*-------------Drop down suggestions list--------------*/
+ul.header-search-suggestions-list{
+    position: absolute;
+    display: none;
+    top: 38px;
+    left: 0px;
+    border-radius: 0px 0px 3px 3px;
+    -webkit-box-shadow: 0px 0px 5px 0px #777777;
+    -moz-box-shadow: 0px 0px 5px 0px #777777;
+    box-shadow: 0px 0px 5px 0px #777777;
+    border: 1px solid #cacaca;
+}
+ul.header-search-suggestions-list a.search-suggestion{
+    width: 230px;
+}
+.search-suggestion{
+    display: block;
+    padding-left: 10px;
+    color: #333333;
+    line-height: 35px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+.search-suggestion:hover{
+    background-color: #eeeeee;
+}
+
+
+
+
+
+
+
+
+
+/*li.header-search-suggestion-options{*/
+
+    /*background-color: #FFFFFF;*/
+    /*font-size: 14px;*/
+    /*box-sizing: border-box;*/
+    /*border-bottom: 1px solid #EEEEEE;*/
+/*}*/
+
+/*a.header-search-suggestion-link{*/
+    /*color: #555555;*/
+    /*padding: 10px 0px 10px 23px;*/
+    /*display: block;*/
+/*}*/
+
+/*a.header-search-suggestion-link:hover{*/
+    /*background-color: #EEEEEE;*/
+    /*cursor: pointer;*/
+/*}*/

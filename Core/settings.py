@@ -138,7 +138,7 @@ MEDIA_URL = '/media/'
 ######################################################
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG'] == 'True' #False
-ALLOWED_HOSTS = ['chomps.io', 'chompsio.herokuapp.com']
+ALLOWED_HOSTS = ['www.chomps.io', 'chompsio.herokuapp.com']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS']) #0
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True' #True
 SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True' #True
