@@ -99,7 +99,7 @@ var moreOptions = (function(){
         var categoryNamesToHeaderElements;
         if (categoryNamesToHeaderElements == undefined) {
             categoryNamesToHeaderElements = {};
-            for (var i = 0; i < Object.keys(categoryHeaderElements).length; i++) {
+            for (var i = 0; i < categoryHeaderElements.length; i++) {
                 categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
             }
         }
@@ -112,7 +112,7 @@ var moreOptions = (function(){
         if (visibleBarCategoryNameToVisibleBarCategoryElement == undefined) {
             visibleBarCategoryNameToVisibleBarCategoryElement = {}
             var visibleCategoryName;
-            for (var i = 0; i < Object.keys(allVisibleOptionsLI).length; i++) {
+            for (var i = 0; i < allVisibleOptionsLI.length; i++) {
                 visibleCategoryName = allVisibleOptionsLI[i].firstElementChild.textContent;
                 visibleBarCategoryNameToVisibleBarCategoryElement[visibleCategoryName] = allVisibleOptionsLI[i];
             }

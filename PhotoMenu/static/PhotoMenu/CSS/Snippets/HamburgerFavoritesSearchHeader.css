@@ -65,9 +65,9 @@ span.hamburger-bar-middle::after{
     right: 10px;
     margin: 11px 0px 0px 0px;
     height: 23px;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    transform: translateY(-50%);
+    /*-webkit-transform: translateY(-50%);*/
+    /*-moz-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
 }
 
 /* -----------------Mobile Category Menu--------------------*/
