@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'PhotoMenu.apps.PhotomenuConfig',
+    'compressor',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -71,6 +72,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.RemoteUserBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+STATICFILES_FINDERS = {
+    'compressor.finders.CompressorFinder',
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -132,6 +137,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
+COMPRESS_ENABLED = True
 
 ######################################################
 # Settings I changed because Django told me to :(    #
