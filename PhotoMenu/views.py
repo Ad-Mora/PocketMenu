@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MenuCategory, Restaurant, MenuItem
 from .utils import *
+from .forms import ContactUsForm
 import collections
 import json
 
@@ -59,10 +60,24 @@ def homepage(request):
 
 
 def contact_page(request):
+
+    search_options_list = [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+    template_to_load = ''
+
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST)
+
+        if form.is_valid():
+            template_to_load = 'PhotoMenu/SitePages/Thanks.html'
+    else:
+        template_to_load = 'PhotoMenu/SitePages/ContactPage.html'
+        form = ContactUsForm()
+
     context = {
-        'search_options_list': [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+        'search_options_list': search_options_list,
+        'form': form,
     }
-    return render(request, 'PhotoMenu/SitePages/ContactPage.html', context)
+    return render(request, template_to_load, context)
 
 
 def search_results_page(request):
