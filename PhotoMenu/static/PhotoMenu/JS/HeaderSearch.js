@@ -23,7 +23,6 @@ var mobileSearchModal = (function(){
 
     // private variables
 
-
     // public variables
 
     // private functions
@@ -37,12 +36,14 @@ var mobileSearchModal = (function(){
     }
 
     function openSearchModal(event) {
-        container.style.display = "block";
+        container.classList.add("show-mobile-category-menu");
+        container.classList.remove("hide-mobile-search-modal");
         searchBar.focus();
     }
 
     function closeSearchModal(event) {
-        container.style.display = "none";
+        container.classList.add("hide-mobile-search-modal");
+        container.classList.remove("show-mobile-category-menu");
     }
 
     function displaySearchSuggestionsList() {
@@ -83,7 +84,7 @@ var mobileSearchModal = (function(){
 
     // return public pointers to private variables & functions
     return {
-        
+
     };
 
 })();
@@ -123,7 +124,7 @@ var desktopHeaderSearch = (function () {
             suggestionsList.style.display = "none";
         }
     }
-    
+
     function displaySearchSuggestionsList(event, suggestionsList) {
         suggestionsList.style.display = "block";
     }
@@ -151,3 +152,5 @@ var desktopHeaderSearch = (function () {
     };
 
 })();
+
+console.log("photomenu");
