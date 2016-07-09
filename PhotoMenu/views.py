@@ -1,9 +1,12 @@
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import MenuCategory, Restaurant, MenuItem
 from .utils import *
 from .forms import ContactUsForm
+from django.core.mail import send_mail
+from Core.settings import EMAIL_HOST_USER
+from Core.settings import EMAIL1
+from Core.settings import EMAIL2
 import collections
 import json
 import sys
@@ -70,8 +73,13 @@ def contact_page(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
-
+            message = 'From: ' + name + '\n'
+            message += 'Email: ' + email + '\n\n'
+            message += form.cleaned_data['message']
+            subject = 'Feedback from chomps.io'
+            first_address = EMAIL1
+            second_address = EMAIL2
+            send_mail(subject, message, EMAIL_HOST_USER, [first_address, second_address], fail_silently=False)
 
             form_submitted = True
     else:

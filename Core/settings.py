@@ -137,6 +137,15 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 MEDIA_URL = '/media/'
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'chompsmail@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ['MAIL_PASSWORD']
+EMAIL_PORT = 587
+
+EMAIL1 = os.environ['EMAIL1']
+EMAIL2 = os.environ['EMAIL2']
+
 ######################################################
 # Settings I changed because Django told me to :(    #
 ######################################################
