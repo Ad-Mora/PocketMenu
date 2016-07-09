@@ -21,6 +21,9 @@ div.background-image-dark-overlay{
     height: 100%;
     background-color: rgba(0,0,0,.4);
 }
+h3.food-type-section-header a{
+    color: #555555;
+}
 h1.favorites-header{
     text-align: center;
     color: white;

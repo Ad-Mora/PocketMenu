@@ -49,7 +49,7 @@ def get_favorite_foods(request):
         json_data = json.loads(request.body)
         food_ids_list = json_data['food-ids-list']
         context = {
-            'restaurants_list': get_favorite_foods_context_data(food_ids_list)
+            'restaurants': get_favorite_foods_context_data(food_ids_list)
         }
         return render(request, 'PhotoMenu/Snippets/FavoritesPageSections.html', context)
 
