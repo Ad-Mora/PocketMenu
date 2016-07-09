@@ -20,6 +20,7 @@ var mobileSearchModal = (function(){
     documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener('keyup', queryForSuggestions);
     selectSearchType.addEventListener('change', updateMainFormPOSTAddress);
+    backgroundOverlay.addEventListener('click', closeSearchModal);
 
     // private variables
 
