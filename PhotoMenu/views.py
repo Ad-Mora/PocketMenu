@@ -68,6 +68,11 @@ def contact_page(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
         if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+
             form_submitted = True
     else:
         form = ContactUsForm()
