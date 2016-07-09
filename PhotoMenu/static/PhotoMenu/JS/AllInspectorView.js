@@ -136,6 +136,8 @@ var mobileInspectorView = (function () {
     leftMobilePictureIcon.addEventListener('click', allInspectorView.showPreviousFood);
     mobileInterestIcon.addEventListener('click', allInspectorView.toggleInterestInFood);
     exitMobileInspectorIcon.addEventListener('click', allInspectorView.hideInspectorView);
+    listOfMobileInspectors.addEventListener('click', checkIfClickedOverlayAndExit);
+
 
     // private variables
     var RIGHT_POSITION = 0;
@@ -154,6 +156,12 @@ var mobileInspectorView = (function () {
 
 
     // private functions
+    function checkIfClickedOverlayAndExit(event) {
+        if (event.target == event.currentTarget) {
+            allInspectorView.hideInspectorView();
+        }
+    }
+
     function _changeInspectorViewDimensionsOnResize(event) {
         listOfMobileInspectors.style.width = 3 * window.innerWidth + "px";
         listOfMobileInspectors.style.webkitTransform = "translate3d(-" + window.innerWidth + "px,0px,0px)";
