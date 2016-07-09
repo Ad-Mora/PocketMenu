@@ -135,7 +135,13 @@ body{
         margin-top: 12px;
         font-size: 16px;
     }
+    .field-error{
+        font-size: 16px;
+    }
     .input-field-name{
+        font-size: 16px;
+    }
+    .required-star{
         font-size: 16px;
     }
     .text-input-field{
@@ -178,8 +184,8 @@ body{
     .contact-us-form{
         max-width: 600px;
     }
-    .input-field-name{
-        font-size: 16px;
+    .field-error{
+        margin-bottom: 5px;
     }
     .text-input-field{
         height: 34px;
@@ -188,7 +194,7 @@ body{
     }
     .message-area{
         font-size: 14px;
-        width: 100%
+        width: 100%;
     }
     .send-message{
         margin-top: 20px;
