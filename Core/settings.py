@@ -150,22 +150,16 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-# redirect to www
-PREPEND_WWW = True
 
-
-######################################################
-# Settings I changed because Django told me to :(    #
-######################################################
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG'] == 'True' #False
-ALLOWED_HOSTS = ['18.189.105.8', '0.0.0.0', 'www.chomps.io', 'chompsio.herokuapp.com']
-SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS']) #0
-SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True' #True
-SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True' #True
-SECURE_SSL_REDIRECT = os.environ['SECURE_SSL_REDIRECT'] == 'True'#False
-X_FRAME_OPTIONS = os.environ['X_FRAME_OPTIONS'] #'DENY'
-CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE']) #0
+DEBUG = os.environ['DEBUG'] == 'True'
+PREPEND_WWW = os.environ['PREPEND_WWW']
+ALLOWED_HOSTS = ['18.189.105.8', 'localhost', 'www.chomps.io', 'chompsio.herokuapp.com']
+SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS'])
+SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True'
+SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True'
+SECURE_SSL_REDIRECT = os.environ['SECURE_SSL_REDIRECT'] == 'True'
+X_FRAME_OPTIONS = os.environ['X_FRAME_OPTIONS']
+CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE'])
 SECRET_KEY = os.environ['SECRET_KEY']
 
 
