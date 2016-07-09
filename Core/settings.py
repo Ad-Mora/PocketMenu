@@ -128,10 +128,19 @@ AWS_S3_CUSTOM_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # Static root
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
+STATIC_URL = '/static/'
 
 
 # Media root
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
+MEDIA_URL = '/media/'
+
+
+# Tell the staticfiles app to use use default storage when writing collected static files (when
+# you run 'collectstatic'
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 ######################################################
@@ -149,16 +158,7 @@ CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE']) #0
 SECRET_KEY = os.environ['SECRET_KEY']
 
 
-if DEBUG:
-    STATIC_URL = '/static/'
-    MEDIA_URL = '/media/'
-
-    # Tell the staticfiles app to use use default storage when writing collected static files (when
-    # you run 'collectstatic'
-    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-    COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-else:
+if not DEBUG:
     STATIC_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
     MEDIA_URL = AWS_S3_CUSTOM_URL + '/media/'
 
