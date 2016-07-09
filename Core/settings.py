@@ -18,12 +18,7 @@ import dj_database_url
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'PhotoMenu.apps.PhotomenuConfig',
     'compressor',
+    'storages',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,27 +73,16 @@ STATICFILES_FINDERS = {
     'compressor.finders.CompressorFinder',
 }
 
+
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {}
-# --------Necessary for python manage.py runserver------
-# DATABASES['default'] = {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ['DATABASE_NAME'],
-#         'USER': os.environ['DATABASE_USER'],
-#         'PASSWORD': os.environ['PASSWORD'],
-#         'HOST': os.environ['HOST'],
-#         'PORT': os.environ['PORT'],
-#     }
-# --------Necessary for heroku local---------------------
-DATABASES['default'] = dj_database_url.config()
-
+DATABASES = {
+    'default': dj_database_url.config(),
+}
 
 
 # Password validationf
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -128,16 +113,46 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
+# Media and Static files storage on AWS
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+
+# Tell django-storages that when coming up with the URL for an item in S3 storage, keep
+# it simple - just use this domain plus the path. (If this isn't set, things get complicated).
+# This controls how the `static` template tag from `staticfiles` gets expanded, if you're using it.
+# We also use it in the next setting.
+AWS_S3_CUSTOM_URL = 'http://s3.amazonaws.com/%s' % AWS_STORAGE_BUCKET_NAME
+
+# This is used by the `static` template tag from `static`, if you're using that. Or if anything else
+# refers directly to STATIC_URL. So it's safest to always set it.
+
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
+STATIC_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
+# STATIC_URL = '/static/'
+
+# Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
+# you run `collectstatic`).
+#--------use this for developing-----------------
+# DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+#--------use this for production-----------------
+DEFAULT_FILE_STORAGE = 'Core.s3utils.MediaRootS3BotoStorage'
+
+# STATICFILES_STORAGE = 'custom_storages.StaticStorage'------not sure what this is for
+#--------use this for developing-----------------
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+#--------use this for production-----------------
+STATICFILES_STORAGE = 'Core.s3utils.StaticfilesRootS3BotoStorage'
+
 
 # Media root
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
-MEDIA_URL = '/media/'
+MEDIA_URL = AWS_S3_CUSTOM_URL + '/media/'
+# MEDIA_URL = '/media/'
 
-COMPRESS_ENABLED = True
+
+# Compressing Staticfiles
+COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 ######################################################
 # Settings I changed because Django told me to :(    #
@@ -145,21 +160,13 @@ COMPRESS_ENABLED = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG'] == 'True' #False
 ALLOWED_HOSTS = ['18.189.105.8', '0.0.0.0', 'www.chomps.io', 'chompsio.herokuapp.com']
-# ALLOWED_HOSTS = ['*']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS']) #0
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True' #True
 SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True' #True
 SECURE_SSL_REDIRECT = os.environ['SECURE_SSL_REDIRECT'] == 'True'#False
-# SESSION_COOKIE_SECURE = os.environ['SESSION_COOKIE_SECURE'] == 'True'#True
-# CSRF_COOKIE_SECURE = os.environ['CSRF_COOKIE_SECURE'] == 'True'#True
-CSRF_COOKIE_HTTPONLY = os.environ['CSRF_COOKIE_HTTPONLY'] == 'True'#False    # ----> Ideally we'd set this to true but that means we need to put a csrfInputToken
-                                # on every page we use Ajax. This isn't difficult we just haven't done it yet
 X_FRAME_OPTIONS = os.environ['X_FRAME_OPTIONS'] #'DENY'
 CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE']) #0
-
 SECRET_KEY = os.environ['SECRET_KEY']
-
-
 
 
 
