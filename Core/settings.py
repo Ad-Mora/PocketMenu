@@ -150,6 +150,9 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+# redirect to www
+PREPEND_WWW = True
+
 
 ######################################################
 # Settings I changed because Django told me to :(    #
