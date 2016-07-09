@@ -6,6 +6,7 @@ from .utils import *
 from .forms import ContactUsForm
 import collections
 import json
+import sys
 
 SEARCH_TYPE_RESTAURANT = "Restaurant"
 SEARCH_TYPE_FOOD = "Food"
@@ -62,22 +63,19 @@ def homepage(request):
 def contact_page(request):
 
     search_options_list = [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
-    template_to_load = ''
 
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
-
         if form.is_valid():
-            template_to_load = 'PhotoMenu/SitePages/Thanks.html'
+            return render(request, 'PhotoMenu/SitePages/Thanks.html')
     else:
-        template_to_load = 'PhotoMenu/SitePages/ContactPage.html'
         form = ContactUsForm()
 
     context = {
         'search_options_list': search_options_list,
         'form': form,
     }
-    return render(request, template_to_load, context)
+    return render(request, 'PhotoMenu/SitePages/ContactPage.html', context)
 
 
 def search_results_page(request):

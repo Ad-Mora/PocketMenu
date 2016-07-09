@@ -47,8 +47,13 @@
 
 
   <form class="contact-us-form" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <label class="input-field-name" for="{{ field.name }}">{{ field.label }}</label>
+      {{ field }}
+    {% endfor %}
 
-    <input type="submit" value="Send message!">
+    <input class="send-message" type="submit" value="Send message!">
   </form>
 
   <!--Contact Page Form Area-->

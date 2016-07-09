@@ -40,33 +40,26 @@ body{
     font-weight: 500;
     color: #555555;
     margin-top: 10px;
-    /*margin-left: 4%;*/
     width: 100%;
 }
 .divider-line{
-    /*margin-left: 4%;*/
     margin-top: 12px;
     width: 100%;
     border-bottom: 2px solid #FF9800;
 }
 .contact-us-text{
     margin-top: 10px;
-    /*margin-left: 4%;*/
-    /*margin-right: 4%;*/
-    margin-bottom: 15px;
     font-size: 14px;
     color: #555555;
-    width: 100%;
 }
 .input-field-name{
+    display: block;
     margin-top: 12px;
-    /*margin-left: 4%;*/
     font-size: 14px;
     color: #555555
 }
 .text-input-field{
     margin-top: 8px;
-    /*margin-left: 4%;*/
     padding-left: 10px;
     font-size: 14px;
     color: #333333;
@@ -80,7 +73,6 @@ body{
 }
 .message-area{
     margin-top: 8px;
-    /*margin-left: 4%;*/
     padding-left: 10px;
     padding-top: 8px;
     width: 100%;
