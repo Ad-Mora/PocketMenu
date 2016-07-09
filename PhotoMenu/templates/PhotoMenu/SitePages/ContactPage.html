@@ -35,7 +35,7 @@
     </div>
   </div>
 
-
+  {% if not form_submitted %}
   <!--Contact Page Text Header-->
   <div class="contact-us-header-container">
     <h1 class="text-header">Tell us anything!</h1>
@@ -44,7 +44,6 @@
       We check our email several times a day and are always looking for feedback: positive and negative. We’ll be in touch soon!
     </p>
   </div>
-
 
   <form class="contact-us-form" method="post">
     {% csrf_token %}
@@ -62,21 +61,11 @@
     <input class="send-message" type="submit" value="Send message!">
   </form>
 
-  <!--Contact Page Form Area-->
-  <!--<form class="contact-us-form">-->
-    <!--<p class="input-field-name">Name</p>-->
-    <!--<input class="text-input-field" type="text" placeholder="Name (required)">-->
-
-    <!--<p class="input-field-name">E-mail Address</p>-->
-    <!--<input class="text-input-field" type="text" placeholder="Email (required)">-->
-
-    <!--<p class="input-field-name">Message</p>-->
-    <!--<textarea class="message-area" placeholder="Message (required)"></textarea>-->
-
-    <!--<button class="send-message">Send message!</button>-->
-  <!--</form>-->
-
-
+  {% else %}
+  <div class="thanks-section">
+    <h1 class="thank-you-text">Thank your for your feedback! Now go browse some foods! :)</h1>
+  </div>
+  {% endif %}
 
   <!--Footer-->
   <div class="contact-footer">

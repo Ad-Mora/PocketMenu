@@ -63,16 +63,18 @@ def homepage(request):
 def contact_page(request):
 
     search_options_list = [SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD]
+    form_submitted = False
 
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
         if form.is_valid():
-            return render(request, 'PhotoMenu/SitePages/Thanks.html')
+            form_submitted = True
     else:
         form = ContactUsForm()
 
     context = {
         'search_options_list': search_options_list,
+        'form_submitted': form_submitted,
         'form': form,
     }
     return render(request, 'PhotoMenu/SitePages/ContactPage.html', context)
