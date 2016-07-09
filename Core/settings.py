@@ -129,50 +129,47 @@ AWS_S3_CUSTOM_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
 #--------use this for developing-----------------
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 #--------use this for production-----------------
 # STATIC_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
 
 # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
 # you run `collectstatic`).
 #--------use this for developing-----------------
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+# DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 #--------use this for production-----------------
 # DEFAULT_FILE_STORAGE = 'Core.s3utils.MediaRootS3BotoStorage'
 
-# STATICFILES_STORAGE = 'custom_storages.StaticStorage'------not sure what this is for
 #--------use this for developing-----------------
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 #--------use this for production-----------------
 # STATICFILES_STORAGE = 'Core.s3utils.StaticfilesRootS3BotoStorage'
 
 
-COMPRESS_ENABLED = False
+COMPRESS_ENABLED = True
 
 # Media root
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 #--------use this for developing-----------------
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 #--------use this for production-----------------
 # MEDIA_URL = AWS_S3_CUSTOM_URL + '/media/'
 
-# COMPRESS_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
-# print COMPRESS_URL + "\n\n\n\n"
 
 # Compressing Staticfiles
 #--------use this for developing-----------------
-COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 #--------use this for production-----------------
 # COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
 
 ######################################################
 # Settings I changed because Django told me to :(    #
 ######################################################
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG'] == 'True' #False
-print DEBUG
+DEBUG = False #os.environ['DEBUG'] == 'True' #False
 ALLOWED_HOSTS = ['18.189.105.8', '0.0.0.0', 'www.chomps.io', 'chompsio.herokuapp.com']
-# ALLOWED_HOSTS = ['*']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS']) #0
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True' #True
 SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True' #True
@@ -182,32 +179,15 @@ CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE']) #0
 SECRET_KEY = os.environ['SECRET_KEY']
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if DEBUG:
+    STATIC_URL = '/static/'
+    MEDIA_URL = '/media/'
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+    COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+else:
+    STATIC_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
+    MEDIA_URL = AWS_S3_CUSTOM_URL + '/media/'
+    DEFAULT_FILE_STORAGE = 'Core.s3utils.MediaRootS3BotoStorage'
+    STATICFILES_STORAGE = 'Core.s3utils.StaticfilesRootS3BotoStorage'
+    COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
