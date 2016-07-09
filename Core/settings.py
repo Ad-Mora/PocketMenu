@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import dj_database_url
+import sys
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -152,8 +153,8 @@ COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 DEBUG = os.environ['DEBUG'] == 'True'
-PREPEND_WWW = os.environ['PREPEND_WWW']
-ALLOWED_HOSTS = ['18.189.105.8', 'localhost', 'www.chomps.io', 'chompsio.herokuapp.com']
+PREPEND_WWW = os.environ['PREPEND_WWW'] == 'True'
+ALLOWED_HOSTS = ['18.189.105.8', 'www.chomps.io', 'chompsio.herokuapp.com']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS'])
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True'
 SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True'
