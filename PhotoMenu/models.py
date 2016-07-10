@@ -4,12 +4,17 @@ import datetime
 import os
 
 
+# the name for the restaurant header image is the restaurant url path,
+# joined with the restaurant header image filename
 def get_restaurant_upload_path(instance, filename):
     restaurant_url_path = instance.get_restaurant_url_path()
     upload_path = os.path.join(restaurant_url_path, filename)
     return upload_path
 
 
+# the name for a given food items is the restaurant url path,
+# joined with the name of the food item (not the name of the uploaded file),
+# followed by the extension of the originally uploaded file
 def get_menu_item_upload_path(instance, filename):
     upload_path = instance.menu_category.restaurant.get_restaurant_url_path()
     menu_item_name = instance.name.replace(' ', '')
