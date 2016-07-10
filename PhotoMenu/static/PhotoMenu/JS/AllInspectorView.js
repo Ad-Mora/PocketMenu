@@ -154,7 +154,6 @@ var mobileInspectorView = (function () {
 
     // public variables
 
-
     // private functions
     function checkIfClickedOverlayAndExit(event) {
         if (event.target == event.currentTarget) {
@@ -230,7 +229,7 @@ var mobileInspectorView = (function () {
         }
     }
 
-    function _populateMobileViewWithFoodData(mobileView, foodElement) { /*--------------------------------STILL NEED TO FINISH---------------------*/
+    function _populateMobileViewWithFoodData(mobileView, foodElement) {
         var foodNameElement = mobileView.querySelector("h3.food-name");
         var foodDetailsElement = mobileView.querySelector("p.food-description");
         var foodImageElement = mobileView.querySelector("img.food-image");
@@ -286,6 +285,23 @@ var mobileInspectorView = (function () {
         _populateMobileViewWithFoodData(leftInspectorView, previousFood);
         _populateMobileViewWithFoodData(mobileInspector, centerFood);
         _populateMobileViewWithFoodData(rightInspectorView, nextFood);
+
+        // center the screen around food getting inspected
+        centerRestaurantPageOnCurrentFood(foodElement);
+    }
+
+    function centerRestaurantPageOnCurrentFood(foodElement) {
+
+        var verticalScreenOffset = foodElement.getBoundingClientRect().top;
+        var documentVerticalOffset = window.pageYOffset || document.documentElement.scrollTop;
+        var headbarHeight = websiteHeader.headerContainer.getBoundingClientRect().height;
+        var buffer = 5;
+        var verticalOffset = verticalScreenOffset
+            + documentVerticalOffset
+            - headbarHeight
+            - buffer;
+        console.log(verticalOffset);
+        window.scrollTo(0,verticalOffset);
     }
 
     // return public pointers to private variables & functions
