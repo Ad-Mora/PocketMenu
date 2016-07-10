@@ -52,16 +52,6 @@ p.my-favorites-empty-message{
     }
 }
 
-@media (min-width: 650px) {
-    div.header-background {
-        height: 150px;
-    }
-    h1.favorites-header {
-        line-height: 150px;
-        font-size: 36px;
-    }
-}
-
 /* Desktop view */
 @media (min-width: 800px) {
     .contact-us-link{
@@ -75,5 +65,10 @@ p.my-favorites-empty-message{
     }
     div.header-background{
         background-position: 0px -100px;
+        height: 150px;
+    }
+    h1.favorites-header {
+        line-height: 150px;
+        font-size: 36px;
     }
 }
