@@ -52,12 +52,10 @@
         <h1 class="restaurant-name">{{ restaurant.name }}</h1>
         <p class="restaurant-address">{{ restaurant.address }}</p>
         <div class="all-restaurant-hours">
-{#          <img class="white-clock-icon" src="{% static "PhotoMenu/Images/Icons/WhiteClockIcon.png" %}">#}
-          {% for item in store_hours %}
+          {% for item in restaurant.compute_store_hours %}
             <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
           {% endfor %}
         </div>
-
       </div>
     </div>
   </div>

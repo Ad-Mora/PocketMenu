@@ -70,9 +70,12 @@ input.search-option-radio-btn:checked ~ label.search-option-label{
     border-bottom: 4px solid #FF9800;
     color: #FF9800;
 }
-
+/*--------Restaurant Results List------*/
+ul.restaurants-search-results-list{
+    margin-bottom: 30px;
+}
 /*-----------Food Results List-----------*/
-ul.search-results-list{
+ul.food-search-results-list{
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
@@ -120,7 +123,7 @@ ul.no-results-suggestions-list{
 }
 
 @media (min-width: 480px) {
-    ul.search-results-list{
+    ul.food-search-results-list{
         width: 91%;
         margin: 0px 0px 30px 4%;
     }

@@ -42,11 +42,6 @@
   <!-- Top Section of SearchResultsPage -->
   <div class="top-section">
     <h1 class="search-page-title">Search Results</h1>
-{#    <div class="search-options-wrapper">#}
-{#      <span class="search-option search-option-left selected-search-option">Restaurant</span>#}
-{#      <span class="search-option search-option-right">Food Name</span>#}
-{#    </div>#}
-
 
     <!-- Main Search Bar -->
     {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
@@ -60,18 +55,23 @@
 
   <!-- List of Search Results -->
   {% if menu_items_list %}
-    <ul class="search-results-list">
+    <ul class="food-search-results-list">
       {%  for menu_item in menu_items_list %}
         {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
       {% endfor %}
-
-
       <!-- ghost items ensure even spacing and left-alignment -->
       <li class="ghost-food-item"></li>
       <li class="ghost-food-item"></li>
       <li class="ghost-food-item"></li>
-
     </ul>
+
+  {% elif restaurants_list %}
+      <ul class="restaurants-search-results-list">
+        {%  for restaurant in restaurants_list %}
+          {%  include "PhotoMenu/Snippets/RestaurantEntry.html" %}
+        {% endfor %}
+      </ul>
+
   {% else %}
     <div class="no-results-help-container">
       <br>
