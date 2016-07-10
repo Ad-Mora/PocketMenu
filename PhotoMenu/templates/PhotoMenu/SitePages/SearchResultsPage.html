@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
   <title>Chomps - Search Results</title>
-  <link rel="shortcut icon" type="image/x-icon" href="{% static "PhotoMenu/Images/Icons/ChompsFaviconOrange.ico" %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "PhotoMenu/Images/Icons/ChompsHamburgerSymbol.ico" %}">
 
   {% load compress %}
   {% compress css %}
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/RestaurantEntry.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
@@ -42,17 +43,18 @@
   <!-- Top Section of SearchResultsPage -->
   <div class="top-section">
     <h1 class="search-page-title">Search Results</h1>
-{#    <div class="search-options-wrapper">#}
-{#      <span class="search-option search-option-left selected-search-option">Restaurant</span>#}
-{#      <span class="search-option search-option-right">Food Name</span>#}
-{#    </div>#}
-
 
     <!-- Main Search Bar -->
     {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
-    <p class="number-of-search-results">There are {{ menu_items_list.count }} results matching '{{ query_string }}'</p>
-    <div class="full-width-separator"></div>
+    <!-- Result Count -->
+    {% if search_type == "Food" %}
+      <p class="number-of-search-results">There are {{ menu_items_list.count }} food results matching '{{ query_string }}'</p>
+    {% elif search_type == "Restaurant" %}
+      <p class="number-of-search-results">There are {{ restaurants_list.count }} restaurant results matching '{{ query_string }}'</p>
+    {% endif %}
+      <div class="full-width-separator"></div>
+
   </div>
 
   <!-- Inspector View (mobile & desktop) -->
@@ -60,18 +62,24 @@
 
   <!-- List of Search Results -->
   {% if menu_items_list %}
-    <ul class="search-results-list">
+    <ul class="food-search-results-list">
       {%  for menu_item in menu_items_list %}
         {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
       {% endfor %}
-
-
       <!-- ghost items ensure even spacing and left-alignment -->
       <li class="ghost-food-item"></li>
       <li class="ghost-food-item"></li>
       <li class="ghost-food-item"></li>
-
     </ul>
+
+  {% elif restaurants_list %}
+      <ul class="restaurants-search-results-list">
+        {%  for restaurant in restaurants_list %}
+          {%  include "PhotoMenu/Snippets/RestaurantEntry.html" %}
+        {% endfor %}
+        <div style="clear: both;"></div>
+      </ul>
+
   {% else %}
     <div class="no-results-help-container">
       <br>

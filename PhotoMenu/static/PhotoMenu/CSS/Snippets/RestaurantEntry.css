@@ -1,0 +1,63 @@
+li.restaurant-entry-li{
+    margin: 10px auto 0px auto;
+    width: 100%;
+    max-width: 290px;
+}
+a.restaurant-entry-wrapper{
+    display: block;
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #D2D2D2;
+    -webkit-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+    box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+    padding-bottom: 4%;
+}
+h2.restaurant-entry-name{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(53,53,53);
+    margin-top: 4%;
+}
+div.restaurant-entry-image{
+    width: 92%;
+    margin: 4% 4% 0% 4%;
+}
+div.restaurant-entry-image img{
+    width: 100%;
+    height: auto;
+}
+p.restaurant-entry-address{
+    text-align: center;
+    font-size: 16px;
+    color: rgb(53,53,53);
+    font-weight: 500;
+    margin: 5px 0px 5px 0px;
+}
+p.restaurant-entry-hours{
+    text-align: center;
+    color: rgb(53,53,53);
+}
+span.day-wrapper{
+    color: #FF9800;
+}
+
+/*-----------------Tablet----------------*/
+@media (min-width: 600px) {
+    li.restaurant-entry-li{
+        float: left;
+    }
+}
+
+/*--------------Desktop-----------------*/
+/*@media (min-width: 800px) {*/
+    /*li.restaurant-entry-li{*/
+        /*-webkit-flex-grow: 1;*/
+        /*flex-grow: 1;*/
+        /*-webkit-flex-basis: 215px;*/
+        /*flex-basis: 215px;*/
+        /*width: 290px;*/
+        /*margin: 0px 1% 15px 1%;*/
+    /*}*/
+/*}*/

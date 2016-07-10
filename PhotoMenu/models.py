@@ -53,6 +53,42 @@ class Restaurant(models.Model):
         lowercase_name = name_without_spaces.lower()
         return lowercase_name
 
+    def compute_store_hours(self):
+        hours_grouping_list = [['Mon']]
+        time_groupings = [(self.mon_open_time, self.mon_close_time)]
+        num_groups = 0
+        store_hours = []
+
+        days_of_week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+        opening_times = [self.mon_open_time, self.tue_open_time,
+                         self.wed_open_time, self.thu_open_time,
+                         self.fri_open_time, self.sat_open_time,
+                         self.sun_open_time]
+
+        closing_times = [self.mon_close_time, self.tue_close_time,
+                         self.wed_close_time, self.thu_close_time,
+                         self.fri_close_time, self.sat_close_time,
+                         self.sun_close_time]
+
+        for i in range(len(days_of_week) - 1):
+            if opening_times[i] == opening_times[i + 1] and closing_times[i] == closing_times[i + 1]:
+                hours_grouping_list[num_groups].append(days_of_week[i + 1])
+            else:
+                hours_grouping_list.append([days_of_week[i + 1]])
+                time_groupings.append((opening_times[i + 1], closing_times[i + 1]))
+                num_groups += 1
+
+        for i in range(len(hours_grouping_list)):
+            first_day_in_group = hours_grouping_list[i][0]
+            last_day_in_group = hours_grouping_list[i][-1]
+            days_string = first_day_in_group + '-' + last_day_in_group + ':'
+            if first_day_in_group == last_day_in_group:
+                days_string = first_day_in_group + ':'
+            store_hours.append((days_string, time_groupings[i][0], time_groupings[i][1]))
+
+        return store_hours
+
 
 class MenuCategory(models.Model):
 

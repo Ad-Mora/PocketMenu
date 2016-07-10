@@ -1,9 +1,11 @@
 {% load staticfiles %}
-{% for restaurant in restaurants_list %}
+{% for restaurant, foods_list in restaurants.items %}
   <li class="food-type-section-wrapper">
-    <h3 class="food-type-section-header">{{ restaurant.name }}</h3>
+    <h3 class="food-type-section-header">
+        <a href="/{{ restaurant.get_restaurant_url_path }}">{{ restaurant.name }}</a>
+    </h3>
     <ul class="food-type-section-food-list">
-      {% for menu_item in restaurant.favorite_foods %}
+      {% for menu_item in foods_list %}
         {%  include "PhotoMenu/Snippets/FoodEntry.html" %}
       {% endfor %}
       <!-- ghost items ensure even spacing and left-alignment -->

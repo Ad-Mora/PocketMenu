@@ -342,9 +342,6 @@ var moreOptions = (function(){
     var selectSearchType = searchBarContainer.querySelector("select.select-search-type");
     var suggestionsList = searchBarContainer.querySelector("ul.filter-search-suggestions-list");
 
-    searchInput.addEventListener('focus', function (event) {
-        desktopHeaderSearch.displaySearchSuggestionsList(event, suggestionsList);
-    });
     searchInput.addEventListener('keyup', function(event) {
         var destinationFile = event.target.getAttribute("data-autocomplete-suggestions-href");
         var searchType = selectSearchType.value;

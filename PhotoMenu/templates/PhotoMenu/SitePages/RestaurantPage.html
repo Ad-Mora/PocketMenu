@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
   <title>Chomps - {{ restaurant.name }}</title>
-  <link rel="shortcut icon" type="image/x-icon" href="{% static "PhotoMenu/Images/Icons/ChompsFaviconOrange.ico" %}">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static "PhotoMenu/Images/Icons/ChompsHamburgerSymbol.ico" %}">
 
   {% load compress %}
   {% compress css %}
@@ -52,7 +52,7 @@
         <h1 class="restaurant-name">{{ restaurant.name }}</h1>
         <p class="restaurant-address">{{ restaurant.address }}</p>
         <div class="all-restaurant-hours">
-          {% for item in store_hours %}
+          {% for item in restaurant.compute_store_hours %}
             <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
           {% endfor %}
         </div>

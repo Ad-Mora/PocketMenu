@@ -7,6 +7,7 @@ var ajax = (function (){
     // bind events
 
     // private variables
+    var CSRF_COOKIE_NAME = "csrftoken";
 
     // public variables
 
@@ -14,8 +15,11 @@ var ajax = (function (){
 
     // public functions
     function getCSRFToken() {
-        var csrfCookie = document.cookie.split(';')[0];
-        var csrfTokenValue = csrfCookie.split('=')[1];
+        var documentCookies = "; " + document.cookie;
+        var csrfTokenValue = documentCookies.split("; " + CSRF_COOKIE_NAME + "=")
+            .pop() // only take the substring that contains value of csrf token
+            .split(";") // the string has a trailing ';' and is of the form {cookieValue} + ';'
+            .shift(); // remove the ';' so that you are only left with {cookieValue}
         return csrfTokenValue
     }
     

@@ -70,17 +70,25 @@ input.search-option-radio-btn:checked ~ label.search-option-label{
     border-bottom: 4px solid #FF9800;
     color: #FF9800;
 }
-
+/*--------Restaurant Results List------*/
+ul.restaurants-search-results-list{
+    margin: 0px 0px 30px 0%;
+}
 /*-----------Food Results List-----------*/
-ul.search-results-list{
+ul.food-search-results-list{
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
+h3.food-item-restaurant-name{
+    font-size: 16px;
+    display: block;
+    margin-top: 15px;
+}
 div.no-results-help-container{
-    margin: 0px 4% 0px 4%;
+    margin: 0px 4% 30px 4%;
 }
 p.no-results-details{
     color: #333333;
@@ -91,6 +99,7 @@ ul.no-results-suggestions-list{
     list-style-type: disc;
     padding-left: 30px;
 }
+
 /*-----Large mobile view-----*/
 @media (min-width: 355px) {
     h1.search-page-title{
@@ -114,8 +123,14 @@ ul.no-results-suggestions-list{
 }
 
 @media (min-width: 480px) {
-    ul.search-results-list{
+    ul.food-search-results-list{
         width: 91%;
+        margin: 0px 0px 30px 4%;
+    }
+}
+
+@media (min-width: 600px) {
+    ul.restaurants-search-results-list{
         margin: 0px 0px 30px 4%;
     }
 }
@@ -164,6 +179,6 @@ ul.no-results-suggestions-list{
         margin-right: auto;
     }
     h3.food-item-restaurant-name{
-        display: block;
+        font-size: 18px;
     }
 }
