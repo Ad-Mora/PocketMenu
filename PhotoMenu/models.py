@@ -28,7 +28,7 @@ def get_menu_item_upload_path(instance, filename):
 class Restaurant(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000, blank=True)
     header_image = models.ImageField(upload_to=get_restaurant_upload_path)
     mon_open_time = models.TimeField(default=datetime.time(0, 1))
     mon_close_time = models.TimeField(default=datetime.time(0, 1))

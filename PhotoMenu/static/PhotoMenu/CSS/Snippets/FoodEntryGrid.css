@@ -8,12 +8,20 @@ h3.food-type-section-header{
     font-weight: 600;
     padding-left: 2%;
 }
+p.category-description{
+    font-size: 13px;
+    color: #555555;
+    width: 91%;
+    margin: 7px 0px 5px 2%;
+    line-height: 17px;
+}
 ul.food-type-section-food-list{
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+
 @media (min-width: 355px) {
     h3.food-type-section-header{
         font-size: 24px;
@@ -31,7 +39,11 @@ ul.food-type-section-food-list{
         margin-top: 50px;
         font-size: 26px;
     }
-
+    p.category-description{
+        font-size: 16px;
+        margin: 7px 0px 15px 0px;
+        padding-left: calc(1% - 2px);
+    }
 }
 
 @media (min-width: 1200px) {

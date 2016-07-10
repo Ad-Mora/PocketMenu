@@ -31,32 +31,32 @@ p.restaurant-address{
     margin: 5px auto 5px auto;
     max-width: 290px;
 }
-img.white-clock-icon{
-    float: left;
-    height: 15px;
-    width: 15px;
-}
-div.all-restaurant-hours{
-
-}
 p.restaurant-hours{
     color: white;
     font-size: 15px;
     font-weight: 500;
+}
+h1.restaurant-description-header{
+    width: 96%;
+    color: #555555;
+    margin: 15px auto 0px auto;
+    font-size: 20px;
+    font-weight: 600;
+}
+p.restaurant-description{
+    width: 96%;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333333;
 }
 span.day-wrapper {
     color: #FF9800;
 }
 
 /*-------Menu Categories-------*/
-p.category-description{
-    font-size: 13px;
-    color: #777777;
-    width: 91%;
-    margin: 7px 0px 5px 2%;
-    line-height: 17px;
-}
-
 @media (min-width: 355px) {
     div.background-image-dark-overlay{
         padding-top: 75px;
@@ -70,10 +70,6 @@ p.category-description{
         margin-bottom: 6px;
         font-size: 18px;
     }
-    img.white-clock-icon{
-        height: 18px;
-        width: 18px;
-    }
     div.all-restaurant-hours{
         margin-left: 6px;
     }
@@ -81,17 +77,13 @@ p.category-description{
         font-size: 18px;
         line-height: 18px;
     }
-}
-
-@media (min-width: 480px) {
-    h1.restaurant-name{
-        font-size: 36px;
+    h1.restaurant-description-header{
+        font-size: 24px;
     }
-    p.restaurant-address{
-        max-width: 400px;
-    }
-    p.category-description{
-        font-size: 15px;
+    p.restaurant-description{
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 18px;
     }
 }
 
@@ -112,16 +104,20 @@ p.category-description{
     input.search-submit-button{
         right: 0px;
     }
-    img.white-clock-icon{
-        height: 20px;
-        width: 20px;
-    }
     p.restaurant-hours{
         font-size: 18px;
     }
-    p.category-description{
-        font-size: 16px;
-        margin: 7px 0px 15px 0px;
-        padding-left: calc(1% - 2px);
+    h1.restaurant-description-header{
+        margin-top: 30px;
+        font-size: 26px;
+        width: 89%;
+        margin-left: calc(5.5% - 2px);
+    }
+    p.restaurant-description{
+        width: 89%;
+        margin-left: calc(5.5% - 2px);
+        margin-right: 0px;
+        font-size: 18px;
+        line-height: 22px;
     }
 }
