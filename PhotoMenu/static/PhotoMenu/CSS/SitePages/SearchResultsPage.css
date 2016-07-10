@@ -81,6 +81,11 @@ ul.search-results-list{
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
+h3.food-item-restaurant-name{
+    font-size: 16px;
+    display: block;
+    margin-top: 15px;
+}
 div.no-results-help-container{
     margin: 0px 4% 0px 4%;
 }
@@ -96,6 +101,7 @@ ul.no-results-suggestions-list{
     list-style-type: disc;
     padding-left: 30px;
 }
+
 /*-----Large mobile view-----*/
 @media (min-width: 355px) {
     h1.search-page-title{
@@ -176,6 +182,6 @@ ul.no-results-suggestions-list{
         margin-right: auto;
     }
     h3.food-item-restaurant-name{
-        display: block;
+        font-size: 18px;
     }
 }
