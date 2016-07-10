@@ -152,6 +152,7 @@ COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 DEBUG = os.environ['DEBUG'] == 'True'
+USE_S3_MEDIA = os.environ['USE_S3_MEDIA'] == 'True'
 PREPEND_WWW = os.environ['PREPEND_WWW'] == 'True'
 ALLOWED_HOSTS = ['18.189.105.8', 'www.chomps.io', 'chomps.io', 'chompsio.herokuapp.com']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS'])
@@ -163,7 +164,7 @@ CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE'])
 SECRET_KEY = os.environ['SECRET_KEY']
 
 
-if not DEBUG:
+if USE_S3_MEDIA:
     STATIC_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
     MEDIA_URL = AWS_S3_CUSTOM_URL + '/media/'
 
