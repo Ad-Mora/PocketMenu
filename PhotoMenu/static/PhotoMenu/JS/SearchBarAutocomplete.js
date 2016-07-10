@@ -8,7 +8,6 @@ var masterSearch = (function(){
     var searchSuggestions = searchBarForm.querySelector("ul.search-suggestions-list");
 
     // bind events
-    searchBar.addEventListener("input", onSearchBarFocus);
     documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener("keyup", querySuggestions);
     searchTypeRadioList[0].addEventListener("change", updateSearchTypeSelect);
@@ -30,10 +29,6 @@ var masterSearch = (function(){
     function updateSearchTypeRadioButtons(event) {
         searchBarForm.querySelector("input[name=radio-search-type][value="+ event.target.value +"]").checked = true;
         searchBar.placeholder = "Search for " + event.target.value + "s";
-    }
-
-    function onSearchBarFocus(event) {
-        searchSuggestions.style.display = "block";
     }
 
     function selectSuggestionsOrBlurEvent(event) {
@@ -59,9 +54,16 @@ var masterSearch = (function(){
         }
         var postAjaxFunction = function(result){
             searchSuggestions.innerHTML = result;
+            if (result == "") {
+                searchSuggestions.style.display = "none";
+            }
+            else {
+                searchSuggestions.style.display = "block";
+            }
         }
 
         ajax.send_ajax_request(destination_file, json_data, csrfMiddlewareToken, postAjaxFunction);
+
     }
 
     // return public pointers to private variables & functions

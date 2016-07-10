@@ -1,4 +1,7 @@
-div.mobile-modal-search-container{
+div.show-mobile-search-modal{
+    display: block;
+}
+div.hide-mobile-search-modal{
     display: none;
 }
 
@@ -149,7 +152,7 @@ span.close-mobile-search-modal{
 }
 
 @media (min-width: 800px) {
-    div.mobile-modal-search-container{
+    div.show-mobile-search-modal{
         display: none;
     }
 }

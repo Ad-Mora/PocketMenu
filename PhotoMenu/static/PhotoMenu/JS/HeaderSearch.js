@@ -16,13 +16,12 @@ var mobileSearchModal = (function(){
     // bind events
     searchIcon.addEventListener('click', openSearchModal);
     cancelButton.addEventListener('click', closeSearchModal);
-    searchBar.addEventListener('focus', displaySearchSuggestionsList);
     documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener('keyup', queryForSuggestions);
     selectSearchType.addEventListener('change', updateMainFormPOSTAddress);
+    backgroundOverlay.addEventListener('click', closeSearchModal);
 
     // private variables
-
 
     // public variables
 
@@ -37,16 +36,14 @@ var mobileSearchModal = (function(){
     }
 
     function openSearchModal(event) {
-        container.style.display = "block";
+        container.classList.add("show-mobile-category-menu");
+        container.classList.remove("hide-mobile-search-modal");
         searchBar.focus();
     }
 
     function closeSearchModal(event) {
-        container.style.display = "none";
-    }
-
-    function displaySearchSuggestionsList() {
-        suggestionsList.style.display = "block";
+        container.classList.add("hide-mobile-search-modal");
+        container.classList.remove("show-mobile-category-menu");
     }
 
     function selectSuggestionsOrBlurEvent() {
@@ -67,6 +64,12 @@ var mobileSearchModal = (function(){
         var csrfMiddlewareToken = ajax.getCSRFToken();
         var postAjaxFunction = function(result){
             suggestionsList.innerHTML = result;
+            if (result == "") {
+                suggestionsList.style.display = "none";
+            }
+            else {
+                suggestionsList.style.display = "block";
+            }
         };
 
         var destinationFile = event.target.getAttribute("data-autocomplete-suggestions-href");
@@ -83,7 +86,7 @@ var mobileSearchModal = (function(){
 
     // return public pointers to private variables & functions
     return {
-        
+
     };
 
 })();
@@ -95,9 +98,6 @@ var desktopHeaderSearch = (function () {
     var suggestionsList = searchBarContainer.querySelector("ul.header-search-suggestions-list");
 
     // bind events
-    searchInput.addEventListener('focus', function (event) {
-        displaySearchSuggestionsList(event, suggestionsList);
-    });
     documentModule.addOnClickFunction(function (event) {
         selectSuggestionsOrBlurEvent(event, searchInput, searchBarContainer, suggestionsList);
     });
@@ -123,7 +123,7 @@ var desktopHeaderSearch = (function () {
             suggestionsList.style.display = "none";
         }
     }
-    
+
     function displaySearchSuggestionsList(event, suggestionsList) {
         suggestionsList.style.display = "block";
     }
@@ -137,6 +137,12 @@ var desktopHeaderSearch = (function () {
         }
         var postAjaxFunction = function(result){
             suggestionsList.innerHTML = result;
+            if (result == "") {
+                suggestionsList.style.display = "none";
+            }
+            else {
+                suggestionsList.style.display = "block";
+            }
         }
 
         ajax.send_ajax_request(destinationFile, json_data, csrfMiddlewareToken, postAjaxFunction);
@@ -151,3 +157,5 @@ var desktopHeaderSearch = (function () {
     };
 
 })();
+
+console.log("photomenu");
