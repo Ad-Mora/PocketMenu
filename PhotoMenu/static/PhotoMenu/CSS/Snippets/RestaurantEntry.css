@@ -33,7 +33,7 @@ p.restaurant-entry-address{
     font-size: 16px;
     color: rgb(53,53,53);
     font-weight: 500;
-    margin: 4% 0px 5px 0px;
+    margin: 5px 0px 5px 0px;
 }
 p.restaurant-entry-hours{
     text-align: center;
@@ -42,31 +42,22 @@ p.restaurant-entry-hours{
 span.day-wrapper{
     color: #FF9800;
 }
-/*-----------------Large Mobile----------------*/
-@media (min-width: 355px) {
-    a.restaurant-entry-wrapper{
-        padding: 0px;
-    }
-    h2.restaurant-entry-name{
-        font-size: 16px;
-    }
-}
 
 /*-----------------Tablet----------------*/
 @media (min-width: 600px) {
     li.restaurant-entry-li{
-        width: 31%;
+        float: left;
     }
 }
 
 /*--------------Desktop-----------------*/
-@media (min-width: 800px) {
-    li.food-entry-li{
-        -webkit-flex-grow: 1;
-        flex-grow: 1;
-        -webkit-flex-basis: 215px;
-        flex-basis: 215px;
-        width: 290px;
-        margin: 0px 1% 15px 1%;
-    }
-}
+/*@media (min-width: 800px) {*/
+    /*li.restaurant-entry-li{*/
+        /*-webkit-flex-grow: 1;*/
+        /*flex-grow: 1;*/
+        /*-webkit-flex-basis: 215px;*/
+        /*flex-basis: 215px;*/
+        /*width: 290px;*/
+        /*margin: 0px 1% 15px 1%;*/
+    /*}*/
+/*}*/

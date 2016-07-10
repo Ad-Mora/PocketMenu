@@ -72,7 +72,7 @@ input.search-option-radio-btn:checked ~ label.search-option-label{
 }
 /*--------Restaurant Results List------*/
 ul.restaurants-search-results-list{
-    margin-bottom: 30px;
+    margin: 0px 0px 30px 0%;
 }
 /*-----------Food Results List-----------*/
 ul.food-search-results-list{
@@ -88,7 +88,7 @@ h3.food-item-restaurant-name{
     margin-top: 15px;
 }
 div.no-results-help-container{
-    margin: 0px 4% 0px 4%;
+    margin: 0px 4% 30px 4%;
 }
 p.no-results-details{
     color: #333333;
@@ -125,6 +125,12 @@ ul.no-results-suggestions-list{
 @media (min-width: 480px) {
     ul.food-search-results-list{
         width: 91%;
+        margin: 0px 0px 30px 4%;
+    }
+}
+
+@media (min-width: 600px) {
+    ul.restaurants-search-results-list{
         margin: 0px 0px 30px 4%;
     }
 }
