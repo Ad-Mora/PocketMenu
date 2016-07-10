@@ -16,7 +16,6 @@ var mobileSearchModal = (function(){
     // bind events
     searchIcon.addEventListener('click', openSearchModal);
     cancelButton.addEventListener('click', closeSearchModal);
-    searchBar.addEventListener('focus', displaySearchSuggestionsList);
     documentModule.addOnClickFunction(selectSuggestionsOrBlurEvent);
     searchBar.addEventListener('keyup', queryForSuggestions);
     selectSearchType.addEventListener('change', updateMainFormPOSTAddress);
@@ -47,10 +46,6 @@ var mobileSearchModal = (function(){
         container.classList.remove("show-mobile-category-menu");
     }
 
-    function displaySearchSuggestionsList() {
-        suggestionsList.style.display = "block";
-    }
-
     function selectSuggestionsOrBlurEvent() {
         var targetElement = event.target;
         if (targetElement.parentNode === suggestionsList) {
@@ -69,6 +64,12 @@ var mobileSearchModal = (function(){
         var csrfMiddlewareToken = ajax.getCSRFToken();
         var postAjaxFunction = function(result){
             suggestionsList.innerHTML = result;
+            if (result == "") {
+                suggestionsList.style.display = "none";
+            }
+            else {
+                suggestionsList.style.display = "block";
+            }
         };
 
         var destinationFile = event.target.getAttribute("data-autocomplete-suggestions-href");
