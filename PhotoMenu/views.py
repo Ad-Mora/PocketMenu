@@ -96,21 +96,22 @@ def contact_page(request):
 def search_results_page(request):
     if request.method == "POST":
         query_string = request.POST['search-bar']
+        search_type = request.POST['search-type']
         context = None
-        if query_string == SEARCH_TYPE_FOOD:
+        if search_type == SEARCH_TYPE_FOOD:
             context = {
                 'query_string': query_string,
                 'menu_items_list': get_menu_items_for_search_string(query_string),
-                'search_type': request.POST['search-type']
+                'search_type': search_type
             }
-        elif query_string == SEARCH_TYPE_RESTAURANT:
+        elif search_type == SEARCH_TYPE_RESTAURANT:
+            max_results_limit = 20
             context = {
                 'query_string': query_string,
-                'restaurants_list': get_restaurants_for_search_string(query_string),
-                'search_type': request.POST['search-type']
+                'restaurants_list': get_restaurants_for_search_string(query_string, max_results_limit),
+                'search_type': search_type
             }
         return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
-
     else:
         return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html')
 

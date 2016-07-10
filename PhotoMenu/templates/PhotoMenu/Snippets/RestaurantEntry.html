@@ -12,7 +12,7 @@
     </div>
     <h4 class="restaurant-entry-name">{{ restaurant.name }} </h4>
     <p class="restaurant-entry-address"> </p>
-    {% for item in retaurant.compute_store_hours %}
+    {% for item in restaurant.compute_store_hours %}
       <p class="restaurant-entry-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
     {% endfor %}
   </a>
