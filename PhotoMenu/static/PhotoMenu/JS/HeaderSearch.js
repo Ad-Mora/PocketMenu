@@ -98,9 +98,6 @@ var desktopHeaderSearch = (function () {
     var suggestionsList = searchBarContainer.querySelector("ul.header-search-suggestions-list");
 
     // bind events
-    searchInput.addEventListener('focus', function (event) {
-        displaySearchSuggestionsList(event, suggestionsList);
-    });
     documentModule.addOnClickFunction(function (event) {
         selectSuggestionsOrBlurEvent(event, searchInput, searchBarContainer, suggestionsList);
     });
@@ -140,6 +137,12 @@ var desktopHeaderSearch = (function () {
         }
         var postAjaxFunction = function(result){
             suggestionsList.innerHTML = result;
+            if (result == "") {
+                suggestionsList.style.display = "none";
+            }
+            else {
+                suggestionsList.style.display = "block";
+            }
         }
 
         ajax.send_ajax_request(destinationFile, json_data, csrfMiddlewareToken, postAjaxFunction);
