@@ -79,6 +79,7 @@ ul.search-suggestions-list{
 }
 input.search-submit-button{
     display: none;
+    height: 35px;
 }
 button.search-button{
     margin-top: 6px;
@@ -94,6 +95,9 @@ button.search-button{
     input.search-bar{
         height: 40px;
         font-size: 16px;
+    }
+    input.search-submit-button{
+        height: 40px;
     }
     ul.search-suggestions-list{
         top: 40px;
@@ -153,10 +157,13 @@ button.search-button{
         border-top: 1px solid #CACACA;
     }
     input.search-submit-button{
+        position: absolute;
+        top: -1px;
+        right: -1px;
         display: inline-block;
+        height: 47px;
         float: right;
         width: 90px;
-        height: 45px;
         background-color: #448AFF;
         background-image: url("../../Images/Icons/WhiteSearchIcon.png");
         background-repeat: no-repeat;

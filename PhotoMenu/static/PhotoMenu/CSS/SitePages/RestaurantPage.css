@@ -95,7 +95,7 @@ p.category-description{
     }
 }
 
-
+/* Desktop view */
 @media (min-width: 800px) {
     div.background-image-dark-overlay{
         padding-top: 100px;
@@ -108,6 +108,9 @@ p.category-description{
         margin-bottom: 7px;
         margin-top: 7px;
         font-size: 18px;
+    }
+    input.search-submit-button{
+        right: 0px;
     }
     img.white-clock-icon{
         height: 20px;

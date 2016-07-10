@@ -222,6 +222,9 @@ ul.search-suggestions-list{
     .large-text{
         font-size: 42px;
     }
+    .search-bar-wrapper{
+        position: relative;
+    }
     .search-bar-and-suggestions{
         display: inline-block;
         margin-top: 0px;
@@ -289,23 +292,28 @@ ul.search-suggestions-list{
     }
 }
 
-
+/*
 /*—————Our Locations Spacing—————*//*----------------------------------NEED TO DEBUG once we get 2+ restaurants*/
 
 /*——————1 restaurant—————— */
+/*
 .white-area.zero-or-one-restaurants {
 	display: none;
 }
+*/
 
 /*—————— 2 restaurants —————— */
+/*
 .location-section.two-restaurants {
 	max-width: 450px;
 	-moz-flex-basis: 450px;
 	-webkit-flex-basis: 450px;
 	flex-basis: 450px;
 }
+*/
 
 /*——————3 restaurants ——————*/
+/*
 .location-section.three-restaurants {
 	max-width: 400px;
 	-moz-flex-basis: 400px;
@@ -315,8 +323,10 @@ ul.search-suggestions-list{
 .all-locations-wrapper.three-restaurants {
 	max-width: 1200px;
 }
+*/
 
 /*——————4 restaurants ——————*/
+/*
 .location-section.four-restaurants {
 	max-width: 400px;
 	-moz-flex-basis: 301px;
@@ -349,3 +359,4 @@ ul.search-suggestions-list{
 		flex-basis: 300px;
 	}
 }
+*/

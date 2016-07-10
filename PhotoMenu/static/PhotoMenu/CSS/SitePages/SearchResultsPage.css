@@ -32,9 +32,7 @@ ul.search-suggestions-list{
 }
 input.search-submit-button{
     display: inline-block;
-    float: right;
     width: 15%;
-    height: 35px;
     background-color: #448AFF;
     background-image: url("../../Images/Icons/WhiteSearchIcon.png");
     background-repeat: no-repeat;
@@ -89,9 +87,6 @@ p.no-results-details{
     font-weight: bold;
     font-size: 16px;
 }
-p.no-results-suggestion{
-
-}
 ul.no-results-suggestions-list{
     list-style-type: disc;
     padding-left: 30px;
@@ -103,9 +98,6 @@ ul.no-results-suggestions-list{
         font-weight: 200;
     }
     div.search-bar-wrapper{
-        height: 40px;
-    }
-    input.search-submit-button{
         height: 40px;
     }
     p.number-of-search-results{
@@ -156,10 +148,6 @@ ul.no-results-suggestions-list{
     }
     ul.search-suggestions-list{
         width: 100%;
-    }
-    input.search-submit-button {
-        width: 90px;
-        height: 45px;
     }
     div.full-width-separator{
         margin-bottom: 15px;
