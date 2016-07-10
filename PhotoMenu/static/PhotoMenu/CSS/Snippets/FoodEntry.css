@@ -65,7 +65,7 @@ p.food-entry-price{
     }
     h4.food-entry-name{
         font-size: 16px;
-        line-height: 20px;
+        line-height: 18px;
         margin-bottom: 1%;
     }
     p.food-entry-price{
@@ -98,7 +98,7 @@ p.food-entry-price{
         line-height: 18px;
         margin-bottom: 3px;
         margin-left: 4%;
-        color: rgb(120,120,120);
+        color: #555555;
         width: 92%;
     }
 
