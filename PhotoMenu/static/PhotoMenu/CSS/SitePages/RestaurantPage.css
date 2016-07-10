@@ -118,6 +118,7 @@ p.category-description{
     }
     p.category-description{
         font-size: 16px;
-        margin: 7px 0px 15px 1%;
+        margin: 7px 0px 15px 0px;
+        padding-left: calc(1% - 2px);
     }
 }
