@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from . import views
+import sys
 
 app_name = 'PhotoMenu'
 
