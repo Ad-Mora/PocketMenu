@@ -101,23 +101,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = ''
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Media and Static files storage on AWS
 AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).
@@ -125,22 +118,20 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 # We also use it in the next setting.
 AWS_S3_CUSTOM_URL = 'https://%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-
 # Static root
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles/')
 STATIC_URL = '/static/'
-
 
 # Media root
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 MEDIA_URL = '/media/'
 
+# Email config
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'chompsmail@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ['MAIL_PASSWORD']
 EMAIL_PORT = 587
-
 EMAIL1 = os.environ['EMAIL1']
 EMAIL2 = os.environ['EMAIL2']
 
@@ -150,11 +141,11 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-
+# Other config
 DEBUG = os.environ['DEBUG'] == 'True'
 USE_S3_MEDIA = os.environ['USE_S3_MEDIA'] == 'True'
 PREPEND_WWW = os.environ['PREPEND_WWW'] == 'True'
-ALLOWED_HOSTS = ['18.189.105.8', 'www.chomps.io', 'chomps.io', 'chompsio.herokuapp.com']
+ALLOWED_HOSTS = ['18.189.105.8', 'localhost', 'www.chomps.io', 'chomps.io', 'chompsio.herokuapp.com']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS'])
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True'
 SECURE_BROWSER_XSS_FILTER = os.environ['SECURE_BROWSER_XSS_FILTER'] == 'True'
@@ -163,8 +154,7 @@ X_FRAME_OPTIONS = os.environ['X_FRAME_OPTIONS']
 CONN_MAX_AGE = int(os.environ['CONN_MAX_AGE'])
 SECRET_KEY = os.environ['SECRET_KEY']
 
-
-if USE_S3_MEDIA:
+if not DEBUG or (USE_S3_MEDIA and DEBUG):
     STATIC_URL = AWS_S3_CUSTOM_URL + '/staticfiles/'
     MEDIA_URL = AWS_S3_CUSTOM_URL + '/media/'
 

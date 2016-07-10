@@ -7,9 +7,11 @@ from django.core.mail import send_mail
 from Core.settings import EMAIL_HOST_USER
 from Core.settings import EMAIL1
 from Core.settings import EMAIL2
+from django.shortcuts import get_object_or_404
 import collections
 import json
 import sys
+
 
 SEARCH_TYPE_RESTAURANT = "Restaurant"
 SEARCH_TYPE_FOOD = "Food"
@@ -111,7 +113,7 @@ def search_results_page(request):
 
 def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
-    restaurant = Restaurant.objects.get(name__iexact=restaurant_name)
+    restaurant = get_object_or_404(Restaurant, name__iexact=restaurant_name)
     num_horizontal_cats = 2
     menu_categories = None
     categories = None
@@ -151,7 +153,7 @@ def restaurants_page(request, restaurant_name):
         for category in menu_categories:
             categories[category] = MenuItem.objects.filter(menu_category_id=category.id)
 
-    #----------------------------------------Should this go in utils.py ?
+    # vvv Should this go in utils.py ?
     # get store hours
     hours_grouping_list = [['Mon']]
     time_groupings = [(restaurant.mon_open_time, restaurant.mon_close_time)]
@@ -185,8 +187,6 @@ def restaurants_page(request, restaurant_name):
         if first_day_in_group == last_day_in_group:
             days_string = first_day_in_group + ':'
         store_hours.append((days_string, time_groupings[i][0], time_groupings[i][1]))
-
-    #--------------------------------------------
 
     horizontal_cats = menu_categories[:num_horizontal_cats]
     remaining_cats = menu_categories[num_horizontal_cats:]
