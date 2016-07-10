@@ -11,6 +11,19 @@
 .logo{
     display: none;
 }
+a.mobile-logo{
+    background-image: url("../../Images/Icons/ChompsHamburgerSymbol.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: 100% auto;
+    background-size: auto 100%;
+    height: 45px;
+    width: 45px;
+    position: absolute;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
 .header-search-bar-with-icon{
     display: none;
 }
@@ -18,7 +31,7 @@ div.hamburger-icon-wrapper{
     display: inline-block;
     width: 30px;
     height: 22px;
-    margin: 13px 0px 0px 15px;
+    margin: 13px 0px 0px 10px;
     position: relative;
 }
 span.hamburger-bar-middle{
@@ -56,14 +69,14 @@ span.hamburger-bar-middle::after{
 .favorites-link{
     display: inline-block;
     position: absolute;
-    right: 45px;
+    right: 10px;
     margin-top: 4.5px;
 }
 .search-icon{
     display: inline-block;
     position: absolute;
-    right: 10px;
-    margin: 11px 0px 0px 0px;
+    left: 50px;
+    margin: 12px 0px 0px 0px;
     height: 23px;
 }
 
@@ -126,16 +139,18 @@ li.current-category p{
     .header{
         height: 55px;
     }
+    a.mobile-logo{
+        height: 55px;
+        width: 55px;
+    }
     span.hamburger-icon-middle{
         margin: 26px 0px 0px 15px;
     }
     .favorites-link{
         margin-top: 5.5px;
-        right: 50px;
     }
     .search-icon{
-        height: 30px;
-        margin-top: 12.5px;
+        margin-top: 16px;
     }
     div.hamburger-icon-wrapper{
         margin-top: 17px;
@@ -156,6 +171,9 @@ li.current-category p{
 
 /* Desktop view */
 @media (min-width: 800px) {
+    a.mobile-logo{
+        display: none;
+    }
     .logo{
         display: inline-block;
         line-height: 55px;

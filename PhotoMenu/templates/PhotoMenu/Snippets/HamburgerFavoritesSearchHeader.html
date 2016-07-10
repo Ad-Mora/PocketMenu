@@ -12,18 +12,27 @@
 {# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}
 
 {% load staticfiles %}
+<!-- Orange Header -->
 <div class="header">
   {% include "PhotoMenu/Snippets/Logo.html" %}
   {% include "PhotoMenu/Snippets/HeaderSearchBar.html" %}
-{#  <img class="hamburger-icon" src="{% static "PhotoMenu/Images/Icons/WhiteHamburgerIcon.png" %}">#}
+
+  <!-- Mobile Hamburger Bars & Search -->
   <div class="hamburger-icon-wrapper">
     <span class="hamburger-bar-middle"></span>
   </div>
+  <img class="search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
+
+  <!-- Mobile Chomps Symbl -->
+  <a class="mobile-logo" href="{% url "PhotoMenu:homepage" %}"></a>
+
+  <!-- Desktop Favorites & Contact Us -->
   <span class="header-links-separator"></span>
   <a class="contact-us-link" href="{% url "PhotoMenu:contact_page" %}">Contact Us</a>
   {% include "PhotoMenu/Snippets/FavoritesLink.html" %}
-  <img class="search-icon" src="{% static "PhotoMenu/Images/Icons/WhiteSearchIcon.png" %}">
 </div>
+
+<!-- Category Menu -->
 <div class="mobile-category-menu-background-overlay hide-mobile-category-menu"></div>
 <ul class="mobile-categories-menu-list hide-mobile-category-menu" data-categories-count="{{ categories.items|length }}">
   <li class="mobile-categories-menu-header">Menu Categories</li>
