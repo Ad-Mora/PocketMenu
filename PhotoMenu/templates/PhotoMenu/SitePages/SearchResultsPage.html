@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Defaults.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Reset.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FoodEntry.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/RestaurantEntry.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Footer.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/MobileInspectorView.css" %}">
   <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/DesktopInspectorView.css" %}">
@@ -46,8 +47,14 @@
     <!-- Main Search Bar -->
     {% include "PhotoMenu/Snippets/MasterSearchBar.html" %}
 
-    <p class="number-of-search-results">There are {{ menu_items_list.count }} results matching '{{ query_string }}'</p>
-    <div class="full-width-separator"></div>
+    <!-- Result Count -->
+    {% if search_type == "Food" %}
+      <p class="number-of-search-results">There are {{ menu_items_list.count }} food results matching '{{ query_string }}'</p>
+    {% elif search_type == "Restaurant" %}
+      <p class="number-of-search-results">There are {{ restaurants_list.count }} restaurant results matching '{{ query_string }}'</p>
+    {% endif %}
+      <div class="full-width-separator"></div>
+
   </div>
 
   <!-- Inspector View (mobile & desktop) -->
@@ -66,7 +73,6 @@
     </ul>
 
   {% elif restaurants_list %}
-      hello
       <ul class="restaurants-search-results-list">
         {%  for restaurant in restaurants_list %}
           {%  include "PhotoMenu/Snippets/RestaurantEntry.html" %}

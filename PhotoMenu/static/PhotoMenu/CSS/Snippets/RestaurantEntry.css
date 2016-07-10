@@ -1,24 +1,24 @@
 li.restaurant-entry-li{
-    margin: 5px 1% 0px 1%;
-    width: 48%;
+    margin: 10px auto 0px auto;
+    width: 100%;
     max-width: 290px;
 }
-div.restaurant-entry-wrapper{
+a.restaurant-entry-wrapper{
+    display: block;
     width: 100%;
     background-color: #FFFFFF;
     border: 1px solid #D2D2D2;
     -webkit-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
     -moz-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
     box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
+    padding-bottom: 4%;
 }
-h4.restaurant-entry-name{
-    font-size: 13px;
-    overflow: hidden;
-    text-align: left;
-    margin: 3% 0px 3% 4%;
+h2.restaurant-entry-name{
+    font-size: 20px;
+    text-align: center;
     font-weight: bold;
-    width: 92%;
     color: rgb(53,53,53);
+    margin-top: 4%;
 }
 div.restaurant-entry-image{
     width: 92%;
@@ -28,13 +28,26 @@ div.restaurant-entry-image img{
     width: 100%;
     height: auto;
 }
-
+p.restaurant-entry-address{
+    text-align: center;
+    font-size: 16px;
+    color: rgb(53,53,53);
+    font-weight: 500;
+    margin: 4% 0px 5px 0px;
+}
+p.restaurant-entry-hours{
+    text-align: center;
+    color: rgb(53,53,53);
+}
+span.day-wrapper{
+    color: #FF9800;
+}
 /*-----------------Large Mobile----------------*/
 @media (min-width: 355px) {
-    div.restaurant-entry-wrapper{
+    a.restaurant-entry-wrapper{
         padding: 0px;
     }
-    h4.restaurant-entry-name{
+    h2.restaurant-entry-name{
         font-size: 16px;
     }
 }
