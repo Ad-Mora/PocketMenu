@@ -4,10 +4,9 @@ div.mobile-inspector-background-overlay {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: rgb(238,238,238);
+    background-color: rgba(238,238,238,.95);
     z-index: 2;
 }
-
 
 span.close-inspector-icon {
 background-image: url("../../Images/Icons/QuitInspectorIcon.png");
