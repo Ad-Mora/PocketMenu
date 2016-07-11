@@ -200,4 +200,7 @@ ul.no-results-suggestions-list{
     li.no-results-suggestion{
         line-height: 23px;
     }
+    input.search-submit-button{
+        right: -3px;
+    }
 }
