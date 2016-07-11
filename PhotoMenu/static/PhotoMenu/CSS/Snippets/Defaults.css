@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+
 html{
     height: 100%;
 }
@@ -6,7 +9,7 @@ body {
     min-height: 100%;
     padding-bottom: 165px;
     padding-top: 45px;
-    font-family: "Helvetica Neue", "SansSerif";
+    font-family: "Helvetica Neue", "Roboto", "Lato", "SansSerif";
     background-color: #EEEEEE;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -17,6 +20,7 @@ body {
 h3.food-item-restaurant-name{
     display: none;
 }
+
 /* Large mobile view */
 @media (min-width: 355px) {
     body {
