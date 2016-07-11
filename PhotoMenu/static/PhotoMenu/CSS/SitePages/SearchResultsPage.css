@@ -90,6 +90,10 @@ h3.food-item-restaurant-name{
 div.no-results-help-container{
     margin: 0px 4% 30px 4%;
 }
+li.no-results-suggestion{
+    font-size: 16px;
+    line-height: 20px;
+}
 p.no-results-details{
     color: #333333;
     font-weight: bold;
@@ -119,6 +123,18 @@ ul.no-results-suggestions-list{
         width: 25px;
         height: 20px;
         top: 6px;
+    }
+    p.no-results-suggestion{
+        font-size: 18px;
+        margin-top: 2px;
+    }
+    li.no-results-suggestion{
+        font-size: 18px;
+        line-height: 22px;
+    }
+    p.no-results-details{
+        font-weight: bold;
+        font-size: 20px;
     }
 }
 
@@ -180,5 +196,11 @@ ul.no-results-suggestions-list{
     }
     h3.food-item-restaurant-name{
         font-size: 18px;
+    }
+    li.no-results-suggestion{
+        line-height: 23px;
+    }
+    input.search-submit-button{
+        right: -3px;
     }
 }
