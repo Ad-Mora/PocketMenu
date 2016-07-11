@@ -54,6 +54,7 @@ var moreOptions = (function(){
     var headerCategoryScrollToPadding = 10;
 
     var desktopWidth = 800;
+    var didScroll = false;
 
     /*--------------------------------------------------*/
     /*----------Initial loading actions----------*/
@@ -61,6 +62,14 @@ var moreOptions = (function(){
 
     // Start off the page with the underbar taking up the full width of the first category item
     adjustSlidingUnderBar(null, allVisibleOptionsLI[0])
+
+    // Check every interval if the page has scrolled
+    function unsetScroll() {
+        if (didScroll) {
+            didScroll = false;
+        }
+    }
+    setInterval(unsetScroll, 50);
 
     /*--------------------------------------------------*/
     /*----------Bind events----------*/
@@ -332,8 +341,11 @@ var moreOptions = (function(){
     }
 
     function onScrollFunctions(event) {
-        fixCategoryBar();
-        detectCategoryScroll();
+        if (!didScroll) {
+            fixCategoryBar();
+            detectCategoryScroll();
+        }
+        didScroll = true;
     }
 
     /*--------Function for the SearchBar-------------*/
