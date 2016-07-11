@@ -303,6 +303,14 @@ ul.search-suggestions-list{
         margin-top: 15px;
         font-size: 22px;
     }
+    input.search-submit-button{
+        right: -2px;
+    }
+    ul.search-suggestions-list{
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+    }
 }
 
 
