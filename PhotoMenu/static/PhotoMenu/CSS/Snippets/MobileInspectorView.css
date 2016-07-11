@@ -4,10 +4,9 @@ div.mobile-inspector-background-overlay {
     position: fixed;
     top: 0px;
     left: 0px;
-    background-color: rgb(238,238,238);
+    background-color: rgba(238,238,238,.95);
     z-index: 2;
 }
-
 
 span.close-inspector-icon {
 background-image: url("../../Images/Icons/QuitInspectorIcon.png");
@@ -142,7 +141,7 @@ span.inspector.right-arrow{
 }
 
 div.inspector.food-details{
-
+    
 }
 
 h3.inspector.food-name{
@@ -170,8 +169,12 @@ p.inspector.food-price{
 h4.inspector.food-category-name{
     font-size: 16px;
     color: #777777;
-    font-weight: 500;
     margin: 0px 0px 5px 0px;
+}
+
+h4.inspector.food-category-name::before{
+    content: 'Category: ';
+    font-weight: 600;
 }
 
 p.inspector.food-category-description{

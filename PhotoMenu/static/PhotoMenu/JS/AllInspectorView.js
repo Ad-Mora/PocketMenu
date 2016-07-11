@@ -74,6 +74,7 @@ var allInspectorView = (function () {
     function hideInspectorView(event) {
         allInspectorsWrapper.style.display = "none";
         inspectorIsOpen = false;
+        centerRestaurantPageOnCurrentFood(currentFood);
     }
 
     function showNextFood(event) {
@@ -101,6 +102,30 @@ var allInspectorView = (function () {
                                             " " + foodInterestStates[ !interestInFood ],
                                             " " + foodInterestStates[ interestInFood ]
                                         );
+    }
+
+    var filterSearchBar = undefined;
+    function centerRestaurantPageOnCurrentFood(foodElement) {
+
+        // cache the filterSearchBar element
+        if (filterSearchBar === undefined) {
+            filterSearchBar = document.querySelector("div.filter-and-search-section");
+        }
+
+        var screenOffset = foodElement.getBoundingClientRect().top;
+        var documentOffset = window.pageYOffset || document.documentElement.scrollTop;
+        var headbarHeight = websiteHeader.headerContainer.getBoundingClientRect().height;
+        var buffer = 5;
+        var verticalOffset = screenOffset
+            + documentOffset
+            - headbarHeight
+            - buffer;
+
+        if (filterSearchBar) {
+            verticalOffset -= filterSearchBar.getBoundingClientRect().height
+        }
+
+        window.scrollTo(0,verticalOffset);
     }
 
     // return public pointers to private variables & functions------------------------------------
@@ -285,23 +310,6 @@ var mobileInspectorView = (function () {
         _populateMobileViewWithFoodData(leftInspectorView, previousFood);
         _populateMobileViewWithFoodData(mobileInspector, centerFood);
         _populateMobileViewWithFoodData(rightInspectorView, nextFood);
-
-        // center the screen around food getting inspected
-        centerRestaurantPageOnCurrentFood(foodElement);
-    }
-
-    function centerRestaurantPageOnCurrentFood(foodElement) {
-
-        var verticalScreenOffset = foodElement.getBoundingClientRect().top;
-        var documentVerticalOffset = window.pageYOffset || document.documentElement.scrollTop;
-        var headbarHeight = websiteHeader.headerContainer.getBoundingClientRect().height;
-        var buffer = 5;
-        var verticalOffset = verticalScreenOffset
-            + documentVerticalOffset
-            - headbarHeight
-            - buffer;
-        console.log(verticalOffset);
-        window.scrollTo(0,verticalOffset);
     }
 
     // return public pointers to private variables & functions
