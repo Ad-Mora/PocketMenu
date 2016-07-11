@@ -45,11 +45,11 @@ div.food-modal-image-wrapper{
     position: relative;
     display: inline-block;
     width: calc(100% - 300px);
-    overflow: scroll;
+    overflow: hidden;
 }
 
 span.food-modal-left-arrow-icon{
-    display: none;
+    /*display: none;*/
     background-image: url("../../Images/Icons/WhiteLeftArrowIcon.png");
     -webkit-background-size: 20px 35px;
     background-size: 20px 35px;
@@ -61,10 +61,7 @@ span.food-modal-left-arrow-icon{
     left: 0px;
     width: 20%;
     height: 100%;
-    -ms-background-position-x: 10%;
-    background-position-x: 10%;
-    -ms-background-position-y: 50%;
-    background-position-y: 50%;
+    background-position: 10% 50%;
     opacity: .3;
 }
 
@@ -73,7 +70,7 @@ span.food-modal-left-arrow-icon:hover{
 }
 
 span.food-modal-right-arrow-icon{
-    display: none;
+    /*display: none;*/
     background-image: url("../../Images/Icons/WhiteRightArrowIcon.png");
     -webkit-background-size: 100% auto;
     background-size: 20px 35px;
@@ -85,10 +82,7 @@ span.food-modal-right-arrow-icon{
     right: 0px;
     width: 80%;
     height: 100%;
-    -ms-background-position-x: 97%;
-    background-position-x: 97%;
-    -ms-background-position-y: 50%;
-    background-position-y: 50%;
+    background-position: 97% 50%;
     opacity: .3;
 }
 
@@ -96,9 +90,9 @@ span.food-modal-right-arrow-icon:hover{
     opacity: 1;
 }
 
-div.food-modal-image-wrapper:hover > span.food-modal-left-arrow-icon, div.food-modal-image-wrapper:hover > span.food-modal-right-arrow-icon{
-    display: block;
-}
+/*div.food-modal-image-wrapper:hover > span.food-modal-left-arrow-icon, div.food-modal-image-wrapper:hover > span.food-modal-right-arrow-icon{*/
+    /*display: block;*/
+/*}*/
 
 img.food-modal-image{
     width: 100%;
@@ -185,7 +179,7 @@ span.food-interest-icon:hover{
         display: block;
     }
     div.food-modal-container{
-        display: flex;
         display: -webkit-flex;
+        display: flex;
     }
 }
