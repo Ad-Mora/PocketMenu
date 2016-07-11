@@ -142,10 +142,13 @@ p.food-modal-food-description{
 }
 
 h5.food-modal-category-name{
-    color: rgb(85, 85, 85);
+    color: #777777;
     font-size: 16px;
     margin: 20px 0px 5px 0px;
-    font-weight: 500;
+}
+h5.food-modal-category-name::before{
+    content: 'Category: ';
+    font-weight: 600;
 }
 
 p.food-modal-category-details{
