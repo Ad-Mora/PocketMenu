@@ -23,6 +23,11 @@ var allInspectorView = (function () {
     // public variables
 
     // private functions-------------------------------------------------------------------------
+    function hideInterestActionSign(event) {
+        interestActionSign.style.display = "none";
+    }
+
+
     function _displayInterestActionSign(foodIsLiked) {
         var interestMessageDict = {
             true: "Item saved to \"Favorites\".",
@@ -34,6 +39,8 @@ var allInspectorView = (function () {
         var interestActionMessage = interestActionSign.querySelector("p.interest-action-taken");
         interestActionMessage.innerHTML = interestMessageDict[foodIsLiked];
         oldOne.parentNode.replaceChild(interestActionSign, oldOne);
+        var exitInterestActionSign = interestActionSign.querySelector("span.close-interest-action");
+        exitInterestActionSign.addEventListener('click', hideInterestActionSign);
         interestActionSign.style.display = "block";
     }
     
