@@ -169,8 +169,12 @@ p.inspector.food-price{
 h4.inspector.food-category-name{
     font-size: 16px;
     color: #777777;
-    font-weight: 500;
     margin: 0px 0px 5px 0px;
+}
+
+h4.inspector.food-category-name::before{
+    content: 'Category: ';
+    font-weight: 600;
 }
 
 p.inspector.food-category-description{
