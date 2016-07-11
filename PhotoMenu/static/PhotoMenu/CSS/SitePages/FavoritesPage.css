@@ -74,4 +74,7 @@ p.my-favorites-empty-message{
         line-height: 150px;
         font-size: 36px;
     }
+    h3.food-type-section-header{
+        margin-bottom: 15px;
+    }
 }

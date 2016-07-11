@@ -36,21 +36,25 @@ p.restaurant-hours{
     font-size: 15px;
     font-weight: 500;
 }
+div.restaurant-description-wrapper{
+    max-width: 1310px;
+    margin: 0px auto 0px auto;
+}
 h1.restaurant-description-header{
-    width: 96%;
+    width: 100%;
     color: #555555;
-    margin: 15px auto 0px auto;
+    margin: 15px 0px 0px 0px;
     font-size: 20px;
     font-weight: 600;
+    padding-left: 2%;
 }
 p.restaurant-description{
-    width: 96%;
-    margin-top: 8px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin: 8px 0px 0px 0px;
     font-size: 14px;
     line-height: 16px;
     color: #333333;
+    padding-left: 2%;
 }
 span.day-wrapper {
     color: #FF9800;
@@ -107,17 +111,20 @@ span.day-wrapper {
     p.restaurant-hours{
         font-size: 18px;
     }
+    div.restaurant-description-wrapper{
+
+    }
     h1.restaurant-description-header{
-        margin-top: 30px;
         font-size: 26px;
-        width: 89%;
-        margin-left: calc(5.5% - 2px);
+        width: 91%;
+        margin: 30px auto 0px auto;
+        padding-left: calc(1% - 2px);
     }
     p.restaurant-description{
-        width: 89%;
-        margin-left: calc(5.5% - 2px);
-        margin-right: 0px;
         font-size: 18px;
         line-height: 22px;
+        width: 91%;
+        margin: 0px auto;
+        padding-left: calc(1% - 2px);
     }
 }

@@ -46,7 +46,7 @@ var mobileSearchModal = (function(){
         container.classList.remove("show-mobile-category-menu");
     }
 
-    function selectSuggestionsOrBlurEvent() {
+    function selectSuggestionsOrBlurEvent(event) {
         var targetElement = event.target;
         if (targetElement.parentNode === suggestionsList) {
             var suggestion_text = targetElement.innerHTML;
@@ -157,5 +157,3 @@ var desktopHeaderSearch = (function () {
     };
 
 })();
-
-console.log("photomenu");

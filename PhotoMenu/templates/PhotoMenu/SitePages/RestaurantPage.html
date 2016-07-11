@@ -66,10 +66,12 @@
   <!-- Inspector View (mobile & desktop) -->
  {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
 
-  <h1 class="restaurant-description-header">About Us</h1>
-  <p class="restaurant-description">
-    {{ restaurant.description }}
-  </p>
+  <div class="restaurant-description-wrapper">
+    <h1 class="restaurant-description-header">About Us</h1>
+    <p class="restaurant-description">
+      {{ restaurant.description }}
+    </p>
+  </div>
   <!-- List of Food Item Lists -->
   <ul class="list-of-food-lists">
     {% for category, item_list in categories.items %}
