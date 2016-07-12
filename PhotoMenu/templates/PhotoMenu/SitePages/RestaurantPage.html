@@ -53,7 +53,7 @@
         <p class="restaurant-address">{{ restaurant.address }}</p>
         <div class="all-restaurant-hours">
           {% for item in restaurant.compute_store_hours %}
-            <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
+            <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower }}-{{ item.2|time:"g:iA"|lower }}</p>
           {% endfor %}
         </div>
       </div>
