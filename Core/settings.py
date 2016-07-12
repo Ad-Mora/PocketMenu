@@ -144,7 +144,6 @@ COMPRESS_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 # Other config
 DEBUG = os.environ['DEBUG'] == 'True'
 USE_S3_MEDIA = os.environ['USE_S3_MEDIA'] == 'True'
-# PREPEND_WWW = os.environ['PREPEND_WWW'] == 'True'
 ALLOWED_HOSTS = ['18.189.105.8', 'localhost', 'www.chomps.io', 'chomps.io', 'chompsio.herokuapp.com']
 SECURE_HSTS_SECONDS = int(os.environ['SECURE_HSTS_SECONDS'])
 SECURE_CONTENT_TYPE_NOSNIFF = os.environ['SECURE_CONTENT_TYPE_NOSNIFF'] == 'True'
