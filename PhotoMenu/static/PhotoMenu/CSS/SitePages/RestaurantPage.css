@@ -18,7 +18,7 @@ div.restaurant-info-wrapper{
     margin: 0px auto 0px auto;
     text-align: center;
 }
-h1.restaurant-name{
+a.restaurant-name{
     color: white;
     font-size: 28px;
     font-weight: 600;
@@ -64,7 +64,7 @@ span.day-wrapper {
         padding-top: 75px;
         padding-bottom: 75px;
     }
-    h1.restaurant-name{
+    a.restaurant-name{
         font-size: 30px;
     }
     p.restaurant-address{
@@ -95,7 +95,7 @@ span.day-wrapper {
         padding-top: 100px;
         padding-bottom: 100px;
     }
-    h1.restaurant-name{
+    a.restaurant-name{
         font-size: 50px;
     }
     p.restaurant-address{

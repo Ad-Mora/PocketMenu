@@ -2,7 +2,7 @@
 {% for restaurant, foods_list in restaurants.items %}
   <li class="food-type-section-wrapper">
     <h3 class="food-type-section-header">
-        <a href="/{{ restaurant.get_restaurant_url_path }}">{{ restaurant.name }}</a>
+        <a href="{% url "PhotoMenu:restaurant_homepage" restaurant.get_restaurant_url_path %}">{{ restaurant.name }}</a>
     </h3>
     <ul class="food-type-section-food-list">
       {% for menu_item in foods_list %}

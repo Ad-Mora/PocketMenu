@@ -6,7 +6,7 @@
 {% load staticfiles %}
 
 <li class="restaurant-entry-li">
-  <a class="restaurant-entry-wrapper" href="/{{ restaurant.get_restaurant_url_path }}">
+  <a class="restaurant-entry-wrapper" href="{% url "PhotoMenu:restaurant_homepage" restaurant.get_restaurant_url_path %}">
     <h2 class="restaurant-entry-name">{{ restaurant.name }} </h2>
 {#    <div class="restaurant-entry-image">#}
 {#      <img src="{{ restaurant.header_image.url }}" alt="{{ restaurant.name }}">#}

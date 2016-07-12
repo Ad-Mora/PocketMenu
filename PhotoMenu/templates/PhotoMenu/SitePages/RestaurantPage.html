@@ -49,7 +49,7 @@
   <div class="header-background" style="background-image: url('{{ restaurant.header_image.url }}')">
     <div class="background-image-dark-overlay">
       <div class="restaurant-info-wrapper">
-        <h1 class="restaurant-name">{{ restaurant.name }}</h1>
+        <a class="restaurant-name" href="{% url "PhotoMenu:restaurant_homepage" restaurant.get_restaurant_url_path %}">{{ restaurant.name }}</a>
         <p class="restaurant-address">{{ restaurant.address }}</p>
         <div class="all-restaurant-hours">
           {% for item in restaurant.compute_store_hours %}
