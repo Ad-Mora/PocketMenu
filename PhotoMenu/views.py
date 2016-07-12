@@ -101,16 +101,18 @@ def search_results_page(request):
         search_type = request.POST['search-type']
         context = None
         if search_type == SEARCH_TYPE_FOOD:
+            menu_items_list = get_menu_items_for_search_string(query_string)
             context = {
                 'query_string': query_string,
-                'menu_items_list': get_menu_items_for_search_string(query_string),
+                'menu_items_list': menu_items_list,
                 'search_type': search_type
             }
         elif search_type == SEARCH_TYPE_RESTAURANT:
             max_results_limit = 20
+            restaurants_list = get_restaurants_for_search_string(query_string, max_results_limit)
             context = {
                 'query_string': query_string,
-                'restaurants_list': get_restaurants_for_search_string(query_string, max_results_limit),
+                'restaurants_list': restaurants_list,
                 'search_type': search_type
             }
         return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
