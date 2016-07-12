@@ -57,6 +57,35 @@ p.restaurant-description{
 span.day-wrapper {
     color: #FF9800;
 }
+div.restaurant-search-results-wrapper{
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1.search-results-header{
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #333333;
+    text-align: center;
+}
+p.search-results-detail{
+    margin-top: 15px;
+    color: #555555;
+    font-size: 14px;
+}
+div.line-separator{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    height: 1px;
+    background-color: #979797;
+}
+p.no-results-found{
+    margin-top: 10px;
+    color: #333333;
+    text-align: center;
+}
 
 /*-------Menu Categories-------*/
 @media (min-width: 355px) {
@@ -86,6 +115,16 @@ span.day-wrapper {
         margin-top: 10px;
         font-size: 16px;
         line-height: 18px;
+    }
+    h1.search-results-header{
+        font-size: 30px;
+    }
+    p.search-results-detail{
+        font-size: 16px;
+    }
+    p.no-results-found{
+        margin-top: 14px;
+        font-size: 20px;
     }
 }
 
@@ -126,5 +165,11 @@ span.day-wrapper {
         line-height: 22px;
         width: 91%;
         padding-left: calc(1% - 2px);
+    }
+    h1.search-results-header{
+        font-size: 34px;
+    }
+    p.no-results-found{
+        margin-bottom: 200px;
     }
 }
