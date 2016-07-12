@@ -122,40 +122,39 @@ def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = get_object_or_404(Restaurant, name__iexact=restaurant_name)
     num_horizontal_cats = 2
-    menu_categories = None
+    menu_categories = []
     categories = None
     is_search_page = False
     query_string = None
-    num_results = None
+    num_results = 0
 
     # used when somebody tries to search for foods withing a restaurant
     if request.method == "POST":
         query_string = request.POST['search-bar']
-        # get all of the foods from the restaurant that match the query_string
-        menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name__iexact=restaurant_name).\
-            filter(name__icontains=query_string)
-        num_results = len(menu_item_results)
-
-        # collect the relevant categories for selected foods
-        categories = collections.OrderedDict()
-        for menu_item in menu_item_results:
-            # get the menu category of the current food
-            foods_menu_category = menu_item.menu_category
-
-            # add this food to the list of other 'matching' foods
-            category_menu_items_list = categories.get(foods_menu_category, [])
-            category_menu_items_list.append(menu_item)
-
-            # set this list as the new list in categories
-            categories[foods_menu_category] = category_menu_items_list
-
-        # used to compute horizontal categories and remaining categories
-        menu_categories = []
-        for category in categories:
-            menu_categories.append(category)
-
         is_search_page = True
 
+        if query_string != '':
+            # get all of the foods from the restaurant that match the query_string
+            menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name__iexact=restaurant_name).\
+                filter(name__icontains=query_string)
+            num_results = len(menu_item_results)
+
+            # collect the relevant categories for selected foods
+            categories = collections.OrderedDict()
+            for menu_item in menu_item_results:
+                # get the menu category of the current food
+                foods_menu_category = menu_item.menu_category
+
+                # add this food to the list of other 'matching' foods
+                category_menu_items_list = categories.get(foods_menu_category, [])
+                category_menu_items_list.append(menu_item)
+
+                # set this list as the new list in categories
+                categories[foods_menu_category] = category_menu_items_list
+
+            # used to compute horizontal categories and remaining categories
+            for category in categories:
+                menu_categories.append(category)
 
     # used when somebody normally visits a restaurant's page
     elif request.method == "GET":
