@@ -49,11 +49,11 @@
   <div class="header-background" style="background-image: url('{{ restaurant.header_image.url }}')">
     <div class="background-image-dark-overlay">
       <div class="restaurant-info-wrapper">
-        <h1 class="restaurant-name">{{ restaurant.name }}</h1>
+        <a class="restaurant-name" href="{% url "PhotoMenu:restaurant_homepage" restaurant.get_restaurant_url_path %}">{{ restaurant.name }}</a>
         <p class="restaurant-address">{{ restaurant.address }}</p>
         <div class="all-restaurant-hours">
           {% for item in restaurant.compute_store_hours %}
-            <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower}}-{{ item.2|time:"g:iA"|lower}}</p>
+            <p class="restaurant-hours"><span class="day-wrapper">{{ item.0 }}</span> {{ item.1|time:"g:iA"|lower }}-{{ item.2|time:"g:iA"|lower }}</p>
           {% endfor %}
         </div>
       </div>
@@ -64,14 +64,27 @@
   {%  include "PhotoMenu/Snippets/FilterSearch.html" %}
 
   <!-- Inspector View (mobile & desktop) -->
- {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
+  {%  include "PhotoMenu/Snippets/AllInspectorViews.html" %}
 
+  {% if not is_search_page %}
   <div class="restaurant-description-wrapper">
     <h1 class="restaurant-description-header">About Us</h1>
     <p class="restaurant-description">
       {{ restaurant.description }}
     </p>
   </div>
+  {% else %}
+  <div class="restaurant-search-results-wrapper">
+    <h1 class="search-results-header">Search Results</h1>
+    {% if num_results > 0 %}
+      <p class="search-results-detail">Showing {{ num_results }} result(s) for your search of '{{ query_string }}':</p>
+    {% endif %}
+    <div class="line-separator"></div>
+    {% if num_results == 0 %}
+      <p class="no-results-found">No search results found for '{{ query_string }}'. Sorry!</p>
+    {% endif %}
+  </div>
+  {% endif %}
   <!-- List of Food Item Lists -->
   <ul class="list-of-food-lists">
     {% for category, item_list in categories.items %}

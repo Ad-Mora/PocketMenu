@@ -2,7 +2,7 @@ from .models import MenuItem, Restaurant
 
 
 def get_menu_items_for_search_string(query_string, limit=30):
-    results = {}
+    results = []
     if query_string != "":
         results = MenuItem.objects.filter(name__icontains=query_string)[:limit]
     return results

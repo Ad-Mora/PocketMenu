@@ -101,16 +101,18 @@ def search_results_page(request):
         search_type = request.POST['search-type']
         context = None
         if search_type == SEARCH_TYPE_FOOD:
+            menu_items_list = get_menu_items_for_search_string(query_string)
             context = {
                 'query_string': query_string,
-                'menu_items_list': get_menu_items_for_search_string(query_string),
+                'menu_items_list': menu_items_list,
                 'search_type': search_type
             }
         elif search_type == SEARCH_TYPE_RESTAURANT:
             max_results_limit = 20
+            restaurants_list = get_restaurants_for_search_string(query_string, max_results_limit)
             context = {
                 'query_string': query_string,
-                'restaurants_list': get_restaurants_for_search_string(query_string, max_results_limit),
+                'restaurants_list': restaurants_list,
                 'search_type': search_type
             }
         return render(request, 'PhotoMenu/SitePages/SearchResultsPage.html', context)
@@ -122,33 +124,39 @@ def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = get_object_or_404(Restaurant, name__iexact=restaurant_name)
     num_horizontal_cats = 2
-    menu_categories = None
+    menu_categories = []
     categories = None
+    is_search_page = False
+    query_string = None
+    num_results = 0
 
     # used when somebody tries to search for foods withing a restaurant
     if request.method == "POST":
         query_string = request.POST['search-bar']
-        # get all of the foods from the restaurant that match the query_string
-        menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name__iexact=restaurant_name).\
-            filter(name__icontains=query_string)
+        is_search_page = True
 
-        # collect the relevant categories for selected foods
-        categories = collections.OrderedDict()
-        for menu_item in menu_item_results:
-            # get the menu category of the current food
-            foods_menu_category = menu_item.menu_category
+        if query_string != '':
+            # get all of the foods from the restaurant that match the query_string
+            menu_item_results = MenuItem.objects.filter(menu_category__restaurant__name__iexact=restaurant_name).\
+                filter(name__icontains=query_string)
+            num_results = len(menu_item_results)
 
-            # add this food to the list of other 'matching' foods
-            category_menu_items_list = categories.get(foods_menu_category, [])
-            category_menu_items_list.append(menu_item)
+            # collect the relevant categories for selected foods
+            categories = collections.OrderedDict()
+            for menu_item in menu_item_results:
+                # get the menu category of the current food
+                foods_menu_category = menu_item.menu_category
 
-            # set this list as the new list in categories
-            categories[foods_menu_category] = category_menu_items_list
+                # add this food to the list of other 'matching' foods
+                category_menu_items_list = categories.get(foods_menu_category, [])
+                category_menu_items_list.append(menu_item)
 
-        # used to compute horizontal categories and remaining categories
-        menu_categories = []
-        for category in categories:
-            menu_categories.append(category)
+                # set this list as the new list in categories
+                categories[foods_menu_category] = category_menu_items_list
+
+            # used to compute horizontal categories and remaining categories
+            for category in categories:
+                menu_categories.append(category)
 
     # used when somebody normally visits a restaurant's page
     elif request.method == "GET":
@@ -168,7 +176,10 @@ def restaurants_page(request, restaurant_name):
         'horizontal_cats': horizontal_cats,
         'remaining_cats': remaining_cats,
         'search_options_list': [restaurant.name, SEARCH_TYPE_RESTAURANT, SEARCH_TYPE_FOOD],
-        'is_restaurant_page': True
+        'is_restaurant_page': True,
+        'is_search_page': is_search_page,
+        'query_string': query_string,
+        'num_results': num_results,
     }
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 

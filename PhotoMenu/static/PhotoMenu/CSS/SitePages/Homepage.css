@@ -101,6 +101,7 @@ ul.search-suggestions-list{
     color: #555555;
     font-size: 14px;
     margin: 10px auto 0px auto;
+    line-height: 16px;
 }
 /*---------------Location Section--------------*/
 .white-area{
@@ -204,6 +205,7 @@ ul.search-suggestions-list{
     }
     .icon-description{
         font-size: 18px;
+        line-height: 20px;
     }
     .our-locations-header{
         font-size: 28px;
@@ -278,6 +280,9 @@ ul.search-suggestions-list{
     .icon-text{
         font-size: 22px;
         margin-top: 20px;
+    }
+    .icon-description{
+        line-height: 21px;
     }
     .our-locations-header{
         font-size: 32px;
