@@ -129,6 +129,7 @@ def restaurants_page(request, restaurant_name):
     is_search_page = False
     query_string = None
     num_results = 0
+    most_popular_list = []
 
     # used when somebody tries to search for foods within a restaurant
     if request.method == "POST":
@@ -163,10 +164,9 @@ def restaurants_page(request, restaurant_name):
 
         # populate body with category and menu items
         menu_categories = list(MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name))
-        most_popular_category = MenuCategory(restaurant_id=1, name='Most Popular', description='')
+        most_popular_category = MenuCategory(restaurant_id=restaurant.id, name='Most Popular', description='')
         categories = collections.OrderedDict()
 
-        most_popular_list = []
         for category in menu_categories:
             menu_item_list = MenuItem.objects.filter(menu_category_id=category.id)
             categories[category] = menu_item_list
