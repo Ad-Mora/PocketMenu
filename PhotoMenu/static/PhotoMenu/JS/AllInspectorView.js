@@ -269,7 +269,7 @@ var mobileInspectorView = (function () {
         var categoryNameElement = mobileView.querySelector("h4.food-category-name");
         var categoryDescriptionElement = mobileView.querySelector("p.food-category-description");
         var restaurantHeaderLinkElement = mobileView.querySelector("h2.inspector.restaurant-name a");
-
+        var mostPopularIcon = mobileView.querySelector("img.inspector-popular-food-icon")
 
         var foodName = foodElement.getAttribute("data-food-name");
         foodNameElement.innerHTML = foodName;
@@ -299,6 +299,13 @@ var mobileInspectorView = (function () {
 
         var interestIconForView = mobileView.querySelector("span.inspector.interested-in-food-icon");
         allInspectorView.setInterestIconBasedOnCurrentInterest(interestIconForView, foodElement);
+
+        var is_most_popular = foodElement.getAttribute("data-food-is-most-popular");
+        if (is_most_popular == "True") {
+            mostPopularIcon.style.display = "block";
+        } else {
+            mostPopularIcon.style.display = "none";
+        }
     }
 
     // public functions

@@ -17,7 +17,8 @@
     data-restaurant-name="{{ menu_item.menu_category.restaurant.name }}"
     data-restaurant-link="{% url "PhotoMenu:restaurant_homepage" menu_item.menu_category.restaurant.get_restaurant_url_path %}"
     data-food-unique-id="{{ menu_item.pk }}"
-    data-food-is-liked="false">
+    data-food-is-liked="false"
+    data-food-is-most-popular="{{ menu_item.is_most_popular }}">
   <h3 class="food-item-restaurant-name">{{ menu_item.menu_category.restaurant.name }}</h3>
   <div class="food-entry-wrapper">
     <div class="food-entry-image">

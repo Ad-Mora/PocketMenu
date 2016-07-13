@@ -150,6 +150,7 @@ span.food-interest-icon:hover{
     cursor: pointer;
 }
 img.desktop-inspector-popular-food-icon{
+    display: none;
     margin-top: 6px;
     margin-right: 10px;
     float: right;

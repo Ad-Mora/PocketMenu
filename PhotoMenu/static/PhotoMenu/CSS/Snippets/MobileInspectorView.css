@@ -158,6 +158,7 @@ p.inspector.food-category-description{
     color: #777777;
 }
 img.inspector-popular-food-icon{
+    display: none;
     position: absolute;
     bottom: 8px;
     right: 8px;
