@@ -123,14 +123,14 @@ def search_results_page(request):
 def restaurants_page(request, restaurant_name):
     restaurant_name = restaurant_name.replace('-', ' ')
     restaurant = get_object_or_404(Restaurant, name__iexact=restaurant_name)
-    num_horizontal_cats = 2
+    num_horizontal_cats = 3
     menu_categories = []
     categories = None
     is_search_page = False
     query_string = None
     num_results = 0
 
-    # used when somebody tries to search for foods withing a restaurant
+    # used when somebody tries to search for foods within a restaurant
     if request.method == "POST":
         query_string = request.POST['search-bar']
         is_search_page = True
@@ -162,11 +162,20 @@ def restaurants_page(request, restaurant_name):
     elif request.method == "GET":
 
         # populate body with category and menu items
-        menu_categories = MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name)
-
+        menu_categories = list(MenuCategory.objects.filter(restaurant__name__iexact=restaurant_name))
+        most_popular_category = MenuCategory(restaurant_id=1, name='Most Popular', description='')
         categories = collections.OrderedDict()
+
+        most_popular_list = []
         for category in menu_categories:
-            categories[category] = MenuItem.objects.filter(menu_category_id=category.id)
+            menu_item_list = MenuItem.objects.filter(menu_category_id=category.id)
+            categories[category] = menu_item_list
+            for item in menu_item_list:
+                if item.is_most_popular:
+                    most_popular_list.append(item)
+
+    if len(most_popular_list) > 0:
+        menu_categories.insert(0, most_popular_category)
 
     horizontal_cats = menu_categories[:num_horizontal_cats]
     remaining_cats = menu_categories[num_horizontal_cats:]
@@ -180,6 +189,7 @@ def restaurants_page(request, restaurant_name):
         'is_search_page': is_search_page,
         'query_string': query_string,
         'num_results': num_results,
+        'most_popular_list': most_popular_list,
     }
     return render(request, 'PhotoMenu/SitePages/RestaurantPage.html', context)
 

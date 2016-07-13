@@ -109,6 +109,7 @@ class MenuItem(models.Model):
     description = models.CharField(max_length=200)
     price = models.FloatField()
     image = models.ImageField(upload_to=get_menu_item_upload_path)
+    is_most_popular = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.menu_category.restaurant.name + ' ' + self.name

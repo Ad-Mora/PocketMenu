@@ -87,6 +87,23 @@
   {% endif %}
   <!-- List of Food Item Lists -->
   <ul class="list-of-food-lists">
+
+    <!--Most popular section  -->
+    {% if most_popular_list|length > 0 %}
+      <li class="food-type-section-wrapper">
+      <h3 class="food-type-section-header">Most Popular</h3>
+      <p class="category-description"></p>
+      <ul class="food-type-section-food-list">
+        {% for menu_item in most_popular_list %}
+          {% include "PhotoMenu/Snippets/FoodEntry.html" %}
+        {% endfor %}
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
+        <li class="ghost-food-item"></li>
+      </ul>
+    {% endif %}
+
+    <!--Rest of food items section  -->
     {% for category, item_list in categories.items %}
       <li class="food-type-section-wrapper">
       <h3 class="food-type-section-header">{{ category.name }}</h3>
