@@ -123,6 +123,7 @@ span.inspector.right-arrow{
     float: right;
 }
 div.inspector.food-details{
+    position: relative;
 }
 h3.inspector.food-name{
     font-size: 16px;
@@ -155,6 +156,12 @@ p.inspector.food-category-description{
     font-size: 14px;
     line-height: 16px;
     color: #777777;
+}
+img.inspector-popular-food-icon{
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 25px;
 }
 
 @media (min-width: 355px) {
@@ -189,9 +196,13 @@ p.inspector.food-category-description{
         font-size: 15px;
         line-height: 18px;
     }
+    img.inspector-popular-food-icon{
+        right: 10px;
+        width: 28px;
+    }
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     div.mobile-inspector-background-overlay, span.close-inspector-icon, li.mobile-inspector-view-wrapper {
         display: none;
     }
