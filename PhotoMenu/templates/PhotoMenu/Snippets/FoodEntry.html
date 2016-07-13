@@ -28,7 +28,7 @@
     <p class="food-description-name">{{ menu_item.description }}</p>
     <p class="food-entry-price">{{ menu_item.price|floatformat:2 }}</p>
     {% if menu_item.is_most_popular %}
-      <img class="popular-food-icon" src="{% static "PhotoMenu/Images/Icons/PopularFoodIcon.png" %}" alt="Popular food">
+      <span class="popular-food-icon" style="background-image: url('{% static "PhotoMenu/Images/Icons/PopularFoodIcon.png" %}');"></span>
     {% endif %}
   </div>
 </li>

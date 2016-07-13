@@ -58,11 +58,14 @@ p.food-entry-price{
     margin-left: 4%;
     font-weight: bold;
 }
-img.popular-food-icon{
+span.popular-food-icon{
     position: absolute;
-    bottom: 8px;
+    bottom: 7px;
     right: 7px;
     width: 16px;
+    height: 16px;
+    background-size: 16px auto;
+    background-repeat: no-repeat;
 }
 
 /*-----------------Large Mobile----------------*/
@@ -79,9 +82,11 @@ img.popular-food-icon{
         font-size: 16px;
         line-height: 20px;
     }
-    img.popular-food-icon{
+    span.popular-food-icon{
         right: 8px;
         width: 20px;
+        height: 20px;
+        background-size: 20px auto;
     }
 }
 
@@ -111,9 +116,11 @@ img.popular-food-icon{
         color: #555555;
         width: 92%;
     }
-    img.popular-food-icon{
+    span.popular-food-icon{
         bottom: 10px;
         right: 10px;
         width: 25px;
+        height: 25px;
+        background-size: 25px auto;
     }
 }
