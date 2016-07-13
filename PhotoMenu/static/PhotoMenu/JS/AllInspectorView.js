@@ -269,7 +269,7 @@ var mobileInspectorView = (function () {
         var categoryNameElement = mobileView.querySelector("h4.food-category-name");
         var categoryDescriptionElement = mobileView.querySelector("p.food-category-description");
         var restaurantHeaderLinkElement = mobileView.querySelector("h2.inspector.restaurant-name a");
-        var mostPopularIcon = mobileView.querySelector("img.inspector-popular-food-icon")
+        var mostPopularIcon = mobileView.querySelector("img.inspector-popular-food-icon");
 
         var foodName = foodElement.getAttribute("data-food-name");
         foodNameElement.innerHTML = foodName;
