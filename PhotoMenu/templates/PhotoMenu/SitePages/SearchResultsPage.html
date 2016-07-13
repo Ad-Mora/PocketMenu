@@ -49,9 +49,9 @@
 
     <!-- Result Count -->
     {% if search_type == "Food" %}
-      <p class="number-of-search-results">There are {{ menu_items_list|length }} food results matching '{{ query_string }}'</p>
+      <p class="number-of-search-results">Showing {{ menu_items_list|length }} food result(s) for your search of '{{ query_string }}'</p>
     {% elif search_type == "Restaurant" %}
-      <p class="number-of-search-results">There are {{ restaurants_list|length }} restaurant results matching '{{ query_string }}'</p>
+      <p class="number-of-search-results">Showing {{ restaurants_list|length }} restaurant result(s) for your search of '{{ query_string }}'</p>
     {% endif %}
       <div class="full-width-separator"></div>
 
