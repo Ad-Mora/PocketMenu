@@ -105,12 +105,9 @@ var moreOptions = (function(){
 
     // Get dictionary of category names to element header categories
     function getHeaderCategoryNamesToHeaderElements() {
-        var categoryNamesToHeaderElements;
-        if (categoryNamesToHeaderElements == undefined) {
-            categoryNamesToHeaderElements = {};
-            for (var i = 0; i < categoryHeaderElements.length; i++) {
-                categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
-            }
+        categoryNamesToHeaderElements = {};
+        for (var i = 0; i < categoryHeaderElements.length; i++) {
+            categoryNamesToHeaderElements[categoryHeaderElements[i].textContent] = categoryHeaderElements[i];
         }
         return categoryNamesToHeaderElements;
     }

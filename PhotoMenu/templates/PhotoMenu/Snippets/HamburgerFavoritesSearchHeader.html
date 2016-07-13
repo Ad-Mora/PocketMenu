@@ -1,15 +1,15 @@
 <!-- Relevant CSS files -->
-{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HamburgerFavoritesSearchHeader.css" %}"> #}
-{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}"> #}
-{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HeaderSearchBar.css" %}"> #}
-{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesLink.css" %}"> #}
+<!--{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HamburgerFavoritesSearchHeader.css" %}"> #}-->
+<!--{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/Logo.css" %}"> #}-->
+<!--{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/HeaderSearchBar.css" %}"> #}-->
+<!--{# <link rel="stylesheet" type="text/css" href="{% static "PhotoMenu/CSS/Snippets/FavoritesLink.css" %}"> #}-->
 
 <!-- Relevant JS files -->
-{# <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script> #}
-{# <script src="{%  static "PhotoMenu/JS/HeaderSearch.js" %}" type="text/javascript"></script> #}
-{# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}
-{# <script src="{%  static "PhotoMenu/JS/MobileCategoriesMenu.js" %}" type="text/javascript"></script> #}
-{# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}
+<!--{# <script src="{%  static "PhotoMenu/JS/Header.js" %}" type="text/javascript"></script> #}-->
+<!--{# <script src="{%  static "PhotoMenu/JS/HeaderSearch.js" %}" type="text/javascript"></script> #}-->
+<!--{# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}-->
+<!--{# <script src="{%  static "PhotoMenu/JS/MobileCategoriesMenu.js" %}" type="text/javascript"></script> #}-->
+<!--{# <script src="{%  static "PhotoMenu/JS/MobileSearchModal.js" %}" type="text/javascript"></script> #}-->
 
 {% load staticfiles %}
 <!-- Orange Header -->
@@ -36,14 +36,22 @@
 <div class="mobile-category-menu-background-overlay hide-mobile-category-menu"></div>
 <ul class="mobile-categories-menu-list hide-mobile-category-menu" data-categories-count="{{ categories.items|length }}">
   <li class="mobile-categories-menu-header">Menu Categories</li>
+
+  {% if most_popular_list|length > 0 %}
+    <li class="categories-menu-category-option current-category" data-category-name="Most Popular">
+      <h3 class="categories-menu-category-name">Most Popular</h3>
+      <p class="category-items-count">{{ most_popular_list|length }} items</p>
+    </li>
+  {% endif %}
+
   {% for category, item_list in categories.items %}
-    {% if forloop.counter == 1 %}
+    {% if forloop.counter == 1 and most_popular_list|length == 0 %}
       <li class="categories-menu-category-option current-category" data-category-name="{{ category.name }}">
     {% else %}
       <li class="categories-menu-category-option" data-category-name="{{ category.name }}">
     {% endif %}
       <h3 class="categories-menu-category-name">{{ category.name }}</h3>
       <p class="category-items-count">{{ item_list|length }} items</p>
-    </li>
+      </li>
   {% endfor %}
 </ul>
