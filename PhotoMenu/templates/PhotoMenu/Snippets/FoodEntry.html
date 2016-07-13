@@ -26,5 +26,8 @@
     <h4 class="food-entry-name">{{ menu_item.name }}</h4>
     <p class="food-description-name">{{ menu_item.description }}</p>
     <p class="food-entry-price">{{ menu_item.price|floatformat:2 }}</p>
+    {% if menu_item.is_most_popular %}
+      <img class="popular-food-icon" src="{% static "PhotoMenu/Images/Icons/PopularFoodIcon.png" %}" alt="Popular food">
+    {% endif %}
   </div>
 </li>

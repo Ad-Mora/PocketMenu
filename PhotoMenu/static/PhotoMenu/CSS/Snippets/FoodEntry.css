@@ -14,24 +14,14 @@ h3.food-item-restaurant-name{
     color: #333333;
 }
 div.food-entry-wrapper{
+    position: relative;
+    z-index: -1;
     width: 100%;
     background-color: #FFFFFF;
     border: 1px solid #D2D2D2;
     -webkit-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
     -moz-box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
     box-shadow: 0px -1px 3px rgba(0,0,0,.1), 0px 1px 3px rgba(0,0,0,.1);
-}
-h4.food-entry-name{
-    font-size: 13px;
-    line-height: 15px;
-    text-align: left;
-    margin: 2% 0px 2% 4%;
-    font-weight: bold;
-    width: 92%;
-    color: rgb(53,53,53);
-}
-p.food-description-name{
-    display: none;
 }
 div.food-entry-image{
     width: 92%;
@@ -48,14 +38,31 @@ li.unloaded-image img{
     padding: 23% 10px 23% 10px;
     box-sizing: border-box;
 }
-p.food-entry-price{
+h4.food-entry-name{
+    font-size: 13px;
+    line-height: 15px;
+    text-align: left;
+    margin: 2% 0px 2% 4%;
+    font-weight: bold;
     width: 92%;
+    color: rgb(53,53,53);
+}
+p.food-description-name{
+    display: none;
+}
+p.food-entry-price{
     font-size: 13px;
     line-height: 15px;
     color: #FF9800;
     margin-bottom: 3%;
     margin-left: 4%;
     font-weight: bold;
+}
+img.popular-food-icon{
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 16px;
 }
 
 /*-----------------Large Mobile----------------*/
@@ -71,6 +78,9 @@ p.food-entry-price{
     p.food-entry-price{
         font-size: 16px;
         line-height: 20px;
+    }
+    img.popular-food-icon{
+        width: 20px;
     }
 
 }
@@ -100,5 +110,10 @@ p.food-entry-price{
         margin-left: 4%;
         color: #555555;
         width: 92%;
+    }
+    img.popular-food-icon{
+        bottom: 10px;
+        right: 10px;
+        width: 25px;
     }
 }
