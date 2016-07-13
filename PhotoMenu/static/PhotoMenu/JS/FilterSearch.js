@@ -40,7 +40,10 @@ var moreOptions = (function(){
     var dropDownIconStates = {true: "rotate(180deg)", false: "rotate(0deg)"};
 
     var defaultCategoryBarPosition = getVerticalPosition(categoryBar);
-    var currentCategoryName = categoryHeaderElements[0].textContent;
+    var currentCategoryName;
+    if (categoryHeaderElements.length > 0) {
+        currentCategoryName = categoryHeaderElements[0].textContent;
+    }
     var categoryBarFixed = false;
 
     // category names to header elements
@@ -61,7 +64,9 @@ var moreOptions = (function(){
     /*--------------------------------------------------*/
 
     // Start off the page with the underbar taking up the full width of the first category item
-    adjustSlidingUnderBar(null, allVisibleOptionsLI[0])
+    if (allVisibleOptionsLI.length > 0) {
+        adjustSlidingUnderBar(null, allVisibleOptionsLI[0])
+    }
 
     // Check every interval if the page has scrolled
     function unsetScroll() {
