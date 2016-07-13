@@ -351,6 +351,7 @@ var desktopInspectorView = (function () {
     var categoryNameElement = desktopInspector.querySelector("h5.food-modal-category-name");
     var categoryDescriptionElement = desktopInspector.querySelector("p.food-modal-category-details");
     var foodPriceElement = desktopInspector.querySelector("span.food-modal-food-price");
+    var mostPopularIcon = desktopInspector.querySelector("img.desktop-inspector-popular-food-icon");
 
     // bind events
     rightDesktopPictureIcon.addEventListener('click', allInspectorView.showNextFood);
@@ -390,6 +391,13 @@ var desktopInspectorView = (function () {
         var foodIsLiked = foodElement.getAttribute("data-food-is-liked");
         var listItemNumber = foodElement.getAttribute("data-list-item-number");
         allInspectorView.setInterestIconBasedOnCurrentInterest(desktopInterestIcon, foodElement);
+
+        var is_most_popular = foodElement.getAttribute("data-food-is-most-popular");
+        if (is_most_popular == "True") {
+            mostPopularIcon.style.display = "block";
+        } else {
+            mostPopularIcon.style.display = "none";
+        }
 
         // console.log(listItemNumber);                      // UNCOMMENT TO DEBUG!!
     }
